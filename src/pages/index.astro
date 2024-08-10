@@ -3,31 +3,31 @@ import { Image } from "astro:assets";
 import Youtube from "../../public/images/social/youtube.svg";
 import Github from "../../public/images/social/github.svg";
 import LinkedIN from "../../public/images/social/linkedin.svg";
-import { ImageMetadata } from "astro"
+import { ImageMetadata } from "astro";
 
 interface SocialLink {
-	link: string
-	image: ImageMetadata
-	alternativeText: string
+  link: string;
+  image: ImageMetadata;
+  alternativeText: string;
 }
 
 const socialLinks: SocialLink[] = [
-	{
-		link: 'https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg',
-		image: Youtube,
-		alternativeText: 'YouTube'
-	},
-	{
-		link: 'https://www.github.com/danny270793',
-		image: Github,
-		alternativeText: 'Github'
-	},
-	{
-		link: 'https://www.linkedin.com/in/danny270793',
-		image: LinkedIN,
-		alternativeText: 'LinkedIn'
-	}
-]
+  {
+    link: "https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg",
+    image: Youtube,
+    alternativeText: "YouTube",
+  },
+  {
+    link: "https://www.github.com/danny270793",
+    image: Github,
+    alternativeText: "Github",
+  },
+  {
+    link: "https://www.linkedin.com/in/danny270793",
+    image: LinkedIN,
+    alternativeText: "LinkedIn",
+  },
+];
 ---
 
 <html lang="es">
@@ -251,7 +251,8 @@ const socialLinks: SocialLink[] = [
           alt="Spring"
           data-canonical-src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Herramientas de CI/CD</h2>
@@ -287,7 +288,8 @@ const socialLinks: SocialLink[] = [
           alt="SonarQube"
           data-canonical-src="https://img.shields.io/badge/SonarQube-black?style=for-the-badge&logo=sonarqube&logoColor=4E9BCD"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Despliegue de aplicaciones</h2>
@@ -400,7 +402,8 @@ const socialLinks: SocialLink[] = [
           alt="Vagrant"
           data-canonical-src="https://img.shields.io/badge/vagrant-%231563FF.svg?style=for-the-badge&logo=vagrant&logoColor=white"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Monitorización y reportería</h2>
@@ -448,7 +451,8 @@ const socialLinks: SocialLink[] = [
           alt="Power Bi"
           data-canonical-src="https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Bases de datos</h2>
@@ -550,7 +554,8 @@ const socialLinks: SocialLink[] = [
           alt="Supabase"
           data-canonical-src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Procesamiento de Big Data</h2>
@@ -575,7 +580,8 @@ const socialLinks: SocialLink[] = [
           alt="Apache Hadoop"
           data-canonical-src="https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
 
     <h2>Sistemas embebidos</h2>
@@ -598,14 +604,22 @@ const socialLinks: SocialLink[] = [
           src="https://camo.githubusercontent.com/72ce6e1d4c15c5e149563435c125c94963e05c92ae9efdb6fd2f9a21703d90c9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d41726475696e6f2d3030393739443f7374796c653d666f722d7468652d6261646765266c6f676f3d41726475696e6f266c6f676f436f6c6f723d7768697465"
           alt="Arduino"
           style="max-width: 100%;"
-        /></a>
+        /></a
+      >
     </p>
     <h1>Redes Sociales</h1>
     <p dir="auto">
-		{socialLinks.map((socialLink: SocialLink) => <a
-			href={socialLink.link} rel="nofollow">
-			<Image src={socialLink.image} alt={socialLink.alternativeText} style="max-width: 100%;" />
-		  </a>)}
+      {
+        socialLinks.map((socialLink: SocialLink) => (
+          <a href={socialLink.link} rel="nofollow">
+            <Image
+              src={socialLink.image}
+              alt={socialLink.alternativeText}
+              style="max-width: 100%;"
+            />
+          </a>
+        ))
+      }
     </p>
   </body>
 </html>
