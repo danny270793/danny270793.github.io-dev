@@ -3,6 +3,31 @@ import { Image } from "astro:assets";
 import Youtube from "../../public/images/social/youtube.svg";
 import Github from "../../public/images/social/github.svg";
 import LinkedIN from "../../public/images/social/linkedin.svg";
+import { ImageMetadata } from "astro"
+
+interface SocialLink {
+	link: string
+	image: ImageMetadata
+	alternativeText: string
+}
+
+const socialLinks: SocialLink[] = [
+	{
+		link: 'https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg',
+		image: Youtube,
+		alternativeText: 'YouTube'
+	},
+	{
+		link: 'https://www.github.com/danny270793',
+		image: Github,
+		alternativeText: 'Github'
+	},
+	{
+		link: 'https://www.linkedin.com/in/danny270793',
+		image: LinkedIN,
+		alternativeText: 'LinkedIn'
+	}
+]
 ---
 
 <html lang="es">
@@ -562,7 +587,6 @@ import LinkedIN from "../../public/images/social/linkedin.svg";
         ><img
           src="https://camo.githubusercontent.com/c39d577039f80f592cc214f668afea35e7e69fd90fde964a81fc4b0fc863447b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d52617370626572727950692d4335314134413f7374796c653d666f722d7468652d6261646765266c6f676f3d5261737062657272792d5069"
           alt="Raspberry Pi"
-          data-canonical-src="https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi"
           style="max-width: 100%;"
         /></a
       >
@@ -573,24 +597,15 @@ import LinkedIN from "../../public/images/social/linkedin.svg";
         ><img
           src="https://camo.githubusercontent.com/72ce6e1d4c15c5e149563435c125c94963e05c92ae9efdb6fd2f9a21703d90c9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d41726475696e6f2d3030393739443f7374796c653d666f722d7468652d6261646765266c6f676f3d41726475696e6f266c6f676f436f6c6f723d7768697465"
           alt="Arduino"
-          data-canonical-src="https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white"
           style="max-width: 100%;"
         /></a>
     </p>
     <h1>Redes Sociales</h1>
     <p dir="auto">
-      <a
-        href="https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg"
-        rel="nofollow"
-      >
-        <Image src={Youtube} alt="YouTube" style="max-width: 100%;" />
-      </a>
-      <a href="https://www.github.com/danny270793/">
-        <Image src={Github} alt="GitHub" style="max-width: 100%;" />
-      </a>
-      <a href="https://www.linkedin.com/in/danny270793" rel="nofollow">
-        <Image src={LinkedIN} alt="LinkedIn" style="max-width: 100%;" />
-      </a>
+		{socialLinks.map((socialLink: SocialLink) => <a
+			href={socialLink.link} rel="nofollow">
+			<Image src={socialLink.image} alt={socialLink.alternativeText} style="max-width: 100%;" />
+		  </a>)}
     </p>
   </body>
 </html>
