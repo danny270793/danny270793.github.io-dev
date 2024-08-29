@@ -11,9 +11,9 @@ import Certifications, {
 import Libraries, { Library } from "../libraries/me/knowledges/libraries";
 import Projects, { Project } from "../libraries/me/knowledges/projects";
 
-import profilePicture from "../../public/images/profile.jpg"
-import headerBackground from "../../public/images/parallax/header.jpg"
-import educationBackground from "../../public/images/parallax/education.jpg"
+import profilePicture from "../../public/images/profile.jpg";
+import headerBackground from "../../public/images/parallax/header.jpg";
+import educationBackground from "../../public/images/parallax/education.jpg";
 ---
 
 <html lang="es">
@@ -22,26 +22,24 @@ import educationBackground from "../../public/images/parallax/education.jpg"
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      Danny Vaca
-    </title>
+    <title>Danny Vaca</title>
   </head>
   <>
-
-    <div class="parallax header w3-display-container" style={
-      `background-image: url("${headerBackground.src}")`
-    }>
+    <div
+      class="parallax header w3-display-container"
+      style={`background-image: url("${headerBackground.src}")`}
+    >
       <div class="w3-display-middle no-spaces">
-        <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
           Danny Vaca
         </span>
       </div>
     </div>
 
     <div class="w3-content w3-container w3-padding-64">
-      <h3 class="w3-center">
-        About me
-      </h3>
+      <h3 class="w3-center">About me</h3>
       <div class="w3-row">
         <div class="w3-quarter w3-center">
           <Image
@@ -51,16 +49,19 @@ import educationBackground from "../../public/images/parallax/education.jpg"
           />
         </div>
         <div class="w3-threequarter w3-padding">
-          {Me.detail.split('\n').map(e => <div>{e}</div>)}
+          {Me.detail.split("\n").map((e) => <div>{e}</div>)}
         </div>
       </div>
     </div>
 
-    <div class="parallax separator w3-display-container" style={
-      `background-image: url("${educationBackground.src}")`
-    }>
+    <div
+      class="parallax separator w3-display-container"
+      style={`background-image: url("${educationBackground.src}")`}
+    >
       <div class="w3-display-middle no-spaces">
-        <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
           Education
         </span>
       </div>
@@ -69,38 +70,32 @@ import educationBackground from "../../public/images/parallax/education.jpg"
     <div class="w3-content w3-container w3-padding-64">
       {
         Educations.map((education: Education) => (
-        <div class="w3-row padded-content">
-        <div class="w3-third w3-center">
-          <Image
-            class="w3-padding image-logo"
-            src={education.image}
-            alt={education.name}
-            style="width: 100%;"
-          />
-        </div>
-        <h class="w3-twothird w3-padding w3-center">
-          <h5>
-            <strong>
-              {education.name}
-            </strong>
-          </h5>
-          <p>
-            {education.institution}
-          </p>
-          <h6 class="w3-text-teal">
-            <i class="far fa-calendar-alt w3-margin-right">
-              {education.from} - {education.to}
-            </i>
-          </h6>
-        </div>
-      </div>
+          <div class="w3-row padded-content">
+            <div class="w3-third w3-center">
+              <Image
+                class="w3-padding image-logo"
+                src={education.image}
+                alt={education.name}
+                style="width: 100%;"
+              />
+            </div>
+            <h class="w3-twothird w3-padding w3-center">
+              <h5>
+                <strong>{education.name}</strong>
+              </h5>
+              <p>{education.institution}</p>
+              <h6 class="w3-text-teal">
+                <i class="far fa-calendar-alt w3-margin-right">
+                  {education.from} - {education.to}
+                </i>
+              </h6>
+            </h>
+          </div>
         ))
       }
     </div>
 
-    <h1>
-      Certifications
-    </h1>
+    <h1>Certifications</h1>
     {
       Certifications.map((certification: Certification) => (
         <>
@@ -119,9 +114,7 @@ import educationBackground from "../../public/images/parallax/education.jpg"
       ))
     }
 
-    <h1>
-      Open Source Libraries
-    </h1>
+    <h1>Open Source Libraries</h1>
     {
       Libraries.map((library: Library) => (
         <>
@@ -130,16 +123,12 @@ import educationBackground from "../../public/images/parallax/education.jpg"
               ({library.language}) {library.name}
             </h2>
           </a>
-          <p>
-            {library.description}
-          </p>
+          <p>{library.description}</p>
         </>
       ))
     }
 
-    <h1>
-      Projects
-    </h1>
+    <h1>Projects</h1>
     {
       Projects.map((project: Project) => (
         <>
@@ -148,16 +137,12 @@ import educationBackground from "../../public/images/parallax/education.jpg"
               ({project.type}) {project.name}
             </h2>
           </a>
-          <p>
-            {project.description}
-          </p>
+          <p>{project.description}</p>
         </>
       ))
     }
 
-    <h1>
-      Technologies
-    </h1>
+    <h1>Technologies</h1>
 
     <!--
     <h2>Desarrollo móvil</h2>
@@ -697,9 +682,7 @@ import educationBackground from "../../public/images/parallax/education.jpg"
       >
     </p>
 	-->
-    <h1>
-      Social Networks
-    </h1>
+    <h1>Social Networks</h1>
     {
       SocialLinks.map((socialLink: SocialLink) => (
         <a href={socialLink.link} rel="nofollow">
@@ -711,5 +694,5 @@ import educationBackground from "../../public/images/parallax/education.jpg"
         </a>
       ))
     }
-  </body>
+  </>
 </html>
