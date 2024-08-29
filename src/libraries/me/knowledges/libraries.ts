@@ -1,5 +1,5 @@
 export interface Library {
-  language: "dart" | "node" | "python" | "docker" | "arduino" | 'rust';
+  language: "dart" | "node" | "python" | "docker" | "arduino" | 'rust' | 'matlab';
   name: string;
   description: string;
   link: string;
@@ -93,6 +93,12 @@ const libraries: Library[] = [
     name: 'code-metadata',
     description: '',
     link: 'https://crates.io/crates/code-metadata'
+  },
+  {
+    language: 'matlab',
+    name: 'PortCom',
+    description: '',
+    link: 'https://github.com/danny270793/MatlabPortCom'
   }
 ];
 export default libraries;
