@@ -1,10 +1,11 @@
 ---
 import "../../public/css/w3css.css";
 import { Image } from "astro:assets";
-import SocialLinks, { SocialLink } from '../libraries/me/social-links'
-import Educations, { Education } from '../libraries/me/knowledges/educations'
-import Certifications, { Certification } from '../libraries/me/knowledges/certifications'
-
+import SocialLinks, { SocialLink } from "../libraries/me/social-links";
+import Educations, { Education } from "../libraries/me/knowledges/educations";
+import Certifications, {
+  Certification,
+} from "../libraries/me/knowledges/certifications";
 ---
 
 <html lang="es">
@@ -16,9 +17,7 @@ import Certifications, { Certification } from '../libraries/me/knowledges/certif
     <title>Danny Vaca</title>
   </head>
   <>
-    <h1>
-      About me
-    </h1>
+    <h1>About me</h1>
     <p>
       Senior Full Stack Developer with almost 10 years of experience
       implementing solutions for digital transformation in the cloud (Azure,
@@ -31,70 +30,52 @@ import Certifications, { Certification } from '../libraries/me/knowledges/certif
       and ensure return on investment.
     </p>
 
-    <h1>
-      Education
-    </h1>
+    <h1>Education</h1>
     {
       Educations.map((education: Education) => (
-      <>
-        <Image
+        <>
+          <Image
             src={education.image}
             alt={education.name}
             style="max-width: 100%;"
           />
-        <h2>
-          {education.name}
-        </h2>
-        <p>
-          {education.institution}
-        </p>
-        <p>
-          {education.from} - {education.to}
-        </p>
+          <h2>{education.name}</h2>
+          <p>{education.institution}</p>
+          <p>
+            {education.from} - {education.to}
+          </p>
         </>
       ))
     }
 
-    <h1>
-      Certifications
-    </h1>
+    <h1>Certifications</h1>
     {
       Certifications.map((certification: Certification) => (
-      <>
+        <>
           <Image
             src={certification.image}
             alt={certification.name}
             style="max-width: 100%;"
           />
           <a href={certification.link} target="_blank">
-          <h2>
-            {certification.code} {certification.name}
-          </h2>
-        </a>
-          <p>
-            {certification.brand}
-          </p>
-          </>
+            <h2>
+              {certification.code} {certification.name}
+            </h2>
+          </a>
+          <p>{certification.brand}</p>
+        </>
       ))
     }
 
-    <h1>
-      Courses
-    </h1>
+    <h1>Courses</h1>
 
-    <h1>
-      Open Source Libraries
-    </h1>
+    <h1>Open Source Libraries</h1>
 
-    <h1>
-      Projects
-    </h1>
+    <h1>Projects</h1>
 
-    <h1>
-      Technologies
-    </h1>
+    <h1>Technologies</h1>
 
-	<!--
+    <!--
     <h2>Desarrollo móvil</h2>
     <p dir="auto">
       <a
@@ -632,9 +613,7 @@ import Certifications, { Certification } from '../libraries/me/knowledges/certif
       >
     </p>
 	-->
-    <h1>
-      Social Networks
-    </h1>
+    <h1>Social Networks</h1>
     {
       SocialLinks.map((socialLink: SocialLink) => (
         <a href={socialLink.link} rel="nofollow">
@@ -646,5 +625,5 @@ import Certifications, { Certification } from '../libraries/me/knowledges/certif
         </a>
       ))
     }
-  </body>
+  </>
 </html>
