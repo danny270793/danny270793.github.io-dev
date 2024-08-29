@@ -41,7 +41,7 @@ Array.prototype.chunk = function (chunkSize) {
     <meta name="generator" content={Astro.generator} />
     <title>Danny Vaca</title>
   </head>
-  <di>
+  <div>
     <div
       class="parallax header w3-display-container"
       style={`background-image: url("${headerBackground.src}")`}
@@ -87,60 +87,33 @@ Array.prototype.chunk = function (chunkSize) {
 
     <div class="w3-content w3-container w3-padding-64">
       {
-        [Educations[0]].map((education: Education) => (
-          <div class="w3-row padded-content">
-            <div class="w3-third w3-center">
-              <Image
-                class="w3-padding"
-                src={education.image}
-                alt={education.name}
-                style="width: 100%; height: auto;"
-              />
-            </div>
-            <h class="w3-twothird w3-padding w3-center">
-              <h5>
-                <strong>{education.name}</strong>
-              </h5>
-              <p>{education.institution}</p>
-              <h6 class="w3-text-teal">
-                <i class="far fa-calendar-alt w3-margin-right">
-                  {education.from} - {education.to}
-                </i>
-              </h6>
-            </h>
+        Educations.chunk(2).map((educations: Education[]) => (
+          <div class="w3-row">
+            {educations.map((education: Education) => (
+              <div class="w3-half" style="display: flex; align-items: center;">
+                <div class="w3-third">
+                  <Image
+                    class="w3-padding"
+                    src={education.image}
+                    alt={education.name}
+                    style="width: 100%; height: auto;"
+                  />
+                </div>
+                <div class="w3-twothird w3-padding">
+                  <h5>
+                    <strong>{education.name}</strong>
+                  </h5>
+                  <p>{education.institution}</p>
+                  <h6 class="w3-text-teal">
+                    <i class="far fa-calendar-alt w3-margin-right">
+                      {education.from} - {education.to}
+                    </i>
+                  </h6>
+                </div>
+              </div>
+            ))}
           </div>
         ))
-      }
-      {
-        Educations.slice(1)
-          .chunk(2)
-          .map((educations: Education[]) => (
-            <div class="w3-row">
-              {educations.map((education: Education) => (
-                <div class="w3-half">
-                  <div class="w3-third w3-center">
-                    <Image
-                      class="w3-padding"
-                      src={education.image}
-                      alt={education.name}
-                      style="width: 100%; height: auto;"
-                    />
-                  </div>
-                  <h class="w3-twothird w3-padding w3-center">
-                    <h5>
-                      <strong>{education.name}</strong>
-                    </h5>
-                    <p>{education.institution}</p>
-                    <h6 class="w3-text-teal">
-                      <i class="far fa-calendar-alt w3-margin-right">
-                        {education.from} - {education.to}
-                      </i>
-                    </h6>
-                  </h>
-                </div>
-              ))}
-            </div>
-          ))
       }
     </div>
 
@@ -211,24 +184,27 @@ Array.prototype.chunk = function (chunkSize) {
         Libraries.chunk(2).map((libraries: Library[]) => (
           <div class="w3-row">
             {libraries.map((library: Library) => (
-              <div class="w3-half w3-center w3-padding">
-                <div class="w3-row w3-hover-shadow">
-                  <div class="w3-third w3-center">
+              <a
+                href={library.link}
+                target="_blank"
+                class="w3-half w3-padding w3-hover-shadow"
+              >
+                <div class="w3-row" style="display: flex; align-items: center;">
+                  <div class="w3-third">
                     <Image
-                      class="w3-padding"
                       src={library.image}
                       alt={library.name}
-                      style="width: auto; height: 100px;"
+                      style="width: auto; height: 100px"
                     />
                   </div>
-                  <div class="w3-twothird w3-padding w3-center">
+                  <div class="w3-twothird">
                     <h5>
                       <strong>{library.name}</strong>
                     </h5>
                     <p>{library.description}</p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         ))
@@ -249,24 +225,39 @@ Array.prototype.chunk = function (chunkSize) {
     </div>
     <div class="w3-content w3-container w3-padding-64">
       {
-        Projects.map((project: Project) => (
-          <div class="w3-row padded-content">
-            <div class="w3-padding w3-center">
-              <h5>
-                <strong>{project.name}</strong>
-              </h5>
-              <p>{project.description}</p>
-              {project.playstore !== undefined ? (
-                <Image
-                  class="w3-padding"
-                  src={GooglePlay}
-                  alt={project.name}
-                  style="width: auto; height: 50px;"
-                />
-              ) : (
-                <span />
-              )}
-            </div>
+        Projects.chunk(2).map((projects: Project[]) => (
+          <div class="w3-row">
+            {projects.map((project: Project) => (
+              <div class="w3-half w3-padding">
+                <div class="w3-row" style="display: flex; align-items: center;">
+                  <div class="w3-third">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      style="width: auto; height: 100px"
+                    />
+                  </div>
+                  <div class="w3-twothird">
+                    <h5>
+                      <strong>{project.name}</strong>
+                    </h5>
+                    <p>{project.description}</p>
+                    {project.playstore !== undefined ? (
+                      <a href={project.playstore} target="_blank">
+                        <Image
+                          class="w3-hover-shadow"
+                          src={GooglePlay}
+                          alt={project.name}
+                          style="width: auto; height: 30px;"
+                        />
+                      </a>
+                    ) : (
+                      <span />
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ))
       }
@@ -824,7 +815,7 @@ Array.prototype.chunk = function (chunkSize) {
         </a>
       ))
     }
-  </di>
+  </div>
 
 
 </html>
