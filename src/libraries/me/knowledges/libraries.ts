@@ -8,7 +8,7 @@ import pubDev from "../../../../public/images/libraries/pubdev.png";
 import { ImageMetadata } from "astro";
 
 export interface Library {
-  image: ImageMetadata
+  image: ImageMetadata;
   name: string;
   description: string;
   link: string;
@@ -100,7 +100,8 @@ const libraries: Library[] = [
   {
     image: CratesIO,
     name: "code-metadata",
-    description: "Computes the metada of the projects: files by extention, lines by extention, average lines per file",
+    description:
+      "Computes the metada of the projects: files by extention, lines by extention, average lines per file",
     link: "https://crates.io/crates/code-metadata",
   },
   {

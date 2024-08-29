@@ -28,9 +28,7 @@ import AppStore from "../../public/images/projects/app-store.png";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      Danny Vaca
-    </title>
+    <title>Danny Vaca</title>
   </head>
   <di>
     <div
@@ -112,7 +110,7 @@ import AppStore from "../../public/images/projects/app-store.png";
         <span
           class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
         >
-        Certifications
+          Certifications
         </span>
       </div>
     </div>
@@ -131,7 +129,9 @@ import AppStore from "../../public/images/projects/app-store.png";
             <h class="w3-twothird w3-padding w3-center">
               <h5>
                 <strong>
-                  {certification.code === '' ? certification.name : `(${certification.code}) - ${certification.name}`}
+                  {certification.code === ""
+                    ? certification.name
+                    : `(${certification.code}) - ${certification.name}`}
                 </strong>
               </h5>
               <p>{certification.brand}</p>
@@ -154,7 +154,7 @@ import AppStore from "../../public/images/projects/app-store.png";
         <span
           class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
         >
-        Open Source Libraries
+          Open Source Libraries
         </span>
       </div>
     </div>
@@ -172,9 +172,7 @@ import AppStore from "../../public/images/projects/app-store.png";
             </div>
             <h class="w3-twothird w3-padding w3-center">
               <h5>
-                <strong>
-                  {library.name}
-                </strong>
+                <strong>{library.name}</strong>
               </h5>
               <p>{library.description}</p>
             </h>
@@ -191,7 +189,7 @@ import AppStore from "../../public/images/projects/app-store.png";
         <span
           class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
         >
-        Projects
+          Projects
         </span>
       </div>
     </div>
@@ -201,17 +199,19 @@ import AppStore from "../../public/images/projects/app-store.png";
           <div class="w3-row padded-content">
             <div class="w3-padding w3-center">
               <h5>
-                <strong>
-                  {project.name}
-                </strong>
+                <strong>{project.name}</strong>
               </h5>
               <p>{project.description}</p>
-              {project.playstore !== undefined ? <Image
-                class="w3-padding"
-                src={GooglePlay}
-                alt={project.name}
-                style="width: auto; height: 50px;"
-              /> :<></>}
+              {project.playstore !== undefined ? (
+                <Image
+                  class="w3-padding"
+                  src={GooglePlay}
+                  alt={project.name}
+                  style="width: auto; height: 50px;"
+                />
+              ) : (
+                <span />
+              )}
             </div>
           </div>
         ))
@@ -770,5 +770,6 @@ import AppStore from "../../public/images/projects/app-store.png";
         </a>
       ))
     }
-  </>
+  </di>
+
 </html>
