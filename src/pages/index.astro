@@ -21,16 +21,16 @@ import projectsBackground from "../../public/images/parallax/projects.jpg";
 import GooglePlay from "../../public/images/projects/google-play.png";
 import AppStore from "../../public/images/projects/app-store.png";
 
-Array.prototype.chunk = function(chunkSize) {
-    let result = [];
+Array.prototype.chunk = function (chunkSize) {
+  let result = [];
 
-    for (let i = 0; i < this.length; i += chunkSize) {
-        let chunk = this.slice(i, i + chunkSize);
-        result.push(chunk);
-    }
+  for (let i = 0; i < this.length; i += chunkSize) {
+    let chunk = this.slice(i, i + chunkSize);
+    result.push(chunk);
+  }
 
-    return result;
-}
+  return result;
+};
 ---
 
 <html lang="es">
@@ -112,33 +112,35 @@ Array.prototype.chunk = function(chunkSize) {
         ))
       }
       {
-        Educations.slice(1).chunk(2).map((educations: Education[]) => (
-        <div class="w3-row">
-          {educations.map((education: Education) => (
-          <div class="w3-half">
-            <div class="w3-third w3-center">
-              <Image
-                class="w3-padding"
-                src={education.image}
-                alt={education.name}
-                style="width: 100%; height: auto;"
-              />
+        Educations.slice(1)
+          .chunk(2)
+          .map((educations: Education[]) => (
+            <div class="w3-row">
+              {educations.map((education: Education) => (
+                <div class="w3-half">
+                  <div class="w3-third w3-center">
+                    <Image
+                      class="w3-padding"
+                      src={education.image}
+                      alt={education.name}
+                      style="width: 100%; height: auto;"
+                    />
+                  </div>
+                  <h class="w3-twothird w3-padding w3-center">
+                    <h5>
+                      <strong>{education.name}</strong>
+                    </h5>
+                    <p>{education.institution}</p>
+                    <h6 class="w3-text-teal">
+                      <i class="far fa-calendar-alt w3-margin-right">
+                        {education.from} - {education.to}
+                      </i>
+                    </h6>
+                  </h>
+                </div>
+              ))}
             </div>
-            <h class="w3-twothird w3-padding w3-center">
-              <h5>
-                <strong>{education.name}</strong>
-              </h5>
-              <p>{education.institution}</p>
-              <h6 class="w3-text-teal">
-                <i class="far fa-calendar-alt w3-margin-right">
-                  {education.from} - {education.to}
-                </i>
-              </h6>
-            </h>
-          </div>
-          ))}
-        </div>
-        ))
+          ))
       }
     </div>
 
@@ -156,37 +158,39 @@ Array.prototype.chunk = function(chunkSize) {
     </div>
     <div class="w3-content w3-container w3-padding-64">
       {
-        Certifications.sort((a, b) => b.date - a.date).chunk(3).map((certifications: Certification[]) => (
-        <div class="w3-row">
-          {certifications.map((certification: Certification) => (
-          <div class="w3-third w3-center w3-padding">
-            <div class="w3-hover-shadow w3-padding">
-              <a href={certification.link} target="_blank">
-                <Image
-                  class="w3-center"
-                  src={certification.image}
-                  alt={certification.name}
-                  style="width: 100%; height: auto;"
-                />
-                <h5>
-                  <strong>
-                    {certification.code === ""
-                      ? certification.name
-                      : `(${certification.code}) - ${certification.name}`}
-                  </strong>
-                </h5>
-                <p>{certification.brand}</p>
-                <h6 class="w3-text-teal">
-                  <i class="far fa-calendar-alt w3-margin-right">
-                    {certification.date.toISOString().slice(0, 10)}
-                  </i>
-                </h6>
-              </a>
+        Certifications.sort((a, b) => b.date - a.date)
+          .chunk(3)
+          .map((certifications: Certification[]) => (
+            <div class="w3-row">
+              {certifications.map((certification: Certification) => (
+                <div class="w3-third w3-center w3-padding">
+                  <div class="w3-hover-shadow w3-padding">
+                    <a href={certification.link} target="_blank">
+                      <Image
+                        class="w3-center"
+                        src={certification.image}
+                        alt={certification.name}
+                        style="width: 100%; height: auto;"
+                      />
+                      <h5>
+                        <strong>
+                          {certification.code === ""
+                            ? certification.name
+                            : `(${certification.code}) - ${certification.name}`}
+                        </strong>
+                      </h5>
+                      <p>{certification.brand}</p>
+                      <h6 class="w3-text-teal">
+                        <i class="far fa-calendar-alt w3-margin-right">
+                          {certification.date.toISOString().slice(0, 10)}
+                        </i>
+                      </h6>
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          ))}
-        </div>
-        ))
+          ))
       }
     </div>
 
@@ -205,30 +209,27 @@ Array.prototype.chunk = function(chunkSize) {
     <div class="w3-content w3-container w3-padding-64">
       {
         Libraries.chunk(2).map((libraries: Library[]) => (
-        <div class="w3-row">
-          {
-            libraries.map((library: Library) => (
-            <div class="w3-half w3-center w3-padding">
-              
-              <div class="w3-row w3-hover-shadow">
-                <div class="w3-third w3-center">
-                  <Image
-                    class="w3-padding"
-                    src={library.image}
-                    alt={library.name}
-                    style="width: auto; height: 100px;"
-                  />
-                </div>
-                <div class="w3-twothird w3-padding w3-center">
-                  <h5>
-                    <strong>{library.name}</strong>
-                  </h5>
-                  <p>{library.description}</p>
+          <div class="w3-row">
+            {libraries.map((library: Library) => (
+              <div class="w3-half w3-center w3-padding">
+                <div class="w3-row w3-hover-shadow">
+                  <div class="w3-third w3-center">
+                    <Image
+                      class="w3-padding"
+                      src={library.image}
+                      alt={library.name}
+                      style="width: auto; height: 100px;"
+                    />
+                  </div>
+                  <div class="w3-twothird w3-padding w3-center">
+                    <h5>
+                      <strong>{library.name}</strong>
+                    </h5>
+                    <p>{library.description}</p>
+                  </div>
                 </div>
               </div>
-              </div>
-            ))
-          }
+            ))}
           </div>
         ))
       }
@@ -824,5 +825,6 @@ Array.prototype.chunk = function(chunkSize) {
       ))
     }
   </di>
+
 
 </html>
