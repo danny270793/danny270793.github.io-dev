@@ -1,4 +1,5 @@
 ---
+import "../../public/css/index.css";
 import "../../public/css/w3css.css";
 import { Image } from "astro:assets";
 import SocialLinks, { SocialLink } from "../libraries/me/social-links";
@@ -9,6 +10,10 @@ import Certifications, {
 } from "../libraries/me/knowledges/certifications";
 import Libraries, { Library } from "../libraries/me/knowledges/libraries";
 import Projects, { Project } from "../libraries/me/knowledges/projects";
+
+import profilePicture from "../../public/images/profile.jpg"
+import headerBackground from "../../public/images/parallax/header.jpg"
+import educationBackground from "../../public/images/parallax/education.jpg"
 ---
 
 <html lang="es">
@@ -21,33 +26,77 @@ import Projects, { Project } from "../libraries/me/knowledges/projects";
       Danny Vaca
     </title>
   </head>
-  <body>
-    <h1>
-      About me
-    </h1>
-    <p>
-      {Me.detail.split('\n').map(e => <div>{e}</div>)}
-    </p>
+  <>
 
-    <h1>
-      Education
-    </h1>
-    {
-      Educations.map((education: Education) => (
-        <>
+    <div class="parallax header w3-display-container" style={
+      `background-image: url("${headerBackground.src}")`
+    }>
+      <div class="w3-display-middle no-spaces">
+        <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
+          Danny Vaca
+        </span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64">
+      <h3 class="w3-center">
+        About me
+      </h3>
+      <div class="w3-row">
+        <div class="w3-quarter w3-center">
           <Image
+            class="w3-circle w3-padding image-logo"
+            src={profilePicture}
+            alt="Profile picture"
+          />
+        </div>
+        <div class="w3-threequarter w3-padding">
+          {Me.detail.split('\n').map(e => <div>{e}</div>)}
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax separator w3-display-container" style={
+      `background-image: url("${educationBackground.src}")`
+    }>
+      <div class="w3-display-middle no-spaces">
+        <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
+          Education
+        </span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64">
+      {
+        Educations.map((education: Education) => (
+        <div class="w3-row padded-content">
+        <div class="w3-third w3-center">
+          <Image
+            class="w3-padding image-logo"
             src={education.image}
             alt={education.name}
-            style="max-width: 100%;"
+            style="width: 100%;"
           />
-          <h2>{education.name}</h2>
-          <p>{education.institution}</p>
+        </div>
+        <h class="w3-twothird w3-padding w3-center">
+          <h5>
+            <strong>
+              {education.name}
+            </strong>
+          </h5>
           <p>
-            {education.from} - {education.to}
+            {education.institution}
           </p>
-        </>
-      ))
-    }
+          <h6 class="w3-text-teal">
+            <i class="far fa-calendar-alt w3-margin-right">
+              {education.from} - {education.to}
+            </i>
+          </h6>
+        </div>
+      </div>
+        ))
+      }
+    </div>
 
     <h1>
       Certifications
