@@ -1,5 +1,5 @@
 export interface Project {
-  type: 'playstore';
+  type: "playstore";
   name: string;
   description: string;
   link: string;
