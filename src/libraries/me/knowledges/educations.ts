@@ -26,12 +26,12 @@ const education: Education[] = [
     from: 2012,
     to: 2017,
   },
-  {
+  /*{
     image: Rohde,
     name: "Bachiller técnico en ciencias Fisicomatemáticas",
     institution: "Guillermo Rohde Arosemena",
     from: 2007,
     to: 2012,
-  },
+  },*/
 ];
 export default education;
