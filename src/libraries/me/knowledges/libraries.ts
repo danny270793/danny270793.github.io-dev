@@ -1,5 +1,5 @@
 export interface Library {
-  language: "dart" | "npm" | "python" | "docker" | "arduino";
+  language: "dart" | "node" | "python" | "docker" | "arduino" | 'rust';
   name: string;
   description: string;
   link: string;
@@ -13,38 +13,38 @@ const libraries: Library[] = [
     link: "https://pub.dev/packages/jmixclientv1",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/tsframework",
     description: "REST Framework for education purposes",
     link: "https://www.npmjs.com/package/@danny270793/tsframework",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/hotreloader",
     description: "Re-executes a command when a file changes on specific folder",
     link: "https://www.npmjs.com/package/@danny270793/hotreloader",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/levenshtein",
     description: "Computes levenshtein distance to find matchs between strings",
     link: "https://www.npmjs.com/package/@danny270793/levenshtein",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/azureservicesclient",
     description:
       "Library to connect and get metadata from Azure resources like synapse, storage accounts, etc",
     link: "https://www.npmjs.com/package/@danny270793/azureservicesclient",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/jmixclientv1",
     description: "Library to connect with jmix v1.x rest api",
     link: "https://www.npmjs.com/package/@danny270793/jmixclientv1",
   },
   {
-    language: "npm",
+    language: "node",
     name: "@danny270793/jmixclientv2",
     description: "Library to connect with jmix v2.x rest api",
     link: "https://www.npmjs.com/package/@danny270793/jmixclientv2",
@@ -88,5 +88,11 @@ const libraries: Library[] = [
       "Library to convert decimal numbers to binary and write out over shift registers",
     link: "https://github.com/danny270793/ArduinoShiftRegister",
   },
+  {
+    language: 'rust',
+    name: 'code-metadata',
+    description: '',
+    link: 'https://crates.io/crates/code-metadata'
+  }
 ];
 export default libraries;
