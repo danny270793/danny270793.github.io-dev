@@ -1,33 +1,10 @@
 ---
+import "../../public/css/w3css.css";
 import { Image } from "astro:assets";
-import Youtube from "../../public/images/social/youtube.svg";
-import Github from "../../public/images/social/github.svg";
-import LinkedIN from "../../public/images/social/linkedin.svg";
-import { ImageMetadata } from "astro";
+import SocialLinks, { SocialLink } from '../libraries/me/social-links'
+import Educations, { Education } from '../libraries/me/knowledges/educations'
+import Certifications, { Certification } from '../libraries/me/knowledges/certifications'
 
-interface SocialLink {
-  link: string;
-  image: ImageMetadata;
-  alternativeText: string;
-}
-
-const socialLinks: SocialLink[] = [
-  {
-    link: "https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg",
-    image: Youtube,
-    alternativeText: "YouTube",
-  },
-  {
-    link: "https://www.github.com/danny270793",
-    image: Github,
-    alternativeText: "Github",
-  },
-  {
-    link: "https://www.linkedin.com/in/danny270793",
-    image: LinkedIN,
-    alternativeText: "LinkedIn",
-  },
-];
 ---
 
 <html lang="es">
@@ -36,10 +13,12 @@ const socialLinks: SocialLink[] = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Danny Vaca</title>
   </head>
-  <body>
-    <h1>Acerca de mi</h1>
+  <>
+    <h1>
+      About me
+    </h1>
     <p>
       Senior Full Stack Developer with almost 10 years of experience
       implementing solutions for digital transformation in the cloud (Azure,
@@ -52,25 +31,70 @@ const socialLinks: SocialLink[] = [
       and ensure return on investment.
     </p>
 
-    <h1>Educación</h1>
-    <h2>
-      Máster en sistemas de información con mención en inteligencia de negocios
-    </h2>
-    <p>Universidad Tecnológica Ecotec</p>
-    <p>2020 - 2021</p>
+    <h1>
+      Education
+    </h1>
+    {
+      Educations.map((education: Education) => (
+      <>
+        <Image
+            src={education.image}
+            alt={education.name}
+            style="max-width: 100%;"
+          />
+        <h2>
+          {education.name}
+        </h2>
+        <p>
+          {education.institution}
+        </p>
+        <p>
+          {education.from} - {education.to}
+        </p>
+        </>
+      ))
+    }
 
-    <h2>Ingeniero Electrónico con mención en telecomunicaciones</h2>
-    <p>Universidad Politécnica Salesiana</p>
-    <p>2012 - 2017</p>
+    <h1>
+      Certifications
+    </h1>
+    {
+      Certifications.map((certification: Certification) => (
+      <>
+          <Image
+            src={certification.image}
+            alt={certification.name}
+            style="max-width: 100%;"
+          />
+          <a href={certification.link} target="_blank">
+          <h2>
+            {certification.code} {certification.name}
+          </h2>
+        </a>
+          <p>
+            {certification.brand}
+          </p>
+          </>
+      ))
+    }
 
-    <h1>Certificaciones</h1>
+    <h1>
+      Courses
+    </h1>
 
-    <h1>Cursos</h1>
+    <h1>
+      Open Source Libraries
+    </h1>
 
-    <h1>Proyectos</h1>
+    <h1>
+      Projects
+    </h1>
 
-    <h1>Tecnologías</h1>
+    <h1>
+      Technologies
+    </h1>
 
+	<!--
     <h2>Desarrollo móvil</h2>
     <p dir="auto">
       <a
@@ -607,19 +631,20 @@ const socialLinks: SocialLink[] = [
         /></a
       >
     </p>
-    <h1>Redes Sociales</h1>
-    <p dir="auto">
-      {
-        socialLinks.map((socialLink: SocialLink) => (
-          <a href={socialLink.link} rel="nofollow">
-            <Image
-              src={socialLink.image}
-              alt={socialLink.alternativeText}
-              style="max-width: 100%;"
-            />
-          </a>
-        ))
-      }
-    </p>
+	-->
+    <h1>
+      Social Networks
+    </h1>
+    {
+      SocialLinks.map((socialLink: SocialLink) => (
+        <a href={socialLink.link} rel="nofollow">
+          <Image
+            src={socialLink.image}
+            alt={socialLink.alternativeText}
+            style="max-width: 100%;"
+          />
+        </a>
+      ))
+    }
   </body>
 </html>
