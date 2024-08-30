@@ -1,0 +1,50 @@
+---
+import Educations, { Education } from "../libraries/me/knowledges/educations";
+import educationBackground from "../../public/images/parallax/education.jpg";
+import { Image } from "astro:assets";
+---
+<div
+      id="education"
+      class="parallax separator w3-display-container"
+      style={`background-image: url("${educationBackground.src}")`}
+    >
+      <div class="w3-display-middle no-spaces">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
+          Education
+        </span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64">
+      {
+        Educations.chunk(2).map((educations: Education[]) => (
+          <div class="w3-row">
+            {educations.map((education: Education) => (
+              <div class="w3-half" style="display: flex; align-items: center;">
+                <div class="w3-third">
+                  <Image
+                    class="w3-padding"
+                    src={education.image}
+                    alt={education.name}
+                    style="width: 100%; height: auto;"
+                  />
+                </div>
+                <div class="w3-twothird w3-padding">
+                  <h5>
+                    <strong>{education.name}</strong>
+                  </h5>
+                  <p>{education.institution}</p>
+                  <h6 class="w3-text-teal">
+                    <i class="far fa-calendar-alt w3-margin-right">
+                      {education.from} - {education.to}
+                    </i>
+                  </h6>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>

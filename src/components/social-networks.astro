@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import SocialBackground from "../../public/images/parallax/social.jpg";
+import SocialLinks, { SocialLink } from "../libraries/me/social-links";
+---
+
+<div
+      id="social-networks"
+      class="parallax separator w3-display-container"
+      style={`background-image: url("${SocialBackground.src}")`}
+    >
+      <div class="w3-display-middle w3-center no-spaces">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
+          Social Networks
+        </span>
+        </br>
+        </br>
+        {
+          SocialLinks.map((socialLink: SocialLink) => (
+            <a href={socialLink.link} rel="nofollow">
+              <Image
+                src={socialLink.image}
+                alt={socialLink.alternativeText}
+                style="max-width: 100%;"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>

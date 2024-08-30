@@ -1,0 +1,50 @@
+---
+import Libraries, { Library } from "../libraries/me/knowledges/libraries";
+import OpenSourceLibrariesBackground from "../../public/images/parallax/open source libraries.jpg";
+import { Image } from "astro:assets";
+
+---
+<div
+      id="open-source-libraries"
+      class="parallax separator w3-display-container"
+      style={`background-image: url("${OpenSourceLibrariesBackground.src}")`}
+    >
+      <div class="w3-display-middle no-spaces">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
+          Open Source Libraries
+        </span>
+      </div>
+    </div>
+    <div class="w3-content w3-container w3-padding-64">
+      {
+        Libraries.chunk(2).map((libraries: Library[]) => (
+          <div class="w3-row">
+            {libraries.map((library: Library) => (
+              <a
+                href={library.link}
+                target="_blank"
+                class="w3-half w3-padding w3-hover-shadow"
+              >
+                <div class="w3-row" style="display: flex; align-items: center;">
+                  <div class="w3-third">
+                    <Image
+                      src={library.image}
+                      alt={library.name}
+                      style="width: auto; height: 100px"
+                    />
+                  </div>
+                  <div class="w3-twothird">
+                    <h5>
+                      <strong>{library.name}</strong>
+                    </h5>
+                    <p>{library.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        ))
+      }
+    </div>
