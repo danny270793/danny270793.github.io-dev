@@ -10,6 +10,7 @@ export interface Project {
   description: string;
   playstore: string | undefined;
   appstore: string | undefined;
+  github: string | undefined;
 }
 
 const projects: Project[] = [
@@ -28,6 +29,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.sppedometer",
     appstore: undefined,
+    github: undefined,
   },
   {
     image: Soundmeter,
@@ -37,6 +39,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.soundmeter.soundmeter",
     appstore: undefined,
+    github: "https://github.com/danny270793/SoundMeter",
   },
   {
     image: Mycompass,
@@ -45,6 +48,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.mycompass",
     appstore: undefined,
+    github: "https://github.com/danny270793/MyCompass",
   },
 ];
 export default projects;
