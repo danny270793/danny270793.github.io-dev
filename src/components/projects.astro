@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import ProjectsBackground from "../../public/images/parallax/projects.jpg";
 import GooglePlay from "../../public/images/projects/google-play.png";
 import AppStore from "../../public/images/projects/app-store.png";
-import projects, { Project } from "../libraries/me/knowledges/projects";
+import Projects, { Project } from "../libraries/me/knowledges/projects";
+import Github from "../../public/images/projects/github.png";
 ---
 
 <div
@@ -21,7 +22,7 @@ import projects, { Project } from "../libraries/me/knowledges/projects";
 </div>
 <div class="w3-content w3-container w3-padding-64">
   {
-    projects.chunk(2).map((projects: Project[]) => (
+    Projects.chunk(2).map((projects: Project[]) => (
       <div class="w3-row">
         {projects.map((project: Project) => (
           <div class="w3-half w3-padding">
@@ -55,6 +56,18 @@ import projects, { Project } from "../libraries/me/knowledges/projects";
                     <Image
                       class="w3-hover-shadow"
                       src={AppStore}
+                      alt={project.name}
+                      style="width: auto; height: 30px;"
+                    />
+                  </a>
+                ) : (
+                  <span />
+                )}
+                {project.github !== undefined ? (
+                  <a href={project.github} target="_blank">
+                    <Image
+                      class="w3-hover-shadow"
+                      src={Github}
                       alt={project.name}
                       style="width: auto; height: 30px;"
                     />
