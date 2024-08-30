@@ -6,40 +6,40 @@ import headerBackground from "../../public/images/parallax/header.jpg";
 ---
 
 <div>
-    <div
-      class="parallax header w3-display-container"
-      style={`background-image: url("${headerBackground.src}")`}
-    >
-      <div class="w3-display-middle no-spaces">
-        <span
-          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-        >
-          Danny Vaca
-        </span>
-      </div>
-    </div>
-
-    <div id="about-me" class="w3-content w3-container w3-padding-64">
-      <h3 class="w3-center">About me</h3>
-      <div class="w3-row">
-        <div class="w3-third w3-center">
-          <Image
-            class="w3-circle w3-padding"
-            src={profilePicture}
-            alt="Profile picture"
-            style="width: 100%; height: auto;"
-          />
-        </div>
-        <br class="w3-twothird w3-padding" />
-        {
-          Me.detail.split("\n").map((e) => (
-            <>
-              {e}
-              <br />
-              <br />
-            </>
-          ))
-        }
-      </div>
+  <div
+    class="parallax header w3-display-container"
+    style={`background-image: url("${headerBackground.src}")`}
+  >
+    <div class="w3-display-middle no-spaces">
+      <span
+        class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+      >
+        Danny Vaca
+      </span>
     </div>
   </div>
+
+  <div id="about-me" class="w3-content w3-container w3-padding-64">
+    <h3 class="w3-center">About me</h3>
+    <div class="w3-row">
+      <div class="w3-third w3-center">
+        <Image
+          class="w3-circle w3-padding"
+          src={profilePicture}
+          alt="Profile picture"
+          style="width: 100%; height: auto;"
+        />
+      </div>
+      <br class="w3-twothird w3-padding" />
+      {
+        Me.detail.split("\n").map((e) => (
+          <>
+            {e}
+            <br />
+            <br />
+          </>
+        ))
+      }
+    </div>
+  </div>
+</div>

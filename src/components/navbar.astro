@@ -2,7 +2,8 @@
 
 ---
 
-<div id="sidebar"
+<div
+  id="sidebar"
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
@@ -17,7 +18,8 @@
   <a href="#social-networks" class="w3-bar-item w3-button"> Social Networks </a>
 </div>
 
-<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;"/>
+<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
+</div>
 
 <div class="w3-top w3-xlarge">
   <div class="w3-bar w3-card w3-white">
@@ -30,18 +32,18 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.getElementById("sidebar");
     const openButton = document.getElementById("openButton");
     const overlay = document.getElementById("overlay");
     const toggleSidebar = (show) => {
-        sidebar.style.display = show ? "block" : "none";
-        overlay.style.display = show ? "block" : "none";
+      sidebar.style.display = show ? "block" : "none";
+      overlay.style.display = show ? "block" : "none";
     };
     openButton.addEventListener("click", () => toggleSidebar(true));
     overlay.addEventListener("click", () => toggleSidebar(false));
     window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") toggleSidebar(false);
+      if (e.key === "Escape") toggleSidebar(false);
     });
-})
+  });
 </script>
