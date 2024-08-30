@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import TechnologiesBackground from "../../public/images/parallax/technologies.jpg";
+import Technologies, {
+  Technology,
+} from "../libraries/me/knowledges/technologies";
+
+---
+<div
+      id="technologies"
+      class="parallax separator w3-display-container"
+      style={`background-image: url("${TechnologiesBackground.src}")`}
+    >
+      <div class="w3-display-middle no-spaces">
+        <span
+          class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+        >
+          Technologies
+        </span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64">
+      {
+        [...new Set(Technologies.map((e) => e.category))].map((category) => (
+          <>
+            <h5>
+              <strong>{category}</strong>
+            </h5>
+
+            {Technologies.filter((t) => t.category === category).map(
+              (technology) => (
+                <div
+                  style={`background-color: ${technology.color}; display: inline-block; padding: 5px;`}
+                >
+                  <span>
+                    <Image
+                      src={technology.image}
+                      alt={technology.name}
+                      style="width: auto; height: 20px;"
+                    />
+                  </span>
+                  <span
+                    class="w3-text-white"
+                    style="padding-left: 10px; padding-right: 10px;"
+                  >
+                    {technology.name}
+                  </span>
+                </div>
+              ),
+            )}
+          </>
+        ))
+      }
+    </div>

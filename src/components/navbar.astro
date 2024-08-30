@@ -1,0 +1,47 @@
+---
+
+---
+
+<div id="sidebar"
+  class="w3-sidebar w3-animate-left w3-bar-block"
+  style="display: none; z-index:5"
+>
+  <a href="#about-me" class="w3-bar-item w3-button"> About me </a>
+  <a href="#education" class="w3-bar-item w3-button"> Education </a>
+  <a href="#certifications" class="w3-bar-item w3-button"> Certifications </a>
+  <a href="#open-source-libraries" class="w3-bar-item w3-button">
+    Open Source Libraries
+  </a>
+  <a href="#projects" class="w3-bar-item w3-button"> Projects </a>
+  <a href="#technologies" class="w3-bar-item w3-button"> Technologies </a>
+  <a href="#social-networks" class="w3-bar-item w3-button"> Social Networks </a>
+</div>
+
+<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;"/>
+
+<div class="w3-top w3-xlarge">
+  <div class="w3-bar w3-card w3-white">
+    <button id="openButton" class="w3-button"> &#9776; </button>
+    Danny Vaca
+    <span class="w3-hide-large w3-hide-medium">
+      <div></div>
+    </span>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("sidebar");
+    const openButton = document.getElementById("openButton");
+    const overlay = document.getElementById("overlay");
+    const toggleSidebar = (show) => {
+        sidebar.style.display = show ? "block" : "none";
+        overlay.style.display = show ? "block" : "none";
+    };
+    openButton.addEventListener("click", () => toggleSidebar(true));
+    overlay.addEventListener("click", () => toggleSidebar(false));
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") toggleSidebar(false);
+    });
+})
+</script>
