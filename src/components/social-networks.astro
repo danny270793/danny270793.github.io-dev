@@ -15,16 +15,20 @@ import SocialLinks, { SocialLink } from "../libraries/me/social-links";
     >
       Social Networks
     </span>
+    <br>
+    <br>
+    <div class="w3-row">
+      {
+        SocialLinks.map((socialLink: SocialLink) => (
+          <a href={socialLink.link} rel="nofollow" class="w3-third">
+            <Image
+              src={socialLink.image}
+              alt={socialLink.alternativeText}
+              style="max-width: 100%;"
+            />
+          </a>
+        ))
+      }
+    </div>
   </div>
 </div>
-{
-  SocialLinks.map((socialLink: SocialLink) => (
-    <a href={socialLink.link} rel="nofollow">
-      <Image
-        src={socialLink.image}
-        alt={socialLink.alternativeText}
-        style="max-width: 100%;"
-      />
-    </a>
-  ))
-}
