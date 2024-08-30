@@ -38,7 +38,7 @@ import PrivacyRightsAutomationExpertWebFormEnhancements from "../../../../public
 import CookieConsentExpertIntegrations from "../../../../public/images/certifications/20240819 - Cookie Consent Expert Integrations.png";
 import DataDiscoveryGovernanceProfessionalModuleOverviews from "../../../../public/images/certifications/20240830 - Data Discovery & Governance Professional Module Overviews.png";
 
-export const CategoryOrder: {[key: string]: number} = {
+export const CategoryOrder: { [key: string]: number } = {
   Development: 0,
   Deployment: 1,
   Automation: 2,
@@ -46,9 +46,9 @@ export const CategoryOrder: {[key: string]: number} = {
   Cloud: 4,
   IoT: 5,
   AI: 6,
-  'Data Privacy': 7,
+  "Data Privacy": 7,
   Others: 8,
-}
+};
 
 export interface Certification {
   code: string;
