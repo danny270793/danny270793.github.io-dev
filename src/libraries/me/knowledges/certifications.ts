@@ -65,7 +65,6 @@ const certifications: Certification[] = [
     date: new Date("2021/05/23"),
     image: Python,
   },
-  
 
   {
     link: "https://www.credly.com/badges/a8fd23c4-72d4-4fd3-85fd-f82584b764b7/public_url",
