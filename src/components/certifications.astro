@@ -1,6 +1,7 @@
 ---
 import Certifications, {
-  Certification, CategoryOrder,
+  Certification,
+  CategoryOrder,
 } from "../libraries/me/knowledges/certifications";
 import CertificationsBackground from "../../public/images/parallax/certification.jpg";
 import { Image } from "astro:assets";
@@ -25,7 +26,13 @@ const { parallaxHeight = "25vh" } = Astro.props;
   {
     Certifications
       //.sort((a, b) => b.date - a.date)
-      .sort((a, b) => (CategoryOrder[a.category] + 1) * 10 + a.order - (CategoryOrder[b.category] + 1) * 10 + b.order)
+      .sort(
+        (a, b) =>
+          (CategoryOrder[a.category] + 1) * 10 +
+          a.order -
+          (CategoryOrder[b.category] + 1) * 10 +
+          b.order,
+      )
       .chunk(3)
       .map((certifications: Certification[]) => (
         <div class="w3-row">
