@@ -1,5 +1,5 @@
 ---
-
+const { anchors = true } = Astro.props
 ---
 
 <div
@@ -7,15 +7,15 @@
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
-  <a href="#about-me" class="w3-bar-item w3-button"> About me </a>
-  <a href="#education" class="w3-bar-item w3-button"> Education </a>
-  <a href="#certifications" class="w3-bar-item w3-button"> Certifications </a>
-  <a href="#open-source-libraries" class="w3-bar-item w3-button">
+  <a href={anchors ? "#about-me" : '/#about-me'} class="w3-bar-item w3-button"> About me </a>
+  <a href={anchors ? "#education" : '/#education'} class="w3-bar-item w3-button"> Education </a>
+  <a href={anchors ? "#certifications" : '/#certifications'} class="w3-bar-item w3-button"> Certifications </a>
+  <a href={anchors ? "#open-source-libraries" : '/#open-source-libraries'} class="w3-bar-item w3-button">
     Open Source Libraries
   </a>
-  <a href="#projects" class="w3-bar-item w3-button"> Projects </a>
-  <a href="#technologies" class="w3-bar-item w3-button"> Technologies </a>
-  <a href="#social-networks" class="w3-bar-item w3-button"> Social Networks </a>
+  <a href={anchors ? "#projects" : '/#projects'} class="w3-bar-item w3-button"> Projects </a>
+  <a href={anchors ? "#technologies" : '/#technologies'} class="w3-bar-item w3-button"> Technologies </a>
+  <a href={anchors ? "#social-networks" : '/#social-networks'} class="w3-bar-item w3-button"> Social Networks </a>
 </div>
 
 <div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
