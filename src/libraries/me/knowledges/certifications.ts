@@ -92,17 +92,17 @@ const certifications: Certification[] = [
     image: ArduinoFundamentals,
   },
   {
-    link: "",
+    link: "https://www.cloudera.com/services-and-support/training/certification/cca-spark.html",
     name: "CCA Spark and Hadoop Developer",
     brand: "Cloudera",
     order: 0,
-    code: "CCA",
+    code: "CCA-175",
     category: "Data",
     date: new Date("2020/11/08"),
     image: CCASparkAndHadoopDeveloper,
   },
   {
-    link: "https://www.credly.com/badges/a8fd23c4-72d4-4fd3-85fd-f82584b764b7/public_url",
+    link: "https://michiganassessment.org",
     name: "B1 MET",
     code: "",
     order: 0,
@@ -268,7 +268,7 @@ const certifications: Certification[] = [
     image: PowerPlatformFundamentals,
   },
   {
-    link: "https://www.credly.com/badges/c019816c-4e12-49db-8d7a-82db968e9699/public_url",
+    link: "https://www.credly.com/badges/dbae9536-2517-44fa-9e06-5160f6619d25/public_url",
     name: "Certified Kubernetes Administrator",
     code: "CKA",
     order: 1,
@@ -439,7 +439,7 @@ const certifications: Certification[] = [
   },
   {
     link: "https://www.onetrust.com/certifications/consent-record-integration-and-management-certification",
-    name: "Consent Expert Record Integration Management",
+    name: "Consent Expert: Record Integration & Management",
     code: "",
     order: 0,
     category: "Data Privacy",
@@ -449,7 +449,7 @@ const certifications: Certification[] = [
   },
   {
     link: "https://www.onetrust.com/certifications/data-subject-requests-expert-certification/",
-    name: "Privacy Rights Automation Expert Web Form Enhancements",
+    name: "Privacy Rights Automation Expert: Web form enhancements",
     order: 4,
     code: "",
     category: "Data Privacy",
@@ -469,7 +469,7 @@ const certifications: Certification[] = [
   },
   {
     link: "https://www.onetrust.com/certifications/website-scanning-cookies-consent-expert-certification/",
-    name: "Cookie Consent Expert Integrations",
+    name: "Cookie Consent Expert: Integrations",
     order: 1,
     code: "",
     brand: "One Trust",
