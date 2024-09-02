@@ -11,12 +11,13 @@ import Libraries from "../components/libraries.astro";
 import Certifications from "../components/certifications.astro";
 import Education from "../components/education.astro";
 import AboutMe from "../components/about-me.astro";
+import ProfilePicture from "../../public/images/profile.jpg";
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={ProfilePicture.src} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Danny Vaca</title>
