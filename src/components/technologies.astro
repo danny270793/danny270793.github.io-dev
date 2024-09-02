@@ -30,23 +30,13 @@ import Technologies, {
 
         {Technologies.filter((t) => t.category === category).map(
           (technology) => (
-            <div
-              style={`background-color: ${technology.color}; display: inline-block; padding: 5px;`}
-            >
-              <span>
-                <Image
-                  src={technology.image}
-                  alt={technology.name}
-                  style="width: auto; height: 20px;"
-                />
-              </span>
-              <span
-                class="w3-text-white"
-                style="padding-left: 10px; padding-right: 10px;"
-              >
-                {technology.name}
-              </span>
-            </div>
+            <span>
+              <img
+                src={technology.link}
+                alt={technology.alternative}
+              />
+              &nbsp;
+            </span>
           ),
         )}
       </>
