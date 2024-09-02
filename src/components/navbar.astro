@@ -61,7 +61,8 @@ const { anchors = true } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null = document.getElementById("openButton");
+    const openButton: HTMLElement | null =
+      document.getElementById("openButton");
     const overlay: HTMLElement | null = document.getElementById("overlay");
     const toggleSidebar = (show: boolean) => {
       sidebar!.style.display = show ? "block" : "none";
