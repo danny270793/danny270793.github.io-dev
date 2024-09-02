@@ -28,14 +28,15 @@ import { Image } from "astro:assets";
             class="w3-half w3-padding w3-hover-shadow"
           >
             <div class="w3-row" style="display: flex; align-items: center;">
-              <div class="w3-third">
+              <div class="w3-col" style="width: 100px;">
                 <Image
+                  class="w3-padding"
                   src={library.image}
                   alt={library.name}
-                  style="width: auto; height: 100px"
+                  style="width: 100px; height: auto;"
                 />
               </div>
-              <div class="w3-twothird">
+              <div class="w3-rest">
                 <h5>
                   <strong>{library.name}</strong>
                 </h5>
