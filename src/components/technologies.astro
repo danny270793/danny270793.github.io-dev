@@ -1,6 +1,8 @@
 ---
 import TechnologiesBackground from "../../public/images/parallax/technologies.jpg";
-import MyTechnologies, { Technology } from "../libraries/me/knowledges/technologies";
+import MyTechnologies, {
+  Technology,
+} from "../libraries/me/knowledges/technologies";
 ---
 
 <div
@@ -19,21 +21,23 @@ import MyTechnologies, { Technology } from "../libraries/me/knowledges/technolog
 
 <div class="w3-content w3-container w3-padding-64">
   {
-    [...new Set(MyTechnologies.map((e: Technology) => e.category))].map((category) => (
-      <>
-        <h5>
-          <strong>{category}</strong>
-        </h5>
+    [...new Set(MyTechnologies.map((e: Technology) => e.category))].map(
+      (category) => (
+        <>
+          <h5>
+            <strong>{category}</strong>
+          </h5>
 
-        {MyTechnologies.filter((t: Technology) => t.category === category).map(
-          (technology: Technology) => (
+          {MyTechnologies.filter(
+            (t: Technology) => t.category === category,
+          ).map((technology: Technology) => (
             <span>
               <img src={technology.link} alt={technology.alternative} />
               &nbsp;
             </span>
-          ),
-        )}
-      </>
-    ))
+          ))}
+        </>
+      ),
+    )
   }
 </div>
