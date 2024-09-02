@@ -1,5 +1,5 @@
 ---
-import Certifications, {
+import MyCertifications, {
   Certification,
   CategoryOrder,
 } from "../libraries/me/knowledges/certifications";
@@ -24,8 +24,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
 </div>
 <div class="w3-content w3-container w3-padding-64">
   {
-    Certifications
-      //.sort((a, b) => b.date - a.date)
+    MyCertifications
       .sort(
         (a, b) =>
           (CategoryOrder[a.category] + 1) * 10 +

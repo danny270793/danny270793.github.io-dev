@@ -1,9 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import TechnologiesBackground from "../../public/images/parallax/technologies.jpg";
-import Technologies, {
-  Technology,
-} from "../libraries/me/knowledges/technologies";
+import MyTechnologies, { Technology } from "../libraries/me/knowledges/technologies";
 ---
 
 <div
@@ -22,14 +19,14 @@ import Technologies, {
 
 <div class="w3-content w3-container w3-padding-64">
   {
-    [...new Set(Technologies.map((e) => e.category))].map((category) => (
+    [...new Set(MyTechnologies.map((e: Technology) => e.category))].map((category) => (
       <>
         <h5>
           <strong>{category}</strong>
         </h5>
 
-        {Technologies.filter((t) => t.category === category).map(
-          (technology) => (
+        {MyTechnologies.filter((t: Technology) => t.category === category).map(
+          (technology: Technology) => (
             <span>
               <img src={technology.link} alt={technology.alternative} />
               &nbsp;
