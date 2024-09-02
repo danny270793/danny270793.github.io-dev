@@ -27,14 +27,15 @@ import Github from "../../public/images/projects/github.png";
         {projects.map((project: Project) => (
           <div class="w3-half w3-padding">
             <div class="w3-row" style="display: flex; align-items: center;">
-              <div class="w3-third">
+              <div class="w3-col" style="width: 100px;">
                 <Image
+                  class="w3-padding"
                   src={project.image}
                   alt={project.name}
-                  style="width: auto; height: 100px"
+                  style="width: 100px; height: auto;"
                 />
               </div>
-              <div class="w3-twothird">
+              <div class="w3-rest">
                 <h5>
                   <strong>{project.name}</strong>
                 </h5>
