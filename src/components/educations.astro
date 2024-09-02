@@ -1,5 +1,5 @@
 ---
-import Educations, { Education } from "../libraries/me/knowledges/educations";
+import MyEducations, { Education } from "../libraries/me/knowledges/educations";
 import educationBackground from "../../public/images/parallax/education.jpg";
 import { Image } from "astro:assets";
 ---
@@ -20,7 +20,7 @@ import { Image } from "astro:assets";
 
 <div class="w3-content w3-container w3-padding-64">
   {
-    Educations.chunk(2).map((educations: Education[]) => (
+    MyEducations.chunk(2).map((educations: Education[]) => (
       <div class="w3-row">
         {educations.map((education: Education) => (
           <div class="w3-half" style="display: flex; align-items: center;">

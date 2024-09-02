@@ -1,5 +1,5 @@
 ---
-import Libraries, { Library } from "../libraries/me/knowledges/libraries";
+import MyLibraries, { Library } from "../libraries/me/knowledges/libraries";
 import OpenSourceLibrariesBackground from "../../public/images/parallax/open source libraries.jpg";
 import { Image } from "astro:assets";
 ---
@@ -19,7 +19,7 @@ import { Image } from "astro:assets";
 </div>
 <div class="w3-content w3-container w3-padding-64">
   {
-    Libraries.chunk(2).map((libraries: Library[]) => (
+    MyLibraries.chunk(2).map((libraries: Library[]) => (
       <div class="w3-row">
         {libraries.map((library: Library) => (
           <a

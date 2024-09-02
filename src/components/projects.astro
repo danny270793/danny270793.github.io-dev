@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import ProjectsBackground from "../../public/images/parallax/projects.jpg";
 import GooglePlay from "../../public/images/projects/google-play.png";
 import AppStore from "../../public/images/projects/app-store.png";
-import Projects, { Project } from "../libraries/me/knowledges/projects";
+import MyProjects, { Project } from "../libraries/me/knowledges/projects";
 import Github from "../../public/images/projects/github.png";
 ---
 
@@ -22,7 +22,7 @@ import Github from "../../public/images/projects/github.png";
 </div>
 <div class="w3-content w3-container w3-padding-64">
   {
-    Projects.chunk(2).map((projects: Project[]) => (
+    MyProjects.chunk(2).map((projects: Project[]) => (
       <div class="w3-row">
         {projects.map((project: Project) => (
           <div class="w3-half w3-padding">

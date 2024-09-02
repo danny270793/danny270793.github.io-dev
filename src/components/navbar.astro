@@ -60,15 +60,15 @@ const { anchors = true } = Astro.props;
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.getElementById("sidebar");
-    const openButton = document.getElementById("openButton");
-    const overlay = document.getElementById("overlay");
-    const toggleSidebar = (show) => {
-      sidebar.style.display = show ? "block" : "none";
-      overlay.style.display = show ? "block" : "none";
+    const sidebar: HTMLElement | null = document.getElementById("sidebar");
+    const openButton: HTMLElement | null = document.getElementById("openButton");
+    const overlay: HTMLElement | null = document.getElementById("overlay");
+    const toggleSidebar = (show: boolean) => {
+      sidebar!.style.display = show ? "block" : "none";
+      overlay!.style.display = show ? "block" : "none";
     };
-    openButton.addEventListener("click", () => toggleSidebar(true));
-    overlay.addEventListener("click", () => toggleSidebar(false));
+    openButton!.addEventListener("click", () => toggleSidebar(true));
+    overlay!.addEventListener("click", () => toggleSidebar(false));
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
     });
