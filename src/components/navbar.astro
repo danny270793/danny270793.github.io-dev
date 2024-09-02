@@ -7,37 +7,41 @@ const { anchors = true } = Astro.props;
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
-  <a href={anchors ? "#about-me" : "/#about-me"} class="w3-bar-item w3-button" onclick="toggleSidebar(false)">
+  <a
+    href={anchors ? "#about-me" : "/#about-me"}
+    class="w3-bar-item w3-button"
+    onclick="toggleSidebar(false)"
+  >
     About me
   </a>
-  <a 
+  <a
     href={anchors ? "#education" : "/#education"}
     class="w3-bar-item w3-button"
   >
     Education
   </a>
-  <a 
+  <a
     href={anchors ? "#certifications" : "/#certifications"}
     class="w3-bar-item w3-button"
   >
     Certifications
   </a>
-  <a 
+  <a
     href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
     class="w3-bar-item w3-button"
   >
     Open Source Libraries
   </a>
-  <a  href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button">
+  <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button">
     Projects
   </a>
-  <a 
+  <a
     href={anchors ? "#technologies" : "/#technologies"}
     class="w3-bar-item w3-button"
   >
     Technologies
   </a>
-  <a 
+  <a
     href={anchors ? "#social-networks" : "/#social-networks"}
     class="w3-bar-item w3-button"
   >
@@ -70,9 +74,9 @@ const { anchors = true } = Astro.props;
     };
     openButton!.addEventListener("click", () => toggleSidebar(true));
     overlay!.addEventListener("click", () => toggleSidebar(false));
-    document.querySelectorAll(".w3-bar-item").forEach(barItem => {
+    document.querySelectorAll(".w3-bar-item").forEach((barItem) => {
       barItem.addEventListener("click", () => toggleSidebar(false));
-    })
+    });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
     });
