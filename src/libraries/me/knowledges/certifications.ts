@@ -497,6 +497,6 @@ const certifications: Certification[] = [
     brand: "One Trust",
     date: new Date("2024/09/03"),
     image: DataDiscoveryAndGovernanceProfessionalBackground,
-  }
+  },
 ];
 export default certifications;
