@@ -37,6 +37,7 @@ import DataDiscoveryAndGovernanceEXPERTPrivacyRightsAutomation from "../../../..
 import PrivacyRightsAutomationExpertWebFormEnhancements from "../../../../public/images/certifications/20240814 - Privacy Rights Automation Expert Web Form Enhancements.png";
 import CookieConsentExpertIntegrations from "../../../../public/images/certifications/20240819 - Cookie Consent Expert Integrations.png";
 import DataDiscoveryGovernanceProfessionalModuleOverviews from "../../../../public/images/certifications/20240830 - Data Discovery & Governance Professional Module Overviews.png";
+import DataDiscoveryAndGovernanceProfessionalBackground from "../../../../public/images/certifications/20240903 - Data Discovery & Governance Professional Background.png";
 
 export const CategoryOrder: { [key: string]: number } = {
   Development: 0,
@@ -487,5 +488,15 @@ const certifications: Certification[] = [
     date: new Date("2024/08/30"),
     image: DataDiscoveryGovernanceProfessionalModuleOverviews,
   },
+  {
+    link: "https://www.onetrust.com/certifications/data-discovery-and-governance-professional-certification/",
+    name: "Data Discovery & Governance Professional Background",
+    order: 4,
+    code: "",
+    category: "Data Privacy",
+    brand: "One Trust",
+    date: new Date("2024/09/03"),
+    image: DataDiscoveryAndGovernanceProfessionalBackground,
+  }
 ];
 export default certifications;
