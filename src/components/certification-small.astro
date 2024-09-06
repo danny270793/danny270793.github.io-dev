@@ -1,30 +1,33 @@
 ---
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
 
-const {certification} = Astro.props
+const { certification } = Astro.props;
 ---
+
 <div
-              class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item"
-              data-category={certification.category}
-            >
-              <a href={certification.link} target="_blank">
-                <div class="w3-col" style="width: 150px;">
-                  <Image
-                    class="w3-padding"
-                    src={certification.image}
-                    alt={certification.name}
-                    style="width: 100%; height: auto;"
-                  />
-                </div>
-                <div class="w3-rest">
-                  <h5>
-                    <strong>
-                      {certification.code === ""
-                        ? certification.name
-                        : `(${certification.code}) - ${certification.name}`}
-                    </strong>
-                  </h5>
-                  <p>{certification.brand}</p>
-                </div>
-              </a>
-            </div>
+  class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item"
+  data-category={certification.category}
+>
+  <a href={certification.link} target="_blank">
+    <div class="w3-col" style="width: 150px;">
+      <Image
+        class="w3-padding"
+        src={certification.image}
+        alt={certification.name}
+        style="width: 100%; height: auto;"
+      />
+    </div>
+    <div class="w3-rest">
+      <h5>
+        <strong>
+          {
+            certification.code === ""
+              ? certification.name
+              : `(${certification.code}) - ${certification.name}`
+          }
+        </strong>
+      </h5>
+      <p>{certification.brand}</p>
+    </div>
+  </a>
+</div>
