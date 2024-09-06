@@ -48,14 +48,13 @@ const { parallaxHeight = "25vh" } = Astro.props;
       ),
     ].map((category) => (
       MyCertifications.filter(e => e.category === category).sort(
-        (a, b) =>
-          (CategoryOrder[a.category] + 1) * 10 +
-          a.order -
-          (CategoryOrder[b.category] + 1) * 10 +
-          b.order,
+        (a, b) => a.order - b.order,
       ).chunk(3)
-      .map((certifications: MyCertification[]) => (
-      <div>
+      .map((certifications: MyCertification[], index: number) => (
+      <div class={`categories category-${category}`}>
+        <div>
+          {category + index}
+        </div>
           {certifications.map((certification: MyCertification) => (
             <CertificationSmall certification={certification}/>
           ))}
@@ -69,6 +68,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
     ))
   }
 
+<div id="all">
   {
     MyCertifications.sort(
       (a, b) =>
@@ -92,9 +92,13 @@ const { parallaxHeight = "25vh" } = Astro.props;
         </div>
       ))
   }
+  </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const all: HTMLElement|null = document.getElementById("all")
+
+  
     const filter = function (key: string, element: Element): void {
       document
         .querySelectorAll(".category-filter")
@@ -102,15 +106,25 @@ const { parallaxHeight = "25vh" } = Astro.props;
           categoryFilter.classList.remove("w3-green");
         });
       element.classList.add("w3-green");
-      document
-        .querySelectorAll<HTMLElement>(".category-item")
-        .forEach((categoryItem: HTMLElement) => {
-          if (categoryItem.dataset["category"]?.trim() === key.trim()) {
-            categoryItem.classList.add("w3-hide");
-          } else {
-            categoryItem.classList.remove("w3-hide");
-          }
+
+      if(key === 'All') {
+        all?.classList.remove("w3-hide")
+        document
+        .querySelectorAll(".categories")
+        .forEach((categoryDiv: Element) => {
+          categoryDiv.classList.add('w3-hide')
         });
+      } else {
+        all?.classList.add("w3-hide")
+        document
+        .querySelectorAll(".categories")
+        .forEach((categoryDiv: Element) => {
+          categoryDiv.classList.add('w3-hide')
+        });
+        document.querySelectorAll(`.category-${key}`).forEach((categoryDiv: Element) => {
+          categoryDiv.classList.remove('w3-hide')
+        })
+      }
     };
     document
       .querySelectorAll(".category-filter")
