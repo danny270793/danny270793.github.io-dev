@@ -25,7 +25,11 @@ const { parallaxHeight = "25vh" } = Astro.props;
 </div>
 <div class="w3-content w3-container w3-padding-64">
   <div class="w3-center">
-    <div class="category-filter w3-bar-item w3-button w3-green">All</div>
+    <div class="category-filter w3-bar-item w3-round w3-button w3-green" data-category="All">
+      <span class="w3-badge w3-red">
+        {MyCertifications.length}
+      </span> All
+    </div>
     {
       [
         ...new Set(
@@ -34,10 +38,15 @@ const { parallaxHeight = "25vh" } = Astro.props;
           ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
         ),
       ].map((category) => (
-        <div class="category-filter w3-bar-item w3-button">{category}</div>
+        <div class="category-filter w3-bar-item w3-round w3-button" data-category={`${category.replace(' ', '_')}`}>
+          <span class="w3-badge w3-red">
+            {MyCertifications.filter((e) => e.category === category).length}
+          </span> {category}
+        </div>
       ))
     }
   </div>
+  <br>
 
   {
     [
@@ -51,8 +60,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
         .sort((a, b) => a.order - b.order)
         .chunk(3)
         .map((certifications: MyCertification[], index: number) => (
-          <div class={`categories category-${category}`}>
-            <div>{category + index}</div>
+          <div class={`categories category-${category.replace(' ', '_')} w3-hide`}>
             {certifications.map((certification: MyCertification) => (
               <CertificationSmall certification={certification} />
             ))}
@@ -127,10 +135,10 @@ const { parallaxHeight = "25vh" } = Astro.props;
       }
     };
     document
-      .querySelectorAll(".category-filter")
-      .forEach((categoryFilter: Element) => {
+      .querySelectorAll<HTMLElement>(".category-filter")
+      .forEach((categoryFilter: HTMLElement) => {
         categoryFilter.addEventListener("click", () =>
-          filter(categoryFilter.textContent || "", categoryFilter),
+          filter(categoryFilter.dataset.category || "", categoryFilter),
         );
       });
   });
