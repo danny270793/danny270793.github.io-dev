@@ -23,6 +23,25 @@ const { parallaxHeight = "25vh" } = Astro.props;
   </div>
 </div>
 <div class="w3-content w3-container w3-padding-64">
+  <div class="w3-center">
+    <div class="category-filter w3-bar-item w3-button w3-green">
+      All
+    </div>
+  {
+    [
+      ...new Set(
+      MyCertifications.map((certification: Certification) => certification.category).sort(
+          (a, b) => CategoryOrder[a] - CategoryOrder[b],
+        ),
+      ),
+    ].map((category) => (
+      <div class="category-filter w3-bar-item w3-button">
+        {category}
+      </div>
+    ))
+  }
+  </div>
+
   {
     MyCertifications.sort(
       (a, b) =>
@@ -35,7 +54,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
       .map((certifications: Certification[]) => (
         <div>
           {certifications.map((certification: Certification) => (
-            <div class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large">
+            <div class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item" data-category={certification.category}>
               <a href={certification.link} target="_blank">
                 <div class="w3-col" style="width: 150px;">
                   <Image
@@ -61,7 +80,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
 
           <div class="w3-row w3-hide-small">
             {certifications.map((certification: Certification) => (
-              <div class="w3-third w3-center w3-padding">
+              <div class="w3-third w3-center w3-padding category-item" data-category={certification.category}>
                 <div class="w3-hover-shadow w3-padding">
                   <a href={certification.link} target="_blank">
                     <Image
@@ -93,3 +112,23 @@ const { parallaxHeight = "25vh" } = Astro.props;
       ))
   }
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filter = function(key: string, element: Element): void {
+      document.querySelectorAll(".category-filter").forEach((categoryFilter: Element) => {
+        categoryFilter.classList.remove('w3-green')
+      })
+      element.classList.add('w3-green')
+      document.querySelectorAll<HTMLElement>(".category-item").forEach((categoryItem: HTMLElement) => {
+        if(categoryItem.dataset['category']?.trim() === key.trim()) {
+          categoryItem.classList.add('w3-hide')
+        } else  {
+          categoryItem.classList.remove('w3-hide')
+        }
+      })
+    }
+    document.querySelectorAll(".category-filter").forEach((categoryFilter: Element) => {
+      categoryFilter.addEventListener("click", () => filter(categoryFilter.textContent || '', categoryFilter));
+    })
+  })
+</script>
