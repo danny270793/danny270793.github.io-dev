@@ -46,59 +46,57 @@ const { parallaxHeight = "25vh" } = Astro.props;
           (certification: MyCertification) => certification.category,
         ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
       ),
-    ].map((category) => (
-      MyCertifications.filter(e => e.category === category).sort(
-        (a, b) => a.order - b.order,
-      ).chunk(3)
-      .map((certifications: MyCertification[], index: number) => (
-      <div class={`categories category-${category}`}>
-        <div>
-          {category + index}
-        </div>
-          {certifications.map((certification: MyCertification) => (
-            <CertificationSmall certification={certification}/>
-          ))}
-
-          <div class="w3-row w3-hide-small">
+    ].map((category) =>
+      MyCertifications.filter((e) => e.category === category)
+        .sort((a, b) => a.order - b.order)
+        .chunk(3)
+        .map((certifications: MyCertification[], index: number) => (
+          <div class={`categories category-${category}`}>
+            <div>{category + index}</div>
             {certifications.map((certification: MyCertification) => (
-              <CertificationLarge certification={certification}/>
+              <CertificationSmall certification={certification} />
             ))}
-          </div>
-        </div>))
-    ))
-  }
 
-<div id="all">
-  {
-    MyCertifications.sort(
-      (a, b) =>
-        (CategoryOrder[a.category] + 1) * 10 +
-        a.order -
-        (CategoryOrder[b.category] + 1) * 10 +
-        b.order,
+            <div class="w3-row w3-hide-small">
+              {certifications.map((certification: MyCertification) => (
+                <CertificationLarge certification={certification} />
+              ))}
+            </div>
+          </div>
+        )),
     )
-      .chunk(3)
-      .map((certifications: MyCertification[]) => (
-        <div>
-          {certifications.map((certification: MyCertification) => (
-            <CertificationSmall certification={certification}/>
-          ))}
-
-          <div class="w3-row w3-hide-small">
-            {certifications.map((certification: MyCertification) => (
-              <CertificationLarge certification={certification}/>
-            ))}
-          </div>
-        </div>
-      ))
   }
+
+  <div id="all">
+    {
+      MyCertifications.sort(
+        (a, b) =>
+          (CategoryOrder[a.category] + 1) * 10 +
+          a.order -
+          (CategoryOrder[b.category] + 1) * 10 +
+          b.order,
+      )
+        .chunk(3)
+        .map((certifications: MyCertification[]) => (
+          <div>
+            {certifications.map((certification: MyCertification) => (
+              <CertificationSmall certification={certification} />
+            ))}
+
+            <div class="w3-row w3-hide-small">
+              {certifications.map((certification: MyCertification) => (
+                <CertificationLarge certification={certification} />
+              ))}
+            </div>
+          </div>
+        ))
+    }
   </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const all: HTMLElement|null = document.getElementById("all")
+    const all: HTMLElement | null = document.getElementById("all");
 
-  
     const filter = function (key: string, element: Element): void {
       document
         .querySelectorAll(".category-filter")
@@ -107,23 +105,25 @@ const { parallaxHeight = "25vh" } = Astro.props;
         });
       element.classList.add("w3-green");
 
-      if(key === 'All') {
-        all?.classList.remove("w3-hide")
+      if (key === "All") {
+        all?.classList.remove("w3-hide");
         document
-        .querySelectorAll(".categories")
-        .forEach((categoryDiv: Element) => {
-          categoryDiv.classList.add('w3-hide')
-        });
+          .querySelectorAll(".categories")
+          .forEach((categoryDiv: Element) => {
+            categoryDiv.classList.add("w3-hide");
+          });
       } else {
-        all?.classList.add("w3-hide")
+        all?.classList.add("w3-hide");
         document
-        .querySelectorAll(".categories")
-        .forEach((categoryDiv: Element) => {
-          categoryDiv.classList.add('w3-hide')
-        });
-        document.querySelectorAll(`.category-${key}`).forEach((categoryDiv: Element) => {
-          categoryDiv.classList.remove('w3-hide')
-        })
+          .querySelectorAll(".categories")
+          .forEach((categoryDiv: Element) => {
+            categoryDiv.classList.add("w3-hide");
+          });
+        document
+          .querySelectorAll(`.category-${key}`)
+          .forEach((categoryDiv: Element) => {
+            categoryDiv.classList.remove("w3-hide");
+          });
       }
     };
     document
