@@ -1,7 +1,7 @@
-import Speedometer from "../../../../public/images/projects/speedometer.webp";
-import Soundmeter from "../../../../public/images/projects/soundmeter.webp";
-import Mycompass from "../../../../public/images/projects/mycompass.webp";
-import MaintAzureMonitoring from "../../../../public/images/projects/maint azure monitoring.webp";
+import Speedometer from "../../../images/projects/speedometer.webp";
+import Soundmeter from "../../../images/projects/soundmeter.webp";
+import Mycompass from "../../../images/projects/mycompass.webp";
+import MaintAzureMonitoring from "../../../images/projects/maint azure monitoring.webp";
 import { ImageMetadata } from "astro";
 
 export interface Project {

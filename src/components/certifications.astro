@@ -3,7 +3,7 @@ import MyCertifications, {
   Certification as MyCertification,
   CategoryOrder,
 } from "../libraries/me/knowledges/certifications";
-import CertificationsBackground from "../../public/images/parallax/certification.jpg";
+import CertificationsBackground from "../images/parallax/certification.jpg";
 import CertificationLarge from "./certification-large.astro";
 import CertificationSmall from "./certification-small.astro";
 
@@ -66,7 +66,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
       MyCertifications.filter((e) => e.category === category)
         .sort((a, b) => a.order - b.order)
         .chunk(3)
-        .map((certifications: MyCertification[], index: number) => (
+        .map((certifications: MyCertification[]) => (
           <div
             class={`categories category-${category.replace(" ", "_")} w3-hide`}
           >

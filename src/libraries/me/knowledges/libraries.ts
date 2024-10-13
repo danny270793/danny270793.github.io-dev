@@ -1,10 +1,10 @@
-import Arduino from "../../../../public/images/libraries/arduino.png";
-import CratesIO from "../../../../public/images/libraries/cratesio.png";
-import DokcerHub from "../../../../public/images/libraries/docker_hub.png";
-import Matlab from "../../../../public/images/libraries/matlab.png";
-import Npm from "../../../../public/images/libraries/npm.png";
-import Pip from "../../../../public/images/libraries/pip.png";
-import pubDev from "../../../../public/images/libraries/pubdev.png";
+import Arduino from "../../../images/libraries/arduino.png";
+import CratesIO from "../../../images/libraries/cratesio.png";
+import DokcerHub from "../../../images/libraries/docker_hub.png";
+import Matlab from "../../../images/libraries/matlab.png";
+import Npm from "../../../images/libraries/npm.png";
+import Pip from "../../../images/libraries/pip.png";
+import pubDev from "../../../images/libraries/pubdev.png";
 import { ImageMetadata } from "astro";
 
 export interface Library {
