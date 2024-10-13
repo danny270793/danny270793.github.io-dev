@@ -38,11 +38,11 @@ import PrivacyRightsAutomationExpertWebFormEnhancements from "../../../images/ce
 import CookieConsentExpertIntegrations from "../../../images/certifications/20240819 - Cookie Consent Expert Integrations.png";
 import DataDiscoveryGovernanceProfessionalModuleOverviews from "../../../images/certifications/20240830 - Data Discovery & Governance Professional Module Overviews.png";
 import DataDiscoveryAndGovernanceProfessionalBackground from "../../../images/certifications/20240903 - Data Discovery & Governance Professional Background.png";
-import DataDiscoveryAndGovernanceDataPolicies from "../../../images/certifications/20240909 - Data Discovery And Governance Data Policies.png"
-import GitHubFoundations from "../../../images/certifications/20240917 - GitHub Foundations.png"
-import BotBuilderRocketbotExpertLevel1 from "../../../images/certifications/20240920 - Bot Builder Rocketbot Expert Level 1.png"
-import ConsentAndPreferencesManagementPro from "../../../images/certifications/20240927 - Consent And Preferences Management Pro.png"
-import AzureNetworkEngineerAssociate from "../../../images/certifications/20241010 - Azure Network Engineer Associate.svg"
+import DataDiscoveryAndGovernanceDataPolicies from "../../../images/certifications/20240909 - Data Discovery And Governance Data Policies.png";
+import GitHubFoundations from "../../../images/certifications/20240917 - GitHub Foundations.png";
+import BotBuilderRocketbotExpertLevel1 from "../../../images/certifications/20240920 - Bot Builder Rocketbot Expert Level 1.png";
+import ConsentAndPreferencesManagementPro from "../../../images/certifications/20240927 - Consent And Preferences Management Pro.png";
+import AzureNetworkEngineerAssociate from "../../../images/certifications/20241010 - Azure Network Engineer Associate.svg";
 import type Certification from "./certification";
 
 export const CategoryOrder: { [key: string]: number } = {
