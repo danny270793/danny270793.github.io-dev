@@ -1,4 +1,3 @@
-import { ImageMetadata } from "astro";
 import RPADeveloperCertificateOfCompletion from "../../../images/certifications/20190607 - RPA Developer Certificate of completion.png";
 import ArduinoFundamentals from "../../../images/certifications/20200308 - Arduino Fundamentals.png";
 import CCASparkAndHadoopDeveloper from "../../../images/certifications/20201108 - CCA Spark And Hadoop Developer.png";

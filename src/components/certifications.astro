@@ -1,11 +1,11 @@
 ---
 import MyCertifications, {
-  Certification as MyCertification,
   CategoryOrder,
 } from "../libraries/me/knowledges/certifications";
 import CertificationsBackground from "../images/parallax/certification.jpg";
 import CertificationLarge from "./certification-large.astro";
 import CertificationSmall from "./certification-small.astro";
+import type Certification from "../libraries/me/knowledges/certification";
 
 const { parallaxHeight = "25vh" } = Astro.props;
 ---
@@ -37,7 +37,7 @@ const { parallaxHeight = "25vh" } = Astro.props;
       [
         ...new Set(
           MyCertifications.map(
-            (certification: MyCertification) => certification.category,
+            (certification: Certification) => certification.category,
           ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
         ),
       ].map((category) => (
@@ -59,23 +59,23 @@ const { parallaxHeight = "25vh" } = Astro.props;
     [
       ...new Set(
         MyCertifications.map(
-          (certification: MyCertification) => certification.category,
+          (certification: Certification) => certification.category,
         ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
       ),
     ].map((category) =>
       MyCertifications.filter((e) => e.category === category)
         .sort((a, b) => a.order - b.order)
         .chunk(3)
-        .map((certifications: MyCertification[]) => (
+        .map((certifications: Certification[]) => (
           <div
             class={`categories category-${category.replace(" ", "_")} w3-hide`}
           >
-            {certifications.map((certification: MyCertification) => (
+            {certifications.map((certification: Certification) => (
               <CertificationSmall certification={certification} />
             ))}
 
             <div class="w3-row w3-hide-small">
-              {certifications.map((certification: MyCertification) => (
+              {certifications.map((certification: Certification) => (
                 <CertificationLarge certification={certification} />
               ))}
             </div>
@@ -94,14 +94,14 @@ const { parallaxHeight = "25vh" } = Astro.props;
           b.order,
       )
         .chunk(3)
-        .map((certifications: MyCertification[]) => (
+        .map((certifications: Certification[]) => (
           <div>
-            {certifications.map((certification: MyCertification) => (
+            {certifications.map((certification: Certification) => (
               <CertificationSmall certification={certification} />
             ))}
 
             <div class="w3-row w3-hide-small">
-              {certifications.map((certification: MyCertification) => (
+              {certifications.map((certification: Certification) => (
                 <CertificationLarge certification={certification} />
               ))}
             </div>
