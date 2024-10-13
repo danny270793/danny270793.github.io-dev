@@ -63,22 +63,18 @@ export default function Certifications({ certifications, background, order, para
               b.order,)
             .chunk(3)
             .map((certifications: Certification[]) => (
-              <div class="w3-row">
+              <>
                 {
-                  certifications.map((certification: Certification) => (
+                  certifications.map((certification: Certification) =>
                     <div
-                      class="w3-third w3-center w3-padding category-item"
+                      class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item"
                       data-category={certification.category}
                     >
-                      <div class="w3-hover-shadow w3-padding">
-                        <a href={certification.link} target="_blank">
-                          <img src={certification.image.src} class="w3-center" alt={certification.name} style="width: 100%; height: auto;"/>
-                          {/*<Image
-                            class="w3-center"
-                            src={certification.image}
-                            alt={certification.name}
-                            style="width: 100%; height: auto;"
-                          />*/}
+                      <a href={certification.link} target="_blank">
+                        <div class="w3-col" style="width: 150px;">
+                          <img src={certification.image.src} class="w3-padding" alt={certification.name} style="width: 100%; height: auto;"/>
+                        </div>
+                        <div class="w3-rest">
                           <h5>
                             <strong>
                               {
@@ -89,23 +85,41 @@ export default function Certifications({ certifications, background, order, para
                             </strong>
                           </h5>
                           <p>{certification.brand}</p>
-                          {
-                            /*<h6 class="w3-text-teal">
-                                        <i class="far fa-calendar-alt w3-margin-right">
-                                          {certification.date.toISOString().slice(0, 10)}
-                                        </i>
-                                      </h6>
-                                      */
-                          }
-                        </a>
-                      </div>
+                        </div>
+                      </a>
                     </div>
-                  ))
+                  )
                 }
-              </div>
+                
+                <div class="w3-row w3-hide-small">
+                  {
+                    certifications.map((certification: Certification) => (
+                      <div
+                        class="w3-third w3-center w3-padding"
+                        data-category={certification.category}
+                      >
+                        <div class="w3-hover-shadow w3-padding">
+                          <a href={certification.link} target="_blank">
+                            <img src={certification.image.src} class="w3-center" alt={certification.name} style="width: 100%; height: auto;"/>
+                            <h5>
+                              <strong>
+                                {
+                                  certification.code === ""
+                                    ? certification.name
+                                    : `(${certification.code}) - ${certification.name}`
+                                }
+                              </strong>
+                            </h5>
+                            <p>{certification.brand}</p>
+                          </a>
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </>
             ))
         }
-
       </div>
     </>
   )
