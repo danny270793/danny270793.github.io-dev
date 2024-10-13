@@ -38,6 +38,7 @@ import PrivacyRightsAutomationExpertWebFormEnhancements from "../../../images/ce
 import CookieConsentExpertIntegrations from "../../../images/certifications/20240819 - Cookie Consent Expert Integrations.png";
 import DataDiscoveryGovernanceProfessionalModuleOverviews from "../../../images/certifications/20240830 - Data Discovery & Governance Professional Module Overviews.png";
 import DataDiscoveryAndGovernanceProfessionalBackground from "../../../images/certifications/20240903 - Data Discovery & Governance Professional Background.png";
+import type Certification from "./certification";
 
 export const CategoryOrder: { [key: string]: number } = {
   Development: 0,
@@ -50,26 +51,6 @@ export const CategoryOrder: { [key: string]: number } = {
   "Data Privacy": 7,
   Others: 8,
 };
-
-export interface Certification {
-  code: string;
-  name: string;
-  brand: string;
-  link: string;
-  date: Date;
-  order: number;
-  category:
-    | "Automation"
-    | "IoT"
-    | "Data"
-    | "Cloud"
-    | "Deployment"
-    | "Development"
-    | "AI"
-    | "Data Privacy"
-    | "Others";
-  image: ImageMetadata;
-}
 
 const certifications: Certification[] = [
   {
