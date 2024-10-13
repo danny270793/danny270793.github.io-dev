@@ -46,7 +46,7 @@ export default function Certifications({ certifications, background, order, para
                 onClick={() => onCategoryClicked(eachCategory)}
               >
                 <span class="w3-badge w3-red">
-                  {certifications.filter((e) => e.category === eachCategory).length}
+                  {certifications.filter((certification: Certification) => certification.category === eachCategory).length}
                 </span>{" "}
                 {eachCategory}
               </div>
@@ -55,20 +55,21 @@ export default function Certifications({ certifications, background, order, para
         </div>
         <br />
         {
-          certifications.filter((e) => category === 'all' ? true : e.category === category)
-            .sort((a, b) =>
-              (order[a.category] + 1) * 10 +
-              a.order -
-              (order[b.category] + 1) * 10 +
-              b.order,)
+          certifications.filter((certification: Certification) => category === 'all' ? true : certification.category === category)
+            .sort((a: Certification, b: Certification) => {
+              const first = (order[a.category] + 1) * 10 + a.order
+              const second = (order[b.category] + 1) * 10 + b.order
+              const result = first - second
+              
+              return result
+            })
             .chunk(3)
-            .map((certifications: Certification[]) => (
+            .map((subCertifications: Certification[]) => (
               <>
                 {
-                  certifications.map((certification: Certification) =>
+                  subCertifications.map((certification: Certification) =>
                     <div
                       class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item"
-                      data-category={certification.category}
                     >
                       <a href={certification.link} target="_blank">
                         <div class="w3-col" style="width: 150px;">
@@ -93,14 +94,14 @@ export default function Certifications({ certifications, background, order, para
                 
                 <div class="w3-row w3-hide-small">
                   {
-                    certifications.map((certification: Certification) => (
+                    subCertifications.map((certification: Certification) => (
                       <div
                         class="w3-third w3-center w3-padding"
-                        data-category={certification.category}
                       >
                         <div class="w3-hover-shadow w3-padding">
                           <a href={certification.link} target="_blank">
                             <img src={certification.image.src} class="w3-center" alt={certification.name} style="width: 100%; height: auto;"/>
+                            {(order[certification.category] + 1) * 10 + certification.order}
                             <h5>
                               <strong>
                                 {
