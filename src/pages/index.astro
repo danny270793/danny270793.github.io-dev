@@ -8,10 +8,15 @@ import SocialNetworks from "../components/social-networks.astro";
 import Technologies from "../components/technologies.astro";
 import Projects from "../components/projects.astro";
 import Libraries from "../components/libraries.astro";
-import Certifications from "../components/certifications.astro";
+import Certifications from "../components/certifications.tsx";
 import Education from "../components/educations.astro";
 import AboutMe from "../components/about-me.astro";
 import ProfilePicture from "../images/profile.jpg";
+import MyCertifications, {
+  Certification,
+  CategoryOrder,
+} from "../libraries/me/knowledges/certifications";
+import CertificationsBackground from "../images/parallax/certification.jpg";
 ---
 
 <html lang="es">
@@ -29,7 +34,7 @@ import ProfilePicture from "../images/profile.jpg";
 
     <Education />
 
-    <Certifications />
+    <Certifications certifications={MyCertifications} order={CategoryOrder} background={CertificationsBackground} client:load/>
 
     <Libraries />
 
