@@ -1,7 +1,7 @@
 import Youtube from "../../images/social/youtube.svg";
 import Github from "../../images/social/github.svg";
 import LinkedIN from "../../images/social/linkedin.svg";
-import { ImageMetadata } from "astro";
+import type { ImageMetadata } from "astro";
 
 export interface SocialLink {
   link: string;

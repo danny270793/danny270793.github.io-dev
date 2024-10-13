@@ -5,7 +5,7 @@ import Matlab from "../../../images/libraries/matlab.png";
 import Npm from "../../../images/libraries/npm.png";
 import Pip from "../../../images/libraries/pip.png";
 import pubDev from "../../../images/libraries/pubdev.png";
-import { ImageMetadata } from "astro";
+import type { ImageMetadata } from "astro";
 
 export interface Library {
   image: ImageMetadata;

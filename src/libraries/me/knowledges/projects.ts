@@ -2,7 +2,7 @@ import Speedometer from "../../../images/projects/speedometer.webp";
 import Soundmeter from "../../../images/projects/soundmeter.webp";
 import Mycompass from "../../../images/projects/mycompass.webp";
 import MaintAzureMonitoring from "../../../images/projects/maint azure monitoring.webp";
-import { ImageMetadata } from "astro";
+import type { ImageMetadata } from "astro";
 
 export interface Project {
   image: ImageMetadata;
@@ -21,6 +21,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=com.maintlatam.azure.pipelinesmonitoring.pipelines_monitoring",
     appstore: undefined,
+    github: undefined
   },
   {
     image: Speedometer,

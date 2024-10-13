@@ -1,7 +1,6 @@
 import Ecotec from "../../../images/education/ecotec.png";
 import UPS from "../../..//images/education/ups.png";
-import Rohde from "../../../images/education/rohde.png";
-import { ImageMetadata } from "astro";
+import type { ImageMetadata } from "astro";
 
 export interface Education {
   image: ImageMetadata;

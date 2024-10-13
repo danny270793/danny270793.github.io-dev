@@ -43,7 +43,7 @@ export default function Certifications({
             ...new Set(
               certifications
                 .map((certification: Certification) => certification.category)
-                .sort((a, b) => order[a] - order[b]),
+                .sort((a: string, b: string) => order[a] - order[b]),
             ),
           ].map((eachCategory: string) => (
             <div
