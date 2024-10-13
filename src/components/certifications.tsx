@@ -118,8 +118,6 @@ export default function Certifications({
                           alt={certification.name}
                           style="width: 100%; height: auto;"
                         />
-                        {(order[certification.category] + 1) * 10 +
-                          certification.order}
                         <h5>
                           <strong>
                             {certification.code === ""
