@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import '../libraries/arrays'
 import type Certification from "../libraries/me/knowledges/certification";
 
 export default function Certifications({ certifications, background, order, parallaxHeight = "25vh" }) {
@@ -53,6 +54,57 @@ export default function Certifications({ certifications, background, order, para
           }
         </div>
         <br />
+        {
+          certifications.filter((e) => category === 'all' ? true : e.category === category)
+            .sort((a, b) =>
+              (order[a.category] + 1) * 10 +
+              a.order -
+              (order[b.category] + 1) * 10 +
+              b.order,)
+            .chunk(3)
+            .map((certifications: Certification[]) => (
+              <div class="w3-row">
+                {
+                  certifications.map((certification: Certification) => (
+                    <div
+                      class="w3-third w3-center w3-padding category-item"
+                      data-category={certification.category}
+                    >
+                      <div class="w3-hover-shadow w3-padding">
+                        <a href={certification.link} target="_blank">
+                          <img src={certification.image.src} class="w3-center" alt={certification.name} style="width: 100%; height: auto;"/>
+                          {/*<Image
+                            class="w3-center"
+                            src={certification.image}
+                            alt={certification.name}
+                            style="width: 100%; height: auto;"
+                          />*/}
+                          <h5>
+                            <strong>
+                              {
+                                certification.code === ""
+                                  ? certification.name
+                                  : `(${certification.code}) - ${certification.name}`
+                              }
+                            </strong>
+                          </h5>
+                          <p>{certification.brand}</p>
+                          {
+                            /*<h6 class="w3-text-teal">
+                                        <i class="far fa-calendar-alt w3-margin-right">
+                                          {certification.date.toISOString().slice(0, 10)}
+                                        </i>
+                                      </h6>
+                                      */
+                          }
+                        </a>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            ))
+        }
 
       </div>
     </>
