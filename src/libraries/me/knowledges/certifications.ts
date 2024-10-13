@@ -38,6 +38,11 @@ import PrivacyRightsAutomationExpertWebFormEnhancements from "../../../images/ce
 import CookieConsentExpertIntegrations from "../../../images/certifications/20240819 - Cookie Consent Expert Integrations.png";
 import DataDiscoveryGovernanceProfessionalModuleOverviews from "../../../images/certifications/20240830 - Data Discovery & Governance Professional Module Overviews.png";
 import DataDiscoveryAndGovernanceProfessionalBackground from "../../../images/certifications/20240903 - Data Discovery & Governance Professional Background.png";
+import DataDiscoveryAndGovernanceDataPolicies from "../../../images/certifications/20240909 - Data Discovery And Governance Data Policies.png"
+import GitHubFoundations from "../../../images/certifications/20240917 - GitHub Foundations.png"
+import BotBuilderRocketbotExpertLevel1 from "../../../images/certifications/20240920 - Bot Builder Rocketbot Expert Level 1.png"
+import ConsentAndPreferencesManagementPro from "../../../images/certifications/20240927 - Consent And Preferences Management Pro.png"
+import AzureNetworkEngineerAssociate from "../../../images/certifications/20241010 - Azure Network Engineer Associate.svg"
 import type Certification from "./certification";
 
 export const CategoryOrder: { [key: string]: number } = {
@@ -57,7 +62,7 @@ const certifications: Certification[] = [
     link: "https://academy.uipath.com/certification",
     name: "RPA Developer Certificate of completion",
     brand: "UiPath",
-    order: 3,
+    order: 1,
     code: "",
     category: "Automation",
     date: new Date("2019/06/07"),
@@ -243,7 +248,7 @@ const certifications: Certification[] = [
     link: "https://www.credly.com/badges/380dc1da-b794-4044-97cd-d408ee1015a6/public_url",
     name: "Power Platform Fundamentals",
     code: "PL-900",
-    order: 2,
+    order: 4,
     brand: "Microsoft",
     category: "Automation",
     date: new Date("2022/04/28"),
@@ -314,7 +319,7 @@ const certifications: Certification[] = [
     name: "Azure Developer Associate",
     code: "AZ-204",
     brand: "Microsoft",
-    order: 3,
+    order: 4,
     category: "Development",
     date: new Date("2023/02/26"),
     image: AzureDeveloperAssociate,
@@ -403,7 +408,7 @@ const certifications: Certification[] = [
     link: "https://learn.microsoft.com/en-us/users/danny270793/credentials/95faf1625d78d34a",
     name: "Power Automate RPA Developer Associate",
     code: "PL-500",
-    order: 1,
+    order: 3,
     category: "Automation",
     brand: "Microsoft",
     date: new Date("2024/03/27"),
@@ -478,6 +483,57 @@ const certifications: Certification[] = [
     brand: "One Trust",
     date: new Date("2024/09/03"),
     image: DataDiscoveryAndGovernanceProfessionalBackground,
+  },
+
+  {
+    link: "https://www.onetrust.com/certifications/data-discovery-data-policies-certification/",
+    name: "Data Discovery and Governance Data Policies",
+    order: 4,
+    code: "",
+    category: "Data Privacy",
+    brand: "One Trust",
+    date: new Date("2024/09/09"),
+    image: DataDiscoveryAndGovernanceDataPolicies,
+  },
+  {
+    link: "https://www.credly.com/badges/3d39e55e-5b24-4947-9eed-a14e0b5d493a/linked_in_profile",
+    name: "GitHub Foundation",
+    order: 3,
+    code: "",
+    category: "Development",
+    brand: "Github",
+    date: new Date("2024/09/17"),
+    image: GitHubFoundations,
+  },
+  {
+    link: "https://certificate.rocketbot.co/badges/b835748e-d34e-924e-a4d8-9e8ffa7b42b1",
+    name: "Consent & Preferences Management Pro",
+    order: 4,
+    code: "",
+    category: "Data Privacy",
+    brand: "One Trust",
+    date: new Date("2024/09/27"),
+    image: ConsentAndPreferencesManagementPro,
+  },
+  {
+    link: "https://www.onetrust.com/certifications/consent-preference-management-professional-certification/",
+    name: "Bot Builder Rocketbot Expert Level 1",
+    order: 2,
+    code: "",
+    category: "Automation",
+    brand: "RocketBot",
+    date: new Date("2024/09/20"),
+    image: BotBuilderRocketbotExpertLevel1,
+  },
+  {
+    link: "https://learn.microsoft.com/en-us/users/danny270793/credentials/c33ec4db199f5ec2",
+    name: "Azure Network Engineer Associate",
+    order: 4,
+    code: "AZ-700",
+    category: "Cloud",
+    brand: "Microsoft",
+    date: new Date("2024/10/10"),
+    image: AzureNetworkEngineerAssociate,
   },
 ];
 export default certifications;
