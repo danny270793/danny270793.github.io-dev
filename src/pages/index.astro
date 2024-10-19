@@ -7,7 +7,7 @@ import Navbar from "../components/navbar.astro";
 import SocialNetworks from "../components/social-networks.astro";
 import Technologies from "../components/technologies.astro";
 import Projects from "../components/projects.astro";
-import Libraries from "../components/libraries.astro";
+import Libraries from "../components/libraries.tsx";
 import Certifications from "../components/certifications.tsx";
 import Education from "../components/educations.astro";
 import AboutMe from "../components/about-me.astro";
@@ -15,7 +15,9 @@ import ProfilePicture from "../images/profile.jpg";
 import MyCertifications, {
   CategoryOrder,
 } from "../libraries/me/knowledges/certifications";
+import MyLibraries from "../libraries/me/knowledges/libraries";
 import CertificationsBackground from "../images/parallax/certification.jpg";
+import OpenSourceLibrariesBackground from "../images/parallax/open source libraries.jpg";
 ---
 
 <html lang="es">
@@ -40,7 +42,11 @@ import CertificationsBackground from "../images/parallax/certification.jpg";
       client:load
     />
 
-    <Libraries />
+    <Libraries
+      libraries={MyLibraries}
+      background={OpenSourceLibrariesBackground}
+      client:load
+      />
 
     <Projects />
 
