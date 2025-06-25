@@ -8,7 +8,7 @@ export default function Certifications({
   order,
   parallaxHeight = "25vh",
 }) {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState("stared");
   const onCategoryClicked = (selectedCategory: string) => {
     setCategory(selectedCategory);
   };
@@ -28,6 +28,20 @@ export default function Certifications({
       </div>
       <div class="w3-content w3-container w3-padding-64">
         <div class="w3-center">
+          <div
+            class={[
+              "w3-bar-item",
+              "w3-round",
+              "w3-button",
+              category === "stared" ? "w3-green" : "",
+            ].join(" ")}
+            onClick={() => onCategoryClicked("stared")}
+          >
+            <span class="w3-badge w3-red">{certifications.filter(
+                    (certification: Certification) =>
+                      certification.stared
+                  ).length}</span> Stared
+          </div>
           <div
             class={[
               "w3-bar-item",
@@ -70,7 +84,7 @@ export default function Certifications({
         <br />
         {certifications
           .filter((certification: Certification) =>
-            category === "all" ? true : certification.category === category,
+            category === "all" ? true : category === "stared" ? certification.stared : certification.category === category,
           )
           .sort((a: Certification, b: Certification) => {
             const first = (order[a.category] + 1) * 10 + a.order;
