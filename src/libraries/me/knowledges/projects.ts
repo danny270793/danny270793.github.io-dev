@@ -21,7 +21,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=com.maintlatam.azure.pipelinesmonitoring.pipelines_monitoring",
     appstore: undefined,
-    github: undefined
+    github: undefined,
   },
   {
     image: Speedometer,

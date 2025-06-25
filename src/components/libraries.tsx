@@ -1,10 +1,7 @@
 import { useState } from "preact/hooks";
 import type { Library } from "../libraries/me/knowledges/libraries";
 
-export default function Libraries({
-  libraries,
-  background,
-}) {
+export default function Libraries({ libraries, background }) {
   const [type, setType] = useState("all");
   const onTypeClicked = (selectedType: string) => {
     setType(selectedType);
@@ -18,9 +15,7 @@ export default function Libraries({
         style={`background-image: url("${background.src}")`}
       >
         <div class="w3-display-middle no-spaces">
-          <span
-            class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-          >
+          <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
             Open Source Libraries
           </span>
         </div>
@@ -40,9 +35,7 @@ export default function Libraries({
           </div>
           {[
             ...new Set(
-              libraries
-                .map((library: Library) => library.type)
-                .sort(),
+              libraries.map((library: Library) => library.type).sort(),
             ),
           ].map((eachLibrary: string) => (
             <div
@@ -57,8 +50,7 @@ export default function Libraries({
               <span class="w3-badge w3-red">
                 {
                   libraries.filter(
-                    (library: Library) =>
-                      library.type === eachLibrary,
+                    (library: Library) => library.type === eachLibrary,
                   ).length
                 }
               </span>{" "}
@@ -68,41 +60,43 @@ export default function Libraries({
         </div>
         <br />
 
-        {
-          libraries.filter((library: Library) =>
+        {libraries
+          .filter((library: Library) =>
             type === "all" ? true : library.type === type,
-          ).chunk(2).map((chunks: Library[]) => (
+          )
+          .chunk(2)
+          .map((chunks: Library[]) => (
             <div class="w3-row">
-              {
-                chunks.map((library: Library) => (
-                  <a
-                    href={library.link}
-                    target="_blank"
-                    class="w3-half w3-padding w3-hover-shadow"
+              {chunks.map((library: Library) => (
+                <a
+                  href={library.link}
+                  target="_blank"
+                  class="w3-half w3-padding w3-hover-shadow"
+                >
+                  <div
+                    class="w3-row"
+                    style="display: flex; align-items: center;"
                   >
-                    <div class="w3-row" style="display: flex; align-items: center;">
-                      <div class="w3-col" style="width: 100px;">
+                    <div class="w3-col" style="width: 100px;">
                       <img
-                          src={library.image.src}
-                          class="w3-padding"
-                          alt={library.name}
-                          style="width: 100px; height: auto;"
-                        />
-                      </div>
-                      <div class="w3-rest">
-                        <h5>
-                          <strong>{library.name}</strong>
-                        </h5>
-                        <p>{library.description}</p>
-                      </div>
+                        src={library.image.src}
+                        class="w3-padding"
+                        alt={library.name}
+                        style="width: 100px; height: auto;"
+                      />
                     </div>
-                  </a>
-                ))
-              }
+                    <div class="w3-rest">
+                      <h5>
+                        <strong>{library.name}</strong>
+                      </h5>
+                      <p>{library.description}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
-          ))
-        }
+          ))}
       </div>
     </>
-  )
+  );
 }
