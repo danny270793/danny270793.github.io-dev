@@ -9,7 +9,14 @@ import type { ImageMetadata } from "astro";
 
 export interface Library {
   image: ImageMetadata;
-  type: 'Flutter'|"Node"|"Python"|"DockerHub"|"Arduino"|"Rust"|"Matlab";
+  type:
+    | "Flutter"
+    | "Node"
+    | "Python"
+    | "DockerHub"
+    | "Arduino"
+    | "Rust"
+    | "Matlab";
   name: string;
   description: string;
   link: string;
