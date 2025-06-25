@@ -37,10 +37,14 @@ export default function Certifications({
             ].join(" ")}
             onClick={() => onCategoryClicked("stared")}
           >
-            <span class="w3-badge w3-red">{certifications.filter(
-                    (certification: Certification) =>
-                      certification.stared
-                  ).length}</span> Stared
+            <span class="w3-badge w3-red">
+              {
+                certifications.filter(
+                  (certification: Certification) => certification.stared,
+                ).length
+              }
+            </span>{" "}
+            Stared
           </div>
           <div
             class={[
@@ -84,7 +88,11 @@ export default function Certifications({
         <br />
         {certifications
           .filter((certification: Certification) =>
-            category === "all" ? true : category === "stared" ? certification.stared : certification.category === category,
+            category === "all"
+              ? true
+              : category === "stared"
+                ? certification.stared
+                : certification.category === category,
           )
           .sort((a: Certification, b: Certification) => {
             const first = (order[a.category] + 1) * 10 + a.order;
