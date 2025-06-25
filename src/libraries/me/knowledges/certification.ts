@@ -1,4 +1,5 @@
 export default interface Certification {
+  stared?: boolean
   code: string;
   name: string;
   brand: string;
