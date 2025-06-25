@@ -58,6 +58,7 @@ export const CategoryOrder: { [key: string]: number } = {
 
 const certifications: Certification[] = [
   {
+    stared: true,
     link: "https://academy.uipath.com/certification",
     name: "RPA Developer Certificate of completion",
     brand: "UiPath",
@@ -78,6 +79,7 @@ const certifications: Certification[] = [
     image: ArduinoFundamentals,
   },
   {
+    stared: true,
     link: "https://www.cloudera.com/services-and-support/training/certification/cca-spark.html",
     name: "CCA Spark and Hadoop Developer",
     brand: "Cloudera",
@@ -98,6 +100,7 @@ const certifications: Certification[] = [
     image: MET,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/449fcbf9-16c3-4949-a0cb-18d35278a845/public_url",
     name: "Oracle Certified Professional Java SE 11 Developer",
     code: "1Z0-816",
@@ -108,6 +111,7 @@ const certifications: Certification[] = [
     image: OracleCertifiedProfessionalJavaSE11Developer,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/3e9780b1-9544-4b8c-834a-87be9e84d24f/public_url",
     name: "Certified Entry-Level Python Programmer",
     code: "PCEP",
@@ -234,6 +238,7 @@ const certifications: Certification[] = [
     image: UFTOneV15CertifiedProfessionalExam,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/fd099b10-920a-4092-8b5a-f045f1443cb5/public_url",
     name: "Power BI Data Analyst Associate",
     code: "PL-300",
@@ -254,6 +259,7 @@ const certifications: Certification[] = [
     image: PowerPlatformFundamentals,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/dbae9536-2517-44fa-9e06-5160f6619d25/public_url",
     name: "Certified Kubernetes Administrator",
     code: "CKA",
@@ -294,6 +300,7 @@ const certifications: Certification[] = [
     image: BusinessIntelligenceFoundationProfessionalCertificationBIFPC,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/6042cc38-1015-4c75-8260-a2a1d100bd00/public_url",
     name: "Terraform Associate",
     code: "HCTAO-002",
@@ -344,6 +351,7 @@ const certifications: Certification[] = [
     image: AzureAdministratorAssociate,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/690852a9-8892-4d41-985c-fa9c42e61516/public_url",
     name: "Azure Solutions Architect Expert",
     code: "AZ-305",
@@ -414,6 +422,7 @@ const certifications: Certification[] = [
     image: PowerAutomateRPADeveloperAssociate,
   },
   {
+    stared: true,
     link: "https://www.credly.com/badges/39d828a4-c03a-4c2c-9589-623dd662a115/public_url",
     name: "AWS Cloud Practitioner",
     order: 3,
