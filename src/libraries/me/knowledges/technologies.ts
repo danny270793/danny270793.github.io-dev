@@ -184,7 +184,7 @@ const technologies: Technology[] = [
     alternative: "ElasticSearch",
   },
   {
-    category: "Deployments",
+    category: "Monitoring",
     link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black",
     alternative: "Power BI",
   },
