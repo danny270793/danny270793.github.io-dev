@@ -40,7 +40,17 @@ const technologies: Technology[] = [
   {
     category: "Mobile",
     link: "https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB",
-    alternative: "Flutter",
+    alternative: "React Native",
+  },
+  {
+    category: "Mobile",
+    link: "https://img.shields.io/badge/capacitor-%23119EFF.svg?style=for-the-badge&logo=capacitor&logoColor=white",
+    alternative: "Capacitor",
+  },
+  {
+    category: "Mobile",
+    link: "https://img.shields.io/badge/cordova-%23E8E8E8.svg?style=for-the-badge&logo=capacitor",
+    alternative: "Cordova",
   },
 
   {
@@ -174,7 +184,7 @@ const technologies: Technology[] = [
     alternative: "ElasticSearch",
   },
   {
-    category: "Deployments",
+    category: "Monitoring",
     link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black",
     alternative: "Power BI",
   },
