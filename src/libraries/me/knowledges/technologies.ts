@@ -42,6 +42,16 @@ const technologies: Technology[] = [
     link: "https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB",
     alternative: "React Native",
   },
+  {
+    category: "Mobile",
+    link: "https://img.shields.io/badge/capacitor-%23119EFF.svg?style=for-the-badge&logo=capacitor&logoColor=white",
+    alternative: "Capacitor",
+  },
+  {
+    category: "Mobile",
+    link: "https://img.shields.io/badge/cordova-%23E8E8E8.svg?style=for-the-badge&logo=capacitor",
+    alternative: "Cordova",
+  },
 
   {
     category: "Web",
