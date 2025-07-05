@@ -104,13 +104,23 @@ const technologies: Technology[] = [
     alternative: "Spring",
   },
   {
+    category: "Web",
+    link: "https://img.shields.io/badge/springboot-%236DB33F.svg?style=for-the-badge&logo=springboot&logoColor=white",
+    alternative: "Spring boot",
+  },
+  {
+    category: "Web",
+    link: "https://img.shields.io/badge/nodejs-%235FA04E.svg?style=for-the-badge&logo=nodedotjs&logoColor=white",
+    alternative: "NodeJS",
+  },
+  {
     category: "CI",
     link: "https://img.shields.io/badge/gitlab%20ci-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white",
     alternative: "Gitlab",
   },
   {
     category: "CI",
-    link: "https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white",
+    link: "https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=github&logoColor=white",
     alternative: "Github",
   },
   {
@@ -119,9 +129,19 @@ const technologies: Technology[] = [
     alternative: "SonarQube",
   },
   {
+    category: "CI",
+    link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azure&logoColor=white",
+    alternative: "Azure DevOps",
+  },
+  {
     category: "Deployments",
     link: "https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white",
     alternative: "Kubernetes",
+  },
+  {
+    category: "Deployments",
+    link: "https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white",
+    alternative: "Rancher",
   },
   {
     category: "Deployments",
@@ -137,6 +157,11 @@ const technologies: Technology[] = [
     category: "Deployments",
     link: "https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase",
     alternative: "Firebase",
+  },
+  {
+    category: "Deployments",
+    link: "https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white",
+    alternative: "Supabase",
   },
   {
     category: "Deployments",
@@ -174,12 +199,12 @@ const technologies: Technology[] = [
     alternative: "Prometheus",
   },
   {
-    category: "Deployments",
+    category: "Monitoring",
     link: "https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white",
     alternative: "Grafana",
   },
   {
-    category: "Deployments",
+    category: "Monitoring",
     link: "https://img.shields.io/badge/-ElasticSearch-005571?style=for-the-badge&logo=elasticsearch",
     alternative: "ElasticSearch",
   },
@@ -190,18 +215,13 @@ const technologies: Technology[] = [
   },
   {
     category: "Databases",
-    link: "https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white",
+    link: "https://img.shields.io/badge/SQLServer-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white",
     alternative: "SQLServer",
   },
   {
     category: "Databases",
     link: "https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white",
     alternative: "Postgres",
-  },
-  {
-    category: "Databases",
-    link: "https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34",
-    alternative: "Firebase",
   },
   {
     category: "Databases",
@@ -230,18 +250,33 @@ const technologies: Technology[] = [
   },
   {
     category: "Databases",
-    link: "https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white",
-    alternative: "Supabase",
+    link: "https://img.shields.io/badge/rabbitmq-FF6600.svg?style=for-the-badge&logo=rabbitmq&logoColor=white",
+    alternative: "RabbitMQ",
   },
   {
     category: "BigData",
-    link: "https://img.shields.io/badge/Apache%20Spark-FDEE21?style=flat-square&logo=apachespark&logoColor=black",
+    link: "https://img.shields.io/badge/Spark-FDEE21?style=for-the-badge&logo=apachespark&logoColor=black",
     alternative: "Spark",
   },
   {
     category: "BigData",
-    link: "https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black",
+    link: "https://img.shields.io/badge/Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black",
     alternative: "Hadoop",
+  },
+  {
+    category: "BigData",
+    link: "https://img.shields.io/badge/Hive-FDEE21?style=for-the-badge&logo=apachehive&logoColor=black",
+    alternative: "Hive",
+  },
+  {
+    category: "BigData",
+    link: "https://img.shields.io/badge/Nifi-728E9B?style=for-the-badge&logo=apachenifi&logoColor=white",
+    alternative: "Nifi",
+  },
+  {
+    category: "BigData",
+    link: "https://img.shields.io/badge/Hbase-BE160C?style=for-the-badge&logo=apachehbase&logoColor=white",
+    alternative: "HBase",
   },
   {
     category: "Microcontrollers",
@@ -252,6 +287,11 @@ const technologies: Technology[] = [
     category: "Microcontrollers",
     link: "https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white",
     alternative: "Arduino",
+  },
+  {
+    category: "Microcontrollers",
+    link: "https://img.shields.io/badge/nodered-%238F0000.svg?style=for-the-badge&logo=nodered&logoColor=white",
+    alternative: "NodeRED",
   },
 ];
 export default technologies;
