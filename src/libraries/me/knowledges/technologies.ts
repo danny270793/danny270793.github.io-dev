@@ -49,7 +49,7 @@ const technologies: Technology[] = [
   },
   {
     category: "Mobile",
-    link: "https://img.shields.io/badge/cordova-%23E8E8E8.svg?style=for-the-badge&logo=capacitor",
+    link: "https://img.shields.io/badge/cordova-%23000000.svg?style=for-the-badge&logo=apachecordova",
     alternative: "Cordova",
   },
 
