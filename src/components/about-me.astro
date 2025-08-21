@@ -5,39 +5,424 @@ import profilePicture from "../images/profile.jpg";
 import headerBackground from "../images/parallax/header.jpg";
 ---
 
-<div
-  class="parallax header w3-display-container"
-  style={`background-image: url("${headerBackground.src}")`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Danny Vaca
-    </span>
-  </div>
-</div>
-
-<div id="about-me" class="w3-content w3-container w3-padding-64">
-  <h3 class="w3-center">About me</h3>
-  <div class="w3-row">
-    <div class="w3-third w3-center">
-      <Image
-        class="w3-circle w3-padding"
-        src={profilePicture}
-        alt="Profile picture"
-        style="width: 100%; height: auto;"
-      />
+<!-- Enhanced Hero Section -->
+<section class="hero-modern parallax header" style={`background-image: url("${headerBackground.src}")`}>
+  <div class="hero-overlay"></div>
+  
+  <!-- Floating Tech Icons -->
+  <div class="floating-elements">
+    <div class="floating-icon animate-float" style="top: 15%; left: 8%; animation-delay: 0s;">
+      <i class="fas fa-code"></i>
     </div>
-    <br class="w3-twothird w3-padding" />
-    {
-      Me.detail.split("\n").map((e) => (
-        <>
-          {e}
-          <br />
-          <br />
-        </>
-      ))
-    }
+    <div class="floating-icon animate-float" style="top: 70%; right: 12%; animation-delay: 2s;">
+      <i class="fas fa-laptop-code"></i>
+    </div>
+    <div class="floating-icon animate-float" style="bottom: 25%; left: 15%; animation-delay: 4s;">
+      <i class="fas fa-rocket"></i>
+    </div>
+    <div class="floating-icon animate-float" style="top: 35%; right: 20%; animation-delay: 6s;">
+      <i class="fas fa-cloud"></i>
+    </div>
+    <div class="floating-icon animate-float" style="top: 60%; left: 25%; animation-delay: 8s;">
+      <i class="fas fa-mobile-alt"></i>
+    </div>
   </div>
-</div>
+
+  <div class="hero-content animate-fade-in-up">
+    <h1 class="hero-title animate-fade-in-up animate-delay-200">
+      Danny Vaca
+    </h1>
+    <p class="hero-subtitle animate-fade-in-up animate-delay-500">
+      Senior Full Stack Developer & Cloud Architect
+    </p>
+    <p class="hero-description animate-fade-in-up animate-delay-700">
+      Transforming complex challenges into elegant solutions with 15+ years of expertise
+    </p>
+    
+    <div class="hero-actions animate-fade-in-up animate-delay-1000">
+      <a href="#about-me" class="btn-modern btn-primary">
+        <i class="fas fa-user"></i>
+        Discover My Journey
+      </a>
+      <a href="#projects" class="btn-modern btn-outline">
+        <i class="fas fa-rocket"></i>
+        Explore Projects
+      </a>
+    </div>
+  </div>
+  
+  <!-- Animated Scroll Indicator -->
+  <div class="scroll-indicator animate-bounce">
+    <p>Scroll to explore</p>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- Beautiful About Me Section -->
+<section id="about-me" class="about-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header scroll-animate">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Passionate developer dedicated to crafting exceptional digital experiences
+      </p>
+    </div>
+    
+    <div class="about-grid">
+      <!-- Enhanced Profile Card -->
+      <div class="profile-card modern-card scroll-animate-left hover-lift">
+        <div class="profile-image-container">
+          <Image
+            class="profile-image"
+            src={profilePicture}
+            alt="Danny Vaca - Senior Full Stack Developer"
+          />
+          <div class="profile-decoration">
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+          </div>
+          <div class="profile-badge">
+            <i class="fas fa-certificate"></i>
+            <span>Certified Expert</span>
+          </div>
+        </div>
+        
+        <div class="profile-info">
+          <h3 class="profile-name text-gradient">Danny Vaca</h3>
+          <p class="profile-title">Senior Full Stack Developer</p>
+          <div class="profile-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Available Globally</span>
+          </div>
+          
+          <!-- Quick Stats -->
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-number" data-count="15">0</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="50">0</span>
+              <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="25">0</span>
+              <span class="stat-label">Certifications</span>
+            </div>
+          </div>
+          
+          <!-- Contact Buttons -->
+          <div class="profile-actions">
+            <a href="#contact" class="btn-modern btn-primary btn-sm">
+              <i class="fas fa-envelope"></i>
+              Get In Touch
+            </a>
+            <a href="/resume.pdf" class="btn-modern btn-outline btn-sm" target="_blank">
+              <i class="fas fa-download"></i>
+              Resume
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Enhanced About Content -->
+      <div class="about-content scroll-animate-right">
+        <div class="about-text">
+          {Me.detail.split("\n").map((paragraph, index) => (
+            <p class={`scroll-animate animate-delay-${index * 200}`}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        
+        <!-- Core Expertise Section -->
+        <div class="expertise-section scroll-animate animate-delay-500">
+          <h4 class="expertise-title">
+            <i class="fas fa-star"></i>
+            Core Expertise
+          </h4>
+          <div class="expertise-grid">
+            <div class="expertise-item">
+              <div class="expertise-icon">
+                <i class="fas fa-cloud"></i>
+              </div>
+              <div class="expertise-content">
+                <h5>Cloud Architecture</h5>
+                <p>Azure & AWS Solutions</p>
+              </div>
+            </div>
+            
+            <div class="expertise-item">
+              <div class="expertise-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="expertise-content">
+                <h5>Mobile Development</h5>
+                <p>Flutter & React Native</p>
+              </div>
+            </div>
+            
+            <div class="expertise-item">
+              <div class="expertise-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <div class="expertise-content">
+                <h5>Microservices</h5>
+                <p>Java, .NET & Python</p>
+              </div>
+            </div>
+            
+            <div class="expertise-item">
+              <div class="expertise-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="expertise-content">
+                <h5>Full Stack</h5>
+                <p>End-to-end Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Quick Skills Tags -->
+        <div class="skills-preview scroll-animate animate-delay-700">
+          <h4 class="skills-title">
+            <i class="fas fa-tools"></i>
+            Technical Skills
+          </h4>
+          <div class="skill-tags">
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-js-square"></i>
+              JavaScript
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-python"></i>
+              Python
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-java"></i>
+              Java
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-aws"></i>
+              AWS
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-microsoft"></i>
+              Azure
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-react"></i>
+              React
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fas fa-database"></i>
+              Databases
+            </span>
+            <span class="tech-badge hover-scale">
+              <i class="fab fa-docker"></i>
+              Docker
+            </span>
+          </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="about-actions scroll-animate animate-delay-1000">
+          <a href="#certifications" class="btn-modern btn-primary">
+            <i class="fas fa-certificate"></i>
+            View Certifications
+          </a>
+          <a href="#technologies" class="btn-modern btn-secondary">
+            <i class="fas fa-code"></i>
+            Explore Tech Stack
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Achievement Highlights -->
+    <div class="achievements-section scroll-animate">
+      <h3 class="achievements-title">Key Achievements</h3>
+      <div class="achievements-grid">
+        <div class="achievement-card modern-card hover-lift">
+          <div class="achievement-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="achievement-content">
+            <h4>Digital Transformation Leader</h4>
+            <p>Successfully led multiple enterprise-scale digital transformation projects, modernizing legacy systems and implementing cloud-native architectures.</p>
+          </div>
+        </div>
+        
+        <div class="achievement-card modern-card hover-lift">
+          <div class="achievement-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="achievement-content">
+            <h4>Team Leadership</h4>
+            <p>Mentored and led cross-functional development teams, fostering innovation and delivering high-quality solutions on time and within budget.</p>
+          </div>
+        </div>
+        
+        <div class="achievement-card modern-card hover-lift">
+          <div class="achievement-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="achievement-content">
+            <h4>Innovation Catalyst</h4>
+            <p>Pioneered the adoption of emerging technologies and best practices, resulting in improved performance, scalability, and maintainability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/**
+ * About Me Animation System
+ * Handles scroll-triggered animations and interactive elements
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Setup Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Handle animated counters
+                if (entry.target.querySelector('[data-count]')) {
+                    animateCounters(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe all scroll-animate elements
+    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+    scrollElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Animate counters
+    function animateCounters(container) {
+        const counters = container.querySelectorAll('[data-count]');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current);
+                }
+            }, 16);
+        });
+    }
+
+    // Add hover effects to tech badges
+    const techBadges = document.querySelectorAll('.tech-badge');
+    techBadges.forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+
+    // Add smooth scroll for anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 80; // Account for fixed header
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Enhanced button interactions
+    const modernButtons = document.querySelectorAll('.btn-modern');
+    modernButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Add ripple effect on click
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = (e as MouseEvent).clientX - rect.left - size / 2;
+            const y = (e as MouseEvent).clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    console.log('About Me animations initialized! ✨');
+});
+</script>
+
+<style>
+/* Ripple Effect Styles */
+.btn-modern {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+</style>
