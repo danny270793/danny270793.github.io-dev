@@ -31,180 +31,708 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architecture, DevOps, Web Development" />
     <title>Danny Vaca - Software Engineer & Developer</title>
     
-    <!-- Enhanced styling -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced Developer-Focused Styling -->
     <style>
-      /* Smooth scrolling enhancement */
+      :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --tech-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        --accent-color: #667eea;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --bg-light: #f8fafc;
+        --bg-dark: #1a202c;
+        --code-bg: #1e293b;
+        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --border-radius: 16px;
+        --animation-fast: 0.2s;
+        --animation-normal: 0.3s;
+        --animation-slow: 0.5s;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
-      
-      /* Enhanced animations */
-      .w3-animate-enhanced {
-        animation: slideInUp 1s ease-out;
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--bg-light);
+        color: var(--text-primary);
+        line-height: 1.7;
+        margin: 0;
+        overflow-x: hidden;
       }
-      
+
+      /* Modern Typography System */
+      .text-code {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      }
+
+      .text-gradient {
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Modern Layout System */
+      .container-modern {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .container-wide {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Modern Card System */
+      .dev-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: var(--shadow-soft);
+        transition: all var(--animation-normal) cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .dev-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-gradient);
+        transform: scaleX(0);
+        transition: transform var(--animation-normal) ease;
+      }
+
+      .dev-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .dev-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-strong);
+        border-color: rgba(102, 126, 234, 0.3);
+      }
+
+      /* Code Block Styling */
+      .code-block {
+        background: var(--code-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .code-block::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+      }
+
+      .code-text {
+        color: #e2e8f0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Modern Hero Section */
+      .hero-modern {
+        min-height: 100vh;
+        background: var(--dark-gradient);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero-modern::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        animation: float 20s linear infinite;
+      }
+
+      @keyframes float {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(-60px, -60px); }
+      }
+
+      /* Section Headers */
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .section-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Modern Grid Systems */
+      .grid-auto {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      /* Modern Animations */
       @keyframes slideInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(50px);
         }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-      
-      /* Section separators */
-      .section-separator {
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #2196F3, transparent);
-        margin: 64px auto;
-        width: 200px;
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
-      
-      /* Enhanced cards */
-      .enhanced-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
-      
-      .enhanced-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
-      
-      /* Progress bars */
-      .progress-container {
-        background-color: #f1f1f1;
-        border-radius: 16px;
-        margin: 8px 0;
-        overflow: hidden;
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      
-      .progress-bar {
-        height: 8px;
-        background: linear-gradient(90deg, #2196F3, #21CBF3);
-        border-radius: 16px;
-        animation: progressAnimation 2s ease-out;
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
       }
-      
-      @keyframes progressAnimation {
-        from { width: 0%; }
-      }
-      
-      /* Button enhancements */
-      .w3-button-enhanced {
-        transition: all 0.3s ease;
+
+      /* Modern Button System */
+      .btn-modern {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: var(--primary-gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all var(--animation-normal) ease;
+        border: none;
+        cursor: pointer;
         position: relative;
         overflow: hidden;
       }
-      
-      .w3-button-enhanced:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
-      }
-      
-      .w3-button-enhanced::before {
+
+      .btn-modern::before {
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transition: width 0.6s, height 0.6s;
-        transform: translate(-50%, -50%);
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
       }
-      
-      .w3-button-enhanced:active::before {
-        width: 300px;
-        height: 300px;
+
+      .btn-modern:hover::before {
+        left: 100%;
+      }
+
+      .btn-modern:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      /* Modern Progress Bars */
+      .progress-modern {
+        height: 8px;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 50px;
+        overflow: hidden;
+        margin: 1rem 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--primary-gradient);
+        border-radius: 50px;
+        transition: width 2s ease;
+        position: relative;
+      }
+
+      .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      /* Modern Stats */
+      .stat-card {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-soft);
+        transition: transform var(--animation-normal) ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Modern Section Spacing */
+      .section-modern {
+        padding: 6rem 0;
+        position: relative;
+      }
+
+      .section-modern:nth-child(even) {
+        background: rgba(248, 250, 252, 0.5);
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .floating-1 {
+        top: 10%;
+        left: 10%;
+        animation: floatUp 6s ease-in-out infinite;
+      }
+
+      .floating-2 {
+        top: 20%;
+        right: 10%;
+        animation: floatUp 8s ease-in-out infinite reverse;
+      }
+
+      .floating-3 {
+        bottom: 20%;
+        left: 15%;
+        animation: floatUp 7s ease-in-out infinite;
+      }
+
+      @keyframes floatUp {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+      }
+
+      /* Modern Responsive Design */
+      @media (max-width: 768px) {
+        .container-modern,
+        .container-wide {
+          padding: 0 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-modern {
+          min-height: 80vh;
+        }
+
+        .section-modern {
+          padding: 4rem 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-title {
+          font-size: 1.75rem;
+        }
+
+        .dev-card {
+          margin: 0 0.5rem;
+        }
+      }
+
+      /* Modern Dark Mode Support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-light: #1a202c;
+          --text-primary: #e2e8f0;
+          --text-secondary: #a0aec0;
+        }
+
+        .dev-card {
+          background: rgba(45, 55, 72, 0.95);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
       }
     </style>
   </head>
-  <body class="w3-light-grey">
+  <body>
     <!-- Enhanced Navigation -->
     <Navbar />
 
-    <!-- Main Content with improved structure -->
-    <main>
-      <!-- Hero Section -->
-      <section class="w3-animate-enhanced">
-        <AboutMe />
-      </section>
-
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
-
-      <!-- Education Section -->
-      <section class="w3-animate-opacity w3-container">
-        <div class="w3-content">
-          <Education />
+    <!-- Modern Hero Section -->
+    <section class="hero-modern" id="hero">
+      <div class="floating-element floating-1">
+        <div class="w3-text-white w3-opacity" style="font-size: 4rem;">
+          <i class="fa fa-code"></i>
         </div>
-      </section>
-
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
-
-      <!-- Certifications Section -->
-      <section class="w3-animate-opacity">
-        <Certifications
-          certifications={MyCertifications}
-          order={CategoryOrder}
-          background={CertificationsBackground}
-          client:load
-        />
-      </section>
-
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
-
-      <!-- Libraries Section -->
-      <section class="w3-animate-opacity">
-        <Libraries
-          libraries={MyLibraries}
-          background={OpenSourceLibrariesBackground}
-          client:load
-        />
-      </section>
-
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
-
-      <!-- Projects Section -->
-      <section class="w3-animate-opacity w3-container">
-        <div class="w3-content">
-          <Projects />
+      </div>
+      <div class="floating-element floating-2">
+        <div class="w3-text-white w3-opacity" style="font-size: 3rem;">
+          <i class="fa fa-laptop"></i>
         </div>
-      </section>
-
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
-
-      <!-- Technologies Section -->
-      <section class="w3-animate-opacity w3-container">
-        <div class="w3-content">
-          <Technologies />
+      </div>
+      <div class="floating-element floating-3">
+        <div class="w3-text-white w3-opacity" style="font-size: 2.5rem;">
+          <i class="fa fa-cogs"></i>
         </div>
-      </section>
+      </div>
 
-      <!-- Section Separator -->
-      <div class="section-separator"></div>
+    <AboutMe />
+    </section>
 
-      <!-- Social Networks Section -->
-      <section class="w3-animate-opacity">
-        <SocialNetworks />
-      </section>
-    </main>
+    <!-- About Stats Section -->
+    <section class="section-modern w3-white" id="stats">
+      <div class="container-modern">
+        <div class="grid-auto">
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Back to top button -->
+    <!-- Code Philosophy Section -->
+    <section class="section-modern" id="philosophy">
+      <div class="container-modern">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">Code Philosophy</h2>
+          <p class="section-subtitle">
+            Building scalable, maintainable, and elegant solutions that solve real-world problems.
+          </p>
+        </div>
+        
+        <div class="grid-2">
+          <div class="dev-card animate-on-scroll">
+            <div class="w3-padding-large">
+              <h3 class="w3-text-blue w3-margin-bottom">
+                <i class="fa fa-lightbulb-o w3-margin-right"></i>
+                Clean Code Advocate
+              </h3>
+              <p class="w3-text-grey w3-large">
+                I believe in writing code that tells a story. Every function, every variable, 
+                every comment should contribute to the narrative of solving the problem at hand.
+              </p>
+              <div class="code-block w3-margin-top">
+                <pre class="code-text">const solution = (problem) => &#123;
+  return elegant && maintainable && scalable;
+&#125;;</pre>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dev-card animate-on-scroll">
+            <div class="w3-padding-large">
+              <h3 class="w3-text-blue w3-margin-bottom">
+                <i class="fa fa-rocket w3-margin-right"></i>
+                Performance Focused
+              </h3>
+              <p class="w3-text-grey w3-large">
+                Every millisecond matters. I optimize for performance without sacrificing 
+                readability, ensuring applications are fast, responsive, and delightful to use.
+              </p>
+              <div class="code-block w3-margin-top">
+                <pre class="code-text">// Optimized for speed and efficiency
+const optimize = (codeBase) => (&#123;
+  ...codeBase,
+  performance: 'excellent',
+  userExperience: 'smooth'
+&#125;);</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section-modern w3-light-grey" id="education">
+      <div class="container-modern">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-graduation-cap w3-margin-right"></i>
+            Education
+          </h2>
+          <p class="section-subtitle">
+            Continuous learning and academic excellence in computer science and engineering.
+          </p>
+        </div>
+        
+        <div class="dev-card animate-on-scroll">
+          <div class="w3-padding-large">
+    <Education />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section-modern" id="certifications">
+      <div class="container-wide">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-certificate w3-margin-right"></i>
+            Certifications
+          </h2>
+          <p class="section-subtitle">
+            Validated expertise across cloud platforms, development frameworks, and emerging technologies.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll">
+    <Certifications
+      certifications={MyCertifications}
+      order={CategoryOrder}
+      background={CertificationsBackground}
+      client:load
+    />
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source Section -->
+    <section class="section-modern w3-light-grey" id="open-source">
+      <div class="container-wide">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-code-fork w3-margin-right"></i>
+            Open Source
+          </h2>
+          <p class="section-subtitle">
+            Contributing to the developer community with libraries, tools, and frameworks.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll">
+    <Libraries
+      libraries={MyLibraries}
+      background={OpenSourceLibrariesBackground}
+      client:load
+    />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section-modern" id="projects">
+      <div class="container-wide">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-laptop w3-margin-right"></i>
+            Featured Projects
+          </h2>
+          <p class="section-subtitle">
+            A showcase of applications, systems, and solutions that demonstrate technical expertise and innovation.
+          </p>
+        </div>
+        
+        <div class="dev-card animate-on-scroll">
+          <div class="w3-padding-large">
+    <Projects />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="section-modern w3-light-grey" id="technologies">
+      <div class="container-wide">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-cogs w3-margin-right"></i>
+            Technology Stack
+          </h2>
+          <p class="section-subtitle">
+            Expertise across the full spectrum of modern development technologies and platforms.
+          </p>
+        </div>
+        
+        <div class="dev-card animate-on-scroll">
+          <div class="w3-padding-large">
+    <Technologies />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-modern" id="contact">
+      <div class="container-modern">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title text-gradient">
+            <i class="fa fa-envelope w3-margin-right"></i>
+            Let's Connect
+          </h2>
+          <p class="section-subtitle">
+            Ready to collaborate on your next project or discuss opportunities.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll">
+    <SocialNetworks />
+        </div>
+        
+        <div class="w3-center w3-margin-top animate-on-scroll">
+          <a href="mailto:danny270793@gmail.com" class="btn-modern">
+            <i class="fa fa-envelope"></i>
+            Get In Touch
+          </a>
+          <a href="#projects" class="btn-modern btn-secondary w3-margin-left">
+            <i class="fa fa-eye"></i>
+            View Portfolio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Back to Top -->
     <button
       id="backToTopBtn"
-      class="w3-button w3-blue w3-circle w3-xlarge w3-fixed w3-bottom w3-right w3-margin w3-button-enhanced"
-      style="display: none; z-index: 999;"
+      class="w3-button w3-circle w3-xlarge w3-fixed w3-bottom w3-right w3-margin"
+      style="display: none; z-index: 999; background: var(--primary-gradient); border: none; box-shadow: var(--shadow-medium);"
       title="Back to top"
     >
-      <i class="fa fa-arrow-up"></i>
+      <i class="fa fa-arrow-up w3-text-white"></i>
     </button>
 
     <!-- Enhanced JavaScript -->
@@ -216,7 +744,7 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
         window.addEventListener('scroll', function() {
           if (window.pageYOffset > 300) {
             backToTopBtn.style.display = 'block';
-            backToTopBtn.classList.add('w3-animate-opacity');
+            backToTopBtn.style.animation = 'fadeIn 0.3s ease';
           } else {
             backToTopBtn.style.display = 'none';
           }
@@ -229,7 +757,7 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
           });
         });
 
-        // Intersection Observer for animations
+        // Modern scroll animations
         const observerOptions = {
           threshold: 0.1,
           rootMargin: '0px 0px -50px 0px'
@@ -238,25 +766,42 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('w3-animate-opacity');
+              entry.target.classList.add('animated');
+              
+              // Trigger progress bar animations
+              const progressBars = entry.target.querySelectorAll('.progress-fill');
+              progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width') || '90%';
+                setTimeout(() => {
+                  (bar as HTMLElement).style.width = width;
+                }, 300);
+              });
             }
           });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-          observer.observe(section);
+        // Observe elements for scroll animations
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+          observer.observe(element);
+        });
+
+        // Add stagger animation to grid items
+        document.querySelectorAll('.grid-auto, .grid-2, .grid-3').forEach(grid => {
+          const items = grid.children;
+          Array.from(items).forEach((item, index) => {
+            (item as HTMLElement).style.animationDelay = `${index * 0.1}s`;
+          });
         });
 
         // Enhanced navigation highlighting
-        const sections = document.querySelectorAll('section[id], div[id]');
+        const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.w3-bar-item[href^="#"]');
 
         window.addEventListener('scroll', function() {
           let current = '';
           sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+            const sectionTop = (section as HTMLElement).offsetTop;
+            const sectionHeight = (section as HTMLElement).clientHeight;
             if (pageYOffset >= (sectionTop - 200)) {
               current = section.getAttribute('id');
             }
@@ -268,6 +813,46 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
               link.classList.add('w3-blue');
             }
           });
+        });
+
+        // Add smooth scrolling to all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+
+        // Add typing effect to code blocks
+        const codeBlocks = document.querySelectorAll('.code-text');
+        codeBlocks.forEach(block => {
+          const text = block.textContent;
+          block.textContent = '';
+          let i = 0;
+          
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const timer = setInterval(() => {
+                  if (i < text.length) {
+                    block.textContent += text.charAt(i);
+                    i++;
+                  } else {
+                    clearInterval(timer);
+                  }
+                }, 30);
+                observer.unobserve(entry.target);
+              }
+            });
+          });
+          
+          observer.observe(block);
         });
       });
     </script>
