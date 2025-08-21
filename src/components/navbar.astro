@@ -2,83 +2,272 @@
 const { anchors = true } = Astro.props;
 ---
 
+<!-- Enhanced Sidebar with modern styling -->
 <div
   id="sidebar"
-  class="w3-sidebar w3-animate-left w3-bar-block"
-  style="display: none; z-index:5"
+  class="w3-sidebar w3-animate-left w3-bar-block w3-white w3-card-4"
+  style="display: none; z-index: 10; width: 280px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"
 >
-  <a
-    href={anchors ? "#about-me" : "/#about-me"}
-    class="w3-bar-item w3-button"
-    onclick="toggleSidebar(false)"
-  >
-    About me
-  </a>
-  <a
-    href={anchors ? "#education" : "/#education"}
-    class="w3-bar-item w3-button"
-  >
-    Education
-  </a>
-  <a
-    href={anchors ? "#certifications" : "/#certifications"}
-    class="w3-bar-item w3-button"
-  >
-    Certifications
-  </a>
-  <a
-    href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
-    class="w3-bar-item w3-button"
-  >
-    Open Source Libraries
-  </a>
-  <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button">
-    Projects
-  </a>
-  <a
-    href={anchors ? "#technologies" : "/#technologies"}
-    class="w3-bar-item w3-button"
-  >
-    Technologies
-  </a>
-  <a
-    href={anchors ? "#social-networks" : "/#social-networks"}
-    class="w3-bar-item w3-button"
-  >
-    Social Networks
-  </a>
-</div>
+  <!-- Sidebar Header -->
+  <div class="w3-bar-item w3-blue w3-large w3-padding">
+    <i class="fa fa-user-circle w3-margin-right"></i>
+    <strong>Danny Vaca</strong>
+  </div>
+  
+  <!-- Navigation Links -->
+  <div class="w3-container w3-padding-small">
+    <a
+      href={anchors ? "#about-me" : "/#about-me"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large w3-margin-top nav-link"
+      onclick="toggleSidebar(false)"
+    >
+      <i class="fa fa-user w3-margin-right w3-text-blue"></i>About Me
+    </a>
+    <a
+      href={anchors ? "#education" : "/#education"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+    >
+      <i class="fa fa-graduation-cap w3-margin-right w3-text-blue"></i>Education
+    </a>
+    <a
+      href={anchors ? "#certifications" : "/#certifications"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+    >
+      <i class="fa fa-certificate w3-margin-right w3-text-blue"></i>Certifications
+    </a>
+    <a
+      href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+    >
+      <i class="fa fa-code w3-margin-right w3-text-blue"></i>Open Source
+    </a>
+    <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link">
+      <i class="fa fa-laptop w3-margin-right w3-text-blue"></i>Projects
+    </a>
+    <a
+      href={anchors ? "#technologies" : "/#technologies"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+    >
+      <i class="fa fa-cogs w3-margin-right w3-text-blue"></i>Technologies
+    </a>
+    <a
+      href={anchors ? "#social-networks" : "/#social-networks"}
+      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+    >
+      <i class="fa fa-share-alt w3-margin-right w3-text-blue"></i>Social Networks
+    </a>
+  </div>
 
-<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
-</div>
-
-<div class="w3-top w3-xlarge">
-  <div class="w3-bar w3-card w3-white">
-    <button id="openButton" class="w3-button"> &#9776; </button>
-    Danny Vaca
-    <span class="w3-hide-large w3-hide-medium">
-      <div></div>
-    </span>
+  <!-- Sidebar Footer -->
+  <div class="w3-container w3-margin-top w3-padding">
+    <div class="w3-center w3-text-grey">
+      <small><i class="fa fa-heart w3-text-red"></i> Made with passion</small>
+    </div>
   </div>
 </div>
+
+<!-- Enhanced Overlay -->
+<div id="overlay" class="w3-overlay w3-animate-opacity" style="cursor: pointer; display: none; backdrop-filter: blur(2px);">
+</div>
+
+<!-- Enhanced Top Navigation Bar -->
+<div class="w3-top w3-xlarge w3-animate-top">
+  <div class="w3-bar w3-card-4 w3-white" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
+    <!-- Menu Button -->
+    <button 
+      id="openButton" 
+      class="w3-button w3-hover-blue w3-round-large w3-margin-left" 
+      title="Open Navigation"
+      style="transition: all 0.3s ease;"
+    > 
+      <i class="fa fa-bars"></i>
+    </button>
+    
+    <!-- Logo/Name -->
+    <div class="w3-bar-item w3-padding-large">
+      <strong class="w3-text-blue">Danny Vaca</strong>
+      <small class="w3-hide-small w3-text-grey w3-margin-left">Software Engineer</small>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="w3-right w3-hide-small">
+      <a href={anchors ? "#about-me" : "/#about-me"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
+        <i class="fa fa-user w3-margin-right"></i>About
+      </a>
+      <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
+        <i class="fa fa-laptop w3-margin-right"></i>Projects
+      </a>
+      <a href={anchors ? "#certifications" : "/#certifications"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
+        <i class="fa fa-certificate w3-margin-right"></i>Certifications
+      </a>
+      <a href={anchors ? "#social-networks" : "/#social-networks"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
+        <i class="fa fa-share-alt w3-margin-right"></i>Contact
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Enhanced navigation styles */
+  .nav-link {
+    transition: all 0.3s ease;
+    margin: 4px 0;
+    border-left: 3px solid transparent;
+  }
+  
+  .nav-link:hover {
+    border-left-color: #2196F3;
+    transform: translateX(8px);
+  }
+  
+  .nav-link.active {
+    background-color: #e3f2fd !important;
+    border-left-color: #2196F3;
+    color: #1976d2 !important;
+  }
+  
+  .desktop-nav {
+    transition: all 0.3s ease;
+    margin: 0 2px;
+  }
+  
+  .desktop-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  }
+  
+  /* Navbar background effect */
+  .w3-top .w3-bar {
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1) !important;
+  }
+  
+  /* Mobile menu button animation */
+  #openButton {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #openButton:hover {
+    transform: scale(1.05);
+  }
+  
+  #openButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(33, 150, 243, 0.2);
+    border-radius: 50%;
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+  }
+  
+  #openButton:active::before {
+    width: 200px;
+    height: 200px;
+  }
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null =
-      document.getElementById("openButton");
+    const openButton: HTMLElement | null = document.getElementById("openButton");
     const overlay: HTMLElement | null = document.getElementById("overlay");
+    const navbar: HTMLElement | null = document.querySelector(".w3-top .w3-bar");
+    
+    // Enhanced sidebar toggle function
     const toggleSidebar = (show: boolean) => {
-      sidebar!.style.display = show ? "block" : "none";
-      overlay!.style.display = show ? "block" : "none";
+      if (sidebar && overlay) {
+        sidebar.style.display = show ? "block" : "none";
+        overlay.style.display = show ? "block" : "none";
+        
+        // Add/remove body scroll lock
+        document.body.style.overflow = show ? "hidden" : "";
+      }
     };
-    openButton!.addEventListener("click", () => toggleSidebar(true));
-    overlay!.addEventListener("click", () => toggleSidebar(false));
-    document.querySelectorAll(".w3-bar-item").forEach((barItem) => {
+
+    // Event listeners
+    openButton?.addEventListener("click", () => toggleSidebar(true));
+    overlay?.addEventListener("click", () => toggleSidebar(false));
+    
+    // Close sidebar when clicking nav links
+    document.querySelectorAll(".nav-link").forEach((barItem) => {
       barItem.addEventListener("click", () => toggleSidebar(false));
     });
+    
+    // Enhanced keyboard navigation
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
+    });
+
+    // Navbar scroll effect
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (navbar) {
+        if (scrollTop > 100) {
+          navbar.classList.add("navbar-scrolled");
+        } else {
+          navbar.classList.remove("navbar-scrolled");
+        }
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Enhanced active navigation highlighting
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-80px 0px -80px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link, .desktop-nav').forEach(link => {
+              link.classList.remove('active');
+            });
+            
+            // Add active class to current section links
+            document.querySelectorAll(`[href="#${id}"]`).forEach(link => {
+              link.classList.add('active');
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll('section[id], div[id]').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   });
 </script>
