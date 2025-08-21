@@ -5,39 +5,225 @@ import profilePicture from "../images/profile.jpg";
 import headerBackground from "../images/parallax/header.jpg";
 ---
 
+<!-- Enhanced Hero Section -->
 <div
   class="parallax header w3-display-container"
-  style={`background-image: url("${headerBackground.src}")`}
+  style={`background-image: url("${headerBackground.src}"); position: relative;`}
 >
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Danny Vaca
-    </span>
+  <!-- Overlay for better text readability -->
+  <div class="w3-display-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);">
+  </div>
+  
+  <!-- Main Content -->
+  <div class="w3-display-middle w3-center w3-text-white w3-animate-opacity" style="z-index: 2;">
+    <div class="w3-container">
+      <h1 class="w3-jumbo w3-animate-top w3-margin-bottom" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        <strong>Danny Vaca</strong>
+      </h1>
+      <div class="w3-large w3-margin w3-animate-bottom" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+        <div class="w3-margin-bottom">
+          <i class="fa fa-code w3-margin-right w3-text-blue"></i>
+          <span class="w3-large">Software Engineer</span>
+        </div>
+        <div class="w3-margin-bottom">
+          <i class="fa fa-cloud w3-margin-right w3-text-blue"></i>
+          <span>Cloud Architecture Specialist</span>
+        </div>
+        <div>
+          <i class="fa fa-cogs w3-margin-right w3-text-blue"></i>
+          <span>DevOps Enthusiast</span>
+        </div>
+      </div>
+      
+      <!-- Call to Action Buttons -->
+      <div class="w3-margin-top w3-margin-bottom">
+        <a href="#about-me" class="w3-button w3-blue w3-round-large w3-large w3-margin w3-hover-shadow" style="transition: all 0.3s ease;">
+          <i class="fa fa-user w3-margin-right"></i>Learn More
+        </a>
+        <a href="#projects" class="w3-button w3-border w3-border-white w3-text-white w3-round-large w3-large w3-margin w3-hover-white w3-hover-text-blue" style="transition: all 0.3s ease;">
+          <i class="fa fa-laptop w3-margin-right"></i>View Projects
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="w3-display-bottommiddle w3-margin-bottom">
+    <a href="#about-me" class="w3-text-white w3-hover-text-blue" style="text-decoration: none;">
+      <div class="w3-center w3-animate-opacity">
+        <div class="w3-margin-bottom">Scroll Down</div>
+        <i class="fa fa-chevron-down w3-large" style="animation: bounce 2s infinite;"></i>
+      </div>
+    </a>
   </div>
 </div>
 
-<div id="about-me" class="w3-content w3-container w3-padding-64">
-  <h3 class="w3-center">About me</h3>
-  <div class="w3-row">
-    <div class="w3-third w3-center">
-      <Image
-        class="w3-circle w3-padding"
-        src={profilePicture}
-        alt="Profile picture"
-        style="width: 100%; height: auto;"
-      />
+<!-- Enhanced About Me Section -->
+<div id="about-me" class="w3-container w3-padding-64 w3-white">
+  <div class="w3-content">
+    <!-- Section Header -->
+    <div class="w3-center w3-margin-bottom">
+      <h2 class="w3-text-dark-grey">
+        <i class="fa fa-user w3-margin-right w3-text-blue"></i>
+        <strong>About Me</strong>
+      </h2>
+      <div class="w3-border-blue w3-border-top" style="width: 100px; margin: 20px auto;"></div>
     </div>
-    <br class="w3-twothird w3-padding" />
-    {
-      Me.detail.split("\n").map((e) => (
-        <>
-          {e}
-          <br />
-          <br />
-        </>
-      ))
-    }
+
+    <!-- Main Content -->
+    <div class="w3-row-padding w3-margin-top">
+      <!-- Profile Picture Column -->
+      <div class="w3-third w3-center">
+        <div class="w3-card-4 w3-round-large w3-padding w3-white" style="transition: transform 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <Image
+            class="w3-circle w3-border w3-border-blue"
+            src={profilePicture}
+            alt="Danny Vaca - Software Engineer"
+            style="width: 100%; height: auto; max-width: 250px;"
+          />
+          
+          <!-- Quick Info Cards -->
+          <div class="w3-margin-top">
+            <div class="w3-card w3-blue w3-round w3-margin-bottom w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-map-marker w3-margin-right"></i>
+                Based in Ecuador
+              </div>
+            </div>
+            <div class="w3-card w3-light-blue w3-round w3-margin-bottom w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-briefcase w3-margin-right"></i>
+                5+ Years Experience
+              </div>
+            </div>
+            <div class="w3-card w3-cyan w3-round w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-graduation-cap w3-margin-right"></i>
+                Multiple Certifications
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Text Column -->
+      <div class="w3-twothird">
+        <div class="w3-padding-large">
+          <div class="w3-large w3-text-grey w3-margin-bottom">
+            {
+              Me.detail.split("\n").map((paragraph, index) => (
+                <div class="w3-margin-bottom" key={index}>
+                  <p class="w3-justify" style="line-height: 1.8;">
+                    {paragraph}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Skills Highlight -->
+          <div class="w3-margin-top">
+            <h4 class="w3-text-blue w3-margin-bottom">
+              <i class="fa fa-star w3-margin-right"></i>
+              Core Expertise
+            </h4>
+            <div class="w3-row-padding">
+              <div class="w3-half">
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">Cloud Platforms</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">DevOps & CI/CD</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 85%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-half">
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">Full-Stack Development</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 88%;"></div>
+                  </div>
+                </div>
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">System Architecture</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 82%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact CTA -->
+          <div class="w3-margin-top w3-padding-top">
+            <a href="#social-networks" class="w3-button w3-blue w3-round-large w3-hover-shadow">
+              <i class="fa fa-envelope w3-margin-right"></i>
+              Let's Connect
+            </a>
+            <a href="#projects" class="w3-button w3-border w3-border-blue w3-text-blue w3-round-large w3-margin-left w3-hover-blue">
+              <i class="fa fa-eye w3-margin-right"></i>
+              View My Work
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  /* Custom animations */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Enhanced card hover effects */
+  .w3-card-4:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+  }
+
+  /* Progress bar animation */
+  .w3-blue {
+    animation: progressLoad 2s ease-out;
+  }
+
+  @keyframes progressLoad {
+    from { width: 0%; }
+  }
+
+  /* Button hover effects */
+  .w3-button {
+    transition: all 0.3s ease;
+  }
+
+  .w3-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .w3-jumbo {
+      font-size: 2.5rem !important;
+    }
+    
+    .w3-row-padding .w3-third,
+    .w3-row-padding .w3-twothird {
+      width: 100% !important;
+      margin-bottom: 2rem;
+    }
+  }
+</style>
