@@ -1,5 +1,8 @@
 ---
-// Fresh Developer Portfolio - No existing project dependencies
+import Image from "astro/components/Image.astro";
+import Me from "../libraries/me";
+
+import profilePicture from "../images/profile.jpg";
 ---
 
 <!DOCTYPE html>
@@ -812,7 +815,7 @@
         </div>
         
         <div class="hero-content">
-            <h1 class="hero-title">Alex Rivera</h1>
+            <h1 class="hero-title">Danny Vaca</h1>
             <h2 class="hero-subtitle">Full Stack Developer & Software Architect</h2>
             <p class="hero-description">
                 Passionate about creating innovative solutions with modern technologies. 
@@ -829,30 +832,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card fade-in">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-label">Open Source Libraries</div>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number" data-count="25">0</div>
-                    <div class="stat-label">Certifications</div>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number" data-count="5">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section class="about section" id="about">
         <div class="container">
@@ -865,28 +844,17 @@
             
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>
-                        Hello! I'm Alex, a passionate full-stack developer with over 5 years of experience building 
-                        scalable web applications and developer tools. My journey began with a Computer Science degree 
-                        from Stanford University, where I fell in love with the endless possibilities of technology.
-                    </p>
-                    <br>
-                    <p>
-                        I specialize in modern JavaScript frameworks, cloud architecture, and creating developer tools 
-                        that enhance productivity. When I'm not coding, you'll find me contributing to open source 
-                        projects, writing technical articles, or exploring the latest in AI and machine learning.
-                    </p>
-                    <br>
-                    <p>
-                        My mission is to build technology that not only solves problems but also inspires and 
-                        empowers others to create amazing things.
-                    </p>
+                  {Me.detail.split("\n").map((e) => (<>
+                    <p>{e}</p>
+                    <br/>
+                  </>))}
                 </div>
                 
                 <div class="about-image fade-in">
-                    <div style="width: 100%; height: 400px; background: var(--gradient-primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
+                  <Image
+                    src={profilePicture}
+                    alt="Profile picture"
+                    style="width: 100%; height: auto;"/>
                 </div>
             </div>
         </div>
