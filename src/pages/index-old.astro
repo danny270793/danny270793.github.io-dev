@@ -1,0 +1,539 @@
+---
+import "../css/w3css.css";
+import "../css/index.css";
+import "../fonts/fontawesome/css/index.css";
+import "../libraries/arrays";
+import Navbar from "../components/navbar.astro";
+import SocialNetworks from "../components/social-networks.astro";
+import Technologies from "../components/technologies.astro";
+import Projects from "../components/projects.astro";
+import Libraries from "../components/libraries.tsx";
+import Certifications from "../components/certifications.tsx";
+import Education from "../components/educations.astro";
+import AboutMe from "../components/about-me.astro";
+import ProfilePicture from "../images/profile.jpg";
+import MyCertifications, {
+  CategoryOrder,
+} from "../libraries/me/knowledges/certifications";
+import MyLibraries from "../libraries/me/knowledges/libraries";
+import CertificationsBackground from "../images/parallax/certification.jpg";
+import OpenSourceLibrariesBackground from "../images/parallax/open source libraries.jpg";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={ProfilePicture.src} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Danny Vaca - Software Engineer & Full-Stack Developer. Experienced in cloud architecture, DevOps, and modern web technologies." />
+    <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architecture, DevOps, Web Development" />
+    <title>Danny Vaca - Software Engineer & Developer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles for Enhanced Effects -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      
+      .typing-animation {
+        overflow: hidden;
+        border-right: 3px solid #667eea;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+      
+      .code-block-modern {
+        position: relative;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border: 1px solid rgba(102, 126, 234, 0.2);
+      }
+      
+      .code-block-modern::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #14b8a6, #ec4899, #f59e0b);
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+      
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+      
+      .floating-icons {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .floating-icons:nth-child(2) {
+        animation-delay: -2s;
+      }
+      
+      .floating-icons:nth-child(3) {
+        animation-delay: -4s;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+      }
+      
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce-gentle 2s infinite;
+      }
+      
+      @keyframes bounce-gentle {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-10px); }
+      }
+      
+      .stats-counter {
+        font-variant-numeric: tabular-nums;
+      }
+      
+      .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+      @media (max-width: 768px) {
+        .parallax-bg {
+          background-attachment: scroll;
+        }
+      }
+      
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .animate-on-scroll.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 font-sans text-slate-900">
+    <!-- Enhanced Navigation -->
+    <Navbar />
+
+    <!-- Modern Hero Section with Tailwind -->
+    <section class="relative min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 flex items-center justify-center overflow-hidden">
+      <!-- Floating Background Elements -->
+      <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
+      
+      <!-- Floating Developer Icons -->
+      <div class="absolute top-1/4 left-1/4 text-6xl text-white/20 floating-icons">
+        <i class="fa fa-code"></i>
+      </div>
+      <div class="absolute top-1/3 right-1/4 text-5xl text-white/20 floating-icons">
+        <i class="fa fa-laptop"></i>
+      </div>
+      <div class="absolute bottom-1/3 left-1/6 text-4xl text-white/20 floating-icons">
+        <i class="fa fa-cogs"></i>
+      </div>
+      
+      <!-- Hero Content -->
+      <div class="relative z-10 text-center text-white max-w-5xl mx-auto px-6">
+        <div class="animate-fade-in-up">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            Danny Vaca
+          </h1>
+          <div class="text-xl md:text-2xl mb-8 space-y-2">
+            <p class="typing-animation">Senior Software Engineer & Cloud Architect</p>
+            <p class="text-blue-300">Building scalable solutions with modern technologies</p>
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a href="#philosophy" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-glow">
+              <i class="fa fa-rocket mr-2"></i>
+              Explore My Work
+            </a>
+            <a href="#contact" class="border-2 border-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              <i class="fa fa-envelope mr-2"></i>
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator text-white/70">
+        <p class="text-sm mb-2">Scroll to explore</p>
+        <i class="fa fa-chevron-down text-xl"></i>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl font-bold gradient-text mb-4">Professional Journey</h2>
+          <p class="text-xl text-slate-600 max-w-2xl mx-auto">Numbers that reflect passion, dedication, and continuous growth in software engineering</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center p-8 hover-lift glass-effect rounded-2xl border border-slate-200/50 animate-on-scroll">
+            <div class="text-5xl font-bold gradient-text stats-counter mb-2">5+</div>
+            <p class="text-slate-600 font-medium">Years Experience</p>
+          </div>
+          <div class="text-center p-8 hover-lift glass-effect rounded-2xl border border-slate-200/50 animate-on-scroll">
+            <div class="text-5xl font-bold gradient-text stats-counter mb-2">50+</div>
+            <p class="text-slate-600 font-medium">Projects Delivered</p>
+          </div>
+          <div class="text-center p-8 hover-lift glass-effect rounded-2xl border border-slate-200/50 animate-on-scroll">
+            <div class="text-5xl font-bold gradient-text stats-counter mb-2">30+</div>
+            <p class="text-slate-600 font-medium">Certifications</p>
+          </div>
+          <div class="text-center p-8 hover-lift glass-effect rounded-2xl border border-slate-200/50 animate-on-scroll">
+            <div class="text-5xl font-bold gradient-text stats-counter mb-2">15+</div>
+            <p class="text-slate-600 font-medium">Technologies</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Philosophy Section -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50" id="philosophy">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-code mr-4"></i>
+            Code Philosophy
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            Building elegant, maintainable, and scalable solutions that solve real-world problems with clean architecture and modern best practices.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Clean Code Card -->
+          <div class="glass-effect bg-white/80 backdrop-blur-sm rounded-2xl p-8 hover-lift border border-slate-200/50 animate-on-scroll">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-4">
+                <i class="fa fa-lightbulb-o text-white text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">Clean Code Advocate</h3>
+            </div>
+            <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+              I believe in writing code that tells a story. Every function, every variable, 
+              every comment should contribute to the narrative of solving the problem at hand.
+            </p>
+            <div class="code-block-modern rounded-xl p-6">
+              <pre class="text-slate-300 font-mono text-sm leading-relaxed">
+<span class="text-blue-400">const</span> <span class="text-yellow-300">solution</span> = <span class="text-green-400">(</span><span class="text-orange-300">problem</span><span class="text-green-400">) =></span> <span class="text-green-400">{</span>
+  <span class="text-purple-400">return</span> elegant <span class="text-red-400">&&</span> maintainable <span class="text-red-400">&&</span> scalable<span class="text-green-400">;</span>
+<span class="text-green-400">};</span>
+              </pre>
+            </div>
+          </div>
+          
+          <!-- Performance Card -->
+          <div class="glass-effect bg-white/80 backdrop-blur-sm rounded-2xl p-8 hover-lift border border-slate-200/50 animate-on-scroll">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mr-4">
+                <i class="fa fa-rocket text-white text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">Performance Focused</h3>
+            </div>
+            <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+              Every millisecond matters. I optimize for performance without sacrificing 
+              readability, ensuring applications are fast, responsive, and delightful to use.
+            </p>
+            <div class="code-block-modern rounded-xl p-6">
+              <pre class="text-slate-300 font-mono text-sm leading-relaxed">
+<span class="text-slate-500">// Optimized for speed and efficiency</span>
+<span class="text-blue-400">const</span> <span class="text-yellow-300">optimize</span> = <span class="text-green-400">(</span><span class="text-orange-300">codeBase</span><span class="text-green-400">) =></span> <span class="text-green-400">({</span>
+  <span class="text-blue-400">...</span>codeBase<span class="text-green-400">,</span>
+  <span class="text-yellow-300">performance</span><span class="text-green-400">:</span> <span class="text-green-300">'excellent'</span><span class="text-green-400">,</span>
+  <span class="text-yellow-300">userExperience</span><span class="text-green-400">:</span> <span class="text-green-300">'smooth'</span>
+<span class="text-green-400">});</span>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 bg-white" id="education">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-graduation-cap mr-4"></i>
+            Education
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            Continuous learning and academic excellence in computer science and engineering.
+          </p>
+        </div>
+        
+        <div class="glass-effect bg-slate-50/80 backdrop-blur-sm rounded-2xl p-8 hover-lift border border-slate-200/50 animate-on-scroll">
+          <Education />
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-slate-50" id="certifications">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-certificate mr-4"></i>
+            Professional Certifications
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            Validated expertise across cloud platforms, development frameworks, and emerging technologies.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll">
+          <Certifications
+            certifications={MyCertifications}
+            order={CategoryOrder}
+            background={CertificationsBackground}
+            client:load
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source Section -->
+    <section class="py-20 bg-white" id="open-source">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-code-fork mr-4"></i>
+            Open Source Contributions
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            Contributing to the developer community with libraries, tools, and frameworks that empower other developers.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll">
+          <Libraries
+            libraries={MyLibraries}
+            background={OpenSourceLibrariesBackground}
+            client:load
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-indigo-50" id="projects">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-laptop mr-4"></i>
+            Featured Projects
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            A showcase of applications, systems, and solutions that demonstrate technical expertise and innovation.
+          </p>
+        </div>
+        
+        <div class="glass-effect bg-white/80 backdrop-blur-sm rounded-2xl p-8 hover-lift border border-slate-200/50 animate-on-scroll">
+          <Projects />
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="py-20 bg-white" id="technologies">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            <i class="fa fa-cogs mr-4"></i>
+            Technology Stack
+          </h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            Expertise across the full spectrum of modern development technologies and cloud platforms.
+          </p>
+        </div>
+        
+        <div class="glass-effect bg-slate-50/80 backdrop-blur-sm rounded-2xl p-8 hover-lift border border-slate-200/50 animate-on-scroll">
+          <Technologies />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 text-white relative overflow-hidden" id="contact">
+      <div class="absolute inset-0 bg-hero-pattern opacity-5"></div>
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <i class="fa fa-envelope mr-4"></i>
+            Let's Build Something Amazing
+          </h2>
+          <p class="text-xl text-blue-200 max-w-3xl mx-auto">
+            Ready to collaborate on your next project or discuss opportunities to create innovative solutions together.
+          </p>
+        </div>
+        
+        <div class="animate-on-scroll mb-12">
+          <SocialNetworks />
+        </div>
+        
+        <div class="text-center animate-on-scroll">
+          <a href="mailto:danny270793@gmail.com" 
+             class="inline-flex items-center bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-8 py-4 rounded-full text-lg font-semibold mr-4 mb-4 transition-all duration-300 transform hover:scale-105 hover:shadow-glow">
+            <i class="fa fa-envelope mr-3"></i>
+            Get In Touch
+          </a>
+          <a href="#projects" 
+             class="inline-flex items-center border-2 border-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-4 rounded-full text-lg font-semibold mb-4 transition-all duration-300 transform hover:scale-105">
+            <i class="fa fa-eye mr-3"></i>
+            View Portfolio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTopBtn"
+      class="fixed bottom-8 right-8 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white w-14 h-14 rounded-full shadow-glow opacity-0 transition-all duration-300 transform hover:scale-110 z-50"
+      style="display: none;"
+      title="Back to top"
+    >
+      <i class="fa fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            backToTopBtn.style.display = 'block';
+            backToTopBtn.classList.add('opacity-100');
+            backToTopBtn.classList.remove('opacity-0');
+          } else {
+            backToTopBtn.classList.add('opacity-0');
+            backToTopBtn.classList.remove('opacity-100');
+            setTimeout(() => {
+              if (window.pageYOffset <= 300) {
+                backToTopBtn.style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+              
+              // Animate numbers for stats
+              if (entry.target.querySelector('.stats-counter')) {
+                const counter = entry.target.querySelector('.stats-counter');
+                const target = parseInt(counter.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                  current += increment;
+                  if (current >= target) {
+                    counter.textContent = target + '+';
+                    clearInterval(timer);
+                  } else {
+                    counter.textContent = Math.floor(current) + '+';
+                  }
+                }, 50);
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+          observer.observe(element);
+        });
+
+        // Enhanced navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        window.addEventListener('scroll', function() {
+          let current = '';
+          sections.forEach(section => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            const sectionHeight = (section as HTMLElement).clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+              current = section.getAttribute('id');
+            }
+          });
+
+          navLinks.forEach(link => {
+            link.classList.remove('text-blue-500', 'bg-blue-50');
+            if (link.getAttribute('href').substring(1) === current) {
+              link.classList.add('text-blue-500', 'bg-blue-50');
+            }
+          });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
