@@ -10,145 +10,425 @@ import type Certification from "../libraries/me/knowledges/certification";
 const { parallaxHeight = "25vh" } = Astro.props;
 ---
 
-<div
-  id="certifications"
-  class="parallax w3-display-container"
-  style={`background-image: url("${CertificationsBackground.src}"); min-height: ${parallaxHeight}`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Certifications
-    </span>
-  </div>
-</div>
-<div class="w3-content w3-container w3-padding-64">
-  <div class="w3-center">
-    <div
-      class="category-filter w3-bar-item w3-round w3-button w3-green"
-      data-category="All"
-    >
-      <span class="w3-badge w3-red">
-        {MyCertifications.length}
-      </span> All
+<!-- Enhanced Hero Section -->
+<section class="hero-modern parallax header" style={`background-image: url("${CertificationsBackground.src}")`}>
+  <div class="hero-overlay"></div>
+  
+  <!-- Floating Certification Icons -->
+  <div class="floating-elements">
+    <div class="floating-icon animate-float" style="top: 15%; left: 8%; animation-delay: 0s;">
+      <i class="fas fa-certificate"></i>
     </div>
-    {
-      [
-        ...new Set(
-          MyCertifications.map(
-            (certification: Certification) => certification.category,
-          ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
-        ),
-      ].map((category) => (
-        <div
-          class="category-filter w3-bar-item w3-round w3-button"
-          data-category={`${category.replace(" ", "_")}`}
-        >
-          <span class="w3-badge w3-red">
-            {MyCertifications.filter((e) => e.category === category).length}
-          </span>{" "}
-          {category}
-        </div>
-      ))
-    }
+    <div class="floating-icon animate-float" style="top: 70%; right: 12%; animation-delay: 2s;">
+      <i class="fas fa-award"></i>
+    </div>
+    <div class="floating-icon animate-float" style="bottom: 25%; left: 15%; animation-delay: 4s;">
+      <i class="fas fa-medal"></i>
+    </div>
+    <div class="floating-icon animate-float" style="top: 35%; right: 20%; animation-delay: 6s;">
+      <i class="fas fa-star"></i>
+    </div>
+    <div class="floating-icon animate-float" style="top: 60%; left: 25%; animation-delay: 8s;">
+      <i class="fas fa-trophy"></i>
+    </div>
   </div>
-  <br />
 
-  {
-    [
-      ...new Set(
-        MyCertifications.map(
-          (certification: Certification) => certification.category,
-        ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
-      ),
-    ].map((category) =>
-      MyCertifications.filter((e) => e.category === category)
-        .sort((a, b) => a.order - b.order)
-        .chunk(3)
-        .map((certifications: Certification[]) => (
+  <div class="hero-content animate-fade-in-up">
+    <h1 class="hero-title animate-fade-in-up animate-delay-200">
+      Professional Certifications
+    </h1>
+    <p class="hero-subtitle animate-fade-in-up animate-delay-500">
+      Industry Recognition & Continuous Professional Development
+    </p>
+    <p class="hero-description animate-fade-in-up animate-delay-700">
+      Demonstrating expertise through {MyCertifications.length}+ professional certifications across cloud, development, and emerging technologies
+    </p>
+    
+    <div class="hero-actions animate-fade-in-up animate-delay-1000">
+      <a href="#certifications-content" class="btn-modern btn-primary">
+        <i class="fas fa-certificate"></i>
+        Explore Certifications
+      </a>
+      <a href="#technologies" class="btn-modern btn-outline">
+        <i class="fas fa-cogs"></i>
+        View Technologies
+      </a>
+    </div>
+  </div>
+  
+  <!-- Animated Scroll Indicator -->
+  <div class="scroll-indicator animate-bounce">
+    <p>Scroll to explore</p>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+<!-- Beautiful Certifications Section -->
+<section id="certifications-content" class="certifications-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header scroll-animate">
+      <h2 class="section-title">Professional Certifications</h2>
+      <p class="section-subtitle">
+        Industry-recognized credentials demonstrating expertise across cloud platforms, development frameworks, and emerging technologies
+      </p>
+    </div>
+    
+    <!-- Modern Filter System -->
+    <div class="certification-filters scroll-animate">
+      <div
+        class="filter-btn active"
+        data-category="All"
+      >
+        <span class="filter-count">
+          {MyCertifications.length}
+        </span>
+        <span class="filter-label">All Certifications</span>
+      </div>
+      {
+        [
+          ...new Set(
+            MyCertifications.map(
+              (certification: Certification) => certification.category,
+            ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
+          ),
+        ].map((category) => (
           <div
-            class={`categories category-${category.replace(" ", "_")} w3-hide`}
+            class="filter-btn"
+            data-category={`${category.replace(" ", "_")}`}
           >
-            {certifications.map((certification: Certification) => (
-              <CertificationSmall certification={certification} />
-            ))}
-
-            <div class="w3-row w3-hide-small">
-              {certifications.map((certification: Certification) => (
-                <CertificationLarge certification={certification} />
-              ))}
-            </div>
-          </div>
-        )),
-    )
-  }
-
-  <div id="all">
-    {
-      MyCertifications.sort(
-        (a, b) =>
-          (CategoryOrder[a.category] + 1) * 10 +
-          a.order -
-          (CategoryOrder[b.category] + 1) * 10 +
-          b.order,
-      )
-        .chunk(3)
-        .map((certifications: Certification[]) => (
-          <div>
-            {certifications.map((certification: Certification) => (
-              <CertificationSmall certification={certification} />
-            ))}
-
-            <div class="w3-row w3-hide-small">
-              {certifications.map((certification: Certification) => (
-                <CertificationLarge certification={certification} />
-              ))}
-            </div>
+            <span class="filter-count">
+              {MyCertifications.filter((e) => e.category === category).length}
+            </span>
+            <span class="filter-label">{category}</span>
           </div>
         ))
-    }
+      }
+    </div>
+    
+    <!-- Certification Grid -->
+    <div class="certification-grid scroll-animate">
+      <!-- Category-specific certification displays -->
+      {
+        [
+          ...new Set(
+            MyCertifications.map(
+              (certification: Certification) => certification.category,
+            ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
+          ),
+        ].map((category) =>
+          MyCertifications.filter((e) => e.category === category)
+            .sort((a, b) => a.order - b.order)
+            .chunk(3)
+            .map((certifications: Certification[]) => (
+              <div
+                class={`categories category-${category.replace(" ", "_")} certification-category`}
+                style="display: none;"
+              >
+                <div class="category-header">
+                  <h3 class="category-title text-gradient">{category}</h3>
+                  <div class="category-count-badge">
+                    {MyCertifications.filter((e) => e.category === category).length} certifications
+                  </div>
+                </div>
+                
+                <div class="certification-cards">
+                  {certifications.map((certification: Certification, index) => (
+                    <div class={`certification-wrapper scroll-animate animate-delay-${index * 100}`}>
+                      <div class="mobile-cert">
+                        <CertificationSmall certification={certification} />
+                      </div>
+                      <div class="desktop-cert">
+                        <CertificationLarge certification={certification} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )),
+        )
+      }
+
+      <!-- All certifications display -->
+      <div id="all" class="certification-category">
+        <div class="category-header">
+          <h3 class="category-title text-gradient">All Professional Certifications</h3>
+          <div class="category-count-badge">
+            {MyCertifications.length} total certifications
+          </div>
+        </div>
+        
+        <div class="certification-cards">
+          {
+            MyCertifications.sort(
+              (a, b) =>
+                (CategoryOrder[a.category] + 1) * 10 +
+                a.order -
+                (CategoryOrder[b.category] + 1) * 10 +
+                b.order,
+            )
+              .chunk(3)
+              .map((certifications: Certification[]) => (
+                <div class="certification-row">
+                  {certifications.map((certification: Certification, index) => (
+                    <div class={`certification-wrapper scroll-animate animate-delay-${index * 100}`}>
+                      <div class="mobile-cert">
+                        <CertificationSmall certification={certification} />
+                      </div>
+                      <div class="desktop-cert">
+                        <CertificationLarge certification={certification} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+    
+    <!-- Certification Summary -->
+    <div class="certification-summary scroll-animate">
+      <div class="summary-card modern-card">
+        <div class="summary-header">
+          <div class="summary-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="summary-title">Certification Journey</h3>
+        </div>
+        
+        <div class="summary-content">
+          <p>
+            My commitment to continuous learning is demonstrated through {MyCertifications.length}+ professional certifications 
+            spanning cloud platforms, development methodologies, and emerging technologies. These credentials validate 
+            hands-on expertise and dedication to staying current with industry best practices.
+          </p>
+          
+          <div class="summary-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" data-count={MyCertifications.length}>0</span>
+                <span class="stat-label">Professional Certifications</span>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" data-count={[...new Set(MyCertifications.map(c => c.category))].length}>0</span>
+                <span class="stat-label">Technology Categories</span>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" data-count="5" data-suffix="+">0</span>
+                <span class="stat-label">Years Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="summary-actions">
+          <a href="#technologies" class="btn-modern btn-primary">
+            <i class="fas fa-cogs"></i>
+            View Technical Skills
+          </a>
+          <a href="#projects" class="btn-modern btn-secondary">
+            <i class="fas fa-rocket"></i>
+            See Projects
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+/**
+ * Certifications Animation System
+ * Handles scroll-triggered animations, filtering, and interactive elements
+ */
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Setup Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Handle animated counters
+                if (entry.target.querySelector('[data-count]')) {
+                    animateCounters(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe all scroll-animate elements
+    const scrollElements = document.querySelectorAll('.scroll-animate');
+    scrollElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Animate counters
+    function animateCounters(container) {
+        const counters = container.querySelectorAll('[data-count]');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current) + suffix;
+                }
+            }, 16);
+        });
+    }
+
+    // Enhanced filter functionality
     const all: HTMLElement | null = document.getElementById("all");
 
     const filter = function (key: string, element: Element): void {
-      document
-        .querySelectorAll(".category-filter")
-        .forEach((categoryFilter: Element) => {
-          categoryFilter.classList.remove("w3-green");
-        });
-      element.classList.add("w3-green");
+        // Update filter button states
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach((filterBtn: Element) => {
+                filterBtn.classList.remove("active");
+            });
+        element.classList.add("active");
 
-      if (key === "All") {
-        all?.classList.remove("w3-hide");
-        document
-          .querySelectorAll(".categories")
-          .forEach((categoryDiv: Element) => {
-            categoryDiv.classList.add("w3-hide");
-          });
-      } else {
-        all?.classList.add("w3-hide");
-        document
-          .querySelectorAll(".categories")
-          .forEach((categoryDiv: Element) => {
-            categoryDiv.classList.add("w3-hide");
-          });
-        document
-          .querySelectorAll(`.category-${key}`)
-          .forEach((categoryDiv: Element) => {
-            categoryDiv.classList.remove("w3-hide");
-          });
-      }
+        // Add fade-out animation
+        const currentVisible = document.querySelector('.certification-category[style*="display: block"], #all:not([style*="display: none"])');
+        if (currentVisible) {
+            (currentVisible as HTMLElement).style.opacity = '0';
+            (currentVisible as HTMLElement).style.transform = 'translateY(20px)';
+        }
+
+        setTimeout(() => {
+            if (key === "All") {
+                (all as HTMLElement).style.display = "block";
+                document
+                    .querySelectorAll(".categories")
+                    .forEach((categoryDiv: Element) => {
+                        (categoryDiv as HTMLElement).style.display = "none";
+                    });
+            } else {
+                (all as HTMLElement).style.display = "none";
+                document
+                    .querySelectorAll(".categories")
+                    .forEach((categoryDiv: Element) => {
+                        (categoryDiv as HTMLElement).style.display = "none";
+                    });
+                document
+                    .querySelectorAll(`.category-${key}`)
+                    .forEach((categoryDiv: Element) => {
+                        (categoryDiv as HTMLElement).style.display = "block";
+                    });
+            }
+
+            // Add fade-in animation to newly visible content
+            const newVisible = document.querySelector('.certification-category[style*="display: block"]');
+            if (newVisible) {
+                (newVisible as HTMLElement).style.opacity = '0';
+                (newVisible as HTMLElement).style.transform = 'translateY(20px)';
+                
+                requestAnimationFrame(() => {
+                    (newVisible as HTMLElement).style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    (newVisible as HTMLElement).style.opacity = '1';
+                    (newVisible as HTMLElement).style.transform = 'translateY(0)';
+                });
+            }
+        }, 300);
     };
+
+    // Add event listeners to filter buttons
     document
-      .querySelectorAll<HTMLElement>(".category-filter")
-      .forEach((categoryFilter: HTMLElement) => {
-        categoryFilter.addEventListener("click", () =>
-          filter(categoryFilter.dataset.category || "", categoryFilter),
-        );
-      });
-  });
+        .querySelectorAll<HTMLElement>(".filter-btn")
+        .forEach((filterBtn: HTMLElement) => {
+            filterBtn.addEventListener("click", () =>
+                filter(filterBtn.dataset.category || "", filterBtn),
+            );
+        });
+
+    // Add smooth scroll for anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = (target as HTMLElement).offsetTop - 80; // Account for fixed header
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Enhanced button interactions
+    const modernButtons = document.querySelectorAll('.btn-modern');
+    modernButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Add ripple effect on click
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = (e as MouseEvent).clientX - rect.left - size / 2;
+            const y = (e as MouseEvent).clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    console.log('Certifications animations initialized! 🏆');
+});
 </script>
+
+<style>
+/* Additional certification-specific styles */
+.btn-modern {
+    position: relative;
+    overflow: hidden;
+}
+</style>
