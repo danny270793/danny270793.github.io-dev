@@ -1,8 +1,12 @@
 ---
 import Image from "astro/components/Image.astro";
 import Me from "../libraries/me";
-
+import MyEducations from "../libraries/me/knowledges/educations";
 import profilePicture from "../images/profile.jpg";
+import MyCertifications, {
+  CategoryOrder,
+} from "../libraries/me/knowledges/certifications";
+import type Certification from "../libraries/me/knowledges/certification";
 ---
 
 <!DOCTYPE html>
@@ -550,7 +554,6 @@ import profilePicture from "../images/profile.jpg";
         .cert-icon {
             width: 80px;
             height: 80px;
-            background: var(--gradient-primary);
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -860,6 +863,101 @@ import profilePicture from "../images/profile.jpg";
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section class="section">
+      <div class="container">
+          <div class="section-header fade-in">
+              <h2 class="section-title">Education</h2>
+              <p class="section-subtitle">
+                  Academic foundation that shaped my technical expertise and problem-solving approach.
+              </p>
+          </div>
+          
+          <div class="cert-grid">
+            {MyEducations.map((education) => (
+              <div class="cert-card fade-in">
+                  <div class="cert-header">
+                      <div class="cert-icon">
+                        <Image
+                          class="w3-padding"
+                          src={education.image}
+                          alt={education.name}
+                          style="width: 100%; height: auto;"
+                        />
+                      </div>
+                      <div>
+                          <div class="cert-title">{education.name}</div>
+                          <div class="cert-issuer">{education.institution}</div>
+                      </div>
+                  </div>
+                  <div class="cert-date">Graduated: {education.to}</div>
+              </div>
+              ))}
+          </div>
+      </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="certifications section" id="certifications">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Professional Certifications</h2>
+            <p class="section-subtitle">
+                Continuous learning and validation of expertise across modern technologies and methodologies.
+            </p>
+        </div>
+        
+        <!-- Certification Filters -->
+        <div class="cert-filters fade-in">
+            {
+              [
+                ...new Set(
+                  MyCertifications.map(
+                    (certification: Certification) => certification.category,
+                  ).sort((a, b) => CategoryOrder[a] - CategoryOrder[b]),
+                ),
+              ].map((category, index) => (
+                <button
+                  class={`filter-btn ${index === 0 ? "active" : ""}`}
+                  data-filter={`${category.replace(" ", "_")}`}
+                >
+                  {category} ({MyCertifications.filter((e) => e.category === category).length})
+                </button>
+              ))
+            }
+            <button class="filter-btn" data-filter="all">All ({MyCertifications.length})</button>
+        </div>
+        
+        <div class="cert-grid">
+          {MyCertifications.sort(
+            (a, b) =>
+              (CategoryOrder[a.category] + 1) * 10 +
+              a.order -
+              (CategoryOrder[b.category] + 1) * 10 +
+              b.order,
+          ).map((certification) => (
+            <div class="cert-card fade-in" data-category={certification.category.replace(" ", "_")}>
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <Image
+                          class="w3-padding"
+                          src={certification.image}
+                          alt={certification.name}
+                          style="width: 100%; height: auto;"
+                        />
+                    </div>
+                    <div>
+                        <div class="cert-title">{certification.name}</div>
+                        <div class="cert-issuer">{certification.brand}</div>
+                    </div>
+                </div>
+                <div class="cert-date">Obtained: {certification.date.toISOString().split("T")[0]}</div>
+            </div>
+          ))}
+        </div>
+    </div>
+</section>
+
     <!-- Skills Section -->
     <section class="section">
         <div class="container">
@@ -1074,201 +1172,6 @@ app.post('/users',
                         <span class="stat-badge"><i class="fas fa-download"></i> 2.1k downloads/week</span>
                         <span class="stat-badge"><i class="fas fa-code-branch"></i> 28 forks</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="certifications section" id="certifications">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Professional Certifications</h2>
-                <p class="section-subtitle">
-                    Continuous learning and validation of expertise across modern technologies and methodologies.
-                </p>
-            </div>
-            
-            <!-- Certification Filters -->
-            <div class="cert-filters fade-in">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="cloud">Cloud</button>
-                <button class="filter-btn" data-filter="devops">DevOps</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-                <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
-            </div>
-            
-            <div class="cert-grid">
-                <div class="cert-card fade-in" data-category="cloud">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fab fa-aws"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">AWS Solutions Architect Professional</div>
-                            <div class="cert-issuer">Amazon Web Services</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: March 2024</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="cloud">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Google Cloud Professional Developer</div>
-                            <div class="cert-issuer">Google Cloud</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: January 2024</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="devops">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Certified Kubernetes Administrator</div>
-                            <div class="cert-issuer">Cloud Native Computing Foundation</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: November 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="devops">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fab fa-microsoft"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Azure DevOps Engineer Expert</div>
-                            <div class="cert-issuer">Microsoft</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: September 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="security">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Certified Ethical Hacker</div>
-                            <div class="cert-issuer">EC-Council</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: July 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="ai-ml">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Machine Learning Specialization</div>
-                            <div class="cert-issuer">Stanford University (Coursera)</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: May 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="cloud">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fab fa-microsoft"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Azure Solutions Architect Expert</div>
-                            <div class="cert-issuer">Microsoft</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: April 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="security">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Certified Information Security Manager</div>
-                            <div class="cert-issuer">ISACA</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: February 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="devops">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fab fa-docker"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Docker Certified Associate</div>
-                            <div class="cert-issuer">Docker Inc.</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: January 2023</div>
-                </div>
-
-                <div class="cert-card fade-in" data-category="ai-ml">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">TensorFlow Developer Certificate</div>
-                            <div class="cert-issuer">Google</div>
-                        </div>
-                    </div>
-                    <div class="cert-date">Obtained: December 2022</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">
-                    Academic foundation that shaped my technical expertise and problem-solving approach.
-                </p>
-            </div>
-            
-            <div class="cert-grid">
-                <div class="cert-card fade-in">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Master of Science in Computer Science</div>
-                            <div class="cert-issuer">Stanford University</div>
-                        </div>
-                    </div>
-                    <p>Specialized in Artificial Intelligence and Machine Learning with focus on distributed systems and scalable architectures.</p>
-                    <div class="cert-date">Graduated: 2019</div>
-                </div>
-
-                <div class="cert-card fade-in">
-                    <div class="cert-header">
-                        <div class="cert-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div>
-                            <div class="cert-title">Bachelor of Science in Software Engineering</div>
-                            <div class="cert-issuer">University of California, Berkeley</div>
-                        </div>
-                    </div>
-                    <p>Comprehensive foundation in software development, algorithms, and system design with magna cum laude honors.</p>
-                    <div class="cert-date">Graduated: 2017</div>
                 </div>
             </div>
         </div>
