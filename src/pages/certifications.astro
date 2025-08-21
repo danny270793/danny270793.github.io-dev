@@ -7,17 +7,78 @@ import Navbar from "../components/navbar.astro";
 import FullCertifications from "../components/full-certifications.astro";
 ---
 
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Danny Vaca</title>
+    <meta name="description" content="Danny Vaca - Professional Certifications. Explore my comprehensive collection of technical certifications and professional achievements." />
+    <meta name="keywords" content="Danny Vaca, Certifications, Professional Achievements, Cloud Certifications, AWS, Azure, DevOps" />
+    <title>Professional Certifications - Danny Vaca</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 font-sans text-slate-900">
     <Navbar anchors={false} />
 
-    <FullCertifications parallaxHeight="50vh" />
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
+      <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <div class="animate-fade-in-up">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            Professional Certifications
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-200 max-w-3xl mx-auto mb-8">
+            A comprehensive showcase of validated expertise across cloud platforms, development frameworks, and emerging technologies.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-glow text-white">
+              <i class="fa fa-home mr-2"></i>
+              Back to Portfolio
+            </a>
+            <a href="#certifications-grid" class="border-2 border-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 text-white">
+              <i class="fa fa-certificate mr-2"></i>
+              View Certifications
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Content -->
+    <section id="certifications-grid" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-soft border border-slate-200/50">
+          <FullCertifications parallaxHeight="50vh" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 text-white">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Let's Work Together
+        </h2>
+        <p class="text-xl text-blue-200 max-w-2xl mx-auto mb-8">
+          Ready to leverage these certifications and expertise for your next project?
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:danny270793@gmail.com" 
+             class="inline-flex items-center bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-glow">
+            <i class="fa fa-envelope mr-3"></i>
+            Get In Touch
+          </a>
+          <a href="/" 
+             class="inline-flex items-center border-2 border-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+            <i class="fa fa-arrow-left mr-3"></i>
+            Back to Portfolio
+          </a>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
