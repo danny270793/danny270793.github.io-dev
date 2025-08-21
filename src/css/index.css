@@ -907,7 +907,6 @@ html {
   height: 120px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
   transition: all var(--transition-base);
 }
 
