@@ -2,41 +2,139 @@
 import TechnologiesBackground from "../images/parallax/technologies.jpg";
 import MyTechnologies from "../libraries/me/knowledges/technologies";
 import type { Technology } from "../libraries/me/knowledges/technologies";
+
+// Group technologies by category
+const categories = [...new Set(MyTechnologies.map((tech: Technology) => tech.category))];
 ---
 
-<div
-  id="technologies"
-  class="parallax separator w3-display-container"
-  style={`background-image: url("${TechnologiesBackground.src}")`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Technologies
-    </span>
+<!-- Technologies Hero Section -->
+<section class="tech-hero parallax separator" style={`background-image: url("${TechnologiesBackground.src}")`}>
+  <div class="hero-overlay"></div>
+  <div class="hero-content animate-fade-in-up">
+    <h2 class="section-hero-title">Technologies</h2>
+    <p class="section-hero-subtitle">Cutting-edge tools and frameworks powering innovative solutions</p>
   </div>
-</div>
+</section>
 
-<div class="w3-content w3-container w3-padding-64">
-  {
-    [...new Set(MyTechnologies.map((e: Technology) => e.category))].map(
-      (category) => (
-        <>
-          <h5>
-            <strong>{category}</strong>
-          </h5>
-
-          {MyTechnologies.filter(
-            (t: Technology) => t.category === category,
-          ).map((technology: Technology) => (
-            <span>
-              <img src={technology.link} alt={technology.alternative} />
-              &nbsp;
-            </span>
-          ))}
-        </>
-      ),
-    )
-  }
-</div>
+<!-- Technologies Content Section -->
+<section id="technologies" class="section-modern tech-section">
+  <div class="container">
+    <div class="section-header scroll-animate">
+      <h2 class="section-title">Tech Stack & Expertise</h2>
+      <p class="section-subtitle">
+        A comprehensive toolkit spanning frontend, backend, cloud, and mobile development
+      </p>
+    </div>
+    
+    <!-- Technology Categories -->
+    <div class="tech-categories">
+      {categories.map((category, categoryIndex) => {
+        const categoryTechs = MyTechnologies.filter((tech: Technology) => tech.category === category);
+        return (
+          <div class={`tech-category scroll-animate animate-delay-${categoryIndex * 200}`}>
+            <div class="category-header">
+              <div class="category-icon">
+                {category === "Web" && <i class="fas fa-laptop-code"></i>}
+                {category === "Databases" && <i class="fas fa-database"></i>}
+                {category === "Deployments" && <i class="fas fa-cloud"></i>}
+                {category === "Mobile" && <i class="fas fa-mobile-alt"></i>}
+                {category === "CI" && <i class="fas fa-cogs"></i>}
+                {category === "Monitoring" && <i class="fas fa-chart-line"></i>}
+                {category === "BigData" && <i class="fas fa-database"></i>}
+                {category === "Microcontrollers" && <i class="fas fa-microchip"></i>}
+                {!["Web", "Databases", "Deployments", "Mobile", "CI", "Monitoring", "BigData", "Microcontrollers"].includes(category) && <i class="fas fa-code"></i>}
+              </div>
+              <h3 class="category-title">{category}</h3>
+              <div class="category-count">{categoryTechs.length} tools</div>
+            </div>
+            
+            <div class="tech-grid">
+              {categoryTechs.map((technology: Technology, techIndex) => (
+                <div class={`tech-item hover-lift stagger-child`} data-tech={technology.alternative}>
+                  <div class="tech-icon-container">
+                    <img 
+                      src={technology.link} 
+                      alt={technology.alternative}
+                      class="tech-icon"
+                      loading="lazy"
+                    />
+                    <div class="tech-overlay">
+                      <span class="tech-name">{technology.alternative}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+    
+    <!-- Technology Stats -->
+    <div class="tech-stats scroll-animate">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="stat-content">
+            <span class="stat-number" data-count={MyTechnologies.length}>0</span>
+            <span class="stat-label">Technologies Mastered</span>
+          </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <div class="stat-content">
+            <span class="stat-number" data-count={categories.length}>0</span>
+            <span class="stat-label">Technical Categories</span>
+          </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="stat-content">
+            <span class="stat-number" data-count="15" data-suffix="+">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="stat-content">
+            <span class="stat-number" data-count="25" data-suffix="+">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Technology Philosophy -->
+    <div class="tech-philosophy scroll-animate">
+      <div class="philosophy-content">
+        <h3>Technology Philosophy</h3>
+        <p>
+          I believe in choosing the right tool for the job, staying current with emerging technologies, 
+          and building solutions that are scalable, maintainable, and performant. My diverse tech stack 
+          enables me to architect comprehensive solutions from concept to deployment.
+        </p>
+        <div class="philosophy-actions">
+          <a href="#projects" class="btn-modern btn-primary">
+            <i class="fas fa-eye"></i>
+            See Technologies in Action
+          </a>
+          <a href="#certifications" class="btn-modern btn-outline">
+            <i class="fas fa-certificate"></i>
+            View Certifications
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

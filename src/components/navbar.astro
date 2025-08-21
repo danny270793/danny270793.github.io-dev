@@ -4,81 +4,507 @@ const { anchors = true } = Astro.props;
 
 <div
   id="sidebar"
-  class="w3-sidebar w3-animate-left w3-bar-block"
-  style="display: none; z-index:5"
+  class="sidebar-modern glass"
+  style="display: none; z-index: 1000;"
 >
-  <a
-    href={anchors ? "#about-me" : "/#about-me"}
-    class="w3-bar-item w3-button"
-    onclick="toggleSidebar(false)"
-  >
-    About me
-  </a>
-  <a
-    href={anchors ? "#education" : "/#education"}
-    class="w3-bar-item w3-button"
-  >
-    Education
-  </a>
-  <a
-    href={anchors ? "#certifications" : "/#certifications"}
-    class="w3-bar-item w3-button"
-  >
-    Certifications
-  </a>
-  <a
-    href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
-    class="w3-bar-item w3-button"
-  >
-    Open Source Libraries
-  </a>
-  <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button">
-    Projects
-  </a>
-  <a
-    href={anchors ? "#technologies" : "/#technologies"}
-    class="w3-bar-item w3-button"
-  >
-    Technologies
-  </a>
-  <a
-    href={anchors ? "#social-networks" : "/#social-networks"}
-    class="w3-bar-item w3-button"
-  >
-    Social Networks
-  </a>
-</div>
-
-<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
-</div>
-
-<div class="w3-top w3-xlarge">
-  <div class="w3-bar w3-card w3-white">
-    <button id="openButton" class="w3-button"> &#9776; </button>
-    Danny Vaca
-    <span class="w3-hide-large w3-hide-medium">
-      <div></div>
-    </span>
+  <div class="sidebar-header">
+    <h3 class="text-gradient">Navigation</h3>
+    <button id="closeSidebar" class="close-btn">
+      <i class="fas fa-times"></i>
+    </button>
   </div>
+  
+  <nav class="sidebar-nav">
+    <a
+      href={anchors ? "#about-me" : "/#about-me"}
+      class="nav-item scroll-animate-left animate-delay-100"
+      data-section="about-me"
+    >
+      <i class="fas fa-user"></i>
+      <span>About me</span>
+    </a>
+    <a
+      href={anchors ? "#education" : "/#education"}
+      class="nav-item scroll-animate-left animate-delay-200"
+      data-section="education"
+    >
+      <i class="fas fa-graduation-cap"></i>
+      <span>Education</span>
+    </a>
+    <a
+      href={anchors ? "#certifications" : "/#certifications"}
+      class="nav-item scroll-animate-left animate-delay-300"
+      data-section="certifications"
+    >
+      <i class="fas fa-certificate"></i>
+      <span>Certifications</span>
+    </a>
+    <a
+      href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
+      class="nav-item scroll-animate-left animate-delay-500"
+      data-section="open-source-libraries"
+    >
+      <i class="fas fa-code"></i>
+      <span>Open Source Libraries</span>
+    </a>
+    <a 
+      href={anchors ? "#projects" : "/#projects"} 
+      class="nav-item scroll-animate-left animate-delay-700"
+      data-section="projects"
+    >
+      <i class="fas fa-rocket"></i>
+      <span>Projects</span>
+    </a>
+    <a
+      href={anchors ? "#technologies" : "/#technologies"}
+      class="nav-item scroll-animate-left animate-delay-1000"
+      data-section="technologies"
+    >
+      <i class="fas fa-microchip"></i>
+      <span>Technologies</span>
+    </a>
+    <a
+      href={anchors ? "#social-networks" : "/#social-networks"}
+      class="nav-item scroll-animate-left animate-delay-1000"
+      data-section="social-networks"
+    >
+      <i class="fas fa-share-alt"></i>
+      <span>Social Networks</span>
+    </a>
+  </nav>
 </div>
+
+<div id="overlay" class="overlay-modern" style="display: none;"></div>
+
+<header class="navbar-modern nav-modern animate-fade-in-down" id="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <button id="openButton" class="menu-toggle btn-modern">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="brand-text text-gradient animate-fade-in-left">Danny Vaca</h1>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a href={anchors ? "#about-me" : "/#about-me"} class="nav-link" data-section="about-me">
+        <i class="fas fa-user"></i> About
+      </a>
+      <a href={anchors ? "#education" : "/#education"} class="nav-link" data-section="education">
+        <i class="fas fa-graduation-cap"></i> Education
+      </a>
+      <a href={anchors ? "#certifications" : "/#certifications"} class="nav-link" data-section="certifications">
+        <i class="fas fa-certificate"></i> Certifications
+      </a>
+      <a href={anchors ? "#projects" : "/#projects"} class="nav-link" data-section="projects">
+        <i class="fas fa-rocket"></i> Projects
+      </a>
+      <a href={anchors ? "#technologies" : "/#technologies"} class="nav-link" data-section="technologies">
+        <i class="fas fa-microchip"></i> Tech
+      </a>
+    </nav>
+  </div>
+  
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+</header>
+
+<style>
+/* Modern Navbar Styles */
+.navbar-modern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-modern.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.menu-toggle:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--gray-700);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: all var(--transition-base);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background: var(--gray-50);
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background: var(--gray-100);
+}
+
+.nav-link.active::after {
+  width: 80%;
+}
+
+.scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transition: width 0.1s ease;
+  width: 0%;
+}
+
+/* Modern Sidebar Styles */
+.sidebar-modern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1001;
+}
+
+.sidebar-modern.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--gray-500);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+
+.close-btn:hover {
+  color: var(--primary);
+  background: var(--gray-100);
+  transform: scale(1.1);
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--gray-700);
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: all var(--transition-base);
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 50%;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.nav-item:hover {
+  color: var(--primary);
+  background: var(--gray-50);
+  border-left-color: var(--primary);
+}
+
+.nav-item:hover::before {
+  width: 4px;
+}
+
+.nav-item.active {
+  color: var(--primary);
+  background: var(--gray-100);
+  border-left-color: var(--primary);
+}
+
+.nav-item.active::before {
+  width: 4px;
+}
+
+.nav-item i {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.overlay-modern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.overlay-modern.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .navbar-container {
+    padding: 1rem;
+  }
+  
+  .brand-text {
+    font-size: 1.25rem;
+  }
+  
+  .sidebar-modern {
+    width: 280px;
+  }
+  
+  .sidebar-header {
+    padding: 1.5rem;
+  }
+  
+  .nav-item {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar-modern {
+    display: none !important;
+  }
+  
+  .overlay-modern {
+    display: none !important;
+  }
+}
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null =
-      document.getElementById("openButton");
-    const overlay: HTMLElement | null = document.getElementById("overlay");
+    const sidebar = document.getElementById("sidebar") as HTMLElement;
+    const openButton = document.getElementById("openButton") as HTMLElement;
+    const closeButton = document.getElementById("closeSidebar") as HTMLElement;
+    const overlay = document.getElementById("overlay") as HTMLElement;
+    const navbar = document.getElementById("navbar") as HTMLElement;
+    const scrollProgress = document.getElementById("scroll-progress") as HTMLElement;
+    
+    // Sidebar functionality
     const toggleSidebar = (show: boolean) => {
-      sidebar!.style.display = show ? "block" : "none";
-      overlay!.style.display = show ? "block" : "none";
+      if (show) {
+        sidebar.classList.add("open");
+        overlay.classList.add("open");
+        sidebar.style.display = "block";
+        overlay.style.display = "block";
+        
+        // Animate nav items
+        const navItems = sidebar.querySelectorAll('.nav-item');
+        navItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('animate-in');
+          }, index * 100);
+        });
+      } else {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("open");
+        
+        setTimeout(() => {
+          sidebar.style.display = "none";
+          overlay.style.display = "none";
+        }, 300);
+      }
     };
-    openButton!.addEventListener("click", () => toggleSidebar(true));
-    overlay!.addEventListener("click", () => toggleSidebar(false));
-    document.querySelectorAll(".w3-bar-item").forEach((barItem) => {
-      barItem.addEventListener("click", () => toggleSidebar(false));
+
+    // Event listeners
+    openButton?.addEventListener("click", () => toggleSidebar(true));
+    closeButton?.addEventListener("click", () => toggleSidebar(false));
+    overlay?.addEventListener("click", () => toggleSidebar(false));
+    
+    // Close sidebar when clicking nav items
+    document.querySelectorAll(".nav-item").forEach((item) => {
+      item.addEventListener("click", () => toggleSidebar(false));
     });
+    
+    // Close sidebar on escape key
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY > 100;
+      navbar.classList.toggle("scrolled", scrolled);
+      
+      // Update scroll progress
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled_percentage = (winScroll / height) * 100;
+      scrollProgress.style.width = scrolled_percentage + "%";
+    });
+
+    // Active nav link highlighting
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-item');
+
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          
+          // Remove active class from all links
+          navLinks.forEach(link => link.classList.remove('active'));
+          
+          // Add active class to matching links
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-section') === id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = (target as HTMLElement).offsetTop - 80; // Account for navbar height
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   });
 </script>
