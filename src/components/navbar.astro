@@ -2,194 +2,182 @@
 const { anchors = true } = Astro.props;
 ---
 
-<!-- Enhanced Sidebar with modern styling -->
+<!-- Modern Sidebar with Tailwind -->
 <div
   id="sidebar"
-  class="w3-sidebar w3-animate-left w3-bar-block w3-white w3-card-4"
-  style="display: none; z-index: 10; width: 280px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"
+  class="fixed left-0 top-0 h-full w-80 bg-white/95 backdrop-blur-2xl border-r border-slate-200/50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50"
 >
   <!-- Sidebar Header -->
-  <div class="w3-bar-item w3-blue w3-large w3-padding">
-    <i class="fa fa-user-circle w3-margin-right"></i>
-    <strong>Danny Vaca</strong>
+  <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+    <div class="flex items-center">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+        <i class="fa fa-user-circle text-2xl"></i>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold">Danny Vaca</h3>
+        <p class="text-blue-100 text-sm">Software Engineer</p>
+      </div>
+    </div>
   </div>
   
   <!-- Navigation Links -->
-  <div class="w3-container w3-padding-small">
+  <nav class="p-4 space-y-2">
     <a
-      href={anchors ? "#about-me" : "/#about-me"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large w3-margin-top nav-link"
-      onclick="toggleSidebar(false)"
+      href={anchors ? "#hero" : "/#hero"}
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-user w3-margin-right w3-text-blue"></i>About Me
+      <i class="fa fa-home mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Home</span>
+    </a>
+    <a
+      href={anchors ? "#philosophy" : "/#philosophy"}
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
+    >
+      <i class="fa fa-code mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Philosophy</span>
     </a>
     <a
       href={anchors ? "#education" : "/#education"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-graduation-cap w3-margin-right w3-text-blue"></i>Education
+      <i class="fa fa-graduation-cap mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Education</span>
     </a>
     <a
       href={anchors ? "#certifications" : "/#certifications"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-certificate w3-margin-right w3-text-blue"></i>Certifications
+      <i class="fa fa-certificate mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Certifications</span>
     </a>
     <a
-      href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+      href={anchors ? "#open-source" : "/#open-source"}
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-code w3-margin-right w3-text-blue"></i>Open Source
+      <i class="fa fa-code-fork mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Open Source</span>
     </a>
-    <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link">
-      <i class="fa fa-laptop w3-margin-right w3-text-blue"></i>Projects
+    <a 
+      href={anchors ? "#projects" : "/#projects"} 
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
+    >
+      <i class="fa fa-laptop mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Projects</span>
     </a>
     <a
       href={anchors ? "#technologies" : "/#technologies"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-cogs w3-margin-right w3-text-blue"></i>Technologies
+      <i class="fa fa-cogs mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Technologies</span>
     </a>
     <a
-      href={anchors ? "#social-networks" : "/#social-networks"}
-      class="w3-bar-item w3-button w3-hover-blue w3-round-large nav-link"
+      href={anchors ? "#contact" : "/#contact"}
+      class="nav-link flex items-center px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
     >
-      <i class="fa fa-share-alt w3-margin-right w3-text-blue"></i>Social Networks
+      <i class="fa fa-envelope mr-4 text-blue-500 group-hover:text-blue-600"></i>
+      <span class="font-medium">Contact</span>
     </a>
-  </div>
+  </nav>
 
   <!-- Sidebar Footer -->
-  <div class="w3-container w3-margin-top w3-padding">
-    <div class="w3-center w3-text-grey">
-      <small><i class="fa fa-heart w3-text-red"></i> Made with passion</small>
+  <div class="absolute bottom-0 left-0 right-0 p-4 bg-slate-50/80 backdrop-blur-sm border-t border-slate-200/50">
+    <div class="text-center text-slate-500 text-sm">
+      <i class="fa fa-heart text-red-500 mr-1"></i>
+      Made with passion
     </div>
   </div>
 </div>
 
-<!-- Enhanced Overlay -->
-<div id="overlay" class="w3-overlay w3-animate-opacity" style="cursor: pointer; display: none; backdrop-filter: blur(2px);">
+<!-- Overlay -->
+<div 
+  id="overlay" 
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40"
+>
 </div>
 
-<!-- Enhanced Top Navigation Bar -->
-<div class="w3-top w3-xlarge w3-animate-top">
-  <div class="w3-bar w3-card-4 w3-white" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
-    <!-- Menu Button -->
-    <button 
-      id="openButton" 
-      class="w3-button w3-hover-blue w3-round-large w3-margin-left" 
-      title="Open Navigation"
-      style="transition: all 0.3s ease;"
-    > 
-      <i class="fa fa-bars"></i>
-    </button>
-    
-    <!-- Logo/Name -->
-    <div class="w3-bar-item w3-padding-large">
-      <strong class="w3-text-blue">Danny Vaca</strong>
-      <small class="w3-hide-small w3-text-grey w3-margin-left">Software Engineer</small>
-    </div>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+  <div class="bg-white/90 backdrop-blur-lg border-b border-slate-200/50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Mobile menu button -->
+        <button 
+          id="openButton" 
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+          title="Open Navigation"
+        > 
+          <i class="fa fa-bars text-lg"></i>
+        </button>
+        
+        <!-- Logo/Name -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-sm">DV</span>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Danny Vaca
+              </h1>
+              <p class="text-xs text-slate-500">Software Engineer</p>
+            </div>
+          </a>
+        </div>
 
-    <!-- Desktop Navigation -->
-    <div class="w3-right w3-hide-small">
-      <a href={anchors ? "#about-me" : "/#about-me"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
-        <i class="fa fa-user w3-margin-right"></i>About
-      </a>
-      <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
-        <i class="fa fa-laptop w3-margin-right"></i>Projects
-      </a>
-      <a href={anchors ? "#certifications" : "/#certifications"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
-        <i class="fa fa-certificate w3-margin-right"></i>Certifications
-      </a>
-      <a href={anchors ? "#social-networks" : "/#social-networks"} class="w3-bar-item w3-button w3-hover-blue w3-round desktop-nav">
-        <i class="fa fa-share-alt w3-margin-right"></i>Contact
-      </a>
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-1">
+          <a 
+            href={anchors ? "#philosophy" : "/#philosophy"} 
+            class="px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium desktop-nav"
+          >
+            <i class="fa fa-code mr-2"></i>Philosophy
+          </a>
+          <a 
+            href={anchors ? "#projects" : "/#projects"} 
+            class="px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium desktop-nav"
+          >
+            <i class="fa fa-laptop mr-2"></i>Projects
+          </a>
+          <a 
+            href={anchors ? "#certifications" : "/#certifications"} 
+            class="px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium desktop-nav"
+          >
+            <i class="fa fa-certificate mr-2"></i>Certifications
+          </a>
+          <a 
+            href={anchors ? "#contact" : "/#contact"} 
+            class="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 rounded-lg transition-all duration-200 font-medium transform hover:scale-105"
+          >
+            <i class="fa fa-envelope mr-2"></i>Contact
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<style>
-  /* Enhanced navigation styles */
-  .nav-link {
-    transition: all 0.3s ease;
-    margin: 4px 0;
-    border-left: 3px solid transparent;
-  }
-  
-  .nav-link:hover {
-    border-left-color: #2196F3;
-    transform: translateX(8px);
-  }
-  
-  .nav-link.active {
-    background-color: #e3f2fd !important;
-    border-left-color: #2196F3;
-    color: #1976d2 !important;
-  }
-  
-  .desktop-nav {
-    transition: all 0.3s ease;
-    margin: 0 2px;
-  }
-  
-  .desktop-nav:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-  }
-  
-  /* Navbar background effect */
-  .w3-top .w3-bar {
-    transition: all 0.3s ease;
-  }
-  
-  .navbar-scrolled {
-    background: rgba(255, 255, 255, 0.98) !important;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1) !important;
-  }
-  
-  /* Mobile menu button animation */
-  #openButton {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  #openButton:hover {
-    transform: scale(1.05);
-  }
-  
-  #openButton::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(33, 150, 243, 0.2);
-    border-radius: 50%;
-    transition: width 0.6s, height 0.6s;
-    transform: translate(-50%, -50%);
-  }
-  
-  #openButton:active::before {
-    width: 200px;
-    height: 200px;
-  }
-</style>
+</nav>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null = document.getElementById("openButton");
-    const overlay: HTMLElement | null = document.getElementById("overlay");
-    const navbar: HTMLElement | null = document.querySelector(".w3-top .w3-bar");
+    const sidebar = document.getElementById("sidebar");
+    const openButton = document.getElementById("openButton");
+    const overlay = document.getElementById("overlay");
+    const navbar = document.querySelector("nav");
     
     // Enhanced sidebar toggle function
     const toggleSidebar = (show: boolean) => {
       if (sidebar && overlay) {
-        sidebar.style.display = show ? "block" : "none";
-        overlay.style.display = show ? "block" : "none";
-        
-        // Add/remove body scroll lock
-        document.body.style.overflow = show ? "hidden" : "";
+        if (show) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("opacity-0", "invisible");
+          overlay.classList.add("opacity-100", "visible");
+          document.body.style.overflow = "hidden";
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0", "invisible");
+          overlay.classList.remove("opacity-100", "visible");
+          document.body.style.overflow = "";
+        }
       }
     };
 
@@ -213,10 +201,13 @@ const { anchors = true } = Astro.props;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
       if (navbar) {
+        const navDiv = navbar.querySelector('div');
         if (scrollTop > 100) {
-          navbar.classList.add("navbar-scrolled");
+          navDiv?.classList.add("bg-white/95", "shadow-lg");
+          navDiv?.classList.remove("bg-white/90");
         } else {
-          navbar.classList.remove("navbar-scrolled");
+          navDiv?.classList.remove("bg-white/95", "shadow-lg");
+          navDiv?.classList.add("bg-white/90");
         }
       }
       
@@ -234,14 +225,18 @@ const { anchors = true } = Astro.props;
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
           if (id) {
-            // Remove active class from all nav links
+            // Remove active classes from all nav links
             document.querySelectorAll('.nav-link, .desktop-nav').forEach(link => {
-              link.classList.remove('active');
+              link.classList.remove('bg-blue-100', 'text-blue-700', 'bg-blue-50', 'text-blue-600');
             });
             
-            // Add active class to current section links
+            // Add active classes to current section links
             document.querySelectorAll(`[href="#${id}"]`).forEach(link => {
-              link.classList.add('active');
+              if (link.classList.contains('nav-link')) {
+                link.classList.add('bg-blue-100', 'text-blue-700');
+              } else if (link.classList.contains('desktop-nav')) {
+                link.classList.add('bg-blue-50', 'text-blue-600');
+              }
             });
           }
         }
@@ -261,7 +256,7 @@ const { anchors = true } = Astro.props;
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
-          const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+          const offsetTop = (targetElement as HTMLElement).offsetTop - 80; // Account for fixed navbar
           window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'
