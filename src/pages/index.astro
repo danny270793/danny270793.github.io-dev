@@ -545,16 +545,16 @@
         }
 
         .cert-icon {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             background: var(--gradient-primary);
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            margin-right: 1rem;
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
         }
 
         .cert-title {
@@ -742,6 +742,44 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        /* Certification Filters */
+        .cert-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: #475569;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .cert-card.hidden {
+            display: none;
         }
     </style>
   </head>
@@ -1083,8 +1121,17 @@ app.post('/users',
                 </p>
             </div>
             
+            <!-- Certification Filters -->
+            <div class="cert-filters fade-in">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="cloud">Cloud</button>
+                <button class="filter-btn" data-filter="devops">DevOps</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
+            </div>
+            
             <div class="cert-grid">
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="cloud">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fab fa-aws"></i>
@@ -1094,11 +1141,10 @@ app.post('/users',
                             <div class="cert-issuer">Amazon Web Services</div>
                         </div>
                     </div>
-                    <p>Advanced cloud architecture certification covering complex, multi-tier applications on AWS platform.</p>
                     <div class="cert-date">Obtained: March 2024</div>
                 </div>
 
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="cloud">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fab fa-google"></i>
@@ -1108,11 +1154,10 @@ app.post('/users',
                             <div class="cert-issuer">Google Cloud</div>
                         </div>
                     </div>
-                    <p>Expertise in developing scalable and reliable applications using Google Cloud Platform services.</p>
                     <div class="cert-date">Obtained: January 2024</div>
                 </div>
 
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="devops">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fas fa-certificate"></i>
@@ -1122,11 +1167,10 @@ app.post('/users',
                             <div class="cert-issuer">Cloud Native Computing Foundation</div>
                         </div>
                     </div>
-                    <p>Comprehensive knowledge of Kubernetes administration, including cluster management and troubleshooting.</p>
                     <div class="cert-date">Obtained: November 2023</div>
                 </div>
 
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="devops">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fab fa-microsoft"></i>
@@ -1136,11 +1180,10 @@ app.post('/users',
                             <div class="cert-issuer">Microsoft</div>
                         </div>
                     </div>
-                    <p>Advanced skills in implementing DevOps practices using Azure technologies and tools.</p>
                     <div class="cert-date">Obtained: September 2023</div>
                 </div>
 
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="security">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -1150,11 +1193,10 @@ app.post('/users',
                             <div class="cert-issuer">EC-Council</div>
                         </div>
                     </div>
-                    <p>Comprehensive understanding of information security and ethical hacking methodologies.</p>
                     <div class="cert-date">Obtained: July 2023</div>
                 </div>
 
-                <div class="cert-card fade-in">
+                <div class="cert-card fade-in" data-category="ai-ml">
                     <div class="cert-header">
                         <div class="cert-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -1164,8 +1206,59 @@ app.post('/users',
                             <div class="cert-issuer">Stanford University (Coursera)</div>
                         </div>
                     </div>
-                    <p>Advanced coursework in machine learning algorithms, neural networks, and AI applications.</p>
                     <div class="cert-date">Obtained: May 2023</div>
+                </div>
+
+                <div class="cert-card fade-in" data-category="cloud">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <div>
+                            <div class="cert-title">Azure Solutions Architect Expert</div>
+                            <div class="cert-issuer">Microsoft</div>
+                        </div>
+                    </div>
+                    <div class="cert-date">Obtained: April 2023</div>
+                </div>
+
+                <div class="cert-card fade-in" data-category="security">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <div class="cert-title">Certified Information Security Manager</div>
+                            <div class="cert-issuer">ISACA</div>
+                        </div>
+                    </div>
+                    <div class="cert-date">Obtained: February 2023</div>
+                </div>
+
+                <div class="cert-card fade-in" data-category="devops">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <div>
+                            <div class="cert-title">Docker Certified Associate</div>
+                            <div class="cert-issuer">Docker Inc.</div>
+                        </div>
+                    </div>
+                    <div class="cert-date">Obtained: January 2023</div>
+                </div>
+
+                <div class="cert-card fade-in" data-category="ai-ml">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <div class="cert-title">TensorFlow Developer Certificate</div>
+                            <div class="cert-issuer">Google</div>
+                        </div>
+                    </div>
+                    <div class="cert-date">Obtained: December 2022</div>
                 </div>
             </div>
         </div>
@@ -1314,6 +1407,31 @@ app.post('/users',
         document.getElementById('mobile-menu').addEventListener('click', function() {
             // This would typically toggle a mobile menu
             console.log('Mobile menu clicked');
+        });
+
+        // Certification filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter certifications
+                document.querySelectorAll('.cert-card').forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        if (category === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
         });
 
         // Add some interactive hover effects
