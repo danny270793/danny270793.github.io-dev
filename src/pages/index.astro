@@ -20,38 +20,256 @@ import CertificationsBackground from "../images/parallax/certification.jpg";
 import OpenSourceLibrariesBackground from "../images/parallax/open source libraries.jpg";
 ---
 
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en" class="w3-smooth-scroll">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={ProfilePicture.src} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Danny Vaca</title>
+    <meta name="description" content="Danny Vaca - Software Engineer & Full-Stack Developer. Experienced in cloud architecture, DevOps, and modern web technologies." />
+    <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architecture, DevOps, Web Development" />
+    <title>Danny Vaca - Software Engineer & Developer</title>
+    
+    <!-- Enhanced styling -->
+    <style>
+      /* Smooth scrolling enhancement */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Enhanced animations */
+      .w3-animate-enhanced {
+        animation: slideInUp 1s ease-out;
+      }
+      
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Section separators */
+      .section-separator {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #2196F3, transparent);
+        margin: 64px auto;
+        width: 200px;
+      }
+      
+      /* Enhanced cards */
+      .enhanced-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .enhanced-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+      
+      /* Progress bars */
+      .progress-container {
+        background-color: #f1f1f1;
+        border-radius: 16px;
+        margin: 8px 0;
+        overflow: hidden;
+      }
+      
+      .progress-bar {
+        height: 8px;
+        background: linear-gradient(90deg, #2196F3, #21CBF3);
+        border-radius: 16px;
+        animation: progressAnimation 2s ease-out;
+      }
+      
+      @keyframes progressAnimation {
+        from { width: 0%; }
+      }
+      
+      /* Button enhancements */
+      .w3-button-enhanced {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .w3-button-enhanced:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+      }
+      
+      .w3-button-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: width 0.6s, height 0.6s;
+        transform: translate(-50%, -50%);
+      }
+      
+      .w3-button-enhanced:active::before {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
   </head>
-  <body>
+  <body class="w3-light-grey">
+    <!-- Enhanced Navigation -->
     <Navbar />
 
-    <AboutMe />
+    <!-- Main Content with improved structure -->
+    <main>
+      <!-- Hero Section -->
+      <section class="w3-animate-enhanced">
+        <AboutMe />
+      </section>
 
-    <Education />
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
 
-    <Certifications
-      certifications={MyCertifications}
-      order={CategoryOrder}
-      background={CertificationsBackground}
-      client:load
-    />
+      <!-- Education Section -->
+      <section class="w3-animate-opacity w3-container">
+        <div class="w3-content">
+          <Education />
+        </div>
+      </section>
 
-    <Libraries
-      libraries={MyLibraries}
-      background={OpenSourceLibrariesBackground}
-      client:load
-    />
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
 
-    <Projects />
+      <!-- Certifications Section -->
+      <section class="w3-animate-opacity">
+        <Certifications
+          certifications={MyCertifications}
+          order={CategoryOrder}
+          background={CertificationsBackground}
+          client:load
+        />
+      </section>
 
-    <Technologies />
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
 
-    <SocialNetworks />
+      <!-- Libraries Section -->
+      <section class="w3-animate-opacity">
+        <Libraries
+          libraries={MyLibraries}
+          background={OpenSourceLibrariesBackground}
+          client:load
+        />
+      </section>
+
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
+
+      <!-- Projects Section -->
+      <section class="w3-animate-opacity w3-container">
+        <div class="w3-content">
+          <Projects />
+        </div>
+      </section>
+
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
+
+      <!-- Technologies Section -->
+      <section class="w3-animate-opacity w3-container">
+        <div class="w3-content">
+          <Technologies />
+        </div>
+      </section>
+
+      <!-- Section Separator -->
+      <div class="section-separator"></div>
+
+      <!-- Social Networks Section -->
+      <section class="w3-animate-opacity">
+        <SocialNetworks />
+      </section>
+    </main>
+
+    <!-- Back to top button -->
+    <button
+      id="backToTopBtn"
+      class="w3-button w3-blue w3-circle w3-xlarge w3-fixed w3-bottom w3-right w3-margin w3-button-enhanced"
+      style="display: none; z-index: 999;"
+      title="Back to top"
+    >
+      <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            backToTopBtn.style.display = 'block';
+            backToTopBtn.classList.add('w3-animate-opacity');
+          } else {
+            backToTopBtn.style.display = 'none';
+          }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('w3-animate-opacity');
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+          observer.observe(section);
+        });
+
+        // Enhanced navigation highlighting
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const navLinks = document.querySelectorAll('.w3-bar-item[href^="#"]');
+
+        window.addEventListener('scroll', function() {
+          let current = '';
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+              current = section.getAttribute('id');
+            }
+          });
+
+          navLinks.forEach(link => {
+            link.classList.remove('w3-blue');
+            if (link.getAttribute('href').substring(1) === current) {
+              link.classList.add('w3-blue');
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
