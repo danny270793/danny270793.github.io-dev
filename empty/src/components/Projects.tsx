@@ -1,5 +1,8 @@
 import { useState } from 'preact/hooks';
 import type { Project } from '../types';
+import GooglePlay from "../images/projects/google-play.png";
+import AppStore from "../images/projects/app-store.png";
+import Github from "../images/projects/github.png";
 
 interface ProjectsProps {
   projects: Project[];
@@ -64,7 +67,11 @@ export function Projects({ projects }: ProjectsProps) {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-3xl">
-                      {project.icon}
+                      <img
+                        src={project.icon}
+                          alt={project.name}
+                        className="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -105,21 +112,11 @@ export function Projects({ projects }: ProjectsProps) {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                     >
-                      <span>🐙</span>
-                      GitHub
-                    </a>
-                  )}
-                  {project.webUrl && (
-                    <a
-                      href={project.webUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
-                    >
-                      <span>🌐</span>
-                      Live Demo
+                      <img
+                        src={Github}
+                        alt={project.name}
+                        className="h-8 w-auto"/>
                     </a>
                   )}
                   {project.playstoreUrl && (
@@ -127,10 +124,11 @@ export function Projects({ projects }: ProjectsProps) {
                       href={project.playstoreUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                     >
-                      <span>📱</span>
-                      Play Store
+                      <img
+                        src={GooglePlay}
+                        alt={project.name}
+                        className="h-8 w-auto"/>
                     </a>
                   )}
                   {project.appstoreUrl && (
@@ -138,10 +136,11 @@ export function Projects({ projects }: ProjectsProps) {
                       href={project.appstoreUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                     >
-                      <span>🍎</span>
-                      App Store
+                      <img
+                        src={AppStore}
+                        alt={project.name}
+                        className="h-8 w-auto"/>
                     </a>
                   )}
                 </div>
