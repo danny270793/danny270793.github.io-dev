@@ -71,7 +71,7 @@ export function Certifications({ certifications }: CertificationsProps) {
                     {cert.provider}
                   </p>
                   <div className="flex items-center justify-center gap-2 mb-4">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">Earned:</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Earned on:</span>
                     <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                       {cert.date}
                     </span>
