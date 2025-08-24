@@ -9,6 +9,12 @@ import Matlab from "../images/libraries/matlab.png";
 import Npm from "../images/libraries/npm.png";
 import Pip from "../images/libraries/pip.png";
 import pubDev from "../images/libraries/pubdev.png";
+import MaintAzureMonitoring from "../images/projects/maint azure monitoring.webp";
+import Speedometer from "../images/projects/speedometer.webp";
+import Soundmeter from "../images/projects/soundmeter.webp";
+import Mycompass from "../images/projects/mycompass.webp";
+import BoxingTimer from "../images/projects/boxingtimer.png";
+import MMAScoreCard from "../images/projects/mmascorecard.png";
 
 export const profile: Profile = {
   name: "Danny Vaca",
@@ -562,44 +568,62 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
 export const projects: Project[] = [
   {
     id: "1",
-    name: "EcoTracker",
-    description: "Mobile app for tracking personal carbon footprint with AI-powered suggestions for reducing environmental impact.",
-    icon: "🌱",
-    technologies: ["React Native", "Node.js", "TensorFlow", "AWS"],
-    githubUrl: "https://github.com/alexjohnson/ecotracker",
-    playstoreUrl: "https://play.google.com/store/apps/details?id=com.ecotracker",
-    appstoreUrl: "https://apps.apple.com/app/ecotracker/id123456789",
+    name: "Maint Azure Monitoring",
+    description: "App get insights (prices, ussage) from azure accout",
+    icon: MaintAzureMonitoring,
+    technologies: ["Flutter", "Dart", "Azure API"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=com.maintlatam.azure.pipelinesmonitoring.pipelines_monitoring",
     category: "Mobile"
   },
   {
     id: "2",
-    name: "DevFlow",
-    description: "Project management platform specifically designed for software development teams with integrated CI/CD monitoring.",
-    icon: "🚀",
-    technologies: ["Next.js", "PostgreSQL", "Redis", "Docker"],
-    githubUrl: "https://github.com/alexjohnson/devflow",
-    webUrl: "https://devflow.app",
-    category: "Web"
+    name: "Speedometer",
+    description: "App to measure the speed which the device is moving on",
+    icon: Speedometer,
+    technologies: ["Flutter", "Dart", "GPS"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.sppedometer",
+    githubUrl: "https://github.com/danny270793/Speedometer",
+    category: "Mobile"
   },
   {
     id: "3",
-    name: "SmartHome Hub",
-    description: "IoT platform for managing smart home devices with voice control and machine learning automation.",
-    icon: "🏠",
-    technologies: ["Vue.js", "Python", "MQTT", "Raspberry Pi"],
-    githubUrl: "https://github.com/alexjohnson/smarthome-hub",
-    webUrl: "https://smarthome-demo.com",
-    category: "IoT"
+    name: "Soundmeter",
+    description: "App to measure the strengh of the noise which is reaching your phone microphone",
+    icon: Soundmeter,
+    technologies: ["Flutter", "Dart", "Audio Processing"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.soundmeter.soundmeter",
+    githubUrl: "https://github.com/danny270793/SoundMeter",
+    category: "Mobile"
   },
   {
     id: "4",
-    name: "CryptoPortfolio",
-    description: "Real-time cryptocurrency portfolio tracker with advanced analytics and automated trading strategies.",
-    icon: "₿",
-    technologies: ["React", "Express", "WebSocket", "Chart.js"],
-    githubUrl: "https://github.com/alexjohnson/crypto-portfolio",
-    webUrl: "https://cryptoportfolio.live",
-    category: "Fintech"
+    name: "Mycompass",
+    description: "App to measure the orientation of the device",
+    icon: Mycompass,
+    technologies: ["Flutter", "Dart", "Sensors"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.mycompass",
+    githubUrl: "https://github.com/danny270793/MyCompass",
+    category: "Mobile"
+  },
+  {
+    id: "5",
+    name: "Boxing Timer",
+    description: "A app that shows a timer for each round of your boxing training",
+    icon: BoxingTimer,
+    technologies: ["Flutter", "Dart", "Timers"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.boxingtimer",
+    githubUrl: "https://github.com/danny270793/Boxing-Timer",
+    category: "Mobile"
+  },
+  {
+    id: "6",
+    name: "MMA ScoreCard",
+    description: "An independent app to see MMA events and results",
+    icon: MMAScoreCard,
+    technologies: ["Flutter", "Dart", "API Integration"],
+    playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.mmascorecard",
+    githubUrl: "https://github.com/danny270793/MMAScoreCard",
+    category: "Mobile"
   }
 ];
 
