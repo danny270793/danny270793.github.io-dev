@@ -1,13 +1,14 @@
 import type { Education, Certification, OpenSourceLibrary, Project, SocialNetwork, Profile } from '../types';
+import profilePicture from "../images/profile.jpg";
 
 export const profile: Profile = {
-  name: "Alex Johnson",
+  name: "Danny Vaca",
   title: "Full Stack Developer & Solutions Architect",
   subtitle: "Building scalable solutions with modern technologies",
-  description: "Passionate full stack developer and solutions architect with 8+ years of experience designing and building scalable web applications, microservices, and cloud-native solutions. Expert in React, Node.js, TypeScript, AWS, and modern DevOps practices.",
-  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-  location: "San Francisco, CA",
-  email: "alex@example.com"
+  description: "Senior Full Stack Developer with almost 15 years of experience implementing solutions for digital transformation in the cloud (Azure, AWS), developing cross-platform mobile applications (Flutter, React Native, Cordova) as well as deploying web applications based on microservices (Java, .Net, Python)\nI have a wide range of certifications in Cloudera, Kubernetes, Azure, Terraform, Java, Python, UiPath that guarantee my knowledge\nMy previous experience allows me to understand and anticipate challenges, as well as propose solutions that add value to the business and ensure return on investment.",
+  avatar: profilePicture,
+  location: "Ecuador, Guayaquil",
+  email: "danny270793@gmail.com"
 };
 
 export const education: Education[] = [
