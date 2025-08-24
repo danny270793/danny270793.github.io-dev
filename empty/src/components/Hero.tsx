@@ -31,8 +31,14 @@ export function Hero({ profile }: HeroProps) {
             <h2 className="text-2xl lg:text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-6">
               {profile.title}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              {profile.description}
+            <p className="text-l text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              {profile.description.split('\n').map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                  <br />
+                </span>
+              ))}
             </p>
 
             {/* Location and Contact */}
@@ -50,16 +56,6 @@ export function Hero({ profile }: HeroProps) {
                   {profile.email}
                 </a>
               </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg">
-                View My Work
-              </button>
-              <button className="border border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:border-indigo-400 px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
-                Download Resume
-              </button>
             </div>
           </div>
         </div>
