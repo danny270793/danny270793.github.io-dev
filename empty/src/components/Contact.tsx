@@ -40,19 +40,6 @@ export function Contact({ socialNetworks, profile }: ContactProps) {
                 <span className="text-indigo-100 text-lg">{profile.location}</span>
               </div>
             </div>
-
-            {/* Contact Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href={`mailto:${profile.email}`}
-                className="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
-              >
-                Send Email
-              </a>
-              <button className="border border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
-                Download Resume
-              </button>
-            </div>
           </div>
 
           {/* Social Networks */}
