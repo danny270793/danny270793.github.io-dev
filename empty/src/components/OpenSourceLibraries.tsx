@@ -47,7 +47,8 @@ export function OpenSourceLibraries({ libraries }: OpenSourceLibrariesProps) {
           {filteredLibraries.map(library => (
             <div
               key={library.id}
-              className="bg-gray-50 dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              onClick={() => window.open(library.githubUrl || library.npmUrl || '', '_blank')}
+              className="cursor-pointer bg-gray-50 dark:bg-gray-700 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="flex items-start gap-6">
                 {/* Library Logo */}
@@ -61,14 +62,19 @@ export function OpenSourceLibraries({ libraries }: OpenSourceLibrariesProps) {
                 </div>
 
                 {/* Library Content */}
-                <div className="flex-grow">
+                <div className="flex-grow min-w-0">
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white truncate pr-2">
                       {library.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-0 leading-relaxed text-sm overflow-hidden" style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical' as any,
+                    maxHeight: '4.5rem'
+                  }}>
                     {library.description}
                   </p>
                 </div>
