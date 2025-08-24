@@ -45,60 +45,104 @@ export function Certifications({ certifications }: CertificationsProps) {
         {/* Certifications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCertifications.map(cert => (
-            <div
-              key={cert.id}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              {/* Certification Image */}
-              <div className="flex justify-center mb-6">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-24 h-24 object-contain"
-                />
-              </div>
+            cert.credentialUrl ? (
+              <a
+                key={cert.id}
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
+              >
+                {/* Certification Image */}
+                <div className="flex justify-center mb-6">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
 
-              {/* Certification Content */}
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {cert.title}
-                </h3>
-                <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-2">
-                  {cert.provider}
-                </p>
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <span className="text-sm text-gray-500 dark:text-gray-400">Earned:</span>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                    {cert.date}
+                {/* Certification Content */}
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {cert.title}
+                  </h3>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-2">
+                    {cert.provider}
+                  </p>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Earned:</span>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      {cert.date}
+                    </span>
+                  </div>
+                  
+                  {/* Category Badge */}
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                    cert.category === 'Cloud' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                    cert.category === 'DevOps' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                    cert.category === 'Database' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                    cert.category === 'Frontend' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+                    cert.category === 'Data' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                    cert.category === 'AI' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                    cert.category === 'Development' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                    cert.category === 'Automation' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                    cert.category === 'Deployment' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200' :
+                    cert.category === 'Data Privacy' ? 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200' :
+                    'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+                  }`}>
+                    {cert.category}
                   </span>
                 </div>
-                
-                {/* Category Badge */}
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                  cert.category === 'Cloud' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
-                  cert.category === 'DevOps' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                  cert.category === 'Database' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
-                  cert.category === 'Frontend' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
-                  'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
-                }`}>
-                  {cert.category}
-                </span>
+              </a>
+            ) : (
+              <div
+                key={cert.id}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg opacity-75"
+              >
+                {/* Certification Image */}
+                <div className="flex justify-center mb-6">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-24 h-24 object-contain"
+                  />
+                </div>
 
-                {/* Credential Link */}
-                {cert.credentialUrl && (
-                  <div className="mt-4">
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 text-sm font-medium underline"
-                    >
-                      View Credential
-                    </a>
+                {/* Certification Content */}
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-2">
+                    {cert.provider}
+                  </p>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Earned:</span>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      {cert.date}
+                    </span>
                   </div>
-                )}
+                  
+                  {/* Category Badge */}
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                    cert.category === 'Cloud' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                    cert.category === 'DevOps' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                    cert.category === 'Database' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                    cert.category === 'Frontend' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+                    cert.category === 'Data' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                    cert.category === 'AI' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                    cert.category === 'Development' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                    cert.category === 'Automation' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                    cert.category === 'Deployment' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200' :
+                    cert.category === 'Data Privacy' ? 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200' :
+                    'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+                  }`}>
+                    {cert.category}
+                  </span>
+                </div>
               </div>
-            </div>
+            )
           ))}
         </div>
       </div>
