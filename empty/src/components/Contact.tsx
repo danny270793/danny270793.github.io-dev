@@ -1,4 +1,7 @@
 import type { SocialNetwork, Profile } from '../types';
+import Youtube from "../images/social/youtube.png";
+import Github from "../images/social/github.svg";
+import LinkedIN from "../images/social/linkedin.png";
 
 interface ContactProps {
   socialNetworks: SocialNetwork[];
@@ -54,24 +57,32 @@ export function Contact({ socialNetworks, profile }: ContactProps) {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-sm border border-white border-opacity-20 rounded-xl p-6 transition-all duration-300 transform hover:-translate-y-1 group"
+                  className="transition-all duration-300 transform hover:-translate-y-1 group"
                 >
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
-                      {social.name === 'GitHub' && <span className="text-3xl text-white">🐙</span>}
-                      {social.name === 'LinkedIn' && <span className="text-3xl text-white">💼</span>}
-                      {social.name === 'Twitter' && <span className="text-3xl text-white">🐦</span>}
-                      {social.name === 'Medium' && <span className="text-3xl text-white">✍️</span>}
-                      {social.name === 'Stack Overflow' && <span className="text-3xl text-white">📚</span>}
+                    <div className="mx-auto mb-3 flex items-center justify-center">
+                      {social.name === 'GitHub' && <span className="text-3xl text-white">
+                        <img
+                          src={Github}
+                          alt={social.name}
+                          className="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </span>}
+                      {social.name === 'LinkedIn' && <span className="text-3xl text-white">
+                        <img
+                          src={LinkedIN}
+                          alt={social.name}
+                          className="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </span>}
+                      {social.name === 'Youtube' && <span className="text-3xl text-white">
+                        <img
+                          src={Youtube}
+                          alt={social.name}
+                          className="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </span>}
                     </div>
-                    <h4 className="text-white font-semibold mb-1">
-                      {social.name}
-                    </h4>
-                    {social.username && (
-                      <p className="text-indigo-100 text-sm">
-                        {social.username}
-                      </p>
-                    )}
                   </div>
                 </a>
               ))}
@@ -82,7 +93,7 @@ export function Contact({ socialNetworks, profile }: ContactProps) {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-indigo-500 text-center">
           <p className="text-indigo-100">
-            © 2024 {profile.name}. Built with Preact + Tailwind CSS.
+            © 2025 {profile.name}. Built with Preact + Tailwind CSS.
           </p>
         </div>
       </div>
