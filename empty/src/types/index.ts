@@ -1,9 +1,9 @@
 export interface Education {
   id: string;
+  avatar: string;
   title: string;
   university: string;
   date: string;
-  description?: string;
 }
 
 export interface Certification {
