@@ -1,7 +1,9 @@
 import { useState } from 'preact/hooks';
+import { useTheme } from '../hooks/useTheme';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { toggleTheme, getThemeIcon, getThemeLabel } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -52,12 +54,13 @@ export function Navigation() {
           {/* Theme Toggle */}
           <div className="hidden md:flex items-center gap-4">
             <button
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              onClick={() => {
-                document.documentElement.classList.toggle('dark');
-              }}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group"
+              onClick={toggleTheme}
+              title={`Current theme: ${getThemeLabel()}`}
             >
-              <span className="text-lg">🌓</span>
+              <span className="text-lg group-hover:scale-110 transition-transform duration-200">
+                {getThemeIcon()}
+              </span>
             </button>
           </div>
 
@@ -97,12 +100,11 @@ export function Navigation() {
             ))}
             <button
               className="mt-4 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors w-full flex items-center justify-center gap-2"
-              onClick={() => {
-                document.documentElement.classList.toggle('dark');
-              }}
+              onClick={toggleTheme}
+              title={`Current theme: ${getThemeLabel()}`}
             >
-              <span className="text-lg">🌓</span>
-              <span className="text-sm">Toggle Theme</span>
+              <span className="text-lg">{getThemeIcon()}</span>
+              <span className="text-sm">{getThemeLabel()}</span>
             </button>
           </div>
         </div>
