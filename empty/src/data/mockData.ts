@@ -1,5 +1,7 @@
 import type { Education, Certification, OpenSourceLibrary, Project, SocialNetwork, Profile } from '../types';
 import profilePicture from "../images/profile.jpg";
+import Ecotec from "../images/education/ecotec.png";
+import UPS from "../images/education/ups.png";
 
 export const profile: Profile = {
   name: "Danny Vaca",
@@ -14,17 +16,17 @@ export const profile: Profile = {
 export const education: Education[] = [
   {
     id: "1",
-    title: "Master of Science in Computer Science",
-    university: "Stanford University",
-    date: "2016 - 2018",
-    description: "Specialized in Distributed Systems and Machine Learning"
+    avatar: Ecotec,
+    title: "Máster en sistemas de información con mención en inteligencia de negocios",
+    university: "Universidad Tecnológica Ecotec",
+    date: "2020 - 2021"
   },
   {
     id: "2", 
-    title: "Bachelor of Science in Software Engineering",
-    university: "UC Berkeley",
-    date: "2012 - 2016",
-    description: "Magna Cum Laude, Focus on Web Technologies"
+    avatar: UPS,
+    title: "Ingeniero Electrónico con mención en telecomunicaciones",
+    university: "Universidad Politécnica Salesiana",
+    date: "2012 - 2017"
   }
 ];
 
