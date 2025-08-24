@@ -30,7 +30,7 @@ export function Navigation() {
               onClick={() => scrollToSection('#home')}
               className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
             >
-              AJ
+              DV
             </button>
           </div>
 
