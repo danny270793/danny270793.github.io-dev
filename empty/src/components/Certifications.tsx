@@ -6,9 +6,9 @@ interface CertificationsProps {
 }
 
 export function Certifications({ certifications }: CertificationsProps) {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('Development');
   
-  const categories = ['All', ...Array.from(new Set(certifications.map(cert => cert.category)))];
+  const categories = [...Array.from(new Set(certifications.map(cert => cert.category))), 'All'];
   const filteredCertifications = activeFilter === 'All' 
     ? certifications 
     : certifications.filter(cert => cert.category === activeFilter);
