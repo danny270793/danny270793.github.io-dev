@@ -23,7 +23,7 @@ export interface OpenSourceLibrary {
   logo: string;
   category: string;
   npmUrl?: string;
-  githubUrl: string;
+  githubUrl?: string;
   downloads?: string;
   stars?: number;
 }
