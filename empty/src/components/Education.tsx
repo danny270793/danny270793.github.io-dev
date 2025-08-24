@@ -29,22 +29,34 @@ export function Education({ education }: EducationProps) {
                 
                 {/* Content */}
                 <div className="ml-20 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {edu.title}
-                    </h3>
-                    <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900 px-3 py-1 rounded-full">
-                      {edu.date}
-                    </span>
+                  <div className="flex items-start gap-4">
+                    {/* University Icon */}
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center">
+                        <span className="text-2xl">🎓</span>
+                      </div>
+                    </div>
+                    
+                    {/* Education Content */}
+                    <div className="flex-grow">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          {edu.title}
+                        </h3>
+                        <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900 px-3 py-1 rounded-full">
+                          {edu.date}
+                        </span>
+                      </div>
+                      <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        {edu.university}
+                      </p>
+                      {edu.description && (
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {edu.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {edu.university}
-                  </p>
-                  {edu.description && (
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {edu.description}
-                    </p>
-                  )}
                 </div>
               </div>
             ))}
