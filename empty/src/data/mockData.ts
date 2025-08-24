@@ -631,36 +631,22 @@ export const socialNetworks: SocialNetwork[] = [
   {
     id: "1",
     name: "GitHub",
-    url: "https://github.com/alexjohnson",
+    url: "https://www.github.com/danny270793",
     icon: "fab fa-github",
-    username: "alexjohnson"
+    username: "danny270793"
   },
   {
     id: "2",
     name: "LinkedIn",
-    url: "https://linkedin.com/in/alexjohnson",
+    url: "tps://www.linkedin.com/in/danny270793",
     icon: "fab fa-linkedin",
-    username: "alexjohnson"
+    username: "danny270793"
   },
   {
     id: "3",
-    name: "Twitter",
-    url: "https://twitter.com/alexjohnson_dev",
-    icon: "fab fa-twitter",
-    username: "@alexjohnson_dev"
+    name: "Youtube",
+    url: "https://www.youtube.com/@DannyVacaO",
+    icon: "fab fa-youtube",
+    username: "DannyVacaO"
   },
-  {
-    id: "4",
-    name: "Medium",
-    url: "https://medium.com/@alexjohnson",
-    icon: "fab fa-medium",
-    username: "@alexjohnson"
-  },
-  {
-    id: "5",
-    name: "Stack Overflow",
-    url: "https://stackoverflow.com/users/123456/alexjohnson",
-    icon: "fab fa-stack-overflow",
-    username: "alexjohnson"
-  }
 ];
