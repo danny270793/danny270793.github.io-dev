@@ -8,403 +8,224 @@ import MyLibraries from "../libraries/me/knowledges/libraries";
 ---
 
 <!-- Enhanced Hero Section -->
-<section class="hero-modern parallax header" style={`background-image: url("${headerBackground.src}")`}>
-  <div class="hero-overlay"></div>
+<div
+  class="parallax header w3-display-container"
+  style={`background-image: url("${headerBackground.src}"); position: relative;`}
+>
+  <!-- Overlay for better text readability -->
+  <div class="w3-display-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);">
+  </div>
   
-  <!-- Floating Tech Icons -->
-  <div class="floating-elements">
-    <div class="floating-icon animate-float" style="top: 15%; left: 8%; animation-delay: 0s;">
-      <i class="fas fa-code"></i>
-    </div>
-    <div class="floating-icon animate-float" style="top: 70%; right: 12%; animation-delay: 2s;">
-      <i class="fas fa-laptop-code"></i>
-    </div>
-    <div class="floating-icon animate-float" style="bottom: 25%; left: 15%; animation-delay: 4s;">
-      <i class="fas fa-rocket"></i>
-    </div>
-    <div class="floating-icon animate-float" style="top: 35%; right: 20%; animation-delay: 6s;">
-      <i class="fas fa-cloud"></i>
-    </div>
-    <div class="floating-icon animate-float" style="top: 60%; left: 25%; animation-delay: 8s;">
-      <i class="fas fa-mobile-alt"></i>
+  <!-- Main Content -->
+  <div class="w3-display-middle w3-center w3-text-white w3-animate-opacity" style="z-index: 2;">
+    <div class="w3-container">
+      <h1 class="w3-jumbo w3-animate-top w3-margin-bottom" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        <strong>Danny Vaca</strong>
+      </h1>
+      <div class="w3-large w3-margin w3-animate-bottom" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+        <div class="w3-margin-bottom">
+          <i class="fa fa-code w3-margin-right w3-text-blue"></i>
+          <span class="w3-large">Software Engineer</span>
+        </div>
+        <div class="w3-margin-bottom">
+          <i class="fa fa-cloud w3-margin-right w3-text-blue"></i>
+          <span>Cloud Architecture Specialist</span>
+        </div>
+        <div>
+          <i class="fa fa-cogs w3-margin-right w3-text-blue"></i>
+          <span>DevOps Enthusiast</span>
+        </div>
+      </div>
+      
+      <!-- Call to Action Buttons -->
+      <div class="w3-margin-top w3-margin-bottom">
+        <a href="#about-me" class="w3-button w3-blue w3-round-large w3-large w3-margin w3-hover-shadow" style="transition: all 0.3s ease;">
+          <i class="fa fa-user w3-margin-right"></i>Learn More
+        </a>
+        <a href="#projects" class="w3-button w3-border w3-border-white w3-text-white w3-round-large w3-large w3-margin w3-hover-white w3-hover-text-blue" style="transition: all 0.3s ease;">
+          <i class="fa fa-laptop w3-margin-right"></i>View Projects
+        </a>
+      </div>
     </div>
   </div>
 
-  <div class="hero-content animate-fade-in-up">
-    <h1 class="hero-title animate-fade-in-up animate-delay-200">
-      Danny Vaca
-    </h1>
-    <p class="hero-subtitle animate-fade-in-up animate-delay-500">
-      Senior Full Stack Developer & Cloud Architect
-    </p>
-    <p class="hero-description animate-fade-in-up animate-delay-700">
-      Transforming complex challenges into elegant solutions with 15+ years of expertise
-    </p>
-    
-    <div class="hero-actions animate-fade-in-up animate-delay-1000">
-      <a href="#about-me" class="btn-modern btn-primary">
-        <i class="fas fa-user"></i>
-        Discover My Journey
-      </a>
-      <a href="#projects" class="btn-modern btn-outline">
-        <i class="fas fa-rocket"></i>
-        Explore Projects
-      </a>
-    </div>
+  <!-- Scroll Down Indicator -->
+  <div class="w3-display-bottommiddle w3-margin-bottom">
+    <a href="#about-me" class="w3-text-white w3-hover-text-blue" style="text-decoration: none;">
+      <div class="w3-center w3-animate-opacity">
+        <div class="w3-margin-bottom">Scroll Down</div>
+        <i class="fa fa-chevron-down w3-large" style="animation: bounce 2s infinite;"></i>
+      </div>
+    </a>
   </div>
-  
-  <!-- Animated Scroll Indicator -->
-  <div class="scroll-indicator animate-bounce">
-    <p>Scroll to explore</p>
-    <i class="fas fa-chevron-down"></i>
-  </div>
-</section>
+</div>
 
-<!-- Beautiful About Me Section -->
-<section id="about-me" class="about-section">
-  <div class="container">
+<!-- Enhanced About Me Section -->
+<div id="about-me" class="w3-container w3-padding-64 w3-white">
+  <div class="w3-content">
     <!-- Section Header -->
-    <div class="section-header scroll-animate">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-subtitle">
-        Passionate developer dedicated to crafting exceptional digital experiences
-      </p>
+    <div class="w3-center w3-margin-bottom">
+      <h2 class="w3-text-dark-grey">
+        <i class="fa fa-user w3-margin-right w3-text-blue"></i>
+        <strong>About Me</strong>
+      </h2>
+      <div class="w3-border-blue w3-border-top" style="width: 100px; margin: 20px auto;"></div>
     </div>
-    
-    <div class="about-grid">
-      <!-- Enhanced Profile Card -->
-      <div class="profile-card modern-card scroll-animate-left hover-lift">
-        <div class="profile-image-container">
+
+    <!-- Main Content -->
+    <div class="w3-row-padding w3-margin-top">
+      <!-- Profile Picture Column -->
+      <div class="w3-third w3-center">
+        <div class="w3-card-4 w3-round-large w3-padding w3-white" style="transition: transform 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <Image
-            class="profile-image"
+            class="w3-circle w3-border w3-border-blue"
             src={profilePicture}
-            alt="Danny Vaca - Senior Full Stack Developer"
+            alt="Danny Vaca - Software Engineer"
+            style="width: 100%; height: auto; max-width: 250px;"
           />
-          <div class="profile-decoration">
-            <div class="decoration-circle"></div>
-            <div class="decoration-circle"></div>
-          </div>
-          <div class="profile-badge">
-            <i class="fas fa-certificate"></i>
-            <span>Certified Expert</span>
+          
+          <!-- Quick Info Cards -->
+          <div class="w3-margin-top">
+            <div class="w3-card w3-blue w3-round w3-margin-bottom w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-map-marker w3-margin-right"></i>
+                Based in Ecuador
+              </div>
+            </div>
+            <div class="w3-card w3-light-blue w3-round w3-margin-bottom w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-briefcase w3-margin-right"></i>
+                5+ Years Experience
+              </div>
+            </div>
+            <div class="w3-card w3-cyan w3-round w3-padding-small">
+              <div class="w3-small w3-text-white">
+                <i class="fa fa-graduation-cap w3-margin-right"></i>
+                Multiple Certifications
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div class="profile-info">
-          <h3 class="profile-name text-gradient">Danny Vaca</h3>
-          <p class="profile-title">Senior Full Stack Developer</p>
-          <div class="profile-location">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Available Globally</span>
+      </div>
+
+      <!-- About Text Column -->
+      <div class="w3-twothird">
+        <div class="w3-padding-large">
+          <div class="w3-large w3-text-grey w3-margin-bottom">
+            {
+              Me.detail.split("\n").map((paragraph, index) => (
+                <div class="w3-margin-bottom" key={index}>
+                  <p class="w3-justify" style="line-height: 1.8;">
+                    {paragraph}
+                  </p>
+                </div>
+              ))
+            }
           </div>
-          
-          <!-- Quick Stats -->
-          <div class="profile-stats">
-            <div class="stat">
-              <span class="stat-number" data-count="15">0</span>
-              <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" data-count={MyLibraries.length}>0</span>
-              <span class="stat-label">Open source libraries</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" data-count={MyCertifications.length}>0</span>
-              <span class="stat-label">Certifications obtained</span>
+
+          <!-- Skills Highlight -->
+          <div class="w3-margin-top">
+            <h4 class="w3-text-blue w3-margin-bottom">
+              <i class="fa fa-star w3-margin-right"></i>
+              Core Expertise
+            </h4>
+            <div class="w3-row-padding">
+              <div class="w3-half">
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">Cloud Platforms</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">DevOps & CI/CD</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 85%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-half">
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">Full-Stack Development</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 88%;"></div>
+                  </div>
+                </div>
+                <div class="w3-margin-bottom">
+                  <div class="w3-small w3-text-grey">System Architecture</div>
+                  <div class="w3-light-grey w3-round-large" style="height: 8px;">
+                    <div class="w3-blue w3-round-large" style="height: 8px; width: 82%;"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          
-          <!-- Contact Buttons -->
-          <div class="profile-actions">
-            <a href="#contact" class="btn-modern btn-primary btn-sm">
-              <i class="fas fa-envelope"></i>
-              Get In Touch
+
+          <!-- Contact CTA -->
+          <div class="w3-margin-top w3-padding-top">
+            <a href="#social-networks" class="w3-button w3-blue w3-round-large w3-hover-shadow">
+              <i class="fa fa-envelope w3-margin-right"></i>
+              Let's Connect
+            </a>
+            <a href="#projects" class="w3-button w3-border w3-border-blue w3-text-blue w3-round-large w3-margin-left w3-hover-blue">
+              <i class="fa fa-eye w3-margin-right"></i>
+              View My Work
             </a>
           </div>
         </div>
       </div>
-      
-      <!-- Enhanced About Content -->
-      <div class="about-content scroll-animate-right">
-        <div class="about-text">
-          {Me.detail.split("\n").map((paragraph, index) => (
-            <p class={`scroll-animate animate-delay-${index * 200}`}>
-              {paragraph}
-            </p>
-          ))}
-        </div>
-        
-        <!-- Core Expertise Section -->
-        <div class="expertise-section scroll-animate animate-delay-500">
-          <h4 class="expertise-title">
-            <i class="fas fa-star"></i>
-            Core Expertise
-          </h4>
-          <div class="expertise-grid">
-            <div class="expertise-item">
-              <div class="expertise-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
-              <div class="expertise-content">
-                <h5>Cloud Architecture</h5>
-                <p>Azure & AWS Solutions</p>
-              </div>
-            </div>
-            
-            <div class="expertise-item">
-              <div class="expertise-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <div class="expertise-content">
-                <h5>Mobile Development</h5>
-                <p>Flutter & React Native</p>
-              </div>
-            </div>
-            
-            <div class="expertise-item">
-              <div class="expertise-icon">
-                <i class="fas fa-cogs"></i>
-              </div>
-              <div class="expertise-content">
-                <h5>Microservices</h5>
-                <p>Java, .NET & Python</p>
-              </div>
-            </div>
-            
-            <div class="expertise-item">
-              <div class="expertise-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <div class="expertise-content">
-                <h5>Full Stack</h5>
-                <p>End-to-end Solutions</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Quick Skills Tags -->
-        <div class="skills-preview scroll-animate animate-delay-700">
-          <h4 class="skills-title">
-            <i class="fas fa-tools"></i>
-            Technical Skills
-          </h4>
-          <div class="skill-tags">
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-react"></i>
-              React
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-js-square"></i>
-              JavaScript
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-python"></i>
-              Python
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-java"></i>
-              Java
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-aws"></i>
-              AWS
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-microsoft"></i>
-              Azure
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fas fa-database"></i>
-              Databases
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-docker"></i>
-              Docker
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-git"></i>
-              Git
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-linux"></i>
-              Linux
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-node"></i>
-              Node.js
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-android"></i>
-              Android
-            </span>
-            <span class="tech-badge hover-scale">
-              <i class="fab fa-apple"></i>
-              iOS
-            </span>
-          </div>
-        </div>
-        
-        <!-- Call to Action -->
-        <div class="about-actions scroll-animate animate-delay-1000">
-          <a href="#certifications" class="btn-modern btn-primary">
-            <i class="fas fa-certificate"></i>
-            View Certifications
-          </a>
-          <a href="#technologies" class="btn-modern btn-secondary">
-            <i class="fas fa-code"></i>
-            Explore Tech Stack
-          </a>
-        </div>
-      </div>
     </div>
   </div>
-</section>
-
-<script>
-/**
- * About Me Animation System
- * Handles scroll-triggered animations and interactive elements
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Setup Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                
-                // Handle animated counters
-                if (entry.target.querySelector('[data-count]')) {
-                    animateCounters(entry.target);
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe all scroll-animate elements
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
-    scrollElements.forEach(element => {
-        observer.observe(element);
-    });
-
-    // Animate counters
-    function animateCounters(container) {
-        const counters = container.querySelectorAll('[data-count]');
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-count'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = Math.floor(current);
-                }
-            }, 16);
-        });
-    }
-
-    // Add hover effects to tech badges
-    const techBadges = document.querySelectorAll('.tech-badge');
-    techBadges.forEach(badge => {
-        badge.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05) translateY(-2px)';
-        });
-        
-        badge.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1) translateY(0)';
-        });
-    });
-
-    // Add smooth scroll for anchor links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offsetTop = target.offsetTop - 80; // Account for fixed header
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Enhanced button interactions
-    const modernButtons = document.querySelectorAll('.btn-modern');
-    modernButtons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.02)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-        
-        // Add ripple effect on click
-        button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple-effect');
-            
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = (e as MouseEvent).clientX - rect.left - size / 2;
-            const y = (e as MouseEvent).clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-
-    console.log('About Me animations initialized! ✨');
-});
-</script>
+</div>
 
 <style>
-/* Ripple Effect Styles */
-.btn-modern {
-    position: relative;
-    overflow: hidden;
-}
-
-.ripple-effect {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    pointer-events: none;
-    animation: ripple-animation 0.6s ease-out;
-}
-
-@keyframes ripple-animation {
-    0% {
-        transform: scale(0);
-        opacity: 1;
+  /* Custom animations */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
     }
-    100% {
-        transform: scale(2);
-        opacity: 0;
+    40% {
+      transform: translateY(-10px);
     }
-}
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Enhanced card hover effects */
+  .w3-card-4:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+  }
+
+  /* Progress bar animation */
+  .w3-blue {
+    animation: progressLoad 2s ease-out;
+  }
+
+  @keyframes progressLoad {
+    from { width: 0%; }
+  }
+
+  /* Button hover effects */
+  .w3-button {
+    transition: all 0.3s ease;
+  }
+
+  .w3-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .w3-jumbo {
+      font-size: 2.5rem !important;
+    }
+    
+    .w3-row-padding .w3-third,
+    .w3-row-padding .w3-twothird {
+      width: 100% !important;
+      margin-bottom: 2rem;
+    }
+  }
 </style>
