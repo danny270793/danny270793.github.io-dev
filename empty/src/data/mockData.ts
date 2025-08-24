@@ -2,6 +2,13 @@ import type { Education, Certification, OpenSourceLibrary, Project, SocialNetwor
 import profilePicture from "../images/profile.jpg";
 import Ecotec from "../images/education/ecotec.png";
 import UPS from "../images/education/ups.png";
+import Arduino from "../images/libraries/arduino.png";
+import CratesIO from "../images/libraries/cratesio.png";
+import DokcerHub from "../images/libraries/docker_hub.png";
+import Matlab from "../images/libraries/matlab.png";
+import Npm from "../images/libraries/npm.png";
+import Pip from "../images/libraries/pip.png";
+import pubDev from "../images/libraries/pubdev.png";
 
 export const profile: Profile = {
   name: "Danny Vaca",
@@ -432,46 +439,123 @@ export const certifications: Certification[] = [
 export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "1",
-    title: "react-hooks-toolkit",
-    description: "A collection of powerful and reusable React hooks for modern applications. Includes hooks for API calls, local storage, debouncing, and more.",
-    logo: "⚛️",
-    category: "React",
-    npmUrl: "https://www.npmjs.com/package/react-hooks-toolkit",
-    githubUrl: "https://github.com/alexjohnson/react-hooks-toolkit",
-    downloads: "50K+/month",
-    stars: 1247
+    title: "jmixclientv1",
+    description: "Library to connect with jmix v1.x rest api",
+    logo: pubDev,
+    category: "Flutter",
+    githubUrl: "https://pub.dev/packages/jmixclientv1"
   },
   {
     id: "2",
-    title: "ts-api-generator",
-    description: "Automatically generate TypeScript API clients from OpenAPI specifications. Reduces boilerplate and ensures type safety.",
-    logo: "🔧",
-    category: "TypeScript",
-    npmUrl: "https://www.npmjs.com/package/ts-api-generator",
-    githubUrl: "https://github.com/alexjohnson/ts-api-generator",
-    downloads: "25K+/month",
-    stars: 892
+    title: "@danny270793/tsframework",
+    description: "REST Framework for education purposes",
+    logo: Npm,
+    category: "Node.js",
+    npmUrl: "https://www.npmjs.com/package/@danny270793/tsframework"
   },
   {
     id: "3",
-    title: "microservice-logger",
-    description: "Structured logging library for Node.js microservices with built-in correlation tracking and observability features.",
-    logo: "📊",
+    title: "@danny270793/hotreloader",
+    description: "Re-executes a command when a file changes on specific folder",
+    logo: Npm,
     category: "Node.js",
-    npmUrl: "https://www.npmjs.com/package/microservice-logger",
-    githubUrl: "https://github.com/alexjohnson/microservice-logger",
-    downloads: "75K+/month",
-    stars: 2103
+    npmUrl: "https://www.npmjs.com/package/@danny270793/hotreloader"
   },
   {
     id: "4",
-    title: "aws-deploy-toolkit",
-    description: "CLI tool for deploying applications to AWS with zero-downtime deployments and automatic rollback capabilities.",
-    logo: "☁️",
-    category: "DevOps",
-    githubUrl: "https://github.com/alexjohnson/aws-deploy-toolkit",
-    downloads: "15K+/month",
-    stars: 567
+    title: "@danny270793/levenshtein",
+    description: "Computes levenshtein distance to find matchs between strings",
+    logo: Npm,
+    category: "Node.js",
+    npmUrl: "https://www.npmjs.com/package/@danny270793/levenshtein"
+  },
+  {
+    id: "5",
+    title: "@danny270793/azureservicesclient",
+    description: "Library to connect and get metadata from Azure resources like synapse, storage accounts, etc",
+    logo: Npm,
+    category: "Node.js",
+    npmUrl: "https://www.npmjs.com/package/@danny270793/azureservicesclient"
+  },
+  {
+    id: "6",
+    title: "@danny270793/jmixclientv1",
+    description: "Library to connect with jmix v1.x rest api",
+    logo: Npm,
+    category: "Node.js",
+    npmUrl: "https://www.npmjs.com/package/@danny270793/jmixclientv1"
+  },
+  {
+    id: "7",
+    title: "@danny270793/jmixclientv2",
+    description: "Library to connect with jmix v2.x rest api",
+    logo: Npm,
+    category: "Node.js",
+    npmUrl: "https://www.npmjs.com/package/@danny270793/jmixclientv2"
+  },
+  {
+    id: "8",
+    title: "arguments-parser",
+    description: "Library to parse cmd arguments",
+    logo: Pip,
+    category: "Python",
+    githubUrl: "https://pypi.org/project/arguments-parser/"
+  },
+  {
+    id: "9",
+    title: "fake-http-server",
+    description: "Fake http server wich returns the hostname of the running machine and the node name shared via environment variables",
+    logo: DokcerHub,
+    category: "Docker",
+    githubUrl: "https://hub.docker.com/r/danny27071993/fake-http-server"
+  },
+  {
+    id: "10",
+    title: "sqlserver",
+    description: "Create sqlserver container with a database just passing the database name as parameter without the need of any external script",
+    logo: DokcerHub,
+    category: "Docker",
+    githubUrl: "https://hub.docker.com/r/danny27071993/sqlserver"
+  },
+  {
+    id: "11",
+    title: "ansible",
+    description: "Docker image with ansible pre-installed for ci purposes",
+    logo: DokcerHub,
+    category: "Docker",
+    githubUrl: "https://hub.docker.com/r/danny27071993/ansible"
+  },
+  {
+    id: "12",
+    title: "terraform-azure",
+    description: "Docker image with azure cli pre-installed for ci purposes",
+    logo: DokcerHub,
+    category: "Docker",
+    githubUrl: "https://hub.docker.com/r/danny27071993/terraform-azure"
+  },
+  {
+    id: "13",
+    title: "ShiftRegister",
+    description: "Library to convert decimal numbers to binary and write out over shift registers",
+    logo: Arduino,
+    category: "Arduino",
+    githubUrl: "https://github.com/danny270793/ArduinoShiftRegister"
+  },
+  {
+    id: "14",
+    title: "code-metadata",
+    description: "Computes the metada of the projects: files by extention, lines by extention, average lines per file",
+    logo: CratesIO,
+    category: "Rust",
+    githubUrl: "https://crates.io/crates/code-metadata"
+  },
+  {
+    id: "15",
+    title: "PortCom",
+    description: "Library to read and plot data from serial port using Matlab",
+    logo: Matlab,
+    category: "Matlab",
+    githubUrl: "https://github.com/danny270793/MatlabPortCom"
   }
 ];
 
