@@ -2,102 +2,455 @@
 
 ---
 
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Privacy Policy</title>
+    <title>MMA Scorecard - Privacy Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: sans-serif;
-        max-width: 800px;
-        margin: 40px auto;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
         padding: 20px;
-        line-height: 1.6;
-        color: #333;
+        color: #2d3748;
       }
-      h1,
-      h2 {
-        color: #1a73e8;
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out;
       }
-      table {
-        border-collapse: collapse;
-        width: 100%;
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        padding: 60px 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        animation: float 20s linear infinite;
+      }
+
+      @keyframes float {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .header .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+
+      .content {
+        padding: 50px 40px;
+      }
+
+      .hero-section {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .privacy-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+      }
+
+      .shield-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+
+      .hero-text {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        color: #4a5568;
+        max-width: 600px;
+        margin: 0 auto 30px;
+      }
+
+      .section {
+        background: #f8fafc;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 30px 0;
+        border-left: 4px solid #4f46e5;
+      }
+
+      .section h2 {
+        color: #4f46e5;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .no-data-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
         margin-top: 20px;
       }
-      th,
-      td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: left;
+
+      .no-data-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       }
-      th {
-        background-color: #f3f3f3;
+
+      .check-icon {
+        width: 20px;
+        height: 20px;
+        color: #10b981;
+        flex-shrink: 0;
+      }
+
+      .summary-table {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+      }
+
+      .summary-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .summary-table th {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        padding: 20px;
+        font-weight: 600;
+        text-align: left;
+        font-size: 1.1rem;
+      }
+
+      .summary-table td {
+        padding: 20px;
+        border-bottom: 1px solid #e2e8f0;
+        font-weight: 500;
+      }
+
+      .summary-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .summary-table tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+
+      .no-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fee2e2;
+        color: #dc2626;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .contact-section {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+        text-align: center;
+        padding: 40px 30px;
+        margin-top: 40px;
+        border-radius: 15px;
+      }
+
+      .contact-section h2 {
+        color: #1e40af;
+        margin-bottom: 15px;
+      }
+
+      .email-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #4f46e5;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .email-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+      }
+
+      .mail-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .effective-date {
+        text-align: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+          border-radius: 15px;
+        }
+        
+        .header {
+          padding: 40px 20px;
+        }
+        
+        .header h1 {
+          font-size: 2rem;
+        }
+        
+        .content {
+          padding: 30px 20px;
+        }
+        
+        .section {
+          padding: 20px;
+        }
+        
+        .no-data-list {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> 2025</p>
+    <div class="container">
+      <div class="header">
+        <h1>MMA Scorecard</h1>
+        <div class="subtitle">Privacy Policy</div>
+      </div>
 
-    <p>
-      <strong>MMA Scorecard</strong> does <strong>not collect</strong>, store,
-      or share any personal information or data from users.
-    </p>
+      <div class="content">
+        <div class="hero-section">
+          <div class="privacy-badge">
+            <svg class="shield-icon" viewBox="0 0 24 24">
+              <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10.5V11.5C15.4,11.5 16,12.4 16,13V16C16,17.4 15.4,18 14.8,18H9.2C8.6,18 8,17.4 8,16V13C8,12.4 8.6,11.5 9.2,11.5V10.5C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10.5V11.5H13.5V10.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+            </svg>
+            Privacy First
+          </div>
+          
+          <p class="hero-text">
+            <strong>MMA Scorecard</strong> is built with your privacy in mind. 
+            We believe in keeping your training sessions completely private - 
+            that's why we don't collect, store, or share any of your personal information.
+          </p>
+        </div>
 
-    <h2>What Information Do We Collect?</h2>
-    <p><strong>None.</strong> We do not collect:</p>
-    <ul>
-      <li>Personal data (name, email, phone)</li>
-      <li>Location data</li>
-      <li>Usage analytics</li>
-      <li>Device information</li>
-    </ul>
+        <div class="section">
+          <h2>
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"/>
+            </svg>
+            What Information Do We Collect?
+          </h2>
+          <p><strong>Absolutely nothing.</strong> MMA Scorecard works completely offline and doesn't require any personal information to function.</p>
+          
+          <div class="no-data-list">
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No personal data</span>
+            </div>
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No location tracking</span>
+            </div>
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No usage analytics</span>
+            </div>
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No device information</span>
+            </div>
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No user accounts</span>
+            </div>
+            <div class="no-data-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>No advertisements</span>
+            </div>
+          </div>
+        </div>
 
-    <h2>Internet Access</h2>
-    <p>
-      If the app uses internet access (e.g., for updates or ads), third-party
-      services like Google Play or Apple App Store may collect data under their
-      own policies. However, <strong
-        >our app does not collect or transmit any user data</strong
-      >.
-    </p>
+        <div class="section">
+          <h2>
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path d="M17,7H22V17H17V19A1,1 0 0,0 18,20H20V22H17.5C16.95,22 16,21.55 16,21C16,21.55 15.05,22 14.5,22H12V20H14A1,1 0 0,0 15,19V5A1,1 0 0,0 14,4H12V2H14.5C15.05,2 16,2.45 16,3C16,2.45 16.95,2 17.5,2H20V4H18A1,1 0 0,0 17,5V7M5,7H10V17H5V19A1,1 0 0,0 6,20H8V22H5.5C4.95,22 4,21.55 4,21C4,21.55 3.05,22 2.5,22H0V20H2A1,1 0 0,0 3,19V5A1,1 0 0,0 2,4H0V2H2.5C3.05,2 4,2.45 4,3C4,2.45 4.95,2 5.5,2H8V4H6A1,1 0 0,0 5,5V7Z"/>
+            </svg>
+            How Does MMA Scorecard Work?
+          </h2>
+          <p>
+            MMA Scorecard is designed to be completely self-contained. All your timer settings, 
+            workout configurations, and preferences are stored locally on your device only. 
+            The app works perfectly without an internet connection, ensuring your privacy 
+            and allowing you to train anywhere.
+          </p>
+        </div>
 
-    <h2>Contact</h2>
-    <p>
-      If you have any questions about this privacy policy, please contact us at:<br
-      />
-      <a href="mailto:danny270793@gmail.com">danny270793@gmail.com</a>
-    </p>
+        <div class="section">
+          <h2>
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z"/>
+            </svg>
+            Third-Party Services
+          </h2>
+          <p>
+            While MMA Scorecard itself doesn't collect any data, please note that app stores 
+            (Google Play Store, Apple App Store) may collect basic installation and update 
+            information according to their own privacy policies. However, 
+            <strong> our app never transmits any user data to these or any other services</strong>.
+          </p>
+        </div>
 
-    <h2>Summary</h2>
-    <table>
-      <tr>
-        <th>Data Type</th>
-        <th>Collected?</th>
-      </tr>
-      <tr>
-        <td>Personal Info</td>
-        <td>❌ No</td>
-      </tr>
-      <tr>
-        <td>Location</td>
-        <td>❌ No</td>
-      </tr>
-      <tr>
-        <td>Analytics</td>
-        <td>❌ No</td>
-      </tr>
-      <tr>
-        <td>Advertisements</td>
-        <td>❌ No</td>
-      </tr>
-      <tr>
-        <td>Shared with 3rd parties</td>
-        <td>❌ No</td>
-      </tr>
-    </table>
+        <div class="summary-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Data Category</th>
+                <th>Collection Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Personal Information</strong><br><small>Name, email, phone number</small></td>
+                <td><span class="no-badge">❌ Not Collected</span></td>
+              </tr>
+              <tr>
+                <td><strong>Location Data</strong><br><small>GPS, approximate location</small></td>
+                <td><span class="no-badge">❌ Not Collected</span></td>
+              </tr>
+              <tr>
+                <td><strong>Usage Analytics</strong><br><small>App usage, feature interactions</small></td>
+                <td><span class="no-badge">❌ Not Collected</span></td>
+              </tr>
+              <tr>
+                <td><strong>Device Information</strong><br><small>Device model, OS version, identifiers</small></td>
+                <td><span class="no-badge">❌ Not Collected</span></td>
+              </tr>
+              <tr>
+                <td><strong>Workout Data</strong><br><small>Timer settings, training history</small></td>
+                <td><span class="no-badge">❌ Stays on Device</span></td>
+              </tr>
+              <tr>
+                <td><strong>Third-Party Sharing</strong><br><small>Data shared with other services</small></td>
+                <td><span class="no-badge">❌ Never Shared</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contact-section">
+          <h2>Questions About Privacy?</h2>
+          <p style="margin-bottom: 20px;">
+            We're committed to transparency. If you have any questions about this privacy policy 
+            or how MMA Scorecard works, feel free to reach out.
+          </p>
+          <a href="mailto:danny270793@gmail.com" class="email-link">
+            <svg class="mail-icon" viewBox="0 0 24 24">
+              <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+            </svg>
+            danny270793@gmail.com
+          </a>
+        </div>
+
+        <div class="effective-date">
+          <strong>Last Updated:</strong> January 2025
+        </div>
+      </div>
+    </div>
   </body>
 </html>
