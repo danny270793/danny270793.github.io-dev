@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 
 type Theme = 'light' | 'dark' | 'system';
@@ -15,25 +16,26 @@ interface MobileThemeMenuProps {
 
 export function MobileThemeMenu({ onThemeSelect }: MobileThemeMenuProps) {
   const { theme, setTheme } = useTheme();
+  const { t } = useTranslation();
 
   const themeOptions: ThemeOption[] = [
     {
       value: 'light',
-      label: 'Light',
+      label: t('theme.light'),
       icon: '☀️',
-      description: 'Always use light mode'
+      description: t('theme.descriptions.light')
     },
     {
       value: 'dark',
-      label: 'Dark',
+      label: t('theme.dark'),
       icon: '🌙',
-      description: 'Always use dark mode'
+      description: t('theme.descriptions.dark')
     },
     {
       value: 'system',
-      label: 'System',
+      label: t('theme.system'),
       icon: '💻',
-      description: 'Use system preference'
+      description: t('theme.descriptions.system')
     }
   ];
 
@@ -45,7 +47,7 @@ export function MobileThemeMenu({ onThemeSelect }: MobileThemeMenuProps) {
   return (
     <div className="border-t border-gray-200 dark:border-gray-600 mt-4 pt-4">
       <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3 px-3">
-        Theme Preference
+        {t('theme.preference')}
       </h3>
       <div className="space-y-1">
         {themeOptions.map((option) => (
