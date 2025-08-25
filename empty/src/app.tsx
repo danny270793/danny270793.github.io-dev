@@ -5,8 +5,6 @@ import { Certifications } from './components/Certifications'
 import { OpenSourceLibraries } from './components/OpenSourceLibraries'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
-import { ThemeDebugger } from './components/ThemeDebugger'
-import { SimpleThemeTest } from './components/SimpleThemeTest'
 import { useTheme } from './hooks/useTheme'
 import { 
   profile, 
