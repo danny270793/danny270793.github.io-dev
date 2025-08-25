@@ -1,5 +1,7 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import type { Project } from '../types';
+import { getProjects } from '../data/mockData';
 import GooglePlay from "../images/projects/google-play.png";
 import AppStore from "../images/projects/app-store.png";
 import Github from "../images/projects/github.png";
@@ -8,11 +10,17 @@ interface ProjectsProps {
   projects: Project[];
 }
 
-export function Projects({ projects }: ProjectsProps) {
-  const [activeFilter, setActiveFilter] = useState('All');
+export function Projects({ }: ProjectsProps) {
+  const { t } = useTranslation();
+  const [activeFilter, setActiveFilter] = useState(t('filters.all'));
+  const [projects, setProjects] = useState<Project[]>(getProjects());
+
+  useEffect(() => {
+    setProjects(getProjects());
+  }, [t]);
   
-  const categories = ['All', ...Array.from(new Set(projects.map(project => project.category)))];
-  const filteredProjects = activeFilter === 'All' 
+  const categories = [t('filters.all'), ...Array.from(new Set(projects.map(project => project.category)))];
+  const filteredProjects = activeFilter === t('filters.all') 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
@@ -31,10 +39,10 @@ export function Projects({ projects }: ProjectsProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
+            {t('projects.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            A showcase of applications and solutions I've built across different domains
+            {t('projects.subtitle')}
           </p>
 
           {/* Filter Buttons */}
@@ -49,7 +57,7 @@ export function Projects({ projects }: ProjectsProps) {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700'
                 }`}
               >
-                {category}
+                {category === t('filters.all') ? t('projects.categories.all') : category}
               </button>
             ))}
           </div>
