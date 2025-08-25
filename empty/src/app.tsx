@@ -5,6 +5,8 @@ import { Certifications } from './components/Certifications'
 import { OpenSourceLibraries } from './components/OpenSourceLibraries'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
+import { ThemeDebugger } from './components/ThemeDebugger'
+import { SimpleThemeTest } from './components/SimpleThemeTest'
 import { useTheme } from './hooks/useTheme'
 import { 
   profile, 
@@ -47,6 +49,10 @@ export function App() {
           <Contact socialNetworks={socialNetworks} profile={profile} />
         </div>
       </main>
+      
+      {/* Temporary debug components */}
+      <ThemeDebugger />
+      <SimpleThemeTest />
     </div>
   )
 }
