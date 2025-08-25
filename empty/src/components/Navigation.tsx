@@ -1,17 +1,21 @@
 import { useState } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import { ThemeDropdown } from './ThemeDropdown';
 import { MobileThemeMenu } from './MobileThemeMenu';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { MobileLanguageSwitcher } from './MobileLanguageSwitcher';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Education', href: '#education' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Open Source', href: '#libraries' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('navigation.home'), href: '#home' },
+    { name: t('navigation.education'), href: '#education' },
+    { name: t('navigation.certifications'), href: '#certifications' },
+    { name: t('navigation.openSource'), href: '#libraries' },
+    { name: t('navigation.projects'), href: '#projects' },
+    { name: t('navigation.contact'), href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -51,8 +55,9 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Theme Dropdown */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Theme Dropdown & Language Switcher */}
+          <div className="hidden md:flex items-center gap-2">
+            <LanguageSwitcher />
             <ThemeDropdown />
           </div>
 
@@ -62,7 +67,7 @@ export function Navigation() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="bg-gray-100 dark:bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">{isMenuOpen ? t('accessibility.closeMainMenu') : t('accessibility.openMainMenu')}</span>
               {!isMenuOpen ? (
                 <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -90,6 +95,7 @@ export function Navigation() {
                 {item.name}
               </button>
             ))}
+            <MobileLanguageSwitcher onLanguageChange={() => setIsMenuOpen(false)} />
             <MobileThemeMenu onThemeSelect={() => setIsMenuOpen(false)} />
           </div>
         </div>
