@@ -12,19 +12,19 @@ interface MobileLanguageSwitcherProps {
 }
 
 export function MobileLanguageSwitcher({ onLanguageChange }: MobileLanguageSwitcherProps) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const languages: LanguageOption[] = [
     {
       code: 'en',
-      name: 'English',
-      nativeName: 'English',
+      name: t('language.english'),
+      nativeName: t('language.nativeEnglish'),
       flag: '🇺🇸'
     },
     {
       code: 'es',
-      name: 'Spanish',
-      nativeName: 'Español',
+      name: t('language.spanish'),
+      nativeName: t('language.nativeSpanish'),
       flag: '🇪🇸'
     }
   ];
@@ -37,7 +37,7 @@ export function MobileLanguageSwitcher({ onLanguageChange }: MobileLanguageSwitc
   return (
     <div className="border-t border-gray-200 dark:border-gray-600 mt-4 pt-4">
       <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3 px-3">
-        Language / Idioma
+        {t('language.selector')}
       </h3>
       <div className="space-y-1">
         {languages.map((language) => (
