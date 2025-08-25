@@ -1,42 +1,34 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../hooks/useTheme';
 
-type Theme = 'light' | 'dark' | 'system';
-
-interface ThemeOption {
-  value: Theme;
-  label: string;
-  icon: string;
-  description: string;
+interface LanguageOption {
+  code: string;
+  name: string;
+  nativeName: string;
+  flag: string;
 }
 
-export function ThemeDropdown() {
+export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme, getThemeIcon } = useTheme();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const themeOptions: ThemeOption[] = [
+  const languages: LanguageOption[] = [
     {
-      value: 'light',
-      label: t('theme.light'),
-      icon: '☀️',
-      description: t('theme.descriptions.light')
+      code: 'en',
+      name: t('language.english'),
+      nativeName: t('language.nativeEnglish'),
+      flag: '🇺🇸'
     },
     {
-      value: 'dark',
-      label: t('theme.dark'),
-      icon: '🌙',
-      description: t('theme.descriptions.dark')
-    },
-    {
-      value: 'system',
-      label: t('theme.system'),
-      icon: '💻',
-      description: t('theme.descriptions.system')
+      code: 'es',
+      name: t('language.spanish'),
+      nativeName: t('language.nativeSpanish'),
+      flag: '🇪🇸'
     }
   ];
+
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -52,26 +44,24 @@ export function ThemeDropdown() {
     };
   }, []);
 
-  const handleThemeSelect = (selectedTheme: Theme) => {
-    setTheme(selectedTheme);
+  const handleLanguageChange = (languageCode: string) => {
+    i18n.changeLanguage(languageCode);
     setIsOpen(false);
   };
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Theme Toggle Button */}
+      {/* Language Toggle Button */}
       <button
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group flex items-center gap-2"
         onClick={() => setIsOpen(!isOpen)}
-        title={t('theme.current', { theme: t(`theme.${theme}`) })}
-        aria-label={t('accessibility.toggleThemeMenu')}
+        title={`Current language: ${currentLanguage.name}`}
+        aria-label={t('accessibility.toggleLanguageMenu')}
         aria-expanded={isOpen}
       >
-        <span className="text-lg group-hover:scale-110 transition-transform duration-200">
-          {getThemeIcon()}
-        </span>
-        <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-300">
-          {t(`theme.${theme}`)}
+        <span className="text-lg">{currentLanguage.flag}</span>
+        <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-300 uppercase">
+          {currentLanguage.code}
         </span>
         <svg 
           className={`w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
@@ -87,25 +77,25 @@ export function ThemeDropdown() {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg z-50 py-1">
-          {themeOptions.map((option) => (
+        <div className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg z-50 py-1">
+          {languages.map((language) => (
             <button
-              key={option.value}
-              onClick={() => handleThemeSelect(option.value)}
+              key={language.code}
+              onClick={() => handleLanguageChange(language.code)}
               className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-3 ${
-                theme === option.value 
+                i18n.language === language.code 
                   ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400' 
                   : 'text-gray-700 dark:text-gray-300'
               }`}
             >
-              <span className="text-lg">{option.icon}</span>
+              <span className="text-lg">{language.flag}</span>
               <div className="flex-1">
-                <div className="font-medium">{option.label}</div>
+                <div className="font-medium">{language.nativeName}</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                  {option.description}
+                  {language.name}
                 </div>
               </div>
-              {theme === option.value && (
+              {i18n.language === language.code && (
                 <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>

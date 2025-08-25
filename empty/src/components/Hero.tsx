@@ -1,10 +1,19 @@
+import { useEffect, useState } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import type { Profile } from '../types';
+import { getProfile } from '../data/mockData';
 
 interface HeroProps {
   profile: Profile;
 }
 
-export function Hero({ profile }: HeroProps) {
+export function Hero({ }: HeroProps) {
+  const { t } = useTranslation();
+  const [profile, setProfile] = useState<Profile>(getProfile());
+
+  useEffect(() => {
+    setProfile(getProfile());
+  }, [t]);
   return (
     <section className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

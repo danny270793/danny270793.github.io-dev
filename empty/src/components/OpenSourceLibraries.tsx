@@ -1,15 +1,23 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import type { OpenSourceLibrary } from '../types';
+import { getOpenSourceLibraries } from '../data/mockData';
 
 interface OpenSourceLibrariesProps {
   libraries: OpenSourceLibrary[];
 }
 
-export function OpenSourceLibraries({ libraries }: OpenSourceLibrariesProps) {
-  const [activeFilter, setActiveFilter] = useState('All');
+export function OpenSourceLibraries({ }: OpenSourceLibrariesProps) {
+  const { t } = useTranslation();
+  const [activeFilter, setActiveFilter] = useState(t('filters.all'));
+  const [libraries, setLibraries] = useState<OpenSourceLibrary[]>(getOpenSourceLibraries());
+
+  useEffect(() => {
+    setLibraries(getOpenSourceLibraries());
+  }, [t]);
   
-  const categories = ['All', ...Array.from(new Set(libraries.map(lib => lib.category)))];
-  const filteredLibraries = activeFilter === 'All' 
+  const categories = [t('filters.all'), ...Array.from(new Set(libraries.map(lib => lib.category)))];
+  const filteredLibraries = activeFilter === t('filters.all') 
     ? libraries 
     : libraries.filter(lib => lib.category === activeFilter);
 
@@ -18,10 +26,10 @@ export function OpenSourceLibraries({ libraries }: OpenSourceLibrariesProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Open Source Libraries
+            {t('openSource.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            Contributing to the developer community with useful tools and libraries
+            {t('openSource.subtitle')}
           </p>
 
           {/* Filter Buttons */}
@@ -36,7 +44,7 @@ export function OpenSourceLibraries({ libraries }: OpenSourceLibrariesProps) {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600'
                 }`}
               >
-                {category}
+                {category === t('filters.all') ? t('openSource.categories.all') : category}
               </button>
             ))}
           </div>

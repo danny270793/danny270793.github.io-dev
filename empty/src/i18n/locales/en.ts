@@ -1,0 +1,157 @@
+import type { I18nTranslations } from '../types';
+
+export const en: I18nTranslations = {
+  navigation: {
+    home: "Home",
+    education: "Education",
+    certifications: "Certifications",
+    openSource: "Open Source",
+    projects: "Projects",
+    contact: "Contact"
+  },
+  theme: {
+    current: "Current theme: {{theme}}",
+    light: "Light",
+    dark: "Dark",
+    system: "System",
+    preference: "Theme Preference",
+    descriptions: {
+      light: "Always use light mode",
+      dark: "Always use dark mode",
+      system: "Use system preference"
+    }
+  },
+  profile: {
+    name: "Danny Vaca",
+    title: "Full Stack Developer & Solutions Architect",
+    subtitle: "Building scalable solutions with modern technologies",
+    description: "Senior Full Stack Developer with almost 15 years of experience implementing solutions for digital transformation in the cloud (Azure, AWS), developing cross-platform mobile applications (Flutter, React Native, Cordova) as well as deploying web applications based on microservices (Java, .Net, Python)\nI have a wide range of certifications in Cloudera, Kubernetes, Azure, Terraform, Java, Python, UiPath that guarantee my knowledge\nMy previous experience allows me to understand and anticipate challenges, as well as propose solutions that add value to the business and ensure return on investment.",
+    location: "Ecuador, Guayaquil"
+  },
+  hero: {
+    emailMe: "Email me"
+  },
+  education: {
+    title: "Education",
+    subtitle: "Academic foundation that shaped my technical expertise",
+    degrees: {
+      masters: "Master in Information Systems with Business Intelligence specialization",
+      engineering: "Electronic Engineering with Telecommunications specialization"
+    },
+    universities: {
+      ecotec: "Universidad Tecnológica Ecotec",
+      ups: "Universidad Politécnica Salesiana"
+    }
+  },
+  certifications: {
+    title: "Professional Certifications",
+    subtitle: "Industry-recognized credentials and continuous learning achievements",
+    clickToView: "Click to view credential ↗",
+    categories: {
+      all: "All",
+      cloud: "Cloud",
+      development: "Development",
+      data: "Data",
+      ai: "AI",
+      automation: "Automation",
+      deployment: "Deployment",
+      dataPrivacy: "Data Privacy",
+      others: "Others"
+    }
+  },
+  openSource: {
+    title: "Open Source Libraries",
+    subtitle: "Contributing to the developer community with reusable solutions",
+    categories: {
+      all: "All",
+      flutter: "Flutter",
+      node: "Node.js",
+      python: "Python",
+      dockerHub: "Docker Hub",
+      arduino: "Arduino",
+      rust: "Rust",
+      matlab: "Matlab"
+    },
+    libraries: {
+      jmixclientv1: "Library to connect with jmix v1.x rest api",
+      tsframework: "REST Framework for education purposes",
+      hotreloader: "Re-executes a command when a file changes on specific folder",
+      levenshtein: "Computes levenshtein distance to find matches between strings",
+      azureservicesclient: "Library to connect and get metadata from Azure resources like synapse, storage accounts, etc",
+      jmixclientv2: "Library to connect with jmix v2.x rest api",
+      argumentsParser: "Library to parse cmd arguments",
+      fakeHttpServer: "Fake http server which returns the hostname of the running machine and the node name shared via environment variables",
+      sqlserver: "Create sqlserver container with a database just passing the database name as parameter without the need of any external script",
+      ansible: "Docker image with ansible pre-installed for ci purposes",
+      terraformAzure: "Docker image with azure cli pre-installed for ci purposes",
+      shiftRegister: "Library to convert decimal numbers to binary and write out over shift registers",
+      codeMetadata: "Computes the metadata of the projects: files by extension, lines by extension, average lines per file",
+      portCom: "Library to read and plot data from serial port using Matlab"
+    }
+  },
+  projects: {
+    title: "Featured Projects",
+    subtitle: "A showcase of applications and solutions I've built across different domains",
+    categories: {
+      all: "All",
+      mobile: "Mobile"
+    },
+    links: {
+      playstore: "Play Store",
+      github: "GitHub"
+    },
+    items: {
+      maintAzureMonitoring: {
+        name: "Maint Azure Monitoring",
+        description: "App to get insights (prices, usage) from Azure account"
+      },
+      speedometer: {
+        name: "Speedometer",
+        description: "App to measure the speed at which the device is moving"
+      },
+      soundmeter: {
+        name: "Soundmeter", 
+        description: "App to measure the strength of the noise reaching your phone microphone"
+      },
+      mycompass: {
+        name: "My Compass",
+        description: "App to measure the orientation of the device"
+      },
+      boxingTimer: {
+        name: "Boxing Timer",
+        description: "An app that shows a timer for each round of your boxing training"
+      },
+      mmaScoreCard: {
+        name: "MMA ScoreCard", 
+        description: "An independent app to see MMA events and results"
+      }
+    }
+  },
+  contact: {
+    title: "Let's Connect",
+    subtitle: "Ready to collaborate on your next project or discuss opportunities",
+    getInTouch: "Get in touch",
+    followMe: "Follow me"
+  },
+  language: {
+    english: "English",
+    spanish: "Spanish",
+    nativeEnglish: "English",
+    nativeSpanish: "Español",
+    selector: "Language / Idioma"
+  },
+  filters: {
+    all: "All"
+  },
+  socialNetworks: {
+    github: "GitHub",
+    linkedin: "LinkedIn", 
+    youtube: "Youtube"
+  },
+  accessibility: {
+    toggleThemeMenu: "Toggle theme menu",
+    toggleLanguageMenu: "Toggle language menu",
+    openMainMenu: "Open main menu",
+    closeMainMenu: "Close main menu"
+  }
+};

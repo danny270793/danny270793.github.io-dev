@@ -1,4 +1,5 @@
 import type { Education, Certification, OpenSourceLibrary, Project, SocialNetwork, Profile } from '../types';
+import i18n from '../i18n';
 import profilePicture from "../images/profile.jpg";
 import Ecotec from "../images/education/ecotec.png";
 import UPS from "../images/education/ups.png";
@@ -16,32 +17,36 @@ import Mycompass from "../images/projects/mycompass.webp";
 import BoxingTimer from "../images/projects/boxingtimer.png";
 import MMAScoreCard from "../images/projects/mmascorecard.png";
 
-export const profile: Profile = {
-  name: "Danny Vaca",
-  title: "Full Stack Developer & Solutions Architect",
-  subtitle: "Building scalable solutions with modern technologies",
-  description: "Senior Full Stack Developer with almost 15 years of experience implementing solutions for digital transformation in the cloud (Azure, AWS), developing cross-platform mobile applications (Flutter, React Native, Cordova) as well as deploying web applications based on microservices (Java, .Net, Python)\nI have a wide range of certifications in Cloudera, Kubernetes, Azure, Terraform, Java, Python, UiPath that guarantee my knowledge\nMy previous experience allows me to understand and anticipate challenges, as well as propose solutions that add value to the business and ensure return on investment.",
+export const getProfile = (): Profile => ({
+  name: i18n.t('profile.name'),
+  title: i18n.t('profile.title'),
+  subtitle: i18n.t('profile.subtitle'),
+  description: i18n.t('profile.description'),
   avatar: profilePicture,
-  location: "Ecuador, Guayaquil",
+  location: i18n.t('profile.location'),
   email: "danny270793@gmail.com"
-};
+});
 
-export const education: Education[] = [
+export const profile: Profile = getProfile();
+
+export const getEducation = (): Education[] => [
   {
     id: "1",
     avatar: Ecotec,
-    title: "Máster en sistemas de información con mención en inteligencia de negocios",
-    university: "Universidad Tecnológica Ecotec",
+    title: i18n.t('education.degrees.masters'),
+    university: i18n.t('education.universities.ecotec'),
     date: "2020 - 2021"
   },
   {
     id: "2", 
     avatar: UPS,
-    title: "Ingeniero Electrónico con mención en telecomunicaciones",
-    university: "Universidad Politécnica Salesiana",
+    title: i18n.t('education.degrees.engineering'),
+    university: i18n.t('education.universities.ups'),
     date: "2012 - 2017"
   }
 ];
+
+export const education: Education[] = getEducation();
 
 export const certifications: Certification[] = [
   {
@@ -442,11 +447,11 @@ export const certifications: Certification[] = [
   }
 ];
 
-export const openSourceLibraries: OpenSourceLibrary[] = [
+export const getOpenSourceLibraries = (): OpenSourceLibrary[] => [
   {
     id: "1",
     title: "jmixclientv1",
-    description: "Library to connect with jmix v1.x rest api",
+    description: i18n.t('openSource.libraries.jmixclientv1'),
     logo: pubDev,
     category: "Flutter",
     githubUrl: "https://pub.dev/packages/jmixclientv1"
@@ -454,7 +459,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "2",
     title: "@danny270793/tsframework",
-    description: "REST Framework for education purposes",
+    description: i18n.t('openSource.libraries.tsframework'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/tsframework"
@@ -462,7 +467,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "3",
     title: "@danny270793/hotreloader",
-    description: "Re-executes a command when a file changes on specific folder",
+    description: i18n.t('openSource.libraries.hotreloader'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/hotreloader"
@@ -470,7 +475,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "4",
     title: "@danny270793/levenshtein",
-    description: "Computes levenshtein distance to find matchs between strings",
+    description: i18n.t('openSource.libraries.levenshtein'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/levenshtein"
@@ -478,7 +483,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "5",
     title: "@danny270793/azureservicesclient",
-    description: "Library to connect and get metadata from Azure resources like synapse, storage accounts, etc",
+    description: i18n.t('openSource.libraries.azureservicesclient'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/azureservicesclient"
@@ -486,7 +491,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "6",
     title: "@danny270793/jmixclientv1",
-    description: "Library to connect with jmix v1.x rest api",
+    description: i18n.t('openSource.libraries.jmixclientv1'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/jmixclientv1"
@@ -494,7 +499,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "7",
     title: "@danny270793/jmixclientv2",
-    description: "Library to connect with jmix v2.x rest api",
+    description: i18n.t('openSource.libraries.jmixclientv2'),
     logo: Npm,
     category: "Node.js",
     npmUrl: "https://www.npmjs.com/package/@danny270793/jmixclientv2"
@@ -502,7 +507,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "8",
     title: "arguments-parser",
-    description: "Library to parse cmd arguments",
+    description: i18n.t('openSource.libraries.argumentsParser'),
     logo: Pip,
     category: "Python",
     githubUrl: "https://pypi.org/project/arguments-parser/"
@@ -510,7 +515,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "9",
     title: "fake-http-server",
-    description: "Fake http server wich returns the hostname of the running machine and the node name shared via environment variables",
+    description: i18n.t('openSource.libraries.fakeHttpServer'),
     logo: DokcerHub,
     category: "Docker",
     githubUrl: "https://hub.docker.com/r/danny27071993/fake-http-server"
@@ -518,7 +523,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "10",
     title: "sqlserver",
-    description: "Create sqlserver container with a database just passing the database name as parameter without the need of any external script",
+    description: i18n.t('openSource.libraries.sqlserver'),
     logo: DokcerHub,
     category: "Docker",
     githubUrl: "https://hub.docker.com/r/danny27071993/sqlserver"
@@ -526,7 +531,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "11",
     title: "ansible",
-    description: "Docker image with ansible pre-installed for ci purposes",
+    description: i18n.t('openSource.libraries.ansible'),
     logo: DokcerHub,
     category: "Docker",
     githubUrl: "https://hub.docker.com/r/danny27071993/ansible"
@@ -534,7 +539,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "12",
     title: "terraform-azure",
-    description: "Docker image with azure cli pre-installed for ci purposes",
+    description: i18n.t('openSource.libraries.terraformAzure'),
     logo: DokcerHub,
     category: "Docker",
     githubUrl: "https://hub.docker.com/r/danny27071993/terraform-azure"
@@ -542,7 +547,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "13",
     title: "ShiftRegister",
-    description: "Library to convert decimal numbers to binary and write out over shift registers",
+    description: i18n.t('openSource.libraries.shiftRegister'),
     logo: Arduino,
     category: "Arduino",
     githubUrl: "https://github.com/danny270793/ArduinoShiftRegister"
@@ -550,7 +555,7 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "14",
     title: "code-metadata",
-    description: "Computes the metada of the projects: files by extention, lines by extention, average lines per file",
+    description: i18n.t('openSource.libraries.codeMetadata'),
     logo: CratesIO,
     category: "Rust",
     githubUrl: "https://crates.io/crates/code-metadata"
@@ -558,18 +563,20 @@ export const openSourceLibraries: OpenSourceLibrary[] = [
   {
     id: "15",
     title: "PortCom",
-    description: "Library to read and plot data from serial port using Matlab",
+    description: i18n.t('openSource.libraries.portCom'),
     logo: Matlab,
     category: "Matlab",
     githubUrl: "https://github.com/danny270793/MatlabPortCom"
   }
 ];
 
-export const projects: Project[] = [
+export const openSourceLibraries: OpenSourceLibrary[] = getOpenSourceLibraries();
+
+export const getProjects = (): Project[] => [
   {
     id: "1",
-    name: "Maint Azure Monitoring",
-    description: "App get insights (prices, ussage) from azure accout",
+    name: i18n.t('projects.items.maintAzureMonitoring.name'),
+    description: i18n.t('projects.items.maintAzureMonitoring.description'),
     icon: MaintAzureMonitoring,
     technologies: ["Flutter", "Dart", "Azure API"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=com.maintlatam.azure.pipelinesmonitoring.pipelines_monitoring",
@@ -577,8 +584,8 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    name: "Speedometer",
-    description: "App to measure the speed which the device is moving on",
+    name: i18n.t('projects.items.speedometer.name'),
+    description: i18n.t('projects.items.speedometer.description'),
     icon: Speedometer,
     technologies: ["Flutter", "Dart", "GPS"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.sppedometer",
@@ -587,8 +594,8 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    name: "Soundmeter",
-    description: "App to measure the strengh of the noise which is reaching your phone microphone",
+    name: i18n.t('projects.items.soundmeter.name'),
+    description: i18n.t('projects.items.soundmeter.description'),
     icon: Soundmeter,
     technologies: ["Flutter", "Dart", "Audio Processing"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.soundmeter.soundmeter",
@@ -597,8 +604,8 @@ export const projects: Project[] = [
   },
   {
     id: "4",
-    name: "Mycompass",
-    description: "App to measure the orientation of the device",
+    name: i18n.t('projects.items.mycompass.name'),
+    description: i18n.t('projects.items.mycompass.description'),
     icon: Mycompass,
     technologies: ["Flutter", "Dart", "Sensors"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.mycompass",
@@ -607,8 +614,8 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    name: "Boxing Timer",
-    description: "A app that shows a timer for each round of your boxing training",
+    name: i18n.t('projects.items.boxingTimer.name'),
+    description: i18n.t('projects.items.boxingTimer.description'),
     icon: BoxingTimer,
     technologies: ["Flutter", "Dart", "Timers"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.boxingtimer",
@@ -617,8 +624,8 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    name: "MMA ScoreCard",
-    description: "An independent app to see MMA events and results",
+    name: i18n.t('projects.items.mmaScoreCard.name'),
+    description: i18n.t('projects.items.mmaScoreCard.description'),
     icon: MMAScoreCard,
     technologies: ["Flutter", "Dart", "API Integration"],
     playstoreUrl: "https://play.google.com/store/apps/details?id=io.github.danny270793.mmascorecard",
@@ -626,6 +633,8 @@ export const projects: Project[] = [
     category: "Mobile"
   }
 ];
+
+export const projects: Project[] = getProjects();
 
 export const socialNetworks: SocialNetwork[] = [
   {
