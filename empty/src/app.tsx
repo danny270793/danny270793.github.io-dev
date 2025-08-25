@@ -49,10 +49,6 @@ export function App() {
           <Contact socialNetworks={socialNetworks} profile={profile} />
         </div>
       </main>
-      
-      {/* Temporary debug components */}
-      <ThemeDebugger />
-      <SimpleThemeTest />
     </div>
   )
 }
