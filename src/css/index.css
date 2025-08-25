@@ -1776,3 +1776,148 @@ html {
         opacity: 0;
     }
 }
+
+/* TSX Certifications Component Specific Styles */
+
+/* Modern Certification Cards for TSX */
+.modern-cert-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.modern-cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.modern-cert-card:hover::before {
+  transform: scaleX(1);
+}
+
+.modern-cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.modern-cert-mobile {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-base);
+  margin-bottom: 1rem;
+}
+
+.modern-cert-mobile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.cert-image {
+  transition: all var(--transition-base);
+  border-radius: var(--radius);
+}
+
+.cert-image:hover {
+  transform: scale(1.02);
+}
+
+.cert-content {
+  padding: 1rem;
+}
+
+.cert-content h5 {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.cert-content p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* Enhanced fade transitions for TSX component */
+.certification-category-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation for TSX filter transitions */
+.certification-category-active.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.certification-category-active.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button hover effects for TSX */
+.filter-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.filter-btn:hover::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Enhanced mobile responsiveness for TSX */
+@media (max-width: 768px) {
+  .modern-cert-card {
+    margin-bottom: 1rem;
+  }
+  
+  .cert-content {
+    padding: 0.75rem;
+  }
+  
+  .cert-content h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-cert-mobile {
+    margin-bottom: 0.75rem;
+  }
+  
+  .cert-content h5 {
+    font-size: 0.9rem;
+  }
+  
+  .cert-content p {
+    font-size: 0.8rem;
+  }
+}
