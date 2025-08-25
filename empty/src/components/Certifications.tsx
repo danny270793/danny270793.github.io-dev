@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import type { Certification } from '../types';
 
 interface CertificationsProps {
@@ -6,7 +7,8 @@ interface CertificationsProps {
 }
 
 export function Certifications({ certifications }: CertificationsProps) {
-  const [activeFilter, setActiveFilter] = useState('Development');
+  const [activeFilter, setActiveFilter] = useState('All');
+  const { t } = useTranslation();
   
   const categories = [...Array.from(new Set(certifications.map(cert => cert.category))), 'All'];
   const filteredCertifications = activeFilter === 'All' 
