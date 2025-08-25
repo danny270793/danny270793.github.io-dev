@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { SocialNetwork, Profile } from '../types';
 import Youtube from "../images/social/youtube.png";
 import Github from "../images/social/github.svg";
@@ -9,16 +10,16 @@ interface ContactProps {
 }
 
 export function Contact({ socialNetworks, profile }: ContactProps) {
+  const { t } = useTranslation();
   return (
     <section className="py-20 bg-gradient-to-br from-indigo-600 to-purple-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Let's Connect
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
-            I'm always interested in new opportunities and interesting projects. 
-            Let's discuss how we can work together.
+            {t('contact.subtitle')}
           </p>
         </div>
 
