@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
-    "preact": "^10.26.5"
+    "i18next": "^25.4.2",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "preact": "^10.26.5",
+    "react-i18next": "^15.7.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
