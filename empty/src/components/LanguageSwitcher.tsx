@@ -10,20 +10,20 @@ interface LanguageOption {
 
 export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages: LanguageOption[] = [
     {
       code: 'en',
-      name: 'English',
-      nativeName: 'English',
+      name: t('language.english'),
+      nativeName: t('language.nativeEnglish'),
       flag: '🇺🇸'
     },
     {
       code: 'es',
-      name: 'Spanish',
-      nativeName: 'Español',
+      name: t('language.spanish'),
+      nativeName: t('language.nativeSpanish'),
       flag: '🇪🇸'
     }
   ];
@@ -56,7 +56,7 @@ export function LanguageSwitcher() {
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group flex items-center gap-2"
         onClick={() => setIsOpen(!isOpen)}
         title={`Current language: ${currentLanguage.name}`}
-        aria-label="Toggle language menu"
+        aria-label={t('accessibility.toggleLanguageMenu')}
         aria-expanded={isOpen}
       >
         <span className="text-lg">{currentLanguage.flag}</span>
