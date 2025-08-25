@@ -5,6 +5,9 @@ import { Certifications } from './components/Certifications'
 import { OpenSourceLibraries } from './components/OpenSourceLibraries'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
+import { ThemeDebugger } from './components/ThemeDebugger'
+import { SimpleThemeTest } from './components/SimpleThemeTest'
+import { useTheme } from './hooks/useTheme'
 import { 
   profile, 
   education, 
@@ -15,8 +18,10 @@ import {
 } from './data/mockData'
 
 export function App() {
+  // Initialize theme system
+  useTheme();
   return (
-    <div class="min-h-screen">
+    <div class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <Navigation />
       
       <main>
@@ -44,6 +49,10 @@ export function App() {
           <Contact socialNetworks={socialNetworks} profile={profile} />
         </div>
       </main>
+      
+      {/* Temporary debug components */}
+      <ThemeDebugger />
+      <SimpleThemeTest />
     </div>
   )
 }
