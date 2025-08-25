@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 
 type Theme = 'light' | 'dark' | 'system';
@@ -12,27 +13,28 @@ interface ThemeOption {
 
 export function ThemeDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme, getThemeIcon, getThemeLabel } = useTheme();
+  const { theme, setTheme, getThemeIcon } = useTheme();
+  const { t } = useTranslation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const themeOptions: ThemeOption[] = [
     {
       value: 'light',
-      label: 'Light',
+      label: t('theme.light'),
       icon: '☀️',
-      description: 'Always use light mode'
+      description: t('theme.descriptions.light')
     },
     {
       value: 'dark',
-      label: 'Dark',
+      label: t('theme.dark'),
       icon: '🌙',
-      description: 'Always use dark mode'
+      description: t('theme.descriptions.dark')
     },
     {
       value: 'system',
-      label: 'System',
+      label: t('theme.system'),
       icon: '💻',
-      description: 'Use system preference'
+      description: t('theme.descriptions.system')
     }
   ];
 
@@ -61,15 +63,15 @@ export function ThemeDropdown() {
       <button
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group flex items-center gap-2"
         onClick={() => setIsOpen(!isOpen)}
-        title={`Current theme: ${getThemeLabel()}`}
-        aria-label="Toggle theme menu"
+        title={t('theme.current', { theme: t(`theme.${theme}`) })}
+        aria-label={t('accessibility.toggleThemeMenu')}
         aria-expanded={isOpen}
       >
         <span className="text-lg group-hover:scale-110 transition-transform duration-200">
           {getThemeIcon()}
         </span>
         <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-300">
-          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+          {t(`theme.${theme}`)}
         </span>
         <svg 
           className={`w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
