@@ -1,0 +1,82 @@
+{
+  "navigation": {
+    "home": "Home",
+    "education": "Education",
+    "certifications": "Certifications",
+    "openSource": "Open Source",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "theme": {
+    "current": "Current theme: {{theme}}",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "preference": "Theme Preference",
+    "descriptions": {
+      "light": "Always use light mode",
+      "dark": "Always use dark mode",
+      "system": "Use system preference"
+    }
+  },
+  "hero": {
+    "emailMe": "Email me"
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "Academic foundation that shaped my technical expertise"
+  },
+  "certifications": {
+    "title": "Professional Certifications",
+    "subtitle": "Industry-recognized credentials and continuous learning achievements",
+    "clickToView": "Click to view credential ↗",
+    "categories": {
+      "all": "All",
+      "cloud": "Cloud",
+      "development": "Development",
+      "data": "Data",
+      "ai": "AI",
+      "automation": "Automation",
+      "deployment": "Deployment",
+      "dataPrivacy": "Data Privacy",
+      "others": "Others"
+    }
+  },
+  "openSource": {
+    "title": "Open Source Libraries",
+    "subtitle": "Contributing to the developer community with reusable solutions",
+    "categories": {
+      "all": "All",
+      "flutter": "Flutter",
+      "node": "Node.js",
+      "python": "Python",
+      "dockerHub": "Docker Hub",
+      "arduino": "Arduino",
+      "rust": "Rust",
+      "matlab": "Matlab"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A showcase of applications and solutions I've built across different domains",
+    "categories": {
+      "all": "All",
+      "mobile": "Mobile"
+    },
+    "links": {
+      "playstore": "Play Store",
+      "github": "GitHub"
+    }
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Ready to collaborate on your next project or discuss opportunities",
+    "getInTouch": "Get in touch",
+    "followMe": "Follow me"
+  },
+  "accessibility": {
+    "toggleThemeMenu": "Toggle theme menu",
+    "openMainMenu": "Open main menu",
+    "closeMainMenu": "Close main menu"
+  }
+}

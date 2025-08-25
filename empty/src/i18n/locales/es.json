@@ -1,0 +1,82 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "education": "Educación",
+    "certifications": "Certificaciones",
+    "openSource": "Código Abierto",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "theme": {
+    "current": "Tema actual: {{theme}}",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "preference": "Preferencia de Tema",
+    "descriptions": {
+      "light": "Usar siempre el modo claro",
+      "dark": "Usar siempre el modo oscuro",
+      "system": "Usar preferencia del sistema"
+    }
+  },
+  "hero": {
+    "emailMe": "Envíame un email"
+  },
+  "education": {
+    "title": "Educación",
+    "subtitle": "Base académica que formó mi experiencia técnica"
+  },
+  "certifications": {
+    "title": "Certificaciones Profesionales",
+    "subtitle": "Credenciales reconocidas por la industria y logros de aprendizaje continuo",
+    "clickToView": "Haz clic para ver credencial ↗",
+    "categories": {
+      "all": "Todas",
+      "cloud": "Nube",
+      "development": "Desarrollo",
+      "data": "Datos",
+      "ai": "IA",
+      "automation": "Automatización",
+      "deployment": "Despliegue",
+      "dataPrivacy": "Privacidad de Datos",
+      "others": "Otros"
+    }
+  },
+  "openSource": {
+    "title": "Librerías de Código Abierto",
+    "subtitle": "Contribuyendo a la comunidad de desarrolladores con soluciones reutilizables",
+    "categories": {
+      "all": "Todas",
+      "flutter": "Flutter",
+      "node": "Node.js",
+      "python": "Python",
+      "dockerHub": "Docker Hub",
+      "arduino": "Arduino",
+      "rust": "Rust",
+      "matlab": "Matlab"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Una muestra de aplicaciones y soluciones que he construido en diferentes dominios",
+    "categories": {
+      "all": "Todos",
+      "mobile": "Móvil"
+    },
+    "links": {
+      "playstore": "Play Store",
+      "github": "GitHub"
+    }
+  },
+  "contact": {
+    "title": "Conectemos",
+    "subtitle": "Listo para colaborar en tu próximo proyecto o discutir oportunidades",
+    "getInTouch": "Ponte en contacto",
+    "followMe": "Sígueme"
+  },
+  "accessibility": {
+    "toggleThemeMenu": "Alternar menú de tema",
+    "openMainMenu": "Abrir menú principal",
+    "closeMainMenu": "Cerrar menú principal"
+  }
+}
