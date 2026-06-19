@@ -21,11 +21,18 @@ import type { SocialLink } from "../libraries/me/social-links";
     <div class="w3-row">
       {
         SocialLinks.map((socialLink: SocialLink) => (
-          <a href={socialLink.link} target="_blank" rel="noopener noreferrer" class="w3-third">
+          <a
+            href={socialLink.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w3-third social-link"
+          >
             <Image
               src={socialLink.image}
               alt={socialLink.alternativeText}
-              style="max-width: 100%;"
+              width={72}
+              height={72}
+              style="width: 72px; height: 72px; object-fit: contain;"
             />
           </a>
         ))
