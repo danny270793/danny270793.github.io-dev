@@ -274,9 +274,17 @@ body {
 
 /* ── Pickers (language + theme) ── */
 
-/* Allow dropdowns to overflow the navbar bar */
+/* Flex bar so all items share the same vertical center */
 #navbar .w3-bar {
   overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+/* Push desktop nav to the right inside the flex bar */
+#navbar .w3-right {
+  margin-left: auto;
+  float: none !important;
 }
 
 /* Shared pill button container */
