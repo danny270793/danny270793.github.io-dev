@@ -1,17 +1,35 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import "../libraries/arrays";
 import type Certification from "../libraries/me/knowledges/certification";
+import { translations, type Language } from "../i18n/translations";
 
 export default function Certifications({
   certifications,
   background,
   order,
-  parallaxHeight = "25vh",
+  parallaxHeight = "30vh",
 }) {
   const [category, setCategory] = useState("stared");
-  const onCategoryClicked = (selectedCategory: string) => {
-    setCategory(selectedCategory);
-  };
+  const [lang, setLang] = useState<Language>("en");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("lang") as Language | null;
+    const nav = navigator.language.split("-")[0] as Language;
+    const initial =
+      stored && stored in translations
+        ? stored
+        : nav in translations
+          ? nav
+          : "en";
+    setLang(initial);
+
+    const handler = (e: Event) =>
+      setLang((e as CustomEvent<Language>).detail);
+    window.addEventListener("i18n:change", handler);
+    return () => window.removeEventListener("i18n:change", handler);
+  }, []);
+
+  const t = translations[lang];
 
   return (
     <>
@@ -22,7 +40,7 @@ export default function Certifications({
       >
         <div class="w3-display-middle no-spaces">
           <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
-            Certifications
+            {t.sections.certifications}
           </span>
         </div>
       </div>
@@ -35,7 +53,7 @@ export default function Certifications({
               "w3-button",
               category === "stared" ? "w3-green" : "",
             ].join(" ")}
-            onClick={() => onCategoryClicked("stared")}
+            onClick={() => setCategory("stared")}
           >
             <span class="w3-badge w3-red">
               {
@@ -44,7 +62,7 @@ export default function Certifications({
                 ).length
               }
             </span>{" "}
-            Stared
+            {t.certifications.starred}
           </div>
           <div
             class={[
@@ -53,9 +71,10 @@ export default function Certifications({
               "w3-button",
               category === "all" ? "w3-green" : "",
             ].join(" ")}
-            onClick={() => onCategoryClicked("all")}
+            onClick={() => setCategory("all")}
           >
-            <span class="w3-badge w3-red">{certifications.length}</span> All
+            <span class="w3-badge w3-red">{certifications.length}</span>{" "}
+            {t.certifications.all}
           </div>
           {[
             ...new Set(
@@ -71,7 +90,7 @@ export default function Certifications({
                 "w3-button",
                 category === eachCategory ? "w3-green" : "",
               ].join(" ")}
-              onClick={() => onCategoryClicked(eachCategory)}
+              onClick={() => setCategory(eachCategory)}
             >
               <span class="w3-badge w3-red">
                 {
@@ -97,16 +116,14 @@ export default function Certifications({
           .sort((a: Certification, b: Certification) => {
             const first = (order[a.category] + 1) * 10 + a.order;
             const second = (order[b.category] + 1) * 10 + b.order;
-            const result = first - second;
-
-            return result;
+            return first - second;
           })
           .chunk(3)
           .map((subCertifications: Certification[]) => (
             <>
               {subCertifications.map((certification: Certification) => (
                 <div class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item">
-                  <a href={certification.link} target="_blank">
+                  <a href={certification.link} target="_blank" rel="noopener noreferrer">
                     <div class="w3-col" style="width: 150px;">
                       <img
                         src={certification.image.src}
@@ -133,7 +150,7 @@ export default function Certifications({
                 {subCertifications.map((certification: Certification) => (
                   <div class="w3-third w3-center w3-padding">
                     <div class="w3-hover-shadow w3-padding">
-                      <a href={certification.link} target="_blank">
+                      <a href={certification.link} target="_blank" rel="noopener noreferrer">
                         <img
                           src={certification.image.src}
                           class="w3-center"
