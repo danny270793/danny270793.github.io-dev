@@ -18,7 +18,7 @@ import type { Technology } from "../libraries/me/knowledges/technologies";
   </div>
 </div>
 
-<div class="w3-content w3-container w3-padding-64">
+<div class="w3-content w3-container w3-padding-64 fade-in">
   {
     [...new Set(MyTechnologies.map((e: Technology) => e.category))].map(
       (category) => (
@@ -26,15 +26,15 @@ import type { Technology } from "../libraries/me/knowledges/technologies";
           <h5>
             <strong>{category}</strong>
           </h5>
-
-          {MyTechnologies.filter(
-            (t: Technology) => t.category === category,
-          ).map((technology: Technology) => (
-            <span>
-              <img src={technology.link} alt={technology.alternative} />
-              &nbsp;
-            </span>
-          ))}
+          <div style="margin-bottom: 1rem;">
+            {MyTechnologies.filter(
+              (t: Technology) => t.category === category,
+            ).map((technology: Technology) => (
+              <span class="tech-badge">
+                <img src={technology.link} alt={technology.alternative} />
+              </span>
+            ))}
+          </div>
         </>
       ),
     )
