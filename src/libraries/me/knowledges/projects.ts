@@ -66,8 +66,7 @@ const projects: Project[] = [
     image: MMAScoreCard,
     name: "MMA ScoreCard",
     description: "An independent app to see MMA events and results",
-    playstore:
-      "https://play.google.com/store/apps/details?id=io.github.danny270793.mmascorecard",
+    playstore: undefined,
     appstore: undefined,
     github: "https://github.com/danny270793/MMAScoreCard",
   },
