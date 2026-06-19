@@ -1,11 +1,29 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import type { Library } from "../libraries/me/knowledges/libraries";
+import { translations, type Language } from "../i18n/translations";
 
 export default function Libraries({ libraries, background }) {
   const [type, setType] = useState("all");
-  const onTypeClicked = (selectedType: string) => {
-    setType(selectedType);
-  };
+  const [lang, setLang] = useState<Language>("en");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("lang") as Language | null;
+    const nav = navigator.language.split("-")[0] as Language;
+    const initial =
+      stored && stored in translations
+        ? stored
+        : nav in translations
+          ? nav
+          : "en";
+    setLang(initial);
+
+    const handler = (e: Event) =>
+      setLang((e as CustomEvent<Language>).detail);
+    window.addEventListener("i18n:change", handler);
+    return () => window.removeEventListener("i18n:change", handler);
+  }, []);
+
+  const t = translations[lang];
 
   return (
     <>
@@ -16,7 +34,7 @@ export default function Libraries({ libraries, background }) {
       >
         <div class="w3-display-middle no-spaces">
           <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
-            Open Source Libraries
+            {t.sections.libraries}
           </span>
         </div>
       </div>
@@ -29,9 +47,10 @@ export default function Libraries({ libraries, background }) {
               "w3-button",
               type === "all" ? "w3-green" : "",
             ].join(" ")}
-            onClick={() => onTypeClicked("all")}
+            onClick={() => setType("all")}
           >
-            <span class="w3-badge w3-red">{libraries.length}</span> All
+            <span class="w3-badge w3-red">{libraries.length}</span>{" "}
+            {t.libraries.all}
           </div>
           {[
             ...new Set(
@@ -45,7 +64,7 @@ export default function Libraries({ libraries, background }) {
                 "w3-button",
                 type === eachLibrary ? "w3-green" : "",
               ].join(" ")}
-              onClick={() => onTypeClicked(eachLibrary)}
+              onClick={() => setType(eachLibrary)}
             >
               <span class="w3-badge w3-red">
                 {
@@ -71,6 +90,7 @@ export default function Libraries({ libraries, background }) {
                 <a
                   href={library.link}
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="w3-half w3-padding w3-hover-shadow"
                 >
                   <div
