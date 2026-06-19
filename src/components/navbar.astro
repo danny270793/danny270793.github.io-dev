@@ -7,10 +7,7 @@ const { anchors = true } = Astro.props;
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
-  <a
-    href={anchors ? "#about-me" : "/#about-me"}
-    class="w3-bar-item w3-button"
-  >
+  <a href={anchors ? "#about-me" : "/#about-me"} class="w3-bar-item w3-button">
     About me
   </a>
   <a
@@ -51,33 +48,104 @@ const { anchors = true } = Astro.props;
 <div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
 </div>
 
-<div class="w3-top w3-xlarge">
+<div class="w3-top">
   <div class="w3-bar w3-card w3-white">
-    <button id="openButton" class="w3-button"> &#9776; </button>
-    Danny Vaca
-    <span class="w3-hide-large w3-hide-medium">
-      <div></div>
+    <button id="openButton" class="w3-button w3-hide-large" style="font-size: 1.25rem;">
+      &#9776;
+    </button>
+    <span
+      class="w3-bar-item"
+      style="font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;"
+    >
+      Danny Vaca
     </span>
+    <div class="w3-right w3-hide-small w3-hide-medium">
+      <a
+        href={anchors ? "#about-me" : "/#about-me"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="about-me">About</a
+      >
+      <a
+        href={anchors ? "#education" : "/#education"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="education">Education</a
+      >
+      <a
+        href={anchors ? "#certifications" : "/#certifications"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="certifications">Certifications</a
+      >
+      <a
+        href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="open-source-libraries">Libraries</a
+      >
+      <a
+        href={anchors ? "#projects" : "/#projects"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="projects">Projects</a
+      >
+      <a
+        href={anchors ? "#technologies" : "/#technologies"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="technologies">Technologies</a
+      >
+      <a
+        href={anchors ? "#social-networks" : "/#social-networks"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="social-networks">Contact</a
+      >
+    </div>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null =
-      document.getElementById("openButton");
-    const overlay: HTMLElement | null = document.getElementById("overlay");
+    const sidebar = document.getElementById("sidebar") as HTMLElement;
+    const openButton = document.getElementById("openButton") as HTMLElement;
+    const overlay = document.getElementById("overlay") as HTMLElement;
+
     const toggleSidebar = (show: boolean) => {
-      sidebar!.style.display = show ? "block" : "none";
-      overlay!.style.display = show ? "block" : "none";
+      sidebar.style.display = show ? "block" : "none";
+      overlay.style.display = show ? "block" : "none";
     };
-    openButton!.addEventListener("click", () => toggleSidebar(true));
-    overlay!.addEventListener("click", () => toggleSidebar(false));
+
+    openButton?.addEventListener("click", () => toggleSidebar(true));
+    overlay.addEventListener("click", () => toggleSidebar(false));
     document.querySelectorAll(".w3-bar-item").forEach((barItem) => {
       barItem.addEventListener("click", () => toggleSidebar(false));
     });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
     });
+
+    // Highlight active section in desktop nav
+    const navLinks = document.querySelectorAll<HTMLElement>(
+      ".nav-link[data-section]",
+    );
+    const sectionIds = Array.from(navLinks).map(
+      (l) => l.dataset.section as string,
+    );
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.dataset.section === entry.target.id,
+              );
+            });
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    sections.forEach((s) => sectionObserver.observe(s));
   });
 </script>
