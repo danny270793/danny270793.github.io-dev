@@ -244,6 +244,11 @@ html {
 
 /* ── Language switcher ── */
 
+/* Allow dropdown to overflow the navbar bar */
+#navbar .w3-bar {
+  overflow: visible;
+}
+
 /* Desktop pill button */
 .lang-picker {
   position: relative;
