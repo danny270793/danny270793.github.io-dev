@@ -42,6 +42,8 @@ import GitHubFoundations from "../../../images/certifications/20240917 - GitHub 
 import BotBuilderRocketbotExpertLevel1 from "../../../images/certifications/20240920 - Bot Builder Rocketbot Expert Level 1.png";
 import ConsentAndPreferencesManagementPro from "../../../images/certifications/20240927 - Consent And Preferences Management Pro.png";
 import AzureNetworkEngineerAssociate from "../../../images/certifications/20241010 - Azure Network Engineer Associate.svg";
+import ISO9001QualityManagementSkillfront from "../../../images/certifications/20211113 - ISO 9001 QUALITY MANAGEMENT SKILLFRONT.png";
+import DataDiscoveryAndGovernanceIntegrationsAndScanConfiguration from "../../../images/certifications/20240909 - Data Discovery And Governance Integrations And Scan Configuration.png";
 import type Certification from "./certification";
 
 export const CategoryOrder: { [key: string]: number } = {
@@ -197,16 +199,16 @@ const certifications: Certification[] = [
     date: new Date("2021/09/18"),
     image: AzureAIFundamentals,
   },
-  /*
   {
-    link: ,
+    link: "https://www.skillfront.com/Badges/66355298732957",
     name: "ISO 9001 QUALITY MANAGEMENT SKILLFRONT",
     code: "",
+    order: 0,
+    category: "Others",
     brand: "Skillfront",
     date: new Date("2021/11/13"),
-    image: ,
+    image: ISO9001QualityManagementSkillfront,
   },
-  */
   {
     link: "https://www.credly.com/badges/af2cbe11-7a70-49cd-8bf0-d76ef26bd65f/public_url",
     name: "Azure Data Fundamentals",
@@ -443,16 +445,6 @@ const certifications: Certification[] = [
     image: ConsentExpertRecordIntegrationManagement,
   },
   {
-    link: "https://www.onetrust.com/certifications/data-subject-requests-expert-certification/",
-    name: "Privacy Rights Automation Expert: Web form enhancements",
-    order: 4,
-    code: "",
-    category: "Data Privacy",
-    brand: "One Trust",
-    date: new Date("2024/08/14"),
-    image: PrivacyRightsAutomationExpertWebFormEnhancements,
-  },
-  {
     link: "https://www.onetrust.com/certifications/data-discovery-privacy-rights-automation-certification/",
     name: "Data Discovery and Governance EXPERT Privacy Rights Automation",
     order: 2,
@@ -461,6 +453,16 @@ const certifications: Certification[] = [
     brand: "One Trust",
     date: new Date("2024/08/14"),
     image: DataDiscoveryAndGovernanceEXPERTPrivacyRightsAutomation,
+  },
+  {
+    link: "https://www.onetrust.com/certifications/data-subject-requests-expert-certification/",
+    name: "Privacy Rights Automation Expert: Web form enhancements",
+    order: 4,
+    code: "",
+    category: "Data Privacy",
+    brand: "One Trust",
+    date: new Date("2024/08/14"),
+    image: PrivacyRightsAutomationExpertWebFormEnhancements,
   },
   {
     link: "https://www.onetrust.com/certifications/website-scanning-cookies-consent-expert-certification/",
@@ -492,7 +494,6 @@ const certifications: Certification[] = [
     date: new Date("2024/09/03"),
     image: DataDiscoveryAndGovernanceProfessionalBackground,
   },
-
   {
     link: "https://www.onetrust.com/certifications/data-discovery-data-policies-certification/",
     name: "Data Discovery and Governance Data Policies",
@@ -502,6 +503,16 @@ const certifications: Certification[] = [
     brand: "One Trust",
     date: new Date("2024/09/09"),
     image: DataDiscoveryAndGovernanceDataPolicies,
+  },
+  {
+    link: "https://www.onetrust.com/certifications/data-discovery-integrations-and-scan-configurations/",
+    name: "Data Discovery And Governance Integrations And Scan Configuration",
+    order: 4,
+    code: "",
+    category: "Data Privacy",
+    brand: "One Trust",
+    date: new Date("2024/09/09"),
+    image: DataDiscoveryAndGovernanceIntegrationsAndScanConfiguration,
   },
   {
     link: "https://www.credly.com/badges/3d39e55e-5b24-4947-9eed-a14e0b5d493a/linked_in_profile",
