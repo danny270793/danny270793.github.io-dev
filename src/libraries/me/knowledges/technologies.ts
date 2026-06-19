@@ -134,6 +134,16 @@ const technologies: Technology[] = [
     alternative: "Azure DevOps",
   },
   {
+    category: "CI",
+    link: "https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white",
+    alternative: "Terraform",
+  },
+  {
+    category: "CI",
+    link: "https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white",
+    alternative: "Ansible",
+  },
+  {
     category: "Deployments",
     link: "https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white",
     alternative: "Kubernetes",
@@ -182,11 +192,6 @@ const technologies: Technology[] = [
     category: "Deployments",
     link: "https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white",
     alternative: "Google Cloud",
-  },
-  {
-    category: "Deployments",
-    link: "https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white",
-    alternative: "Terraform",
   },
   {
     category: "Deployments",
