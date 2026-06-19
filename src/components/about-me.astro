@@ -26,18 +26,21 @@ import headerBackground from "../images/parallax/header.jpg";
         class="w3-circle w3-padding"
         src={profilePicture}
         alt="Profile picture"
+        width={300}
+        height={300}
         style="width: 100%; height: auto;"
       />
     </div>
-    <br class="w3-twothird w3-padding" />
-    {
-      Me.detail.split("\n").map((e) => (
-        <>
-          {e}
-          <br />
-          <br />
-        </>
-      ))
-    }
+    <div class="w3-twothird w3-padding">
+      {
+        Me.detail.split("\n").map((e) => (
+          <>
+            {e}
+            <br />
+            <br />
+          </>
+        ))
+      }
+    </div>
   </div>
 </div>
