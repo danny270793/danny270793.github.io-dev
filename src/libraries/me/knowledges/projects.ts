@@ -2,8 +2,8 @@ import Speedometer from "../../../images/projects/speedometer.webp";
 import Soundmeter from "../../../images/projects/soundmeter.webp";
 import Mycompass from "../../../images/projects/mycompass.webp";
 import MaintAzureMonitoring from "../../../images/projects/maint azure monitoring.webp";
-import BoxingTimer from "../../../images/projects/boxingtimer.png"
-import MMAScoreCard from "../../../images/projects/mmascorecard.png"
+import BoxingTimer from "../../../images/projects/boxingtimer.png";
+import MMAScoreCard from "../../../images/projects/mmascorecard.png";
 import type { ImageMetadata } from "astro";
 
 export interface Project {
@@ -32,7 +32,7 @@ const projects: Project[] = [
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.sppedometer",
     appstore: undefined,
-    github: 'https://github.com/danny270793/Speedometer',
+    github: "https://github.com/danny270793/Speedometer",
   },
   {
     image: Soundmeter,
@@ -56,7 +56,8 @@ const projects: Project[] = [
   {
     image: BoxingTimer,
     name: "Boxing Timer",
-    description: "A app that shows a timer for each round of your boxing training",
+    description:
+      "A app that shows a timer for each round of your boxing training",
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.boxingtimer",
     appstore: undefined,
