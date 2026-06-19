@@ -13,13 +13,17 @@ import headerBackground from "../images/parallax/header.jpg";
   <div class="w3-display-middle hero-content">
     <h1 class="hero-name w3-animate-opacity">Danny Vaca</h1>
     <div class="hero-accent"></div>
-    <p class="hero-subtitle w3-animate-opacity">Senior Full Stack Developer</p>
+    <p class="hero-subtitle w3-animate-opacity" data-i18n="hero.subtitle">
+      Senior Full Stack Developer
+    </p>
   </div>
-  <a href="#about-me" class="hero-cta" aria-label="Scroll to about me">&#8595;</a>
+  <a href="#about-me" class="hero-cta" aria-label="Scroll to about me"
+    >&#8595;</a
+  >
 </div>
 
 <div id="about-me" class="w3-content w3-container w3-padding-64 fade-in">
-  <h3 class="section-title">About me</h3>
+  <h3 class="section-title" data-i18n="about.heading">About me</h3>
   <hr class="section-divider" />
   <div class="w3-row" style="display: flex; align-items: center; flex-wrap: wrap;">
     <div class="w3-third w3-center">
@@ -32,7 +36,7 @@ import headerBackground from "../images/parallax/header.jpg";
         style="width: 80%; max-width: 220px; height: auto;"
       />
     </div>
-    <div class="w3-twothird w3-padding">
+    <div id="bio-text" class="w3-twothird w3-padding" data-i18n-bio>
       {
         Me.detail.split("\n").map((e) => (
           <p style="margin: 0 0 1rem;">{e}</p>
