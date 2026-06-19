@@ -16,5 +16,5 @@ export default interface Certification {
     | "AI"
     | "Data Privacy"
     | "Others";
-  image: string;
+  image: ImageMetadata;
 }

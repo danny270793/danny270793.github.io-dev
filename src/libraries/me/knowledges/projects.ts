@@ -7,7 +7,7 @@ import MMAScoreCard from "../../../images/projects/mmascorecard.png"
 import type { ImageMetadata } from "astro";
 
 export interface Project {
-  image: string;
+  image: ImageMetadata;
   name: string;
   description: string;
   playstore: string | undefined;
