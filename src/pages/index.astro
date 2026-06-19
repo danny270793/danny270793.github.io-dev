@@ -31,6 +31,16 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <meta property="og:description" content="Senior Full Stack Developer with 15+ years of experience in cloud, mobile, and web development." />
     <meta property="og:type" content="website" />
     <title>Danny Vaca</title>
+    <script is:inline>
+      (function () {
+        var s = localStorage.getItem("theme");
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          s === "light" || s === "dark" ? s : dark ? "dark" : "light",
+        );
+      })();
+    </script>
   </head>
   <body>
     <Navbar />
@@ -158,17 +168,106 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
           applyLang(getEffectiveLang());
         }
 
-        // Desktop dropdown picker
+        // ── Theme picker ──
+        const THEME_ICON: Record<string, string> = {
+          system: "◑",
+          light: "☀",
+          dark: "☽",
+        };
+
+        function getEffectiveTheme(): "light" | "dark" {
+          const s = localStorage.getItem("theme");
+          if (s === "light" || s === "dark") return s;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        function applyTheme(theme: "light" | "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+
+        function updateThemeUI(value: string) {
+          document
+            .querySelectorAll<HTMLElement>(".theme-icon")
+            .forEach((el) => (el.textContent = THEME_ICON[value] ?? "◑"));
+          document
+            .querySelectorAll<HTMLElement>(".theme-option")
+            .forEach((opt) =>
+              opt.classList.toggle("selected", opt.dataset.val === value),
+            );
+          document
+            .querySelectorAll<HTMLElement>(".sidebar-theme-opt")
+            .forEach((btn) =>
+              btn.classList.toggle("active", btn.dataset.val === value),
+            );
+        }
+
+        function setThemePref(value: string) {
+          if (value === "system") {
+            localStorage.removeItem("theme");
+          } else {
+            localStorage.setItem("theme", value);
+          }
+          updateThemeUI(value);
+          applyTheme(getEffectiveTheme());
+        }
+
+        const themePicker =
+          document.querySelector<HTMLElement>(".theme-picker");
+        themePicker
+          ?.querySelector<HTMLElement>(".theme-picker-btn")
+          ?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            document.querySelector(".lang-picker")?.classList.remove("open");
+            themePicker.classList.toggle("open");
+          });
+        document
+          .querySelectorAll<HTMLElement>(".theme-option")
+          .forEach((opt) => {
+            opt.addEventListener("click", (e) => {
+              e.stopPropagation();
+              themePicker?.classList.remove("open");
+              setThemePref(opt.dataset.val ?? "system");
+            });
+          });
+        document
+          .querySelectorAll<HTMLElement>(".sidebar-theme-opt")
+          .forEach((btn) => {
+            btn.addEventListener("click", () =>
+              setThemePref(btn.dataset.val ?? "system"),
+            );
+          });
+
+        // React to OS preference change when pref is "system"
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", () => {
+            if (!localStorage.getItem("theme")) applyTheme(getEffectiveTheme());
+          });
+
+        // Init theme UI
+        const storedTheme = localStorage.getItem("theme");
+        const initTheme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : "system";
+        updateThemeUI(initTheme);
+        applyTheme(getEffectiveTheme());
+
+        // ── Language dropdown picker ──
         const picker = document.querySelector<HTMLElement>(".lang-picker");
         picker
           ?.querySelector<HTMLElement>(".lang-picker-btn")
           ?.addEventListener("click", (e) => {
             e.stopPropagation();
+            themePicker?.classList.remove("open");
             picker.classList.toggle("open");
           });
-        document.addEventListener("click", () =>
-          picker?.classList.remove("open"),
-        );
+        document.addEventListener("click", () => {
+          picker?.classList.remove("open");
+          themePicker?.classList.remove("open");
+        });
         document
           .querySelectorAll<HTMLElement>(".lang-option")
           .forEach((opt) => {
