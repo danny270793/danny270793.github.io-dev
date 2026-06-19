@@ -41,16 +41,20 @@ const { anchors = true } = Astro.props;
     href={anchors ? "#social-networks" : "/#social-networks"}
     class="w3-bar-item w3-button"
   >
-    Social Networks
+    Contact
   </a>
 </div>
 
 <div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
 </div>
 
-<div class="w3-top">
+<div id="navbar" class="w3-top">
   <div class="w3-bar w3-card w3-white">
-    <button id="openButton" class="w3-button w3-hide-large" style="font-size: 1.25rem;">
+    <button
+      id="openButton"
+      class="w3-button w3-hide-large"
+      style="font-size: 1.25rem;"
+    >
       &#9776;
     </button>
     <span
@@ -104,6 +108,7 @@ const { anchors = true } = Astro.props;
     const sidebar = document.getElementById("sidebar") as HTMLElement;
     const openButton = document.getElementById("openButton") as HTMLElement;
     const overlay = document.getElementById("overlay") as HTMLElement;
+    const navbar = document.getElementById("navbar") as HTMLElement;
 
     const toggleSidebar = (show: boolean) => {
       sidebar.style.display = show ? "block" : "none";
@@ -117,6 +122,11 @@ const { anchors = true } = Astro.props;
     });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
+    });
+
+    // Navbar shadow on scroll
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("navbar-scrolled", window.scrollY > 10);
     });
 
     // Highlight active section in desktop nav
