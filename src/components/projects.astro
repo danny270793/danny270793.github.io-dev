@@ -21,13 +21,17 @@ import Github from "../images/projects/github.png";
     </span>
   </div>
 </div>
-<div class="w3-content w3-container w3-padding-64">
+
+<div class="w3-content w3-container w3-padding-64 fade-in">
   {
     MyProjects.chunk(2).map((projects: Project[]) => (
       <div class="w3-row">
         {projects.map((project: Project) => (
           <div class="w3-half w3-padding">
-            <div class="w3-row" style="display: flex; align-items: center;">
+            <div
+              class="card-hover w3-padding"
+              style="display: flex; align-items: center;"
+            >
               <div class="w3-col" style="width: 100px;">
                 <Image
                   class="w3-padding"
@@ -42,7 +46,11 @@ import Github from "../images/projects/github.png";
                 </h5>
                 <p>{project.description}</p>
                 {project.playstore !== undefined ? (
-                  <a href={project.playstore} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.playstore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Image
                       class="w3-hover-shadow"
                       src={GooglePlay}
@@ -54,7 +62,11 @@ import Github from "../images/projects/github.png";
                   <span />
                 )}
                 {project.appstore !== undefined ? (
-                  <a href={project.appstore} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.appstore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Image
                       class="w3-hover-shadow"
                       src={AppStore}
@@ -66,7 +78,11 @@ import Github from "../images/projects/github.png";
                   <span />
                 )}
                 {project.github !== undefined ? (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Image
                       class="w3-hover-shadow"
                       src={Github}
