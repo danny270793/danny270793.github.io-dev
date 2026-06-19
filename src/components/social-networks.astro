@@ -1,42 +1,36 @@
 ---
 import { Image } from "astro:assets";
-import SocialBackground from "../images/parallax/social.jpg";
 import SocialLinks from "../libraries/me/social-links";
 import type { SocialLink } from "../libraries/me/social-links";
+
+const year = new Date().getFullYear();
 ---
 
-<div
-  id="social-networks"
-  class="parallax separator w3-display-container"
-  style={`background-image: url("${SocialBackground.src}")`}
->
-  <div class="w3-display-middle w3-center no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Social Networks
-    </span>
-    <br />
-    <br />
-    <div class="w3-row">
+<footer id="social-networks" class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-social">
       {
         SocialLinks.map((socialLink: SocialLink) => (
           <a
             href={socialLink.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="w3-third social-link"
+            class="social-link"
+            aria-label={socialLink.alternativeText}
           >
             <Image
               src={socialLink.image}
               alt={socialLink.alternativeText}
-              width={72}
-              height={72}
-              style="width: 72px; height: 72px; object-fit: contain;"
+              width={36}
+              height={36}
+              style="width: 36px; height: 36px; object-fit: contain;"
             />
           </a>
         ))
       }
     </div>
+    <p class="footer-copy">
+      &copy; {year} Danny Vaca &middot; All rights reserved
+    </p>
   </div>
-</div>
+</footer>
