@@ -42,7 +42,7 @@ import Github from "../images/projects/github.png";
                 </h5>
                 <p>{project.description}</p>
                 {project.playstore !== undefined ? (
-                  <a href={project.playstore} target="_blank">
+                  <a href={project.playstore} target="_blank" rel="noopener noreferrer">
                     <Image
                       class="w3-hover-shadow"
                       src={GooglePlay}
@@ -54,7 +54,7 @@ import Github from "../images/projects/github.png";
                   <span />
                 )}
                 {project.appstore !== undefined ? (
-                  <a href={project.appstore} target="_blank">
+                  <a href={project.appstore} target="_blank" rel="noopener noreferrer">
                     <Image
                       class="w3-hover-shadow"
                       src={AppStore}
@@ -66,7 +66,7 @@ import Github from "../images/projects/github.png";
                   <span />
                 )}
                 {project.github !== undefined ? (
-                  <a href={project.github} target="_blank">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Image
                       class="w3-hover-shadow"
                       src={Github}
