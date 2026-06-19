@@ -7,6 +7,14 @@ const { anchors = true } = Astro.props;
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
+  <div class="sidebar-theme">
+    <span class="theme-label">Theme</span>
+    <div class="sidebar-theme-options">
+      <button type="button" class="sidebar-theme-opt" data-val="system" title="System">◑</button>
+      <button type="button" class="sidebar-theme-opt" data-val="light" title="Light">☀</button>
+      <button type="button" class="sidebar-theme-opt" data-val="dark" title="Dark">☽</button>
+    </div>
+  </div>
   <div class="sidebar-lang">
     <span class="lang-label">Language</span>
     <div class="sidebar-lang-options">
@@ -128,6 +136,17 @@ const { anchors = true } = Astro.props;
         data-i18n="nav.contact">Contact</a
       >
       <span class="lang-divider"></span>
+      <div class="theme-picker">
+        <button type="button" class="theme-picker-btn">
+          <span class="theme-icon">◑</span>
+          <span class="theme-chevron">▾</span>
+        </button>
+        <ul class="theme-dropdown">
+          <li class="theme-option selected" data-val="system">◑ System</li>
+          <li class="theme-option" data-val="light">☀ Light</li>
+          <li class="theme-option" data-val="dark">☽ Dark</li>
+        </ul>
+      </div>
       <div class="lang-picker">
         <button type="button" class="lang-picker-btn">
           <span class="lang-current">System</span>
