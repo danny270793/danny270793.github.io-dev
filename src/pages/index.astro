@@ -61,8 +61,10 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <button id="back-to-top" aria-label="Back to top">&#8593;</button>
 
     <script>
+      import { translations, type Language } from "../i18n/translations";
+
       document.addEventListener("DOMContentLoaded", () => {
-        // Scroll-reveal
+        // ── Scroll-reveal ──
         const revealObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -78,7 +80,7 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
           .querySelectorAll(".fade-in")
           .forEach((el) => revealObserver.observe(el));
 
-        // Back-to-top
+        // ── Back-to-top ──
         const btn = document.getElementById("back-to-top");
         window.addEventListener("scroll", () => {
           btn?.classList.toggle("visible", window.scrollY > 400);
@@ -86,6 +88,63 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
         btn?.addEventListener("click", () => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
+
+        // ── i18n ──
+        const SUPPORTED = Object.keys(translations) as Language[];
+
+        function detectLang(): Language {
+          const stored = localStorage.getItem("lang") as Language | null;
+          if (stored && SUPPORTED.includes(stored)) return stored;
+          const nav = (navigator.language || "en").split("-")[0] as Language;
+          return SUPPORTED.includes(nav) ? nav : "en";
+        }
+
+        function applyLang(lang: Language) {
+          const t = translations[lang];
+
+          // Replace text of all data-i18n elements
+          document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
+            const key = el.dataset.i18n as string;
+            const [section, field] = key.split(".") as [keyof typeof t, string];
+            const value = (t[section] as Record<string, string>)[field];
+            if (value) el.textContent = value;
+          });
+
+          // Replace bio container (multi-paragraph)
+          document
+            .querySelectorAll<HTMLElement>("[data-i18n-bio]")
+            .forEach((el) => {
+              el.innerHTML = t.about.bio
+                .split("\n")
+                .map((p) => `<p style="margin: 0 0 1rem;">${p}</p>`)
+                .join("");
+            });
+
+          // Update lang button active state
+          document.querySelectorAll<HTMLElement>(".lang-btn").forEach((b) => {
+            b.classList.toggle("active", b.dataset.lang === lang);
+          });
+
+          // Update <html lang>
+          document.documentElement.lang = lang;
+
+          // Notify Preact components
+          window.dispatchEvent(
+            new CustomEvent<Language>("i18n:change", { detail: lang }),
+          );
+        }
+
+        // Language switcher buttons
+        document.querySelectorAll<HTMLElement>(".lang-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const lang = btn.dataset.lang as Language;
+            localStorage.setItem("lang", lang);
+            applyLang(lang);
+          });
+        });
+
+        // Apply on load
+        applyLang(detectLang());
       });
     </script>
   </body>
