@@ -91,8 +91,10 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
 
         // ── i18n ──
         const SUPPORTED = Object.keys(translations) as Language[];
+        const langSelects =
+          document.querySelectorAll<HTMLSelectElement>(".lang-select");
 
-        function detectLang(): Language {
+        function getEffectiveLang(): Language {
           const stored = localStorage.getItem("lang") as Language | null;
           if (stored && SUPPORTED.includes(stored)) return stored;
           const nav = (navigator.language || "en").split("-")[0] as Language;
@@ -103,12 +105,17 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
           const t = translations[lang];
 
           // Replace text of all data-i18n elements
-          document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
-            const key = el.dataset.i18n as string;
-            const [section, field] = key.split(".") as [keyof typeof t, string];
-            const value = (t[section] as Record<string, string>)[field];
-            if (value) el.textContent = value;
-          });
+          document
+            .querySelectorAll<HTMLElement>("[data-i18n]")
+            .forEach((el) => {
+              const key = el.dataset.i18n as string;
+              const [section, field] = key.split(".") as [
+                keyof typeof t,
+                string,
+              ];
+              const value = (t[section] as Record<string, string>)[field];
+              if (value) el.textContent = value;
+            });
 
           // Replace bio container (multi-paragraph)
           document
@@ -120,11 +127,6 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
                 .join("");
             });
 
-          // Update lang button active state
-          document.querySelectorAll<HTMLElement>(".lang-btn").forEach((b) => {
-            b.classList.toggle("active", b.dataset.lang === lang);
-          });
-
           // Update <html lang>
           document.documentElement.lang = lang;
 
@@ -134,17 +136,28 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
           );
         }
 
-        // Language switcher buttons
-        document.querySelectorAll<HTMLElement>(".lang-btn").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const lang = btn.dataset.lang as Language;
-            localStorage.setItem("lang", lang);
-            applyLang(lang);
+        // Set initial select values
+        const storedLang = localStorage.getItem("lang") as Language | null;
+        const initialValue =
+          storedLang && SUPPORTED.includes(storedLang) ? storedLang : "auto";
+        langSelects.forEach((s) => (s.value = initialValue));
+
+        // Handle select changes
+        langSelects.forEach((sel) => {
+          sel.addEventListener("change", () => {
+            const val = sel.value;
+            langSelects.forEach((s) => (s.value = val));
+            if (val === "auto") {
+              localStorage.removeItem("lang");
+            } else {
+              localStorage.setItem("lang", val as Language);
+            }
+            applyLang(getEffectiveLang());
           });
         });
 
         // Apply on load
-        applyLang(detectLang());
+        applyLang(getEffectiveLang());
       });
     </script>
   </body>
