@@ -57,5 +57,36 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <Technologies />
 
     <SocialNetworks />
+
+    <button id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Scroll-reveal
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        document
+          .querySelectorAll(".fade-in")
+          .forEach((el) => revealObserver.observe(el));
+
+        // Back-to-top
+        const btn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+          btn?.classList.toggle("visible", window.scrollY > 400);
+        });
+        btn?.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
   </body>
 </html>
