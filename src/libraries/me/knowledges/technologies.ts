@@ -214,6 +214,31 @@ const technologies: Technology[] = [
     alternative: "Power BI",
   },
   {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/Loki-F46800?style=for-the-badge&logo=grafana&logoColor=white",
+    alternative: "Loki",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/Tempo-F46800?style=for-the-badge&logo=grafana&logoColor=white",
+    alternative: "Tempo",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/datadog-%23632CA6.svg?style=for-the-badge&logo=datadog&logoColor=white",
+    alternative: "Datadog",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/rollbar-%23E35E4F.svg?style=for-the-badge&logo=rollbar&logoColor=white",
+    alternative: "Rollbar",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/coralogix-%230047AB.svg?style=for-the-badge&logo=coralogix&logoColor=white",
+    alternative: "Coralogix",
+  },
+  {
     category: "Databases",
     link: "https://img.shields.io/badge/SQLServer-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white",
     alternative: "SQLServer",
