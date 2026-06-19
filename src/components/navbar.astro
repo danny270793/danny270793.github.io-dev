@@ -8,11 +8,12 @@ const { anchors = true } = Astro.props;
   style="display: none; z-index:5"
 >
   <div class="sidebar-lang">
-    <select class="lang-select">
-      <option value="auto">Auto</option>
-      <option value="en">EN</option>
-      <option value="es">ES</option>
-    </select>
+    <span class="lang-label">Language</span>
+    <div class="sidebar-lang-options">
+      <button type="button" class="sidebar-lang-opt" data-lang="system">System</button>
+      <button type="button" class="sidebar-lang-opt" data-lang="en">EN</button>
+      <button type="button" class="sidebar-lang-opt" data-lang="es">ES</button>
+    </div>
   </div>
   <a
     href={anchors ? "#about-me" : "/#about-me"}
@@ -127,11 +128,17 @@ const { anchors = true } = Astro.props;
         data-i18n="nav.contact">Contact</a
       >
       <span class="lang-divider"></span>
-      <select class="lang-select">
-        <option value="auto">Auto</option>
-        <option value="en">EN</option>
-        <option value="es">ES</option>
-      </select>
+      <div class="lang-picker">
+        <button type="button" class="lang-picker-btn">
+          <span class="lang-current">System</span>
+          <span class="lang-chevron">▾</span>
+        </button>
+        <ul class="lang-dropdown">
+          <li class="lang-option selected" data-lang="system">System</li>
+          <li class="lang-option" data-lang="en">English</li>
+          <li class="lang-option" data-lang="es">Español</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
