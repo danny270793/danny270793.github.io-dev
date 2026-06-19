@@ -281,6 +281,12 @@ body {
   align-items: center;
 }
 
+/* Each direct bar item is also a flex container so its content is centered */
+#navbar .w3-bar > .w3-bar-item {
+  display: flex;
+  align-items: center;
+}
+
 /* Push desktop nav to the right inside the flex bar */
 #navbar .w3-right {
   margin-left: auto;
