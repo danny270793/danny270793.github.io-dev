@@ -250,11 +250,10 @@ body {
 }
 
 .social-link img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
+  height: 28px;
+  width: auto;
+  border-radius: 4px;
+  opacity: 0.8;
   transition: opacity 0.2s ease;
 }
 
