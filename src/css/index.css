@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+
 body,
 h1,
 h2,
@@ -7,6 +9,7 @@ h5,
 h6 {
   font-family: "Lato", sans-serif;
 }
+
 body,
 html {
   height: 100%;
@@ -14,29 +17,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.no-spaces {
-  white-space: nowrap;
-}
-
-.header {
-  min-height: 100vh;
-}
-
-.separator {
-  min-height: 25vh;
-}
-
-.padded-content {
-  max-width: 700px;
-  margin: auto;
-}
-
-.image-logo {
-  max-width: 200px;
-  max-height: 200px;
-  margin: auto;
-}
-
+/* ── Parallax ── */
 .parallax {
   opacity: 0.7;
   background-attachment: fixed;
@@ -49,4 +30,173 @@ html {
   .parallax {
     background-attachment: scroll;
   }
+}
+
+/* ── Sizes ── */
+.header {
+  min-height: 100vh;
+}
+
+.separator {
+  min-height: 25vh;
+}
+
+/* ── Hero ── */
+.hero-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0.25rem 0 0;
+}
+
+/* ── Section headings ── */
+.section-title {
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: #009688;
+  border: none;
+  border-radius: 2px;
+  margin: 0 auto 2rem;
+}
+
+/* ── Scroll-reveal ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+  border-radius: 4px;
+}
+
+.card-hover:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+/* ── Technology badges ── */
+.tech-badge {
+  display: inline-flex;
+  margin: 3px;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  vertical-align: middle;
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Social icons ── */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+/* ── Back-to-top ── */
+#back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #009688;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  z-index: 200;
+}
+
+#back-to-top:hover {
+  background: #00796b;
+  transform: translateY(-2px);
+}
+
+#back-to-top.visible {
+  display: flex;
+}
+
+/* ── Navbar desktop links ── */
+.nav-link {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: #009688;
+  transition:
+    left 0.2s ease,
+    right 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  left: 8px;
+  right: 8px;
+}
+
+.nav-link.active {
+  color: #009688 !important;
+}
+
+/* ── Misc ── */
+.no-spaces {
+  white-space: nowrap;
+}
+
+.padded-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.image-logo {
+  max-width: 200px;
+  max-height: 200px;
+  margin: auto;
 }
