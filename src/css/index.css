@@ -281,6 +281,55 @@ body {
   flex-wrap: wrap;
 }
 
+.lib-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.lib-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.lib-filter-btn:hover {
+  border-color: #009688;
+  color: #009688;
+}
+
+.lib-filter-btn.active {
+  background: #009688;
+  border-color: #009688;
+  color: #fff;
+}
+
+.lib-filter-btn.active .lib-filter-count {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.lib-filter-count {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  border-radius: 20px;
+  padding: 1px 6px;
+  min-width: 18px;
+  text-align: center;
+}
+
 .project-card-link {
   text-decoration: none;
   color: inherit;
