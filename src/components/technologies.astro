@@ -44,7 +44,13 @@ const categoryEs: Record<string, string> = {
         return (
           <div class="tech-category-card">
             <div class="tech-category-header">
-              <span class="tech-category-name" data-desc-en={category} data-desc-es={categoryEs[category] ?? category}>{category}</span>
+              <span
+                class="tech-category-name"
+                data-desc-en={category}
+                data-desc-es={categoryEs[category] ?? category}
+              >
+                {category}
+              </span>
             </div>
             <div class="tech-badges-area">
               {items.map((technology: Technology) => (
