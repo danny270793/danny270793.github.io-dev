@@ -23,8 +23,7 @@ export default function Certifications({
           : "en";
     setLang(initial);
 
-    const handler = (e: Event) =>
-      setLang((e as CustomEvent<Language>).detail);
+    const handler = (e: Event) => setLang((e as CustomEvent<Language>).detail);
     window.addEventListener("i18n:change", handler);
     return () => window.removeEventListener("i18n:change", handler);
   }, []);
@@ -123,7 +122,11 @@ export default function Certifications({
             <>
               {subCertifications.map((certification: Certification) => (
                 <div class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item">
-                  <a href={certification.link} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={certification.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div class="w3-col" style="width: 150px;">
                       <img
                         src={certification.image.src}
@@ -150,7 +153,11 @@ export default function Certifications({
                 {subCertifications.map((certification: Certification) => (
                   <div class="w3-third w3-center w3-padding">
                     <div class="w3-hover-shadow w3-padding">
-                      <a href={certification.link} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={certification.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <img
                           src={certification.image.src}
                           class="w3-center"
