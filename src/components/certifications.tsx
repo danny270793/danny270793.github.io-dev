@@ -137,10 +137,10 @@ export default function Certifications({
                 <div class="cert-card-footer">
                   <span class="library-type-badge">{cert.category}</span>
                   <span class="cert-date">
-                    {cert.date.toLocaleDateString(lang === "es" ? "es-ES" : "en-US", {
-                      year: "numeric",
-                      month: "short",
-                    })}
+                    {new Date(cert.date).toLocaleDateString(
+                      lang === "es" ? "es-ES" : "en-US",
+                      { year: "numeric", month: "short" },
+                    )}
                   </span>
                 </div>
               </div>

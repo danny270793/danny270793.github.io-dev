@@ -56,7 +56,10 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <Education />
 
     <Certifications
-      certifications={MyCertifications}
+      certifications={MyCertifications.map((c) => ({
+        ...c,
+        date: c.date.toISOString(),
+      }))}
       order={CategoryOrder}
       background={CertificationsBackground}
       client:load
