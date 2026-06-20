@@ -21,7 +21,6 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
   </div>
 </div>
 
-<div class="section-bg-alt">
   <div class="w3-content w3-container w3-padding-64 fade-in">
     <div class="tech-grid">
       {categories.map((category) => {
@@ -30,7 +29,6 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
           <div class="tech-category-card">
             <div class="tech-category-header">
               <span class="tech-category-name">{category}</span>
-              <span class="tech-category-count">{items.length}</span>
             </div>
             <div class="tech-badges-area">
               {items.map((technology: Technology) => (
@@ -44,4 +42,3 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
       })}
     </div>
   </div>
-</div>
