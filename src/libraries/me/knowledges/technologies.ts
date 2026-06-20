@@ -7,7 +7,7 @@ export interface Technology {
     | "CI/CD"
     | "Deployments"
     | "Monitoring"
-    | "Databases"
+    | "Storage"
     | "BigData"
     | "Microcontrollers";
 }
@@ -254,44 +254,49 @@ const technologies: Technology[] = [
     alternative: "Coralogix",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/SQLServer-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white",
     alternative: "SQLServer",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white",
     alternative: "Postgres",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white",
     alternative: "MariaDB",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white",
     alternative: "MongoDB",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white",
     alternative: "Neo4J",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white",
     alternative: "Redis",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white",
     alternative: "SQLite",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/rabbitmq-FF6600.svg?style=for-the-badge&logo=rabbitmq&logoColor=white",
     alternative: "RabbitMQ",
+  },
+  {
+    category: "Storage",
+    link: "https://img.shields.io/badge/apache%20kafka-%23231F20.svg?style=for-the-badge&logo=apachekafka&logoColor=white",
+    alternative: "Kafka",
   },
   {
     category: "BigData",
