@@ -225,7 +225,7 @@ const technologies: Technology[] = [
   },
   {
     category: "Monitoring",
-    link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black",
+    link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black",
     alternative: "Power BI",
   },
   {
