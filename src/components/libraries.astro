@@ -13,40 +13,42 @@ import { Image } from "astro:assets";
   <div class="w3-display-middle no-spaces">
     <span
       class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+      data-i18n="sections.libraries"
     >
       Open Source Libraries
     </span>
   </div>
 </div>
-<div class="w3-content w3-container w3-padding-64">
-  {
-    MyLibraries.chunk(2).map((libraries: Library[]) => (
-      <div class="w3-row">
-        {libraries.map((library: Library) => (
-          <a
-            href={library.link}
-            target="_blank"
-            class="w3-half w3-padding w3-hover-shadow"
-          >
-            <div class="w3-row" style="display: flex; align-items: center;">
-              <div class="w3-col" style="width: 100px;">
-                <Image
-                  class="w3-padding"
-                  src={library.image}
-                  alt={library.name}
-                  style="width: 100px; height: auto;"
-                />
-              </div>
-              <div class="w3-rest">
-                <h5>
-                  <strong>{library.name}</strong>
-                </h5>
-                <p>{library.description}</p>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    ))
-  }
+
+<div class="section-bg-alt">
+  <div class="w3-content w3-container w3-padding-64 fade-in">
+    <h3 class="section-title" data-i18n="sections.libraries">Open Source Libraries</h3>
+    <hr class="section-divider" />
+
+    <div class="projects-grid">
+      {MyLibraries.map((library: Library) => (
+        <a
+          href={library.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-card project-card-link"
+        >
+          <div class="project-card-image">
+            <Image
+              src={library.image}
+              alt={library.name}
+              width={64}
+              height={64}
+              style="width: 64px; height: 64px; object-fit: contain; border-radius: 12px;"
+            />
+          </div>
+          <div class="project-card-body">
+            <h5 class="project-card-name">{library.name}</h5>
+            <p class="project-card-desc">{library.description}</p>
+            <span class="library-type-badge">{library.type}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
 </div>
