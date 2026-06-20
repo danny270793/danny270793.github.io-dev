@@ -212,6 +212,10 @@ body {
   gap: 1.5rem;
 }
 
+.education-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 @media (max-width: 992px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
