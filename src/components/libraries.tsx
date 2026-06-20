@@ -46,9 +46,6 @@ export default function Libraries({ libraries, background }) {
 
       <div class="section-bg-alt">
         <div class="w3-content w3-container w3-padding-64">
-          <h3 class="section-title">{t.sections.libraries}</h3>
-          <hr class="section-divider" />
-
           <div class="lib-filter-bar">
             <button
               class={["lib-filter-btn", type === "all" ? "active" : ""].join(" ")}
