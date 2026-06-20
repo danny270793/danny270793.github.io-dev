@@ -230,7 +230,8 @@ body {
   border-radius: 12px;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: stretch;
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
@@ -243,18 +244,20 @@ body {
 
 .project-card-image {
   background: var(--bg-alt);
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-light);
 }
 
 .project-card-body {
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 0.9rem 1rem 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .project-card-name {
