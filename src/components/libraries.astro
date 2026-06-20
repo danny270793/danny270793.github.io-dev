@@ -20,12 +20,15 @@ import { Image } from "astro:assets";
   </div>
 </div>
 
-  <div class="w3-content w3-container w3-padding-64 fade-in">
-    <h3 class="section-title" data-i18n="sections.libraries">Open Source Libraries</h3>
-    <hr class="section-divider" />
+<div class="w3-content w3-container w3-padding-64 fade-in">
+  <h3 class="section-title" data-i18n="sections.libraries">
+    Open Source Libraries
+  </h3>
+  <hr class="section-divider" />
 
-    <div class="projects-grid">
-      {MyLibraries.map((library: Library) => (
+  <div class="projects-grid">
+    {
+      MyLibraries.map((library: Library) => (
         <a
           href={library.link}
           target="_blank"
@@ -47,6 +50,7 @@ import { Image } from "astro:assets";
             <span class="library-type-badge">{library.type}</span>
           </div>
         </a>
-      ))}
-    </div>
+      ))
+    }
   </div>
+</div>
