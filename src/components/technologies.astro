@@ -23,9 +23,6 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
 
 <div class="section-bg-alt">
   <div class="w3-content w3-container w3-padding-64 fade-in">
-    <h3 class="section-title" data-i18n="sections.technologies">Technologies</h3>
-    <hr class="section-divider" />
-
     <div class="tech-grid">
       {categories.map((category) => {
         const items = MyTechnologies.filter((t: Technology) => t.category === category);
