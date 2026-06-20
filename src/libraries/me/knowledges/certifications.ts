@@ -134,7 +134,7 @@ const certifications: Certification[] = [
     image: ScrumFoundationProfessionalCetificateSFPC,
   },
   {
-    link: "https://www.credly.com/badges/470746ff-b66a-4cde-b568-42e344d37e94/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/b28c6f5c60bb2e8d",
     name: "Azure Fundamentals",
     code: "AZ-900",
     order: 2,
@@ -190,7 +190,7 @@ const certifications: Certification[] = [
   },
   */
   {
-    link: "https://www.credly.com/badges/a7525a08-aa7f-4417-8456-c5ca6d755dd3/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/105b81a19c446df2",
     name: "Azure AI Fundamentals",
     code: "AI-900",
     order: 1,
@@ -210,7 +210,7 @@ const certifications: Certification[] = [
     image: ISO9001QualityManagementSkillfront,
   },
   {
-    link: "https://www.credly.com/badges/af2cbe11-7a70-49cd-8bf0-d76ef26bd65f/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/6586a21c975ab58b",
     name: "Azure Data Fundamentals",
     code: "DP-900",
     category: "Data",
@@ -241,7 +241,7 @@ const certifications: Certification[] = [
   },
   {
     stared: true,
-    link: "https://www.credly.com/badges/fd099b10-920a-4092-8b5a-f045f1443cb5/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/d8735ff447623533",
     name: "Power BI Data Analyst Associate",
     code: "PL-300",
     category: "Data",
@@ -251,7 +251,7 @@ const certifications: Certification[] = [
     image: PowerBIDataAnalystAssociate,
   },
   {
-    link: "https://www.credly.com/badges/380dc1da-b794-4044-97cd-d408ee1015a6/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/a644cee21610df01",
     name: "Power Platform Fundamentals",
     code: "PL-900",
     order: 4,
@@ -282,7 +282,7 @@ const certifications: Certification[] = [
     image: CertifiedKubernetesApplicationDeveloper,
   },
   {
-    link: "https://www.credly.com/badges/a8fd23c4-72d4-4fd3-85fd-f82584b764b7/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/b7913682d1d1195b",
     name: "Azure Cosmos DB Developer Specialty",
     code: "DP-420",
     order: 1,
@@ -323,7 +323,7 @@ const certifications: Certification[] = [
     image: IBMEnterpriseDesignThinkingPractitioner,
   },
   {
-    link: "https://www.credly.com/badges/18bf549c-39ae-43b4-830b-eb2a241f9835/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/6b80885bc8f37671",
     name: "Azure Developer Associate",
     code: "AZ-204",
     brand: "Microsoft",
@@ -343,7 +343,7 @@ const certifications: Certification[] = [
     image: BusinessModelCanvasEssentialsProfessionalCertification,
   },
   {
-    link: "https://www.credly.com/badges/4cb7a802-a3c8-4c76-aea0-7f67d9338092/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/5bcd714ce1055889",
     name: "Azure Administrator Associate",
     code: "AZ-104",
     order: 1,
@@ -354,7 +354,7 @@ const certifications: Certification[] = [
   },
   {
     stared: true,
-    link: "https://www.credly.com/badges/690852a9-8892-4d41-985c-fa9c42e61516/public_url",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/865a02ffeb837b26",
     name: "Azure Solutions Architect Expert",
     code: "AZ-305",
     order: 0,
@@ -364,7 +364,7 @@ const certifications: Certification[] = [
     image: AzureSolutionsArchitectExpert,
   },
   {
-    link: "https://learn.microsoft.com/en-us/users/danny270793/credentials/b30ff7171db974de",
+    link: "https://learn.microsoft.com/en-gb/users/danny270793/credentials/b30ff7171db974de",
     name: "DevOps Engineer Expert",
     code: "AZ-400",
     order: 0,
@@ -535,7 +535,7 @@ const certifications: Certification[] = [
     image: ConsentAndPreferencesManagementPro,
   },
   {
-    link: "https://www.onetrust.com/certifications/consent-preference-management-professional-certification/",
+    link: "https://certificate.rocketbot.co/badges/b835748e-d34e-924e-a4d8-9e8ffa7b42b1",
     name: "Bot Builder Rocketbot Expert Level 1",
     order: 2,
     code: "",
