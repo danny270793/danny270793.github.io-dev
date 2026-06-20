@@ -24,81 +24,43 @@ import Github from "../images/projects/github.png";
 </div>
 
 <div class="w3-content w3-container w3-padding-64 fade-in">
-  {
-    MyProjects.chunk(2).map((projects: Project[]) => (
-      <div class="w3-row">
-        {projects.map((project: Project) => (
-          <div class="w3-half w3-padding">
-            <div
-              class="card-hover w3-padding"
-              style="display: flex; align-items: center;"
-            >
-              <div class="w3-col" style="width: 100px;">
-                <Image
-                  class="w3-padding"
-                  src={project.image}
-                  alt={project.name}
-                  style="width: 100px; height: auto;"
-                />
-              </div>
-              <div class="w3-rest">
-                <h5>
-                  <strong>{project.name}</strong>
-                </h5>
-                <p>{project.description}</p>
-                {project.playstore !== undefined ? (
-                  <a
-                    href={project.playstore}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      class="w3-hover-shadow"
-                      src={GooglePlay}
-                      alt={project.name}
-                      style="width: auto; height: 30px;"
-                    />
-                  </a>
-                ) : (
-                  <span />
-                )}
-                {project.appstore !== undefined ? (
-                  <a
-                    href={project.appstore}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      class="w3-hover-shadow"
-                      src={AppStore}
-                      alt={project.name}
-                      style="width: auto; height: 30px;"
-                    />
-                  </a>
-                ) : (
-                  <span />
-                )}
-                {project.github !== undefined ? (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      class="w3-hover-shadow"
-                      src={Github}
-                      alt={project.name}
-                      style="width: auto; height: 30px;"
-                    />
-                  </a>
-                ) : (
-                  <span />
-                )}
-              </div>
-            </div>
+  <h3 class="section-title" data-i18n="sections.projects">Projects</h3>
+  <hr class="section-divider" />
+
+  <div class="projects-grid">
+    {MyProjects.map((project: Project) => (
+      <div class="project-card">
+        <div class="project-card-image">
+          <Image
+            src={project.image}
+            alt={project.name}
+            width={80}
+            height={80}
+            style="width: 80px; height: 80px; object-fit: contain; border-radius: 14px;"
+          />
+        </div>
+        <div class="project-card-body">
+          <h5 class="project-card-name">{project.name}</h5>
+          <p class="project-card-desc">{project.description}</p>
+          <div class="project-card-links">
+            {project.playstore && (
+              <a href={project.playstore} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="Google Play">
+                <Image src={GooglePlay} alt="Google Play" width={120} height={35} style="height: 26px; width: auto;" />
+              </a>
+            )}
+            {project.appstore && (
+              <a href={project.appstore} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="App Store">
+                <Image src={AppStore} alt="App Store" width={120} height={35} style="height: 26px; width: auto;" />
+              </a>
+            )}
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="GitHub">
+                <Image src={Github} alt="GitHub" width={90} height={28} style="height: 26px; width: auto;" />
+              </a>
+            )}
           </div>
-        ))}
+        </div>
       </div>
-    ))
-  }
+    ))}
+  </div>
 </div>
