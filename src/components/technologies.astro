@@ -2,6 +2,10 @@
 import TechnologiesBackground from "../images/parallax/technologies.jpg";
 import MyTechnologies from "../libraries/me/knowledges/technologies";
 import type { Technology } from "../libraries/me/knowledges/technologies";
+
+const categories = [
+  ...new Set(MyTechnologies.map((e: Technology) => e.category)),
+];
 ---
 
 <div
@@ -12,31 +16,39 @@ import type { Technology } from "../libraries/me/knowledges/technologies";
   <div class="w3-display-middle no-spaces">
     <span
       class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
+      data-i18n="sections.technologies"
     >
       Technologies
     </span>
   </div>
 </div>
 
-<div class="w3-content w3-container w3-padding-64">
-  {
-    [...new Set(MyTechnologies.map((e: Technology) => e.category))].map(
-      (category) => (
-        <>
-          <h5>
-            <strong>{category}</strong>
-          </h5>
-
-          {MyTechnologies.filter(
-            (t: Technology) => t.category === category,
-          ).map((technology: Technology) => (
-            <span>
-              <img src={technology.link} alt={technology.alternative} />
-              &nbsp;
-            </span>
-          ))}
-        </>
-      ),
-    )
-  }
+<div class="w3-content w3-container w3-padding-64 fade-in">
+  <div class="tech-grid">
+    {
+      categories.map((category) => {
+        const items = MyTechnologies.filter(
+          (t: Technology) => t.category === category,
+        );
+        return (
+          <div class="tech-category-card">
+            <div class="tech-category-header">
+              <span class="tech-category-name">{category}</span>
+            </div>
+            <div class="tech-badges-area">
+              {items.map((technology: Technology) => (
+                <span class="tech-badge">
+                  <img
+                    src={technology.link}
+                    alt={technology.alternative}
+                    loading="lazy"
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
 </div>

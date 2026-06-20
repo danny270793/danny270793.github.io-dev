@@ -9,38 +9,38 @@ import headerBackground from "../images/parallax/header.jpg";
   class="parallax header w3-display-container"
   style={`background-image: url("${headerBackground.src}")`}
 >
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-    >
-      Danny Vaca
-    </span>
+  <div class="hero-overlay"></div>
+  <div class="w3-display-middle hero-content">
+    <h1 class="hero-name w3-animate-opacity">Danny Vaca</h1>
+    <div class="hero-accent"></div>
+    <p class="hero-subtitle w3-animate-opacity" data-i18n="hero.subtitle">
+      Senior Full Stack Developer
+    </p>
   </div>
+  <a href="#about-me" class="hero-cta" aria-label="Scroll to about me"
+    >&#8595;</a
+  >
 </div>
 
-<div id="about-me" class="w3-content w3-container w3-padding-64">
-  <h3 class="w3-center">About me</h3>
-  <div class="w3-row">
+<div id="about-me" class="w3-content w3-container w3-padding-64 fade-in">
+  <h3 class="section-title" data-i18n="about.heading">About me</h3>
+  <hr class="section-divider" />
+  <div
+    class="w3-row"
+    style="display: flex; align-items: center; flex-wrap: wrap;"
+  >
     <div class="w3-third w3-center">
       <Image
-        class="w3-circle w3-padding"
+        class="w3-circle w3-padding profile-photo"
         src={profilePicture}
         alt="Profile picture"
         width={300}
         height={300}
-        style="width: 100%; height: auto;"
+        style="width: 80%; max-width: 220px; height: auto;"
       />
     </div>
-    <div class="w3-twothird w3-padding">
-      {
-        Me.detail.split("\n").map((e) => (
-          <>
-            {e}
-            <br />
-            <br />
-          </>
-        ))
-      }
+    <div id="bio-text" class="w3-twothird w3-padding" data-i18n-bio>
+      {Me.detail.split("\n").map((e) => <p style="margin: 0 0 1rem;">{e}</p>)}
     </div>
   </div>
 </div>

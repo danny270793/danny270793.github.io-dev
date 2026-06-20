@@ -26,11 +26,27 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <link rel="icon" type="image/svg+xml" href={ProfilePicture.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Senior Full Stack Developer with 15+ years of experience in cloud, mobile, and web development." />
+    <meta
+      name="description"
+      content="Senior Full Stack Developer with 15+ years of experience in cloud, mobile, and web development."
+    />
     <meta property="og:title" content="Danny Vaca" />
-    <meta property="og:description" content="Senior Full Stack Developer with 15+ years of experience in cloud, mobile, and web development." />
+    <meta
+      property="og:description"
+      content="Senior Full Stack Developer with 15+ years of experience in cloud, mobile, and web development."
+    />
     <meta property="og:type" content="website" />
     <title>Danny Vaca</title>
+    <script is:inline>
+      (function () {
+        var s = localStorage.getItem("theme");
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          s === "light" || s === "dark" ? s : dark ? "dark" : "light",
+        );
+      })();
+    </script>
   </head>
   <body>
     <Navbar />
@@ -40,7 +56,17 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <Education />
 
     <Certifications
-      certifications={MyCertifications}
+      certifications={MyCertifications.map((c) => ({
+        stared: c.stared,
+        code: c.code,
+        name: c.name,
+        brand: c.brand,
+        link: c.link,
+        date: c.date.toISOString(),
+        order: c.order,
+        category: c.category,
+        imageSrc: c.image.src,
+      }))}
       order={CategoryOrder}
       background={CertificationsBackground}
       client:load
@@ -57,5 +83,233 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
     <Technologies />
 
     <SocialNetworks />
+
+    <button id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+    <script>
+      import { translations, type Language } from "../i18n/translations";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // ── Scroll-reveal ──
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        document
+          .querySelectorAll(".fade-in")
+          .forEach((el) => revealObserver.observe(el));
+
+        // ── Back-to-top ──
+        const btn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+          btn?.classList.toggle("visible", window.scrollY > 400);
+        });
+        btn?.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // ── i18n ──
+        const SUPPORTED = Object.keys(translations) as Language[];
+
+        function getEffectiveLang(): Language {
+          const stored = localStorage.getItem("lang") as Language | null;
+          if (stored && SUPPORTED.includes(stored)) return stored;
+          const nav = (navigator.language || "en").split("-")[0] as Language;
+          return SUPPORTED.includes(nav) ? nav : "en";
+        }
+
+        function applyLang(lang: Language) {
+          const t = translations[lang];
+          document
+            .querySelectorAll<HTMLElement>("[data-i18n]")
+            .forEach((el) => {
+              const key = el.dataset.i18n as string;
+              const [section, field] = key.split(".") as [
+                keyof typeof t,
+                string,
+              ];
+              const value = (t[section] as Record<string, string>)[field];
+              if (value) el.textContent = value;
+            });
+          document
+            .querySelectorAll<HTMLElement>("[data-i18n-bio]")
+            .forEach((el) => {
+              el.innerHTML = t.about.bio
+                .split("\n")
+                .map((p) => `<p style="margin: 0 0 1rem;">${p}</p>`)
+                .join("");
+            });
+          document.documentElement.lang = lang;
+          window.dispatchEvent(
+            new CustomEvent<Language>("i18n:change", { detail: lang }),
+          );
+        }
+
+        const LABEL: Record<string, string> = {
+          system: "System",
+          en: "EN",
+          es: "ES",
+        };
+
+        function updatePickerUI(value: string) {
+          document
+            .querySelectorAll<HTMLElement>(".lang-current")
+            .forEach((el) => (el.textContent = LABEL[value] ?? value));
+          document
+            .querySelectorAll<HTMLElement>(".lang-option")
+            .forEach((opt) =>
+              opt.classList.toggle("selected", opt.dataset.lang === value),
+            );
+          document
+            .querySelectorAll<HTMLElement>(".sidebar-lang-opt")
+            .forEach((btn) =>
+              btn.classList.toggle("active", btn.dataset.lang === value),
+            );
+        }
+
+        function setLangPref(value: string) {
+          if (value === "system") {
+            localStorage.removeItem("lang");
+          } else {
+            localStorage.setItem("lang", value as Language);
+          }
+          updatePickerUI(value);
+          applyLang(getEffectiveLang());
+        }
+
+        // ── Theme picker ──
+        const THEME_ICON: Record<string, string> = {
+          system: "◑",
+          light: "☀",
+          dark: "☽",
+        };
+
+        function getEffectiveTheme(): "light" | "dark" {
+          const s = localStorage.getItem("theme");
+          if (s === "light" || s === "dark") return s;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        function applyTheme(theme: "light" | "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+
+        function updateThemeUI(value: string) {
+          document
+            .querySelectorAll<HTMLElement>(".theme-icon")
+            .forEach((el) => (el.textContent = THEME_ICON[value] ?? "◑"));
+          document
+            .querySelectorAll<HTMLElement>(".theme-option")
+            .forEach((opt) =>
+              opt.classList.toggle("selected", opt.dataset.val === value),
+            );
+          document
+            .querySelectorAll<HTMLElement>(".sidebar-theme-opt")
+            .forEach((btn) =>
+              btn.classList.toggle("active", btn.dataset.val === value),
+            );
+        }
+
+        function setThemePref(value: string) {
+          if (value === "system") {
+            localStorage.removeItem("theme");
+          } else {
+            localStorage.setItem("theme", value);
+          }
+          updateThemeUI(value);
+          applyTheme(getEffectiveTheme());
+        }
+
+        const themePicker =
+          document.querySelector<HTMLElement>(".theme-picker");
+        themePicker
+          ?.querySelector<HTMLElement>(".theme-picker-btn")
+          ?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            document.querySelector(".lang-picker")?.classList.remove("open");
+            themePicker.classList.toggle("open");
+          });
+        document
+          .querySelectorAll<HTMLElement>(".theme-option")
+          .forEach((opt) => {
+            opt.addEventListener("click", (e) => {
+              e.stopPropagation();
+              themePicker?.classList.remove("open");
+              setThemePref(opt.dataset.val ?? "system");
+            });
+          });
+        document
+          .querySelectorAll<HTMLElement>(".sidebar-theme-opt")
+          .forEach((btn) => {
+            btn.addEventListener("click", () =>
+              setThemePref(btn.dataset.val ?? "system"),
+            );
+          });
+
+        // React to OS preference change when pref is "system"
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", () => {
+            if (!localStorage.getItem("theme")) applyTheme(getEffectiveTheme());
+          });
+
+        // Init theme UI
+        const storedTheme = localStorage.getItem("theme");
+        const initTheme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : "system";
+        updateThemeUI(initTheme);
+        applyTheme(getEffectiveTheme());
+
+        // ── Language dropdown picker ──
+        const picker = document.querySelector<HTMLElement>(".lang-picker");
+        picker
+          ?.querySelector<HTMLElement>(".lang-picker-btn")
+          ?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            themePicker?.classList.remove("open");
+            picker.classList.toggle("open");
+          });
+        document.addEventListener("click", () => {
+          picker?.classList.remove("open");
+          themePicker?.classList.remove("open");
+        });
+        document
+          .querySelectorAll<HTMLElement>(".lang-option")
+          .forEach((opt) => {
+            opt.addEventListener("click", (e) => {
+              e.stopPropagation();
+              picker?.classList.remove("open");
+              setLangPref(opt.dataset.lang ?? "system");
+            });
+          });
+
+        // Sidebar buttons
+        document
+          .querySelectorAll<HTMLElement>(".sidebar-lang-opt")
+          .forEach((btn) => {
+            btn.addEventListener("click", () =>
+              setLangPref(btn.dataset.lang ?? "system"),
+            );
+          });
+
+        // Initial state — System is default
+        const storedLang = localStorage.getItem("lang") as Language | null;
+        const initialValue =
+          storedLang && SUPPORTED.includes(storedLang) ? storedLang : "system";
+        updatePickerUI(initialValue);
+        applyLang(getEffectiveLang());
+      });
+    </script>
   </body>
 </html>

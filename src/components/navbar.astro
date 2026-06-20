@@ -7,77 +7,235 @@ const { anchors = true } = Astro.props;
   class="w3-sidebar w3-animate-left w3-bar-block"
   style="display: none; z-index:5"
 >
+  <div class="sidebar-theme">
+    <span class="theme-label">Theme</span>
+    <div class="sidebar-theme-options">
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="system"
+        title="System">◑</button
+      >
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="light"
+        title="Light">☀</button
+      >
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="dark"
+        title="Dark">☽</button
+      >
+    </div>
+  </div>
+  <div class="sidebar-lang">
+    <span class="lang-label">Language</span>
+    <div class="sidebar-lang-options">
+      <button type="button" class="sidebar-lang-opt" data-lang="system"
+        >System</button
+      >
+      <button type="button" class="sidebar-lang-opt" data-lang="en">EN</button>
+      <button type="button" class="sidebar-lang-opt" data-lang="es">ES</button>
+    </div>
+  </div>
   <a
     href={anchors ? "#about-me" : "/#about-me"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.about"
   >
     About me
   </a>
   <a
     href={anchors ? "#education" : "/#education"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.education"
   >
     Education
   </a>
   <a
     href={anchors ? "#certifications" : "/#certifications"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.certifications"
   >
     Certifications
   </a>
   <a
     href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.libraries"
   >
     Open Source Libraries
   </a>
-  <a href={anchors ? "#projects" : "/#projects"} class="w3-bar-item w3-button">
+  <a
+    href={anchors ? "#projects" : "/#projects"}
+    class="w3-bar-item w3-button"
+    data-i18n="nav.projects"
+  >
     Projects
   </a>
   <a
     href={anchors ? "#technologies" : "/#technologies"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.technologies"
   >
     Technologies
   </a>
   <a
     href={anchors ? "#social-networks" : "/#social-networks"}
     class="w3-bar-item w3-button"
+    data-i18n="nav.contact"
   >
-    Social Networks
+    Contact
   </a>
 </div>
 
 <div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
 </div>
 
-<div class="w3-top w3-xlarge">
+<div id="navbar" class="w3-top">
   <div class="w3-bar w3-card w3-white">
-    <button id="openButton" class="w3-button"> &#9776; </button>
-    Danny Vaca
-    <span class="w3-hide-large w3-hide-medium">
-      <div></div>
+    <button
+      id="openButton"
+      class="w3-bar-item w3-button w3-hide-large"
+      style="font-size: 1.25rem;"
+    >
+      &#9776;
+    </button>
+    <span
+      class="w3-bar-item"
+      style="font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;"
+    >
+      Danny Vaca
     </span>
+    <div
+      class="w3-right w3-hide-small w3-hide-medium"
+      style="display: flex; align-items: center;"
+    >
+      <a
+        href={anchors ? "#about-me" : "/#about-me"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="about-me"
+        data-i18n="nav.about">About</a
+      >
+      <a
+        href={anchors ? "#education" : "/#education"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="education"
+        data-i18n="nav.education">Education</a
+      >
+      <a
+        href={anchors ? "#certifications" : "/#certifications"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="certifications"
+        data-i18n="nav.certifications">Certifications</a
+      >
+      <a
+        href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="open-source-libraries"
+        data-i18n="nav.libraries">Libraries</a
+      >
+      <a
+        href={anchors ? "#projects" : "/#projects"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="projects"
+        data-i18n="nav.projects">Projects</a
+      >
+      <a
+        href={anchors ? "#technologies" : "/#technologies"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="technologies"
+        data-i18n="nav.technologies">Technologies</a
+      >
+      <a
+        href={anchors ? "#social-networks" : "/#social-networks"}
+        class="w3-bar-item w3-button nav-link"
+        data-section="social-networks"
+        data-i18n="nav.contact">Contact</a
+      >
+      <span class="lang-divider"></span>
+      <div class="theme-picker">
+        <button type="button" class="theme-picker-btn">
+          <span class="theme-icon">◑</span>
+          <span class="theme-chevron">▾</span>
+        </button>
+        <ul class="theme-dropdown">
+          <li class="theme-option selected" data-val="system">◑ System</li>
+          <li class="theme-option" data-val="light">☀ Light</li>
+          <li class="theme-option" data-val="dark">☽ Dark</li>
+        </ul>
+      </div>
+      <div class="lang-picker">
+        <button type="button" class="lang-picker-btn">
+          <span class="lang-current">System</span>
+          <span class="lang-chevron">▾</span>
+        </button>
+        <ul class="lang-dropdown">
+          <li class="lang-option selected" data-lang="system">System</li>
+          <li class="lang-option" data-lang="en">English</li>
+          <li class="lang-option" data-lang="es">Español</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sidebar: HTMLElement | null = document.getElementById("sidebar");
-    const openButton: HTMLElement | null =
-      document.getElementById("openButton");
-    const overlay: HTMLElement | null = document.getElementById("overlay");
+    const sidebar = document.getElementById("sidebar") as HTMLElement;
+    const openButton = document.getElementById("openButton") as HTMLElement;
+    const overlay = document.getElementById("overlay") as HTMLElement;
+    const navbar = document.getElementById("navbar") as HTMLElement;
+
     const toggleSidebar = (show: boolean) => {
-      sidebar!.style.display = show ? "block" : "none";
-      overlay!.style.display = show ? "block" : "none";
+      sidebar.style.display = show ? "block" : "none";
+      overlay.style.display = show ? "block" : "none";
     };
-    openButton!.addEventListener("click", () => toggleSidebar(true));
-    overlay!.addEventListener("click", () => toggleSidebar(false));
-    document.querySelectorAll(".w3-bar-item").forEach((barItem) => {
+
+    openButton?.addEventListener("click", () => toggleSidebar(true));
+    overlay.addEventListener("click", () => toggleSidebar(false));
+    // Close sidebar on nav link click (not lang buttons)
+    document.querySelectorAll(".w3-bar-item[href]").forEach((barItem) => {
       barItem.addEventListener("click", () => toggleSidebar(false));
     });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleSidebar(false);
     });
+
+    // Navbar shadow on scroll
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("navbar-scrolled", window.scrollY > 10);
+    });
+
+    // Highlight active section in desktop nav
+    const navLinks = document.querySelectorAll<HTMLElement>(
+      ".nav-link[data-section]",
+    );
+    const sectionIds = Array.from(navLinks).map(
+      (l) => l.dataset.section as string,
+    );
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.dataset.section === entry.target.id,
+              );
+            });
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    sections.forEach((s) => sectionObserver.observe(s));
   });
 </script>

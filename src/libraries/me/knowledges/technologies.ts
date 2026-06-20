@@ -4,10 +4,10 @@ export interface Technology {
   category:
     | "Mobile"
     | "Web"
-    | "CI"
+    | "CI/CD"
     | "Deployments"
     | "Monitoring"
-    | "Databases"
+    | "Storage"
     | "BigData"
     | "Microcontrollers";
 }
@@ -114,24 +114,44 @@ const technologies: Technology[] = [
     alternative: "NodeJS",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/gitlab%20ci-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white",
     alternative: "Gitlab",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=github&logoColor=white",
     alternative: "Github",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/SonarQube-black?style=for-the-badge&logo=sonarqube&logoColor=4E9BCD",
     alternative: "SonarQube",
   },
   {
-    category: "CI",
-    link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azure&logoColor=white",
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azuredevops&logoColor=white",
     alternative: "Azure DevOps",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white",
+    alternative: "Terraform",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white",
+    alternative: "Ansible",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/argo-%23EF7B4D.svg?style=for-the-badge&logo=argo&logoColor=white",
+    alternative: "Argo",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/portainer-%2313BEF9.svg?style=for-the-badge&logo=portainer&logoColor=white",
+    alternative: "Portainer",
   },
   {
     category: "Deployments",
@@ -150,7 +170,7 @@ const technologies: Technology[] = [
   },
   {
     category: "Deployments",
-    link: "https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white",
+    link: "https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazonaws&logoColor=white",
     alternative: "AWS",
   },
   {
@@ -185,11 +205,6 @@ const technologies: Technology[] = [
   },
   {
     category: "Deployments",
-    link: "https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white",
-    alternative: "Terraform",
-  },
-  {
-    category: "Deployments",
     link: "https://img.shields.io/badge/vagrant-%231563FF.svg?style=for-the-badge&logo=vagrant&logoColor=white",
     alternative: "Vagrant",
   },
@@ -210,48 +225,78 @@ const technologies: Technology[] = [
   },
   {
     category: "Monitoring",
-    link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black",
+    link: "https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black",
     alternative: "Power BI",
   },
   {
-    category: "Databases",
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/Loki-F46800?style=for-the-badge&logo=grafana&logoColor=white",
+    alternative: "Loki",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/Tempo-F46800?style=for-the-badge&logo=grafana&logoColor=white",
+    alternative: "Tempo",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/datadog-%23632CA6.svg?style=for-the-badge&logo=datadog&logoColor=white",
+    alternative: "Datadog",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/rollbar-%23E35E4F.svg?style=for-the-badge&logo=rollbar&logoColor=white",
+    alternative: "Rollbar",
+  },
+  {
+    category: "Monitoring",
+    link: "https://img.shields.io/badge/coralogix-%230047AB.svg?style=for-the-badge&logo=coralogix&logoColor=white",
+    alternative: "Coralogix",
+  },
+  {
+    category: "Storage",
     link: "https://img.shields.io/badge/SQLServer-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white",
     alternative: "SQLServer",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white",
     alternative: "Postgres",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white",
     alternative: "MariaDB",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white",
     alternative: "MongoDB",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white",
     alternative: "Neo4J",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white",
     alternative: "Redis",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white",
     alternative: "SQLite",
   },
   {
-    category: "Databases",
+    category: "Storage",
     link: "https://img.shields.io/badge/rabbitmq-FF6600.svg?style=for-the-badge&logo=rabbitmq&logoColor=white",
     alternative: "RabbitMQ",
+  },
+  {
+    category: "Storage",
+    link: "https://img.shields.io/badge/apache%20kafka-%23231F20.svg?style=for-the-badge&logo=apachekafka&logoColor=white",
+    alternative: "Kafka",
   },
   {
     category: "BigData",
