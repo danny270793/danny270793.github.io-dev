@@ -30,6 +30,32 @@ export default function Certifications({
 
   const t = translations[lang];
 
+  const categories = [
+    ...new Set(
+      certifications
+        .map((c: Certification) => c.category)
+        .sort((a: string, b: string) => order[a] - order[b]),
+    ),
+  ];
+
+  const filtered = certifications
+    .filter((c: Certification) =>
+      category === "all"
+        ? true
+        : category === "stared"
+          ? c.stared
+          : c.category === category,
+    )
+    .sort((a: Certification, b: Certification) => {
+      const first = (order[a.category] + 1) * 10 + a.order;
+      const second = (order[b.category] + 1) * 10 + b.order;
+      return first - second;
+    });
+
+  const starredCount = certifications.filter(
+    (c: Certification) => c.stared,
+  ).length;
+
   return (
     <>
       <div
@@ -43,142 +69,84 @@ export default function Certifications({
           </span>
         </div>
       </div>
+
       <div class="w3-content w3-container w3-padding-64">
-        <div class="w3-center">
-          <div
+        <div class="lib-filter-bar">
+          <button
             class={[
-              "w3-bar-item",
-              "w3-round",
-              "w3-button",
-              category === "stared" ? "w3-green" : "",
+              "lib-filter-btn",
+              category === "stared" ? "active" : "",
             ].join(" ")}
             onClick={() => setCategory("stared")}
           >
-            <span class="w3-badge w3-red">
-              {
-                certifications.filter(
-                  (certification: Certification) => certification.stared,
-                ).length
-              }
-            </span>{" "}
-            {t.certifications.starred}
-          </div>
-          <div
-            class={[
-              "w3-bar-item",
-              "w3-round",
-              "w3-button",
-              category === "all" ? "w3-green" : "",
-            ].join(" ")}
+            ★ {t.certifications.starred}
+            <span class="lib-filter-count">{starredCount}</span>
+          </button>
+          <button
+            class={["lib-filter-btn", category === "all" ? "active" : ""].join(
+              " ",
+            )}
             onClick={() => setCategory("all")}
           >
-            <span class="w3-badge w3-red">{certifications.length}</span>{" "}
             {t.certifications.all}
-          </div>
-          {[
-            ...new Set(
-              certifications
-                .map((certification: Certification) => certification.category)
-                .sort((a: string, b: string) => order[a] - order[b]),
-            ),
-          ].map((eachCategory: string) => (
-            <div
+            <span class="lib-filter-count">{certifications.length}</span>
+          </button>
+          {categories.map((cat: string) => (
+            <button
               class={[
-                "w3-bar-item",
-                "w3-round",
-                "w3-button",
-                category === eachCategory ? "w3-green" : "",
+                "lib-filter-btn",
+                category === cat ? "active" : "",
               ].join(" ")}
-              onClick={() => setCategory(eachCategory)}
+              onClick={() => setCategory(cat)}
             >
-              <span class="w3-badge w3-red">
+              {cat}
+              <span class="lib-filter-count">
                 {
                   certifications.filter(
-                    (certification: Certification) =>
-                      certification.category === eachCategory,
+                    (c: Certification) => c.category === cat,
                   ).length
                 }
-              </span>{" "}
-              {eachCategory}
-            </div>
+              </span>
+            </button>
           ))}
         </div>
-        <br />
-        {certifications
-          .filter((certification: Certification) =>
-            category === "all"
-              ? true
-              : category === "stared"
-                ? certification.stared
-                : certification.category === category,
-          )
-          .sort((a: Certification, b: Certification) => {
-            const first = (order[a.category] + 1) * 10 + a.order;
-            const second = (order[b.category] + 1) * 10 + b.order;
-            return first - second;
-          })
-          .chunk(3)
-          .map((subCertifications: Certification[]) => (
-            <>
-              {subCertifications.map((certification: Certification) => (
-                <div class="w3-row w3-hover-shadow w3-hide-medium w3-hide-large category-item">
-                  <a
-                    href={certification.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div class="w3-col" style="width: 150px;">
-                      <img
-                        src={certification.image.src}
-                        class="w3-padding"
-                        alt={certification.name}
-                        style="width: 100%; height: auto;"
-                      />
-                    </div>
-                    <div class="w3-rest">
-                      <h5>
-                        <strong>
-                          {certification.code === ""
-                            ? certification.name
-                            : `(${certification.code}) - ${certification.name}`}
-                        </strong>
-                      </h5>
-                      <p>{certification.brand}</p>
-                    </div>
-                  </a>
-                </div>
-              ))}
 
-              <div class="w3-row w3-hide-small">
-                {subCertifications.map((certification: Certification) => (
-                  <div class="w3-third w3-center w3-padding">
-                    <div class="w3-hover-shadow w3-padding">
-                      <a
-                        href={certification.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          src={certification.image.src}
-                          class="w3-center"
-                          alt={certification.name}
-                          style="width: 100%; height: auto;"
-                        />
-                        <h5>
-                          <strong>
-                            {certification.code === ""
-                              ? certification.name
-                              : `(${certification.code}) - ${certification.name}`}
-                          </strong>
-                        </h5>
-                        <p>{certification.brand}</p>
-                      </a>
-                    </div>
-                  </div>
-                ))}
+        <div class="projects-grid">
+          {filtered.map((cert: Certification) => (
+            <a
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card project-card-link"
+            >
+              <div class="project-card-image">
+                <img
+                  src={cert.image.src}
+                  alt={cert.name}
+                  style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px;"
+                />
               </div>
-            </>
+              <div class="project-card-body">
+                <h5 class="project-card-name">
+                  {cert.stared && (
+                    <span class="cert-star" title="Starred">★</span>
+                  )}
+                  {cert.code !== "" ? `(${cert.code}) ${cert.name}` : cert.name}
+                </h5>
+                <p class="project-card-desc">{cert.brand}</p>
+                <div class="cert-card-footer">
+                  <span class="library-type-badge">{cert.category}</span>
+                  <span class="cert-date">
+                    {cert.date.toLocaleDateString(lang === "es" ? "es-ES" : "en-US", {
+                      year: "numeric",
+                      month: "short",
+                    })}
+                  </span>
+                </div>
+              </div>
+            </a>
           ))}
+        </div>
       </div>
     </>
   );
