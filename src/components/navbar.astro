@@ -10,15 +10,32 @@ const { anchors = true } = Astro.props;
   <div class="sidebar-theme">
     <span class="theme-label">Theme</span>
     <div class="sidebar-theme-options">
-      <button type="button" class="sidebar-theme-opt" data-val="system" title="System">◑</button>
-      <button type="button" class="sidebar-theme-opt" data-val="light" title="Light">☀</button>
-      <button type="button" class="sidebar-theme-opt" data-val="dark" title="Dark">☽</button>
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="system"
+        title="System">◑</button
+      >
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="light"
+        title="Light">☀</button
+      >
+      <button
+        type="button"
+        class="sidebar-theme-opt"
+        data-val="dark"
+        title="Dark">☽</button
+      >
     </div>
   </div>
   <div class="sidebar-lang">
     <span class="lang-label">Language</span>
     <div class="sidebar-lang-options">
-      <button type="button" class="sidebar-lang-opt" data-lang="system">System</button>
+      <button type="button" class="sidebar-lang-opt" data-lang="system"
+        >System</button
+      >
       <button type="button" class="sidebar-lang-opt" data-lang="en">EN</button>
       <button type="button" class="sidebar-lang-opt" data-lang="es">ES</button>
     </div>
@@ -92,7 +109,10 @@ const { anchors = true } = Astro.props;
     >
       Danny Vaca
     </span>
-    <div class="w3-right w3-hide-small w3-hide-medium" style="display: flex; align-items: center;">
+    <div
+      class="w3-right w3-hide-small w3-hide-medium"
+      style="display: flex; align-items: center;"
+    >
       <a
         href={anchors ? "#about-me" : "/#about-me"}
         class="w3-bar-item w3-button nav-link"
