@@ -226,19 +226,20 @@ body {
 
 .project-card {
   background: var(--surface);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   transform: translateY(-3px);
 }
 
@@ -249,7 +250,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  border-right: 1px solid var(--border-light);
+  border-right: 1px solid var(--border);
 }
 
 .project-card-body {
