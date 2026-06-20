@@ -57,8 +57,15 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
 
     <Certifications
       certifications={MyCertifications.map((c) => ({
-        ...c,
+        stared: c.stared,
+        code: c.code,
+        name: c.name,
+        brand: c.brand,
+        link: c.link,
         date: c.date.toISOString(),
+        order: c.order,
+        category: c.category,
+        imageSrc: c.image.src,
       }))}
       order={CategoryOrder}
       background={CertificationsBackground}

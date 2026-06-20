@@ -1,7 +1,17 @@
 import { useState, useEffect } from "preact/hooks";
-import "../libraries/arrays";
-import type Certification from "../libraries/me/knowledges/certification";
 import { translations, type Language } from "../i18n/translations";
+
+interface CertProp {
+  stared?: boolean;
+  code: string;
+  name: string;
+  brand: string;
+  link: string;
+  date: string;
+  order: number;
+  category: string;
+  imageSrc: string;
+}
 
 export default function Certifications({
   certifications,
@@ -33,27 +43,27 @@ export default function Certifications({
   const categories = [
     ...new Set(
       certifications
-        .map((c: Certification) => c.category)
+        .map((c: CertProp) => c.category)
         .sort((a: string, b: string) => order[a] - order[b]),
     ),
   ];
 
   const filtered = certifications
-    .filter((c: Certification) =>
+    .filter((c: CertProp) =>
       category === "all"
         ? true
         : category === "stared"
           ? c.stared
           : c.category === category,
     )
-    .sort((a: Certification, b: Certification) => {
+    .sort((a: CertProp, b: CertProp) => {
       const first = (order[a.category] + 1) * 10 + a.order;
       const second = (order[b.category] + 1) * 10 + b.order;
       return first - second;
     });
 
   const starredCount = certifications.filter(
-    (c: Certification) => c.stared,
+    (c: CertProp) => c.stared,
   ).length;
 
   return (
@@ -103,7 +113,7 @@ export default function Certifications({
               <span class="lib-filter-count">
                 {
                   certifications.filter(
-                    (c: Certification) => c.category === cat,
+                    (c: CertProp) => c.category === cat,
                   ).length
                 }
               </span>
@@ -112,7 +122,7 @@ export default function Certifications({
         </div>
 
         <div class="projects-grid">
-          {filtered.map((cert: Certification) => (
+          {filtered.map((cert: CertProp) => (
             <a
               href={cert.link}
               target="_blank"
@@ -121,7 +131,7 @@ export default function Certifications({
             >
               <div class="project-card-image">
                 <img
-                  src={cert.image.src}
+                  src={cert.imageSrc}
                   alt={cert.name}
                   style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px;"
                 />
