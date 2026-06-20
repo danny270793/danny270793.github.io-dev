@@ -23,41 +23,79 @@ import Github from "../images/projects/github.png";
   </div>
 </div>
 
-  <div class="w3-content w3-container w3-padding-64 fade-in">
+<div class="w3-content w3-container w3-padding-64 fade-in">
   <div class="projects-grid">
-    {MyProjects.map((project: Project) => (
-      <div class="project-card">
-        <div class="project-card-image">
-          <Image
-            src={project.image}
-            alt={project.name}
-            width={64}
-            height={64}
-            style="width: 64px; height: 64px; object-fit: contain; border-radius: 12px;"
-          />
-        </div>
-        <div class="project-card-body">
-          <h5 class="project-card-name">{project.name}</h5>
-          <p class="project-card-desc">{project.description}</p>
-          <div class="project-card-links">
-            {project.playstore && (
-              <a href={project.playstore} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="Google Play">
-                <Image src={GooglePlay} alt="Google Play" width={120} height={35} style="height: 26px; width: auto;" />
-              </a>
-            )}
-            {project.appstore && (
-              <a href={project.appstore} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="App Store">
-                <Image src={AppStore} alt="App Store" width={120} height={35} style="height: 26px; width: auto;" />
-              </a>
-            )}
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-store-link" aria-label="GitHub">
-                <Image src={Github} alt="GitHub" width={90} height={28} style="height: 26px; width: auto;" />
-              </a>
-            )}
+    {
+      MyProjects.map((project: Project) => (
+        <div class="project-card">
+          <div class="project-card-image">
+            <Image
+              src={project.image}
+              alt={project.name}
+              width={64}
+              height={64}
+              style="width: 64px; height: 64px; object-fit: contain; border-radius: 12px;"
+            />
+          </div>
+          <div class="project-card-body">
+            <h5 class="project-card-name">{project.name}</h5>
+            <p class="project-card-desc">{project.description}</p>
+            <div class="project-card-links">
+              {project.playstore && (
+                <a
+                  href={project.playstore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-store-link"
+                  aria-label="Google Play"
+                >
+                  <Image
+                    src={GooglePlay}
+                    alt="Google Play"
+                    width={120}
+                    height={35}
+                    style="height: 26px; width: auto;"
+                  />
+                </a>
+              )}
+              {project.appstore && (
+                <a
+                  href={project.appstore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-store-link"
+                  aria-label="App Store"
+                >
+                  <Image
+                    src={AppStore}
+                    alt="App Store"
+                    width={120}
+                    height={35}
+                    style="height: 26px; width: auto;"
+                  />
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-store-link"
+                  aria-label="GitHub"
+                >
+                  <Image
+                    src={Github}
+                    alt="GitHub"
+                    width={90}
+                    height={28}
+                    style="height: 26px; width: auto;"
+                  />
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </div>
