@@ -44,7 +44,6 @@ export default function Libraries({ libraries, background }) {
         </div>
       </div>
 
-      <div class="section-bg-alt">
         <div class="w3-content w3-container w3-padding-64">
           <div class="lib-filter-bar">
             <button
@@ -91,7 +90,6 @@ export default function Libraries({ libraries, background }) {
             ))}
           </div>
         </div>
-      </div>
     </>
   );
 }
