@@ -130,7 +130,7 @@ const technologies: Technology[] = [
   },
   {
     category: "CI/CD",
-    link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azure&logoColor=white",
+    link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azuredevops&logoColor=white",
     alternative: "Azure DevOps",
   },
   {
@@ -170,7 +170,7 @@ const technologies: Technology[] = [
   },
   {
     category: "Deployments",
-    link: "https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white",
+    link: "https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazonaws&logoColor=white",
     alternative: "AWS",
   },
   {
