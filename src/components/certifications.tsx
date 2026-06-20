@@ -62,9 +62,7 @@ export default function Certifications({
       return first - second;
     });
 
-  const starredCount = certifications.filter(
-    (c: CertProp) => c.stared,
-  ).length;
+  const starredCount = certifications.filter((c: CertProp) => c.stared).length;
 
   return (
     <>
@@ -103,18 +101,16 @@ export default function Certifications({
           </button>
           {categories.map((cat: string) => (
             <button
-              class={[
-                "lib-filter-btn",
-                category === cat ? "active" : "",
-              ].join(" ")}
+              class={["lib-filter-btn", category === cat ? "active" : ""].join(
+                " ",
+              )}
               onClick={() => setCategory(cat)}
             >
               {cat}
               <span class="lib-filter-count">
                 {
-                  certifications.filter(
-                    (c: CertProp) => c.category === cat,
-                  ).length
+                  certifications.filter((c: CertProp) => c.category === cat)
+                    .length
                 }
               </span>
             </button>
@@ -139,7 +135,9 @@ export default function Certifications({
               <div class="project-card-body">
                 <h5 class="project-card-name">
                   {cert.stared && (
-                    <span class="cert-star" title="Starred">★</span>
+                    <span class="cert-star" title="Starred">
+                      ★
+                    </span>
                   )}
                   {cert.code !== "" ? `(${cert.code}) ${cert.name}` : cert.name}
                 </h5>
