@@ -146,6 +146,13 @@ import OpenSourceLibrariesBackground from "../images/parallax/open source librar
                 .map((p) => `<p style="margin: 0 0 1rem;">${p}</p>`)
                 .join("");
             });
+          document
+            .querySelectorAll<HTMLElement>("[data-desc-en]")
+            .forEach((el) => {
+              el.textContent =
+                (lang === "es" ? el.dataset.descEs : el.dataset.descEn) ??
+                el.textContent;
+            });
           document.documentElement.lang = lang;
           window.dispatchEvent(
             new CustomEvent<Language>("i18n:change", { detail: lang }),
