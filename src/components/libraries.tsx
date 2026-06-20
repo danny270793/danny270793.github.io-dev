@@ -84,7 +84,7 @@ export default function Libraries({ libraries, background }) {
               </div>
               <div class="project-card-body">
                 <h5 class="project-card-name">{library.name}</h5>
-                <p class="project-card-desc">{library.description}</p>
+                <p class="project-card-desc">{library.description[lang]}</p>
                 <span class="library-type-badge">{library.type}</span>
               </div>
             </a>

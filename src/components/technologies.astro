@@ -6,6 +6,17 @@ import type { Technology } from "../libraries/me/knowledges/technologies";
 const categories = [
   ...new Set(MyTechnologies.map((e: Technology) => e.category)),
 ];
+
+const categoryEs: Record<string, string> = {
+  Mobile: "Móvil",
+  Web: "Web",
+  "CI/CD": "CI/CD",
+  Deployments: "Despliegues",
+  Monitoring: "Monitoreo",
+  Storage: "Almacenamiento",
+  BigData: "Big Data",
+  Microcontrollers: "Microcontroladores",
+};
 ---
 
 <div
@@ -33,7 +44,7 @@ const categories = [
         return (
           <div class="tech-category-card">
             <div class="tech-category-header">
-              <span class="tech-category-name">{category}</span>
+              <span class="tech-category-name" data-desc-en={category} data-desc-es={categoryEs[category] ?? category}>{category}</span>
             </div>
             <div class="tech-badges-area">
               {items.map((technology: Technology) => (
