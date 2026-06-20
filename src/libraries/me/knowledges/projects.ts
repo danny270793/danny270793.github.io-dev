@@ -9,7 +9,7 @@ import type { ImageMetadata } from "astro";
 export interface Project {
   image: ImageMetadata;
   name: string;
-  description: string;
+  description: { en: string; es: string };
   playstore: string | undefined;
   appstore: string | undefined;
   github: string | undefined;
@@ -19,7 +19,10 @@ const projects: Project[] = [
   {
     image: MaintAzureMonitoring,
     name: "Maint Azure Monitoring",
-    description: "App get insights (prices, ussage) from azure accout",
+    description: {
+      en: "App to get insights (prices, usage) from azure account",
+      es: "Aplicación para obtener información (precios, uso) de una cuenta de Azure",
+    },
     playstore:
       "https://play.google.com/store/apps/details?id=com.maintlatam.azure.pipelinesmonitoring.pipelines_monitoring",
     appstore: undefined,
@@ -28,7 +31,10 @@ const projects: Project[] = [
   {
     image: Speedometer,
     name: "Speedometer",
-    description: "App to measure the speed which the device is moving on",
+    description: {
+      en: "App to measure the speed which the device is moving on",
+      es: "Aplicación para medir la velocidad a la que se mueve el dispositivo",
+    },
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.sppedometer",
     appstore: undefined,
@@ -37,8 +43,10 @@ const projects: Project[] = [
   {
     image: Soundmeter,
     name: "Soundmeter",
-    description:
-      "App to measure the strengh of the noise which is reaching your phone microphone",
+    description: {
+      en: "App to measure the strength of the noise which is reaching your phone microphone",
+      es: "Aplicación para medir la intensidad del ruido que llega al micrófono de tu teléfono",
+    },
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.soundmeter.soundmeter",
     appstore: undefined,
@@ -47,7 +55,10 @@ const projects: Project[] = [
   {
     image: Mycompass,
     name: "Mycompass",
-    description: "App to measure the orientation of the device",
+    description: {
+      en: "App to measure the orientation of the device",
+      es: "Aplicación para medir la orientación del dispositivo",
+    },
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.mycompass",
     appstore: undefined,
@@ -56,8 +67,10 @@ const projects: Project[] = [
   {
     image: BoxingTimer,
     name: "Boxing Timer",
-    description:
-      "A app that shows a timer for each round of your boxing training",
+    description: {
+      en: "App that shows a timer for each round of your boxing training",
+      es: "Aplicación que muestra un temporizador para cada round de tu entrenamiento de boxeo",
+    },
     playstore:
       "https://play.google.com/store/apps/details?id=io.github.danny270793.boxingtimer",
     appstore: undefined,
@@ -66,7 +79,10 @@ const projects: Project[] = [
   {
     image: MMAScoreCard,
     name: "MMA ScoreCard",
-    description: "An independent app to see MMA events and results",
+    description: {
+      en: "An independent app to see MMA events and results",
+      es: "Aplicación independiente para ver eventos y resultados de MMA",
+    },
     playstore: undefined,
     appstore: undefined,
     github: "https://github.com/danny270793/MMAScoreCard",
