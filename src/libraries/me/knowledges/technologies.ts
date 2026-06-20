@@ -4,7 +4,7 @@ export interface Technology {
   category:
     | "Mobile"
     | "Web"
-    | "CI"
+    | "CI/CD"
     | "Deployments"
     | "Monitoring"
     | "Databases"
@@ -114,34 +114,44 @@ const technologies: Technology[] = [
     alternative: "NodeJS",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/gitlab%20ci-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white",
     alternative: "Gitlab",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=github&logoColor=white",
     alternative: "Github",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/SonarQube-black?style=for-the-badge&logo=sonarqube&logoColor=4E9BCD",
     alternative: "SonarQube",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/azure_devops-%230072C6.svg?style=for-the-badge&logo=azure&logoColor=white",
     alternative: "Azure DevOps",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white",
     alternative: "Terraform",
   },
   {
-    category: "CI",
+    category: "CI/CD",
     link: "https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white",
     alternative: "Ansible",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/argo-%23EF7B4D.svg?style=for-the-badge&logo=argo&logoColor=white",
+    alternative: "Argo",
+  },
+  {
+    category: "CI/CD",
+    link: "https://img.shields.io/badge/portainer-%2313BEF9.svg?style=for-the-badge&logo=portainer&logoColor=white",
+    alternative: "Portainer",
   },
   {
     category: "Deployments",
