@@ -3,7 +3,9 @@ import TechnologiesBackground from "../images/parallax/technologies.jpg";
 import MyTechnologies from "../libraries/me/knowledges/technologies";
 import type { Technology } from "../libraries/me/knowledges/technologies";
 
-const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category))];
+const categories = [
+  ...new Set(MyTechnologies.map((e: Technology) => e.category)),
+];
 ---
 
 <div
@@ -21,10 +23,13 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
   </div>
 </div>
 
-  <div class="w3-content w3-container w3-padding-64 fade-in">
-    <div class="tech-grid">
-      {categories.map((category) => {
-        const items = MyTechnologies.filter((t: Technology) => t.category === category);
+<div class="w3-content w3-container w3-padding-64 fade-in">
+  <div class="tech-grid">
+    {
+      categories.map((category) => {
+        const items = MyTechnologies.filter(
+          (t: Technology) => t.category === category,
+        );
         return (
           <div class="tech-category-card">
             <div class="tech-category-header">
@@ -33,12 +38,17 @@ const categories = [...new Set(MyTechnologies.map((e: Technology) => e.category)
             <div class="tech-badges-area">
               {items.map((technology: Technology) => (
                 <span class="tech-badge">
-                  <img src={technology.link} alt={technology.alternative} loading="lazy" />
+                  <img
+                    src={technology.link}
+                    alt={technology.alternative}
+                    loading="lazy"
+                  />
                 </span>
               ))}
             </div>
           </div>
         );
-      })}
-    </div>
+      })
+    }
   </div>
+</div>
