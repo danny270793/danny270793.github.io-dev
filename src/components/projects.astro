@@ -39,7 +39,13 @@ import Github from "../images/projects/github.png";
           </div>
           <div class="project-card-body">
             <h5 class="project-card-name">{project.name}</h5>
-            <p class="project-card-desc" data-desc-en={project.description.en} data-desc-es={project.description.es}>{project.description.en}</p>
+            <p
+              class="project-card-desc"
+              data-desc-en={project.description.en}
+              data-desc-es={project.description.es}
+            >
+              {project.description.en}
+            </p>
             <div class="project-card-links">
               {project.playstore && (
                 <a
