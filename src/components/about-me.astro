@@ -83,7 +83,7 @@ const highlights = [
       </span>
       <h1 class="hero-title reveal" style="--delay: 0.08s">
         <span class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</span>
-        <span class="gradient-text">Danny Vaca</span>
+        <span>Danny Vaca</span>
       </h1>
       <p
         class="hero-tagline reveal"
@@ -151,11 +151,7 @@ const highlights = [
     {
       stats.map((s) => (
         <div class="stat">
-          <div
-            class="stat-value gradient-text"
-            data-count={s.value}
-            data-suffix={s.suffix}
-          >
+          <div class="stat-value" data-count={s.value} data-suffix={s.suffix}>
             {s.value}
             {s.suffix}
           </div>
