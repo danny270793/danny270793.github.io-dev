@@ -1,50 +1,44 @@
 ---
+import { Image } from "astro:assets";
 import MyEducations from "../libraries/me/knowledges/educations";
 import type { Education } from "../libraries/me/knowledges/educations";
-import educationBackground from "../images/parallax/education.jpg";
-import { Image } from "astro:assets";
+import SectionHead from "./section-head.astro";
 ---
 
-<div
-  id="education"
-  class="parallax separator w3-display-container"
-  style={`background-image: url("${educationBackground.src}")`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-      data-i18n="sections.education"
-    >
-      Education
-    </span>
-  </div>
-</div>
+<section id="education" class="section">
+  <div class="container">
+    <SectionHead
+      name="education"
+      label="Education"
+      title="Academic foundation"
+      sub="Formal training in engineering and information systems."
+    />
 
-<div class="w3-content w3-container w3-padding-64 fade-in">
-  <div class="projects-grid education-grid">
-    {
-      MyEducations.map((education: Education) => (
-        <div class="project-card">
-          <div class="project-card-image">
-            <Image
-              src={education.image}
-              alt={education.name}
-              width={64}
-              height={64}
-              style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px;"
-            />
-          </div>
-          <div class="project-card-body">
-            <h5 class="project-card-name">{education.name}</h5>
-            <p class="project-card-desc">{education.institution}</p>
-            <div class="cert-card-footer">
-              <span class="library-type-badge">
-                {education.from} – {education.to}
-              </span>
+    <div class="timeline">
+      {
+        MyEducations.map((education: Education, i: number) => (
+          <div class="timeline-item reveal" style={`--delay: ${i * 0.1}s`}>
+            <span class="timeline-dot" />
+            <div class="card item-card">
+              <div class="item-logo">
+                <Image
+                  src={education.image}
+                  alt={education.institution}
+                  width={128}
+                  height={128}
+                />
+              </div>
+              <div class="item-body">
+                <span class="timeline-years">
+                  {education.from} — {education.to}
+                </span>
+                <h3 class="item-title">{education.name}</h3>
+                <p class="item-desc">{education.institution}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
-</div>
+</section>
