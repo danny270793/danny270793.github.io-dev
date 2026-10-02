@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
               href={socialLink.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link"
+              class={`contact-link brand ${socialLink.alternativeText.toLowerCase()}`}
             >
               <i class={ICON[socialLink.alternativeText] ?? "fas fa-link"} />
               {socialLink.alternativeText === "Github"
