@@ -1,14 +1,7 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { Image } from "astro:assets";
 import MyProjects from "../libraries/me/knowledges/projects";
 import SectionHead from "./section-head.astro";
-
-const projects = await Promise.all(
-  MyProjects.map(async (project) => ({
-    ...project,
-    blur: await getImage({ src: project.image, width: 64, format: "webp" }),
-  })),
-);
 ---
 
 <section id="projects" class="section">
@@ -22,16 +15,12 @@ const projects = await Promise.all(
 
     <div class="grid">
       {
-        projects.map((project, i) => (
+        MyProjects.map((project, i) => (
           <article
             class="card card-interactive project-card reveal"
             style={`--delay: ${(i % 3) * 0.08}s`}
           >
             <div class="project-cover">
-              <div
-                class="project-cover-bg"
-                style={`background-image: url("${project.blur.src}")`}
-              />
               <Image
                 src={project.image}
                 alt={project.name}
