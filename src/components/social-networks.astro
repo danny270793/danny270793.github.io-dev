@@ -1,38 +1,72 @@
 ---
-import { Image } from "astro:assets";
 import SocialLinks from "../libraries/me/social-links";
 import type { SocialLink } from "../libraries/me/social-links";
+
+const ICON: Record<string, string> = {
+  Github: "fab fa-github",
+  LinkedIn: "fab fa-linkedin",
+  YouTube: "fab fa-youtube",
+};
+
+const ordered = [...SocialLinks].sort(
+  (a, b) =>
+    ["Github", "LinkedIn", "YouTube"].indexOf(a.alternativeText) -
+    ["Github", "LinkedIn", "YouTube"].indexOf(b.alternativeText),
+);
 
 const year = new Date().getFullYear();
 ---
 
-<footer id="social-networks" class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-social">
-      {
-        SocialLinks.map((socialLink: SocialLink) => (
-          <a
-            href={socialLink.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-link"
-            aria-label={socialLink.alternativeText}
-          >
-            <Image
-              src={socialLink.image}
-              alt={socialLink.alternativeText}
-              width={120}
-              height={28}
-              style="height: 28px; width: auto; border-radius: 4px;"
-            />
-          </a>
-        ))
-      }
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="section-head">
+        <span class="section-label" data-i18n="sections.contact">Contact</span>
+        <h2 class="section-title" data-i18n="headings.contact">
+          Let's build something together
+        </h2>
+        <p class="section-sub" data-i18n="subs.contact">
+          Have a project in mind or just want to say hi? Find me on any of these
+          platforms.
+        </p>
+      </div>
+      <div class="contact-links">
+        {
+          ordered.map((socialLink: SocialLink) => (
+            <a
+              href={socialLink.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link"
+            >
+              <i class={ICON[socialLink.alternativeText] ?? "fas fa-link"} />
+              {socialLink.alternativeText === "Github"
+                ? "GitHub"
+                : socialLink.alternativeText}
+            </a>
+          ))
+        }
+      </div>
     </div>
-    <p class="footer-copy">
-      &copy; {year} Danny Vaca &middot; <span data-i18n="footer.rights"
-        >All rights reserved</span
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span>
+        &copy; {year} Danny Vaca &middot; <span data-i18n="footer.rights"
+          >All rights reserved</span
+        >
+      </span>
+      <a
+        href="https://github.com/danny270793/danny270793.github.io-dev"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-    </p>
+        <i class="fab fa-github"></i>
+        <span data-i18n="footer.builtWith">Built with Astro</span>
+      </a>
+    </div>
   </div>
 </footer>
