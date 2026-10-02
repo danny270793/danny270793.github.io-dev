@@ -54,14 +54,7 @@ const meta: Record<string, { es: string; icon: string }> = {
               </div>
               <div class="tech-badges">
                 {items.map((technology: Technology) => (
-                  <span class="tech-badge" title={technology.alternative}>
-                    <img
-                      src={technology.link}
-                      alt={technology.alternative}
-                      loading="lazy"
-                      height="26"
-                    />
-                  </span>
+                  <span class="tech-badge">{technology.alternative}</span>
                 ))}
               </div>
             </div>
