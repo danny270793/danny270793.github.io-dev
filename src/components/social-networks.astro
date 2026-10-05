@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
 
 <section id="contact" class="section">
   <div class="container">
-    <div class="contact-card reveal">
+    <div class="contact-card reveal reveal-scale">
       <div class="section-head">
         <span class="section-label" data-i18n="sections.contact">Contact</span>
         <h2 class="section-title" data-i18n="headings.contact">
@@ -32,12 +32,13 @@ const year = new Date().getFullYear();
       </div>
       <div class="contact-links">
         {
-          ordered.map((socialLink: SocialLink) => (
+          ordered.map((socialLink: SocialLink, i: number) => (
             <a
               href={socialLink.link}
               target="_blank"
               rel="noopener noreferrer"
-              class={`contact-link brand ${socialLink.alternativeText.toLowerCase()}`}
+              class={`contact-link brand stagger ${socialLink.alternativeText.toLowerCase()}`}
+              style={`--i: ${i}`}
             >
               <i class={ICON[socialLink.alternativeText] ?? "fas fa-link"} />
               {socialLink.alternativeText === "Github"

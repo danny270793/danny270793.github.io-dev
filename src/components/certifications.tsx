@@ -62,13 +62,13 @@ export default function Certifications({ certifications, order }: Props) {
   return (
     <section id="certifications" class="section">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head reveal reveal-blur">
           <span class="section-label">{t.sections.certifications}</span>
           <h2 class="section-title">{t.headings.certifications}</h2>
           <p class="section-sub">{t.subs.certifications}</p>
         </div>
 
-        <div class="filters">
+        <div class="filters reveal" style={{ "--delay": "0.1s" }}>
           {filters.map((f) => (
             <button
               type="button"
@@ -81,14 +81,14 @@ export default function Certifications({ certifications, order }: Props) {
           ))}
         </div>
 
-        <div class="grid grid-animate" key={category}>
+        <div class="grid" key={category}>
           {filtered.map((cert, i) => (
             <a
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="card card-interactive item-card"
-              style={{ animationDelay: `${Math.min(i, 12) * 30}ms` }}
+              class="card card-interactive item-card reveal reveal-scale"
+              style={{ "--delay": `${(i % 3) * 0.08}s` }}
             >
               <i class="fas fa-external-link-alt card-arrow" />
               <div class="item-logo">

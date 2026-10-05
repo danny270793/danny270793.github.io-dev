@@ -104,12 +104,13 @@ const highlights = [
       </div>
       <div class="hero-social reveal" style="--delay: 0.32s">
         {
-          socials.map((s) => (
+          socials.map((s, i) => (
             <a
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="social-icon"
+              class="social-icon stagger"
+              style={`--i: ${i * 2}`}
               aria-label={s.label}
             >
               <i class={s.icon} />
@@ -119,7 +120,7 @@ const highlights = [
       </div>
     </div>
 
-    <div class="portrait reveal" style="--delay: 0.2s">
+    <div class="portrait reveal reveal-scale reveal-blur" style="--delay: 0.2s">
       <div class="portrait-ring"></div>
       <Image
         class="portrait-img"
@@ -147,10 +148,10 @@ const highlights = [
 </section>
 
 <div class="container">
-  <div class="stats reveal">
+  <div class="stats reveal reveal-scale">
     {
-      stats.map((s) => (
-        <div class="stat">
+      stats.map((s, i) => (
+        <div class="stat stagger" style={`--i: ${i * 3}`}>
           <div class="stat-value" data-count={s.value} data-suffix={s.suffix}>
             {s.value}
             {s.suffix}
@@ -174,13 +175,16 @@ const highlights = [
     </div>
 
     <div class="about-grid">
-      <div class="about-bio reveal" data-i18n-bio>
+      <div class="about-bio reveal reveal-left" data-i18n-bio>
         {Me.detail.split("\n").map((e) => <p>{e}</p>)}
       </div>
       <div class="highlights">
         {
           highlights.map((h, i) => (
-            <div class="card highlight reveal" style={`--delay: ${i * 0.08}s`}>
+            <div
+              class="card highlight reveal reveal-right"
+              style={`--delay: ${i * 0.08}s`}
+            >
               <div class="highlight-icon">
                 <i class={h.icon} />
               </div>

@@ -24,13 +24,13 @@ export default function Libraries({ libraries }: { libraries: Library[] }) {
   return (
     <section id="open-source-libraries" class="section">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head reveal reveal-blur">
           <span class="section-label">{t.sections.libraries}</span>
           <h2 class="section-title">{t.headings.libraries}</h2>
           <p class="section-sub">{t.subs.libraries}</p>
         </div>
 
-        <div class="filters">
+        <div class="filters reveal" style={{ "--delay": "0.1s" }}>
           <button
             type="button"
             class={`filter-btn${type === "all" ? " active" : ""}`}
@@ -54,14 +54,14 @@ export default function Libraries({ libraries }: { libraries: Library[] }) {
           ))}
         </div>
 
-        <div class="grid grid-animate" key={type}>
+        <div class="grid" key={type}>
           {filtered.map((library, i) => (
             <a
               href={library.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="card card-interactive item-card"
-              style={{ animationDelay: `${Math.min(i, 12) * 30}ms` }}
+              class="card card-interactive item-card reveal reveal-scale"
+              style={{ "--delay": `${(i % 3) * 0.08}s` }}
             >
               <i class="fas fa-external-link-alt card-arrow" />
               <div class="item-logo">

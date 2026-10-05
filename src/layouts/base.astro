@@ -45,7 +45,9 @@ const description =
   <body>
     <div class="ambient" aria-hidden="true">
       <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
     <Navbar anchors={anchors} />
 
@@ -62,23 +64,77 @@ const description =
 
       const SUPPORTED = Object.keys(translations) as Language[];
 
-      // ── Scroll reveal ──
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      // ── Scroll reveal (both directions) ──
       const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              revealObserver.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            if (entry.intersectionRatio >= 0.12) {
+              el.classList.add("visible");
+            } else if (!entry.isIntersecting) {
+              // Remember which edge it left through so it re-enters from there
+              el.dataset.side =
+                entry.boundingClientRect.top < 0 ? "above" : "below";
+              el.classList.remove("visible");
             }
           });
         },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        { threshold: [0, 0.12], rootMargin: "0px 0px -40px 0px" },
       );
+      const observed = new WeakSet<Element>();
       const observeReveals = () =>
-        document
-          .querySelectorAll(".reveal:not(.visible)")
-          .forEach((el) => revealObserver.observe(el));
+        document.querySelectorAll(".reveal").forEach((el) => {
+          if (observed.has(el)) return;
+          observed.add(el);
+          revealObserver.observe(el);
+        });
       observeReveals();
+      // Islands (filters) render new cards after load
+      new MutationObserver(observeReveals).observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+
+      // ── Scroll-linked motion ──
+      const root = document.documentElement;
+      const hero = document.querySelector<HTMLElement>(".hero");
+      const timelines = document.querySelectorAll<HTMLElement>(".timeline");
+      let ticking = false;
+      const updateScrollMotion = () => {
+        ticking = false;
+        const max = root.scrollHeight - window.innerHeight;
+        root.style.setProperty(
+          "--scroll-progress",
+          String(max > 0 ? Math.min(1, window.scrollY / max) : 0),
+        );
+        if (hero) {
+          const p = Math.min(
+            1,
+            Math.max(0, window.scrollY / hero.offsetHeight),
+          );
+          hero.style.setProperty("--hero-p", p.toFixed(4));
+        }
+        timelines.forEach((tl) => {
+          const r = tl.getBoundingClientRect();
+          const anchor = window.innerHeight * 0.65;
+          const p = Math.min(1, Math.max(0, (anchor - r.top) / r.height));
+          tl.style.setProperty("--line", p.toFixed(4));
+        });
+      };
+      if (!reducedMotion) {
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(updateScrollMotion);
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+        updateScrollMotion();
+      }
 
       // ── Card spotlight (cursor-follow glow) ──
       document.addEventListener("pointermove", (e) => {

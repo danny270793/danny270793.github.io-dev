@@ -15,7 +15,7 @@ interface Props {
 const { name, label, title, sub } = Astro.props;
 ---
 
-<div class="section-head reveal">
+<div class="section-head reveal reveal-blur">
   <span class="section-label" data-i18n={`sections.${name}`}>{label}</span>
   <h2 class="section-title" data-i18n={`headings.${name}`}>{title}</h2>
   <p class="section-sub" data-i18n={`subs.${name}`}>{sub}</p>

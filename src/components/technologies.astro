@@ -103,7 +103,10 @@ function parse(technology: Technology) {
           ).map(parse);
           return (
             <div
-              class="card tech-card reveal"
+              class:list={[
+                "card tech-card reveal",
+                i % 2 ? "reveal-right" : "reveal-left",
+              ]}
               style={`--delay: ${(i % 2) * 0.08}s`}
             >
               <div class="tech-head">
@@ -120,13 +123,13 @@ function parse(technology: Technology) {
                 <span class="tech-count">{items.length}</span>
               </div>
               <div class="tech-badges">
-                {items.map((tech) => (
+                {items.map((tech, j) => (
                   <span
                     class:list={[
-                      "tech-badge",
+                      "tech-badge stagger",
                       { neutral: !tech.color, "dark-logo": tech.darkLogo },
                     ]}
-                    style={tech.color ? `--brand: ${tech.color}` : undefined}
+                    style={`--i: ${j};${tech.color ? ` --brand: ${tech.color}` : ""}`}
                   >
                     {tech.src ? (
                       <img
