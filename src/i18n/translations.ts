@@ -79,6 +79,14 @@ export interface Translations {
     rights: string;
     builtWith: string;
   };
+  notFound: {
+    label: string;
+    title: string;
+    sub: string;
+    home: string;
+    projects: string;
+    contact: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -166,6 +174,14 @@ export const translations: Record<Language, Translations> = {
       rights: "All rights reserved",
       builtWith: "Built with Astro",
     },
+    notFound: {
+      label: "Error 404",
+      title: "Lost in the void",
+      sub: "The page you're looking for doesn't exist or has been moved.",
+      home: "Back home",
+      projects: "See projects",
+      contact: "Contact me",
+    },
   },
   es: {
     nav: {
@@ -250,6 +266,14 @@ export const translations: Record<Language, Translations> = {
     footer: {
       rights: "Todos los derechos reservados",
       builtWith: "Hecho con Astro",
+    },
+    notFound: {
+      label: "Error 404",
+      title: "Perdido en el vacío",
+      sub: "La página que buscas no existe o fue movida.",
+      home: "Volver al inicio",
+      projects: "Ver proyectos",
+      contact: "Contáctame",
     },
   },
 };
