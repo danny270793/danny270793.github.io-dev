@@ -60,7 +60,7 @@ export default function Libraries({ libraries }: { libraries: Library[] }) {
               href={library.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="card card-interactive item-card reveal reveal-scale"
+              class="card card-interactive item-card reveal reveal-tilt"
               style={{ "--delay": `${(i % 3) * 0.08}s` }}
             >
               <i class="fas fa-external-link-alt card-arrow" />

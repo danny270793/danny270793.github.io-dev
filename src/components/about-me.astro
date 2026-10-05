@@ -6,6 +6,8 @@ import MyCertifications from "../libraries/me/knowledges/certifications";
 import MyLibraries from "../libraries/me/knowledges/libraries";
 import MyProjects from "../libraries/me/knowledges/projects";
 
+const name = "Danny Vaca";
+
 const socials = [
   {
     href: "https://www.github.com/danny270793",
@@ -83,7 +85,20 @@ const highlights = [
       </span>
       <h1 class="hero-title reveal" style="--delay: 0.08s">
         <span class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</span>
-        <span>Danny Vaca</span>
+        <span class="hero-name">
+          <span class="sr-only">{name}</span>
+          {
+            [...name].map((ch, i) => (
+              <span
+                class="letter"
+                aria-hidden="true"
+                style={`--i: ${i}; --r: ${((i * 37) % 11) - 5}`}
+              >
+                {ch === " " ? "\u00a0" : ch}
+              </span>
+            ))
+          }
+        </span>
       </h1>
       <p
         class="hero-tagline reveal"

@@ -84,6 +84,8 @@ function parse(technology: Technology) {
     fa: fallbackIcon[slug] ?? "fas fa-cube",
   };
 }
+
+const all = MyTechnologies.map(parse);
 ---
 
 <section id="technologies" class="section">
@@ -94,7 +96,39 @@ function parse(technology: Technology) {
       title="My toolbox"
       sub="The technologies I use to design, build, deploy and monitor software."
     />
+  </div>
 
+  <div class="marquee" aria-hidden="true">
+    {
+      [
+        all.filter((_, i) => i % 2 === 0),
+        all.filter((_, i) => i % 2 === 1),
+      ].map((row, r) => (
+        <div class="marquee-row" data-dir={r === 0 ? -1 : 1}>
+          <div class="marquee-track">
+            {[...row, ...row].map((tech) => (
+              <span
+                class:list={[
+                  "marquee-item",
+                  { neutral: !tech.color, "dark-logo": tech.darkLogo },
+                ]}
+                style={tech.color ? `--brand: ${tech.color}` : undefined}
+              >
+                {tech.src ? (
+                  <img src={tech.src} alt="" width="28" height="28" />
+                ) : (
+                  <i class={tech.fa} />
+                )}
+                {tech.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="container">
     <div class="grid grid-2">
       {
         categories.map((category, i) => {
