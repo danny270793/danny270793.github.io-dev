@@ -1,107 +1,78 @@
 ---
 import { Image } from "astro:assets";
-import ProjectsBackground from "../images/parallax/projects.jpg";
-import GooglePlay from "../images/projects/google-play.png";
-import AppStore from "../images/projects/app-store.png";
 import MyProjects from "../libraries/me/knowledges/projects";
-import type { Project } from "../libraries/me/knowledges/projects";
-import Github from "../images/projects/github.png";
+import SectionHead from "./section-head.astro";
 ---
 
-<div
-  id="projects"
-  class="parallax separator w3-display-container"
-  style={`background-image: url("${ProjectsBackground.src}")`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-      data-i18n="sections.projects"
-    >
-      Projects
-    </span>
-  </div>
-</div>
+<section id="projects" class="section">
+  <div class="container">
+    <SectionHead
+      name="projects"
+      label="Projects"
+      title="Things I've shipped"
+      sub="Apps published on the stores and open sourced on GitHub."
+    />
 
-<div class="w3-content w3-container w3-padding-64 fade-in">
-  <div class="projects-grid">
-    {
-      MyProjects.map((project: Project) => (
-        <div class="project-card">
-          <div class="project-card-image">
-            <Image
-              src={project.image}
-              alt={project.name}
-              width={64}
-              height={64}
-              style="width: 64px; height: 64px; object-fit: contain; border-radius: 12px;"
-            />
-          </div>
-          <div class="project-card-body">
-            <h5 class="project-card-name">{project.name}</h5>
-            <p
-              class="project-card-desc"
-              data-desc-en={project.description.en}
-              data-desc-es={project.description.es}
-            >
-              {project.description.en}
-            </p>
-            <div class="project-card-links">
-              {project.playstore && (
-                <a
-                  href={project.playstore}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-store-link"
-                  aria-label="Google Play"
-                >
-                  <Image
-                    src={GooglePlay}
-                    alt="Google Play"
-                    width={120}
-                    height={35}
-                    style="height: 26px; width: auto;"
-                  />
-                </a>
-              )}
-              {project.appstore && (
-                <a
-                  href={project.appstore}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-store-link"
-                  aria-label="App Store"
-                >
-                  <Image
-                    src={AppStore}
-                    alt="App Store"
-                    width={120}
-                    height={35}
-                    style="height: 26px; width: auto;"
-                  />
-                </a>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-store-link"
-                  aria-label="GitHub"
-                >
-                  <Image
-                    src={Github}
-                    alt="GitHub"
-                    width={90}
-                    height={28}
-                    style="height: 26px; width: auto;"
-                  />
-                </a>
-              )}
+    <div class="grid">
+      {
+        MyProjects.map((project, i) => (
+          <article
+            class="card card-interactive project-card reveal reveal-tilt"
+            style={`--delay: ${(i % 3) * 0.08}s`}
+          >
+            <div class="project-cover">
+              <Image
+                src={project.image}
+                alt={project.name}
+                width={184}
+                height={184}
+              />
             </div>
-          </div>
-        </div>
-      ))
-    }
+            <div class="project-body">
+              <h3 class="item-title">{project.name}</h3>
+              <p
+                class="item-desc"
+                data-desc-en={project.description.en}
+                data-desc-es={project.description.es}
+              >
+                {project.description.en}
+              </p>
+              <div class="project-links">
+                {project.playstore && (
+                  <a
+                    href={project.playstore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pill-link"
+                  >
+                    <i class="fab fa-google-play" /> Google Play
+                  </a>
+                )}
+                {project.appstore && (
+                  <a
+                    href={project.appstore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pill-link"
+                  >
+                    <i class="fab fa-app-store-ios" /> App Store
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pill-link"
+                  >
+                    <i class="fab fa-github" /> GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </div>
-</div>
+</section>

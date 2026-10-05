@@ -1,71 +1,189 @@
 ---
-import TechnologiesBackground from "../images/parallax/technologies.jpg";
 import MyTechnologies from "../libraries/me/knowledges/technologies";
 import type { Technology } from "../libraries/me/knowledges/technologies";
+import SectionHead from "./section-head.astro";
 
 const categories = [
   ...new Set(MyTechnologies.map((e: Technology) => e.category)),
 ];
 
-const categoryEs: Record<string, string> = {
-  Mobile: "Móvil",
-  Web: "Web",
-  "CI/CD": "CI/CD",
-  Deployments: "Despliegues",
-  Monitoring: "Monitoreo",
-  Storage: "Almacenamiento",
-  BigData: "Big Data",
-  Microcontrollers: "Microcontroladores",
+const meta: Record<string, { es: string; icon: string }> = {
+  Mobile: { es: "Móvil", icon: "fas fa-mobile-alt" },
+  Web: { es: "Web", icon: "fas fa-code" },
+  "CI/CD": { es: "CI/CD", icon: "fas fa-infinity" },
+  Deployments: { es: "Despliegues", icon: "fas fa-rocket" },
+  Monitoring: { es: "Monitoreo", icon: "fas fa-chart-line" },
+  Storage: { es: "Almacenamiento", icon: "fas fa-database" },
+  BigData: { es: "Big Data", icon: "fas fa-layer-group" },
+  Microcontrollers: { es: "Microcontroladores", icon: "fas fa-microchip" },
 };
+
+const icons = import.meta.glob<string>("../images/tech-icons/*.svg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const iconSources = import.meta.glob<string>("../images/tech-icons/*.svg", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
+// Logos too dark to see on the dark theme get inverted there.
+function isDarkLogo(path: string): boolean {
+  const fill = iconSources[path]?.match(/fill="#([0-9a-f]{6})"/i)?.[1];
+  if (!fill) return false;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(fill.slice(i, i + 2), 16));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b < 70;
+}
+
+// Brands with no Simple Icons entry: use a Font Awesome glyph instead.
+const fallbackIcon: Record<string, string> = {
+  amazonaws: "fab fa-aws",
+  microsoftazure: "fab fa-microsoft",
+  azuredevops: "fab fa-microsoft",
+  microsoftpowerbi: "fas fa-chart-bar",
+  microsoftsqlserver: "fas fa-database",
+  sonarqube: "fas fa-search-plus",
+  coralogix: "fas fa-chart-pie",
+};
+
+const NEUTRAL = new Set([
+  "000",
+  "000000",
+  "black",
+  "181717",
+  "1a1918",
+  "20232a",
+  "231f20",
+]);
+
+function parse(technology: Technology) {
+  const url = new URL(technology.link);
+  const segment = decodeURIComponent(url.pathname.split("/").pop() ?? "");
+  let color = segment
+    .replace(/\.svg$/, "")
+    .split("-")
+    .pop()!
+    .replace("#", "");
+  const slug = (url.searchParams.get("logo") ?? "")
+    .toLowerCase()
+    .replace(/\./g, "dot")
+    .replace(/[\s-]/g, "");
+  const logoColor = (url.searchParams.get("logoColor") ?? "").replace("#", "");
+  if (NEUTRAL.has(color.toLowerCase()) && /^[0-9a-f]{6}$/i.test(logoColor)) {
+    color = logoColor;
+  }
+  const neutral = NEUTRAL.has(color.toLowerCase());
+  const path = `../images/tech-icons/${slug}.svg`;
+  return {
+    name: technology.alternative,
+    color: neutral ? null : `#${color}`,
+    src: icons[path],
+    darkLogo: isDarkLogo(path),
+    fa: fallbackIcon[slug] ?? "fas fa-cube",
+  };
+}
+
+const all = MyTechnologies.map(parse);
 ---
 
-<div
-  id="technologies"
-  class="parallax separator w3-display-container"
-  style={`background-image: url("${TechnologiesBackground.src}")`}
->
-  <div class="w3-display-middle no-spaces">
-    <span
-      class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity"
-      data-i18n="sections.technologies"
-    >
-      Technologies
-    </span>
+<section id="technologies" class="section">
+  <div class="container">
+    <SectionHead
+      name="technologies"
+      label="Technologies"
+      title="My toolbox"
+      sub="The technologies I use to design, build, deploy and monitor software."
+    />
   </div>
-</div>
 
-<div class="w3-content w3-container w3-padding-64 fade-in">
-  <div class="tech-grid">
+  <div class="marquee" aria-hidden="true">
     {
-      categories.map((category) => {
-        const items = MyTechnologies.filter(
-          (t: Technology) => t.category === category,
-        );
-        return (
-          <div class="tech-category-card">
-            <div class="tech-category-header">
+      [
+        all.filter((_, i) => i % 2 === 0),
+        all.filter((_, i) => i % 2 === 1),
+      ].map((row, r) => (
+        <div class="marquee-row" data-dir={r === 0 ? -1 : 1}>
+          <div class="marquee-track">
+            {[...row, ...row].map((tech) => (
               <span
-                class="tech-category-name"
-                data-desc-en={category}
-                data-desc-es={categoryEs[category] ?? category}
+                class:list={[
+                  "marquee-item",
+                  { neutral: !tech.color, "dark-logo": tech.darkLogo },
+                ]}
+                style={tech.color ? `--brand: ${tech.color}` : undefined}
               >
-                {category}
+                {tech.src ? (
+                  <img src={tech.src} alt="" width="28" height="28" />
+                ) : (
+                  <i class={tech.fa} />
+                )}
+                {tech.name}
               </span>
-            </div>
-            <div class="tech-badges-area">
-              {items.map((technology: Technology) => (
-                <span class="tech-badge">
-                  <img
-                    src={technology.link}
-                    alt={technology.alternative}
-                    loading="lazy"
-                  />
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
-        );
-      })
+        </div>
+      ))
     }
   </div>
-</div>
+
+  <div class="container">
+    <div class="grid grid-2">
+      {
+        categories.map((category, i) => {
+          const items = MyTechnologies.filter(
+            (t: Technology) => t.category === category,
+          ).map(parse);
+          return (
+            <div
+              class:list={[
+                "card tech-card reveal",
+                i % 2 ? "reveal-right" : "reveal-left",
+              ]}
+              style={`--delay: ${(i % 2) * 0.08}s`}
+            >
+              <div class="tech-head">
+                <span class="tech-icon">
+                  <i class={meta[category]?.icon ?? "fas fa-cubes"} />
+                </span>
+                <h3
+                  class="tech-name"
+                  data-desc-en={category}
+                  data-desc-es={meta[category]?.es ?? category}
+                >
+                  {category}
+                </h3>
+                <span class="tech-count">{items.length}</span>
+              </div>
+              <div class="tech-badges">
+                {items.map((tech, j) => (
+                  <span
+                    class:list={[
+                      "tech-badge stagger",
+                      { neutral: !tech.color, "dark-logo": tech.darkLogo },
+                    ]}
+                    style={`--i: ${j};${tech.color ? ` --brand: ${tech.color}` : ""}`}
+                  >
+                    {tech.src ? (
+                      <img
+                        src={tech.src}
+                        alt=""
+                        width="14"
+                        height="14"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <i class={tech.fa} aria-hidden="true" />
+                    )}
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

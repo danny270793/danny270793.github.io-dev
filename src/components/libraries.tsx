@@ -1,96 +1,90 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState } from "preact/hooks";
 import type { Library } from "../libraries/me/knowledges/libraries";
-import { translations, type Language } from "../i18n/translations";
+import { translations } from "../i18n/translations";
+import { useLang } from "./use-lang";
 
-export default function Libraries({ libraries, background }) {
+const TYPE_ICON: Record<string, string> = {
+  Node: "fab fa-node-js",
+  Python: "fab fa-python",
+  DockerHub: "fab fa-docker",
+  Arduino: "fas fa-microchip",
+  Rust: "fas fa-cog",
+  Flutter: "fas fa-mobile-alt",
+  Matlab: "fas fa-square-root-alt",
+};
+
+export default function Libraries({ libraries }: { libraries: Library[] }) {
   const [type, setType] = useState("all");
-  const [lang, setLang] = useState<Language>("en");
-
-  useEffect(() => {
-    const stored = localStorage.getItem("lang") as Language | null;
-    const nav = navigator.language.split("-")[0] as Language;
-    const initial =
-      stored && stored in translations
-        ? stored
-        : nav in translations
-          ? nav
-          : "en";
-    setLang(initial);
-
-    const handler = (e: Event) => setLang((e as CustomEvent<Language>).detail);
-    window.addEventListener("i18n:change", handler);
-    return () => window.removeEventListener("i18n:change", handler);
-  }, []);
-
+  const lang = useLang();
   const t = translations[lang];
 
-  const types = [...new Set(libraries.map((l: Library) => l.type).sort())];
-  const filtered = libraries.filter((l: Library) =>
-    type === "all" ? true : l.type === type,
-  );
+  const types = [...new Set(libraries.map((l) => l.type).sort())];
+  const filtered = libraries.filter((l) => type === "all" || l.type === type);
 
   return (
-    <>
-      <div
-        id="open-source-libraries"
-        class="parallax separator w3-display-container"
-        style={`background-image: url("${background.src}")`}
-      >
-        <div class="w3-display-middle no-spaces">
-          <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
-            {t.sections.libraries}
-          </span>
+    <section id="open-source-libraries" class="section">
+      <div class="container">
+        <div class="section-head reveal reveal-blur">
+          <span class="section-label">{t.sections.libraries}</span>
+          <h2 class="section-title">{t.headings.libraries}</h2>
+          <p class="section-sub">{t.subs.libraries}</p>
         </div>
-      </div>
 
-      <div class="w3-content w3-container w3-padding-64">
-        <div class="lib-filter-bar">
+        <div class="filters reveal" style={{ "--delay": "0.1s" }}>
           <button
-            class={["lib-filter-btn", type === "all" ? "active" : ""].join(" ")}
+            type="button"
+            class={`filter-btn${type === "all" ? " active" : ""}`}
             onClick={() => setType("all")}
           >
             {t.libraries.all}
-            <span class="lib-filter-count">{libraries.length}</span>
+            <span class="filter-count">{libraries.length}</span>
           </button>
-          {types.map((eachType: string) => (
+          {types.map((each) => (
             <button
-              class={["lib-filter-btn", type === eachType ? "active" : ""].join(
-                " ",
-              )}
-              onClick={() => setType(eachType)}
+              type="button"
+              class={`filter-btn${type === each ? " active" : ""}`}
+              onClick={() => setType(each)}
             >
-              {eachType}
-              <span class="lib-filter-count">
-                {libraries.filter((l: Library) => l.type === eachType).length}
+              <i class={TYPE_ICON[each] ?? "fas fa-box-open"} />
+              {each}
+              <span class="filter-count">
+                {libraries.filter((l) => l.type === each).length}
               </span>
             </button>
           ))}
         </div>
 
-        <div class="projects-grid">
-          {filtered.map((library: Library) => (
+        <div class="grid" key={type}>
+          {filtered.map((library, i) => (
             <a
               href={library.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="project-card project-card-link"
+              class="card card-interactive item-card reveal reveal-tilt"
+              style={{ "--delay": `${(i % 3) * 0.08}s` }}
             >
-              <div class="project-card-image">
+              <i class="fas fa-external-link-alt card-arrow" />
+              <div class="item-logo">
                 <img
                   src={library.image.src}
-                  alt={library.name}
-                  style="width: 64px; height: 64px; object-fit: contain; border-radius: 12px;"
+                  alt={library.type}
+                  loading="lazy"
                 />
               </div>
-              <div class="project-card-body">
-                <h5 class="project-card-name">{library.name}</h5>
-                <p class="project-card-desc">{library.description[lang]}</p>
-                <span class="library-type-badge">{library.type}</span>
+              <div class="item-body">
+                <h3 class="item-title">{library.name}</h3>
+                <p class="item-desc">{library.description[lang]}</p>
+                <div class="item-meta">
+                  <span class="tag">
+                    <i class={TYPE_ICON[library.type] ?? "fas fa-box-open"} />
+                    {library.type}
+                  </span>
+                </div>
               </div>
             </a>
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 }

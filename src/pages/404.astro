@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/base.astro";
+---
+
+<Base title="404 · Danny Vaca" anchors={false}>
+  <section class="not-found">
+    <div class="container not-found-inner">
+      <div class="not-found-code reveal reveal-scale" aria-hidden="true">
+        <span class="nf-digit">4</span>
+        <span class="nf-orb">
+          <span class="nf-ring"></span>
+          <span class="nf-ring nf-ring-2"></span>
+          <span class="nf-core"></span>
+        </span>
+        <span class="nf-digit">4</span>
+      </div>
+
+      <div class="section-head reveal reveal-blur" style="--delay: 0.15s">
+        <span class="section-label" data-i18n="notFound.label">Error 404</span>
+        <h1 class="section-title" data-i18n="notFound.title">
+          Lost in the void
+        </h1>
+        <p class="section-sub" data-i18n="notFound.sub">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <p class="not-found-path">
+          <i class="fas fa-link"></i>
+          <code id="nf-path"></code>
+        </p>
+      </div>
+
+      <div class="hero-ctas not-found-ctas reveal" style="--delay: 0.3s">
+        <a href="/" class="btn btn-primary">
+          <i class="fas fa-arrow-left"></i>
+          <span data-i18n="notFound.home">Back home</span>
+        </a>
+        <a href="/#projects" class="btn btn-ghost">
+          <span data-i18n="notFound.projects">See projects</span>
+        </a>
+        <a href="/#contact" class="btn btn-ghost">
+          <span data-i18n="notFound.contact">Contact me</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const path = document.getElementById("nf-path");
+  if (path) path.textContent = window.location.pathname;
+
+  // Digits lean toward the pointer
+  const code = document.querySelector<HTMLElement>(".not-found-code");
+  window.addEventListener("pointermove", (e) => {
+    if (!code) return;
+    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+    code.style.setProperty("--px", x.toFixed(3));
+    code.style.setProperty("--py", y.toFixed(3));
+  });
+</script>

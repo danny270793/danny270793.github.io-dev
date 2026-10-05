@@ -1,241 +1,208 @@
 ---
 const { anchors = true } = Astro.props;
+const prefix = anchors ? "" : "/";
+
+const links = [
+  { id: "about-me", key: "nav.about", label: "About" },
+  { id: "education", key: "nav.education", label: "Education" },
+  { id: "certifications", key: "nav.certifications", label: "Certifications" },
+  { id: "open-source-libraries", key: "nav.libraries", label: "Libraries" },
+  { id: "projects", key: "nav.projects", label: "Projects" },
+  { id: "technologies", key: "nav.technologies", label: "Technologies" },
+  { id: "contact", key: "nav.contact", label: "Contact" },
+];
+
+const themes = [
+  { val: "system", icon: "fas fa-adjust", label: "System" },
+  { val: "light", icon: "fas fa-sun", label: "Light" },
+  { val: "dark", icon: "fas fa-moon", label: "Dark" },
+];
+
+const langs = [
+  { val: "system", label: "System", short: "Auto" },
+  { val: "en", label: "English", short: "EN" },
+  { val: "es", label: "Español", short: "ES" },
+];
 ---
 
-<div
-  id="sidebar"
-  class="w3-sidebar w3-animate-left w3-bar-block"
-  style="display: none; z-index:5"
->
-  <div class="sidebar-theme">
-    <span class="theme-label">Theme</span>
-    <div class="sidebar-theme-options">
-      <button
-        type="button"
-        class="sidebar-theme-opt"
-        data-val="system"
-        title="System">◑</button
-      >
-      <button
-        type="button"
-        class="sidebar-theme-opt"
-        data-val="light"
-        title="Light">☀</button
-      >
-      <button
-        type="button"
-        class="sidebar-theme-opt"
-        data-val="dark"
-        title="Dark">☽</button
-      >
-    </div>
-  </div>
-  <div class="sidebar-lang">
-    <span class="lang-label">Language</span>
-    <div class="sidebar-lang-options">
-      <button type="button" class="sidebar-lang-opt" data-lang="system"
-        >System</button
-      >
-      <button type="button" class="sidebar-lang-opt" data-lang="en">EN</button>
-      <button type="button" class="sidebar-lang-opt" data-lang="es">ES</button>
-    </div>
-  </div>
-  <a
-    href={anchors ? "#about-me" : "/#about-me"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.about"
-  >
-    About me
-  </a>
-  <a
-    href={anchors ? "#education" : "/#education"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.education"
-  >
-    Education
-  </a>
-  <a
-    href={anchors ? "#certifications" : "/#certifications"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.certifications"
-  >
-    Certifications
-  </a>
-  <a
-    href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.libraries"
-  >
-    Open Source Libraries
-  </a>
-  <a
-    href={anchors ? "#projects" : "/#projects"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.projects"
-  >
-    Projects
-  </a>
-  <a
-    href={anchors ? "#technologies" : "/#technologies"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.technologies"
-  >
-    Technologies
-  </a>
-  <a
-    href={anchors ? "#social-networks" : "/#social-networks"}
-    class="w3-bar-item w3-button"
-    data-i18n="nav.contact"
-  >
-    Contact
-  </a>
-</div>
+<header id="navbar" class="nav">
+  <div class="container nav-inner">
+    <a href={anchors ? "#top" : "/"} class="brand" aria-label="Danny Vaca">
+      <span class="brand-mark">DV</span>
+      <span>Danny Vaca</span>
+    </a>
 
-<div id="overlay" class="w3-overlay" style="cursor: pointer; display: none;">
-</div>
+    <ul class="nav-links">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={`${prefix}#${l.id}`}
+              class="nav-link"
+              data-section={l.id}
+              data-i18n={l.key}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
 
-<div id="navbar" class="w3-top">
-  <div class="w3-bar w3-card w3-white">
+    <div class="nav-actions">
+      <div class="picker">
+        <button
+          type="button"
+          class="icon-btn picker-toggle"
+          aria-label="Change theme"
+        >
+          <i class="theme-icon fas fa-adjust"></i>
+        </button>
+        <ul class="picker-menu">
+          {
+            themes.map((t) => (
+              <li class="picker-option" data-theme-val={t.val}>
+                <i class={t.icon} />
+                {t.label}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="picker">
+        <button
+          type="button"
+          class="icon-btn picker-toggle"
+          aria-label="Change language"
+        >
+          <i class="fas fa-globe"></i>
+          <span class="lang-current">Auto</span>
+        </button>
+        <ul class="picker-menu">
+          {
+            langs.map((l) => (
+              <li class="picker-option" data-lang={l.val}>
+                {l.label}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
     <button
-      id="openButton"
-      class="w3-bar-item w3-button w3-hide-large"
-      style="font-size: 1.25rem;"
+      type="button"
+      class="icon-btn menu-btn"
+      id="menu-open"
+      aria-label="Open menu"
     >
-      &#9776;
+      <i class="fas fa-bars"></i>
     </button>
-    <span
-      class="w3-bar-item"
-      style="font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;"
-    >
-      Danny Vaca
+  </div>
+</header>
+
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head">
+    <span class="brand">
+      <span class="brand-mark">DV</span>
+      <span>Danny Vaca</span>
     </span>
-    <div
-      class="w3-right w3-hide-small w3-hide-medium"
-      style="display: flex; align-items: center;"
+    <button
+      type="button"
+      class="icon-btn"
+      id="menu-close"
+      aria-label="Close menu"
     >
-      <a
-        href={anchors ? "#about-me" : "/#about-me"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="about-me"
-        data-i18n="nav.about">About</a
-      >
-      <a
-        href={anchors ? "#education" : "/#education"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="education"
-        data-i18n="nav.education">Education</a
-      >
-      <a
-        href={anchors ? "#certifications" : "/#certifications"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="certifications"
-        data-i18n="nav.certifications">Certifications</a
-      >
-      <a
-        href={anchors ? "#open-source-libraries" : "/#open-source-libraries"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="open-source-libraries"
-        data-i18n="nav.libraries">Libraries</a
-      >
-      <a
-        href={anchors ? "#projects" : "/#projects"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="projects"
-        data-i18n="nav.projects">Projects</a
-      >
-      <a
-        href={anchors ? "#technologies" : "/#technologies"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="technologies"
-        data-i18n="nav.technologies">Technologies</a
-      >
-      <a
-        href={anchors ? "#social-networks" : "/#social-networks"}
-        class="w3-bar-item w3-button nav-link"
-        data-section="social-networks"
-        data-i18n="nav.contact">Contact</a
-      >
-      <span class="lang-divider"></span>
-      <div class="theme-picker">
-        <button type="button" class="theme-picker-btn">
-          <span class="theme-icon">◑</span>
-          <span class="theme-chevron">▾</span>
-        </button>
-        <ul class="theme-dropdown">
-          <li class="theme-option selected" data-val="system">◑ System</li>
-          <li class="theme-option" data-val="light">☀ Light</li>
-          <li class="theme-option" data-val="dark">☽ Dark</li>
-        </ul>
-      </div>
-      <div class="lang-picker">
-        <button type="button" class="lang-picker-btn">
-          <span class="lang-current">System</span>
-          <span class="lang-chevron">▾</span>
-        </button>
-        <ul class="lang-dropdown">
-          <li class="lang-option selected" data-lang="system">System</li>
-          <li class="lang-option" data-lang="en">English</li>
-          <li class="lang-option" data-lang="es">Español</li>
-        </ul>
-      </div>
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <ul class="drawer-links">
+    {
+      links.map((l) => (
+        <li>
+          <a href={`${prefix}#${l.id}`} class="nav-link" data-i18n={l.key}>
+            {l.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div>
+    <span class="drawer-group-label" data-i18n="settings.theme">Theme</span>
+    <div class="segmented">
+      {
+        themes.map((t) => (
+          <button type="button" data-theme-val={t.val} aria-label={t.label}>
+            <i class={t.icon} />
+          </button>
+        ))
+      }
     </div>
   </div>
-</div>
+  <div>
+    <span class="drawer-group-label" data-i18n="settings.language"
+      >Language</span
+    >
+    <div class="segmented">
+      {
+        langs.map((l) => (
+          <button type="button" data-lang={l.val}>
+            {l.short}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</aside>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.getElementById("sidebar") as HTMLElement;
-    const openButton = document.getElementById("openButton") as HTMLElement;
-    const overlay = document.getElementById("overlay") as HTMLElement;
-    const navbar = document.getElementById("navbar") as HTMLElement;
+  const navbar = document.getElementById("navbar") as HTMLElement;
+  const setOpen = (open: boolean) =>
+    document.body.classList.toggle("drawer-open", open);
 
-    const toggleSidebar = (show: boolean) => {
-      sidebar.style.display = show ? "block" : "none";
-      overlay.style.display = show ? "block" : "none";
-    };
+  document
+    .getElementById("menu-open")
+    ?.addEventListener("click", () => setOpen(true));
+  document
+    .getElementById("menu-close")
+    ?.addEventListener("click", () => setOpen(false));
+  document
+    .getElementById("drawer-backdrop")
+    ?.addEventListener("click", () => setOpen(false));
+  document
+    .querySelectorAll(".drawer-links a")
+    .forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
 
-    openButton?.addEventListener("click", () => toggleSidebar(true));
-    overlay.addEventListener("click", () => toggleSidebar(false));
-    // Close sidebar on nav link click (not lang buttons)
-    document.querySelectorAll(".w3-bar-item[href]").forEach((barItem) => {
-      barItem.addEventListener("click", () => toggleSidebar(false));
-    });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") toggleSidebar(false);
-    });
+  const onScroll = () =>
+    navbar.classList.toggle("scrolled", window.scrollY > 12);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-    // Navbar shadow on scroll
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("navbar-scrolled", window.scrollY > 10);
-    });
-
-    // Highlight active section in desktop nav
-    const navLinks = document.querySelectorAll<HTMLElement>(
-      ".nav-link[data-section]",
-    );
-    const sectionIds = Array.from(navLinks).map(
-      (l) => l.dataset.section as string,
-    );
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navLinks.forEach((link) => {
-              link.classList.toggle(
-                "active",
-                link.dataset.section === entry.target.id,
-              );
-            });
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
-
-    sections.forEach((s) => sectionObserver.observe(s));
+  const navLinks = document.querySelectorAll<HTMLElement>(
+    ".nav-links .nav-link[data-section]",
+  );
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) =>
+          link.classList.toggle(
+            "active",
+            link.dataset.section === entry.target.id,
+          ),
+        );
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+  navLinks.forEach((l) => {
+    const section = document.getElementById(l.dataset.section as string);
+    if (section) sectionObserver.observe(section);
   });
 </script>

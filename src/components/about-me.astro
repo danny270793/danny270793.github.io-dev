@@ -2,45 +2,213 @@
 import { Image } from "astro:assets";
 import Me from "../libraries/me";
 import profilePicture from "../images/profile.jpg";
-import headerBackground from "../images/parallax/header.jpg";
+import MyCertifications from "../libraries/me/knowledges/certifications";
+import MyLibraries from "../libraries/me/knowledges/libraries";
+import MyProjects from "../libraries/me/knowledges/projects";
+
+const name = "Danny Vaca";
+
+const socials = [
+  {
+    href: "https://www.github.com/danny270793",
+    icon: "fab fa-github",
+    label: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/danny270793",
+    icon: "fab fa-linkedin-in",
+    label: "LinkedIn",
+  },
+  {
+    href: "https://www.youtube.com/channel/UC5MAQWU2s2VESTXaUo-ysgg",
+    icon: "fab fa-youtube",
+    label: "YouTube",
+  },
+];
+
+const stats = [
+  { value: 15, suffix: "+", key: "stats.years", label: "Years of experience" },
+  {
+    value: MyCertifications.length,
+    suffix: "",
+    key: "stats.certifications",
+    label: "Certifications",
+  },
+  {
+    value: MyLibraries.length,
+    suffix: "",
+    key: "stats.libraries",
+    label: "Open source libraries",
+  },
+  {
+    value: MyProjects.length,
+    suffix: "",
+    key: "stats.projects",
+    label: "Projects",
+  },
+];
+
+const highlights = [
+  {
+    icon: "fas fa-cloud",
+    key: "cloud",
+    title: "Cloud",
+    desc: "Azure, AWS, Kubernetes and Terraform",
+  },
+  {
+    icon: "fas fa-mobile-alt",
+    key: "mobile",
+    title: "Mobile",
+    desc: "Flutter, React Native and Cordova",
+  },
+  {
+    icon: "fas fa-server",
+    key: "backend",
+    title: "Backend",
+    desc: "Microservices in Java, .Net and Python",
+  },
+  {
+    icon: "fas fa-chart-line",
+    key: "data",
+    title: "Data",
+    desc: "Spark, Hadoop and Power BI",
+  },
+];
 ---
 
-<div
-  class="parallax header w3-display-container"
-  style={`background-image: url("${headerBackground.src}")`}
->
-  <div class="hero-overlay"></div>
-  <div class="w3-display-middle hero-content">
-    <h1 class="hero-name w3-animate-opacity">Danny Vaca</h1>
-    <div class="hero-accent"></div>
-    <p class="hero-subtitle w3-animate-opacity" data-i18n="hero.subtitle">
-      Senior Full Stack Developer
-    </p>
+<section id="top" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">
+        <span class="pulse-dot"></span>
+        <span data-i18n="hero.subtitle">Senior Full Stack Developer</span>
+      </span>
+      <h1 class="hero-title reveal" style="--delay: 0.08s">
+        <span class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</span>
+        <span class="hero-name">
+          <span class="sr-only">{name}</span>
+          {
+            [...name].map((ch, i) => (
+              <span
+                class="letter"
+                aria-hidden="true"
+                style={`--i: ${i}; --r: ${((i * 37) % 11) - 5}`}
+              >
+                {ch === " " ? "\u00a0" : ch}
+              </span>
+            ))
+          }
+        </span>
+      </h1>
+      <p
+        class="hero-tagline reveal"
+        style="--delay: 0.16s"
+        data-i18n="hero.tagline"
+      >
+        I design and build cloud-native platforms, cross-platform mobile apps
+        and microservice-based web systems that deliver real business value.
+      </p>
+      <div class="hero-ctas reveal" style="--delay: 0.24s">
+        <a href="#projects" class="btn btn-primary">
+          <span data-i18n="hero.ctaWork">View my work</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          <span data-i18n="hero.ctaContact">Get in touch</span>
+        </a>
+      </div>
+      <div class="hero-social reveal" style="--delay: 0.32s">
+        {
+          socials.map((s, i) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon stagger"
+              style={`--i: ${i * 2}`}
+              aria-label={s.label}
+            >
+              <i class={s.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="portrait reveal reveal-scale reveal-blur" style="--delay: 0.2s">
+      <div class="portrait-ring"></div>
+      <Image
+        class="portrait-img"
+        src={profilePicture}
+        alt="Danny Vaca"
+        width={720}
+        height={720}
+        loading="eager"
+      />
+      <span class="portrait-chip chip-a">
+        <i class="fas fa-award"></i>
+        {MyCertifications.length}+ certs
+      </span>
+      <span class="portrait-chip chip-b">
+        <i class="fas fa-code"></i>
+        15+ yrs
+      </span>
+    </div>
   </div>
-  <a href="#about-me" class="hero-cta" aria-label="Scroll to about me"
-    >&#8595;</a
-  >
+
+  <a href="#about-me" class="scroll-cue" aria-label="Scroll to about me">
+    <span class="scroll-mouse"></span>
+    <span data-i18n="hero.scroll">Scroll</span>
+  </a>
+</section>
+
+<div class="container">
+  <div class="stats reveal reveal-scale">
+    {
+      stats.map((s, i) => (
+        <div class="stat stagger" style={`--i: ${i * 3}`}>
+          <div class="stat-value" data-count={s.value} data-suffix={s.suffix}>
+            {s.value}
+            {s.suffix}
+          </div>
+          <div class="stat-label" data-i18n={s.key}>
+            {s.label}
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </div>
 
-<div id="about-me" class="w3-content w3-container w3-padding-64 fade-in">
-  <h3 class="section-title" data-i18n="about.heading">About me</h3>
-  <hr class="section-divider" />
-  <div
-    class="w3-row"
-    style="display: flex; align-items: center; flex-wrap: wrap;"
-  >
-    <div class="w3-third w3-center">
-      <Image
-        class="w3-circle w3-padding profile-photo"
-        src={profilePicture}
-        alt="Profile picture"
-        width={300}
-        height={300}
-        style="width: 80%; max-width: 220px; height: auto;"
-      />
+<section id="about-me" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label" data-i18n="sections.aboutMe">About me</span>
+      <h2 class="section-title" data-i18n="headings.about">
+        Turning complex problems into elegant software
+      </h2>
     </div>
-    <div id="bio-text" class="w3-twothird w3-padding" data-i18n-bio>
-      {Me.detail.split("\n").map((e) => <p style="margin: 0 0 1rem;">{e}</p>)}
+
+    <div class="about-grid">
+      <div class="about-bio reveal reveal-left" data-i18n-bio>
+        {Me.detail.split("\n").map((e) => <p>{e}</p>)}
+      </div>
+      <div class="highlights">
+        {
+          highlights.map((h, i) => (
+            <div
+              class="card highlight reveal reveal-right"
+              style={`--delay: ${i * 0.08}s`}
+            >
+              <div class="highlight-icon">
+                <i class={h.icon} />
+              </div>
+              <h3 data-i18n={`highlights.${h.key}`}>{h.title}</h3>
+              <p data-i18n={`highlights.${h.key}Desc`}>{h.desc}</p>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
-</div>
+</section>

@@ -1,0 +1,184 @@
+---
+import { Image } from "astro:assets";
+import type { Project } from "../libraries/me/knowledges/projects";
+
+interface Props {
+  project: Project;
+  effectiveDate: string;
+}
+
+const { project, effectiveDate } = Astro.props;
+const email = "danny270793@gmail.com";
+
+const notCollected = [
+  { icon: "fas fa-user", label: "Personal data", desc: "Name, email, phone" },
+  { icon: "fas fa-map-marker-alt", label: "Location data" },
+  { icon: "fas fa-chart-line", label: "Usage analytics" },
+  { icon: "fas fa-mobile-alt", label: "Device information" },
+];
+
+const summary = [
+  "Personal Info",
+  "Location",
+  "Analytics",
+  "Advertisements",
+  "Shared with 3rd parties",
+];
+---
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-head reveal reveal-blur">
+      <span class="section-label">Privacy Policy</span>
+      <h1 class="section-title">{project.name}</h1>
+      <p class="section-sub">
+        Effective date: {effectiveDate}. This app does not collect, store or
+        share any personal information.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section policy">
+  <div class="container policy-container">
+    <div class="card policy-app reveal reveal-scale">
+      <div class="item-logo policy-app-logo">
+        <Image
+          src={project.image}
+          alt={project.name}
+          width={128}
+          height={128}
+        />
+      </div>
+      <div class="item-body">
+        <h2 class="item-title">{project.name}</h2>
+        <p class="item-desc">{project.description.en}</p>
+        <div class="project-links">
+          {
+            project.playstore && (
+              <a
+                href={project.playstore}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pill-link"
+              >
+                <i class="fab fa-google-play" /> Google Play
+              </a>
+            )
+          }
+          {
+            project.appstore && (
+              <a
+                href={project.appstore}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pill-link"
+              >
+                <i class="fab fa-app-store-ios" /> App Store
+              </a>
+            )
+          }
+          {
+            project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pill-link"
+              >
+                <i class="fab fa-github" /> GitHub
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2 class="policy-heading">
+        <span class="policy-num">01</span>
+        What information do we collect?
+      </h2>
+      <p>
+        <strong>None.</strong>
+        We do not collect:
+      </p>
+      <div class="policy-grid">
+        {
+          notCollected.map((item, i) => (
+            <div
+              class="card policy-item reveal reveal-tilt"
+              style={`--delay: ${i * 0.06}s`}
+            >
+              <span class="policy-item-icon">
+                <i class={item.icon} />
+                <i class="fas fa-ban policy-ban" aria-hidden="true" />
+              </span>
+              <h3>{item.label}</h3>
+              {item.desc && <p>{item.desc}</p>}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2 class="policy-heading">
+        <span class="policy-num">02</span>
+        Internet access
+      </h2>
+      <p>
+        If the app uses internet access (for example, for updates or ads),
+        third-party services like Google Play or the Apple App Store may collect
+        data under their own policies. However, <strong
+          >our app does not collect or transmit any user data</strong
+        >.
+      </p>
+    </div>
+
+    <div class="policy-block reveal">
+      <h2 class="policy-heading">
+        <span class="policy-num">03</span>
+        Summary
+      </h2>
+      <div class="card policy-summary">
+        <div class="policy-row policy-row-head">
+          <span>Data type</span>
+          <span>Collected?</span>
+        </div>
+        {
+          summary.map((label, i) => (
+            <div class="policy-row stagger" style={`--i: ${i * 2}`}>
+              <span>{label}</span>
+              <span class="policy-no">
+                <i class="fas fa-times" /> No
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="contact-card policy-contact reveal" data-enter>
+      <div class="section-head">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Questions about this policy?</h2>
+        <p class="section-sub">
+          If you have any questions about this privacy policy, please contact us
+          at:
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href={`mailto:${email}`} class="btn btn-primary">
+          <i class="fas fa-envelope"></i>
+          {email}
+        </a>
+      </div>
+    </div>
+
+    <a href="/" class="btn btn-ghost policy-back reveal">
+      <i class="fas fa-arrow-left"></i>
+      Back to portfolio
+    </a>
+  </div>
+</section>

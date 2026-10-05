@@ -1,5 +1,6 @@
-import { useState, useEffect } from "preact/hooks";
-import { translations, type Language } from "../i18n/translations";
+import { useState } from "preact/hooks";
+import { translations } from "../i18n/translations";
+import { useLang } from "./use-lang";
 
 interface CertProp {
   stared?: boolean;
@@ -13,138 +14,98 @@ interface CertProp {
   imageSrc: string;
 }
 
-export default function Certifications({
-  certifications,
-  background,
-  order,
-  parallaxHeight = "30vh",
-}) {
+interface Props {
+  certifications: CertProp[];
+  order: Record<string, number>;
+}
+
+export default function Certifications({ certifications, order }: Props) {
   const [category, setCategory] = useState("stared");
-  const [lang, setLang] = useState<Language>("en");
-
-  useEffect(() => {
-    const stored = localStorage.getItem("lang") as Language | null;
-    const nav = navigator.language.split("-")[0] as Language;
-    const initial =
-      stored && stored in translations
-        ? stored
-        : nav in translations
-          ? nav
-          : "en";
-    setLang(initial);
-
-    const handler = (e: Event) => setLang((e as CustomEvent<Language>).detail);
-    window.addEventListener("i18n:change", handler);
-    return () => window.removeEventListener("i18n:change", handler);
-  }, []);
-
+  const lang = useLang();
   const t = translations[lang];
 
   const categories = [
     ...new Set(
-      certifications
-        .map((c: CertProp) => c.category)
-        .sort((a: string, b: string) => order[a] - order[b]),
+      certifications.map((c) => c.category).sort((a, b) => order[a] - order[b]),
     ),
   ];
 
   const filtered = certifications
-    .filter((c: CertProp) =>
+    .filter((c) =>
       category === "all"
         ? true
         : category === "stared"
           ? c.stared
           : c.category === category,
     )
-    .sort((a: CertProp, b: CertProp) => {
-      const first = (order[a.category] + 1) * 10 + a.order;
-      const second = (order[b.category] + 1) * 10 + b.order;
-      return first - second;
-    });
+    .sort(
+      (a, b) =>
+        (order[a.category] + 1) * 10 +
+        a.order -
+        ((order[b.category] + 1) * 10 + b.order),
+    );
 
-  const starredCount = certifications.filter((c: CertProp) => c.stared).length;
+  const filters = [
+    {
+      id: "stared",
+      label: `★ ${t.certifications.starred}`,
+      count: certifications.filter((c) => c.stared).length,
+    },
+    { id: "all", label: t.certifications.all, count: certifications.length },
+    ...categories.map((cat) => ({
+      id: cat,
+      label: cat,
+      count: certifications.filter((c) => c.category === cat).length,
+    })),
+  ];
 
   return (
-    <>
-      <div
-        id="certifications"
-        class="parallax w3-display-container"
-        style={`background-image: url("${background.src}"); min-height: ${parallaxHeight}`}
-      >
-        <div class="w3-display-middle no-spaces">
-          <span class="w3-center w3-padding w3-black w3-xlarge w3-wide w3-animate-opacity">
-            {t.sections.certifications}
-          </span>
+    <section id="certifications" class="section">
+      <div class="container">
+        <div class="section-head reveal reveal-blur">
+          <span class="section-label">{t.sections.certifications}</span>
+          <h2 class="section-title">{t.headings.certifications}</h2>
+          <p class="section-sub">{t.subs.certifications}</p>
         </div>
-      </div>
 
-      <div class="w3-content w3-container w3-padding-64">
-        <div class="lib-filter-bar">
-          <button
-            class={[
-              "lib-filter-btn",
-              category === "stared" ? "active" : "",
-            ].join(" ")}
-            onClick={() => setCategory("stared")}
-          >
-            ★ {t.certifications.starred}
-            <span class="lib-filter-count">{starredCount}</span>
-          </button>
-          <button
-            class={["lib-filter-btn", category === "all" ? "active" : ""].join(
-              " ",
-            )}
-            onClick={() => setCategory("all")}
-          >
-            {t.certifications.all}
-            <span class="lib-filter-count">{certifications.length}</span>
-          </button>
-          {categories.map((cat: string) => (
+        <div class="filters reveal" style={{ "--delay": "0.1s" }}>
+          {filters.map((f) => (
             <button
-              class={["lib-filter-btn", category === cat ? "active" : ""].join(
-                " ",
-              )}
-              onClick={() => setCategory(cat)}
+              type="button"
+              class={`filter-btn${category === f.id ? " active" : ""}`}
+              onClick={() => setCategory(f.id)}
             >
-              {cat}
-              <span class="lib-filter-count">
-                {
-                  certifications.filter((c: CertProp) => c.category === cat)
-                    .length
-                }
-              </span>
+              {f.label}
+              <span class="filter-count">{f.count}</span>
             </button>
           ))}
         </div>
 
-        <div class="projects-grid">
-          {filtered.map((cert: CertProp) => (
+        <div class="grid" key={category}>
+          {filtered.map((cert, i) => (
             <a
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="project-card project-card-link"
+              class="card card-interactive item-card reveal reveal-tilt"
+              style={{ "--delay": `${(i % 3) * 0.08}s` }}
             >
-              <div class="project-card-image">
-                <img
-                  src={cert.imageSrc}
-                  alt={cert.name}
-                  style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px;"
-                />
+              <i class="fas fa-external-link-alt card-arrow" />
+              <div class="item-logo">
+                <img src={cert.imageSrc} alt={cert.name} loading="lazy" />
               </div>
-              <div class="project-card-body">
-                <h5 class="project-card-name">
-                  {cert.stared && (
-                    <span class="cert-star" title="Starred">
-                      ★
-                    </span>
-                  )}
-                  {cert.code !== "" ? `(${cert.code}) ${cert.name}` : cert.name}
-                </h5>
-                <p class="project-card-desc">{cert.brand}</p>
-                <div class="cert-card-footer">
-                  <span class="library-type-badge">{cert.category}</span>
-                  <span class="cert-date">
+              <div class="item-body">
+                <h3 class="item-title">
+                  {cert.stared && <span class="star">★</span>}
+                  {cert.name}
+                </h3>
+                <p class="item-desc">
+                  {cert.brand}
+                  {cert.code !== "" && ` · ${cert.code}`}
+                </p>
+                <div class="item-meta">
+                  <span class="tag">{cert.category}</span>
+                  <span class="meta-faint">
                     {new Date(cert.date).toLocaleDateString(
                       lang === "es" ? "es-ES" : "en-US",
                       { year: "numeric", month: "short" },
@@ -156,6 +117,6 @@ export default function Certifications({
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 }
