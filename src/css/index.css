@@ -2059,3 +2059,148 @@ main {
     animation: none;
   }
 }
+
+/* ── Privacy policy pages ── */
+.policy {
+  padding-top: 1rem;
+}
+
+.policy-container {
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.policy-app {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.policy-app-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+}
+
+.policy-block > p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+}
+
+.policy-block strong {
+  color: var(--text);
+}
+
+.policy-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.policy-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.policy-item {
+  padding: 1.25rem;
+}
+
+.policy-item h3 {
+  font-size: 1rem;
+}
+
+.policy-item p {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.policy-item-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0.9rem;
+  border-radius: 12px;
+  color: var(--text-muted);
+  background: var(--hover);
+  border: 1px solid var(--border);
+}
+
+.policy-ban {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  font-size: 0.85rem;
+  color: #ef4444;
+  background: var(--surface-solid);
+  border-radius: 50%;
+}
+
+.policy-summary {
+  padding: 0.5rem 0;
+}
+
+.policy-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+}
+
+.policy-row + .policy-row {
+  border-top: 1px solid var(--border);
+}
+
+.policy-row-head {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.policy-no {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.1rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ef4444;
+  background: color-mix(in srgb, #ef4444 12%, transparent);
+}
+
+.policy-back {
+  align-self: center;
+}
+
+@media (max-width: 720px) {
+  .policy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .policy-app {
+    flex-direction: column;
+    text-align: center;
+  }
+  .policy-app .project-links {
+    justify-content: center;
+  }
+}
