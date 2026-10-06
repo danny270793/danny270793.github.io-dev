@@ -1,0 +1,15 @@
+---
+import Base from "../../layouts/base.astro";
+import PrivacyPolicy from "../../components/privacy-policy.astro";
+import apps, { type AppPrivacy } from "../../libraries/me/knowledges/privacy";
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+
+const { app } = Astro.props as { app: AppPrivacy };
+---
+
+<Base title={`Privacy Policy · ${app.project.name}`} anchors={false}>
+  <PrivacyPolicy app={app} />
+</Base>
