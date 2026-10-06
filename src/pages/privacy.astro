@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/base.astro";
+import apps from "../libraries/me/knowledges/privacy";
+---
+
+<Base title="Privacy Policies · Danny Vaca" anchors={false}>
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-head reveal reveal-blur">
+        <span class="section-label">Privacy</span>
+        <h1 class="section-title">App privacy policies</h1>
+        <p class="section-sub">
+          How each of my apps handles your information. None of them include
+          analytics, tracking or ads.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section policy">
+    <div class="container policy-container">
+      <div class="policy-index">
+        {
+          apps.map((app, i) => (
+            <a
+              href={`/${app.slug}/privacy`}
+              class="card card-interactive policy-app policy-index-item reveal reveal-tilt"
+              style={`--delay: ${(i % 2) * 0.08}s`}
+            >
+              <div class="item-logo policy-app-logo">
+                <Image
+                  src={app.project.image}
+                  alt={app.project.name}
+                  width={128}
+                  height={128}
+                />
+              </div>
+              <div class="item-body">
+                <h2 class="item-title">{app.project.name}</h2>
+                <p class="item-desc">{app.tagline}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <a href="/" class="btn btn-ghost policy-back reveal">
+        <i class="fas fa-arrow-left"></i>
+        Back to portfolio
+      </a>
+    </div>
+  </section>
+</Base>
