@@ -2412,3 +2412,139 @@ a.card.policy-index-item {
   justify-content: center;
   margin-top: 2.5rem;
 }
+
+/* ── Page transitions (home): sections recede on exit and rise into focus ── */
+.paged .section > .container {
+  /* scale / translate / opacity are set from motion.ts each frame */
+  transform-origin: 50% 50%;
+}
+
+.paged .hero {
+  scale: calc(1 - var(--hero-p, 0) * 0.12);
+  transform-origin: 50% 100%;
+}
+
+/* On phones the pager is off (native touch scrolling): keep content fully visible */
+
+@media (prefers-reduced-motion: reduce) {
+  .paged .section > .container,
+  .paged .hero {
+    scale: none;
+    translate: none;
+    opacity: 1;
+  }
+}
+
+/* ── Home: every section fits one screen; long lists scroll sideways ── */
+.paged .grid,
+.paged .timeline {
+  display: flex;
+  max-width: none;
+  gap: 1.25rem;
+  /* bleed to the viewport edges, but start aligned with the container */
+  --edge: max(1.5rem, calc(50vw - var(--container) / 2 + 1.5rem));
+  margin: 0 calc(50% - 50vw);
+  padding: 0.75rem var(--edge) 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+  cursor: grab;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
+}
+
+.paged .grid.dragging,
+.paged .timeline.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.paged .grid.dragging *,
+.paged .timeline.dragging * {
+  pointer-events: none;
+}
+
+.paged .grid > *,
+.paged .timeline > * {
+  flex: 0 0 clamp(280px, 27vw, 350px);
+  scroll-snap-align: start;
+}
+
+.paged .grid-2 > * {
+  flex-basis: clamp(300px, 34vw, 440px);
+}
+
+.paged .timeline {
+  flex-direction: row;
+  padding-left: var(--edge);
+}
+
+.paged .timeline::before,
+.paged .timeline::after,
+.paged .timeline-dot {
+  display: none;
+}
+
+.paged .timeline .item-card {
+  height: 100%;
+}
+
+@media (hover: hover) {
+  .paged .section {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--nav-h) + 1rem) 0 1.5rem;
+  }
+  .paged .section-head {
+    margin-bottom: clamp(1rem, 3.5vh, 2.5rem);
+  }
+  .paged .filters {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  }
+  .paged .marquee {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Short screens: drop secondary copy so each section still fits */
+@media (hover: hover) and (max-height: 860px) {
+  .paged .section-sub {
+    display: none;
+  }
+  .paged .section-title {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  }
+  .paged .about-bio p {
+    font-size: 0.98rem;
+    margin-bottom: 0.8rem;
+  }
+  .paged .about-bio p:first-child {
+    font-size: 1.1rem;
+  }
+  .paged .highlight {
+    padding: 1rem;
+  }
+  .paged .highlight-icon {
+    margin-bottom: 0.6rem;
+  }
+}
