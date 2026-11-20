@@ -118,7 +118,6 @@ function pager({
   if (document.body.classList.contains("drawer-open")) return true;
   if (target?.closest?.(".drawer, .picker-menu")) return true;
   const abs = Math.abs(deltaY);
-  if (abs < 2) return true;
   const now = performance.now();
   const sameGesture = now - lastWheelTs < 90 && abs <= lastWheelAbs;
   lastWheelTs = now;
@@ -127,10 +126,14 @@ function pager({
     if (event.cancelable) event.preventDefault();
     return false;
   };
+  // Tiny deltas are the tail of trackpad momentum. They must be swallowed while
+  // a page glide runs (or at a page boundary), otherwise Lenis replaces the
+  // eased glide with its own lerp and the page stalls or drifts off the section.
   if (paging) return swallow();
   const dir = deltaY > 0 ? 1 : -1;
   // Trackpad inertia from the previous page change must not trigger another
   if (sameGesture && atPageBoundary(dir)) return swallow();
+  if (abs < 2) return true;
   return pageStep(dir) ? swallow() : true;
 }
 
